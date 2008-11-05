@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<macromedia-extension
+	name="Structure Creator"
+	version="1.0"
+	type="flashpanel"
+	requires-restart="true">
+	<author name="Danny Murong, Edward Moore, Shang Liang" />
+	<products>
+		<product name="Flash" version="9" primary="true" />
+	</products> | 
+	<description>
+		<![CDATA[
+		Plugin for Flash to setup the project folder structure with files. It streamlines the workflow. 
+		]]>
+	</description>
+	<ui-access>
+		<![CDATA[
+		Access the Structure Creator panel by selecting 'Window > Other Panels > Structure Creator'.
+		]]>
+	</ui-access>
+	
+	<licence-agreement>
+		<![CDATA[
+		]]>
+	</licence-agreement>
+	<files>
+		<file source="Structure Creator.swf" destination="$flash/WindowSWF" />
+		<file source="Structure Creator.jsfl" destination="$flash/WindowSWF" />
+		<file source="Structure Schema.xml" destination="$flash/WindowSWF" />
+	</files>
+</macromedia-extension>
