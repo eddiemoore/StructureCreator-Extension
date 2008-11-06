@@ -192,10 +192,10 @@ function watermark()
 	fl.getDocumentDOM().getTimeline().addNewLayer("watermark", "normal" ,false);
 	fl.getDocumentDOM().addNewText({left:0, top:0, right:100, bottom:100} , "» Created by Danny, Edward & Shang!");
 	fl.getDocumentDOM().selectAll();
-	fl.getDocumentDOM().selection[0].autoExpand		= true;
-	fl.getDocumentDOM().selection[0].fontRenderMode	= "bitmap";
-	fl.getDocumentDOM().selection[0].textType		= "static";
 	fl.getDocumentDOM().selection[0].setTextAttr("face", "Verdana");
 	fl.getDocumentDOM().selection[0].setTextAttr("fillColor", 0);
 	fl.getDocumentDOM().selection[0].setTextAttr("size", "11");
+	fl.getDocumentDOM().selection[0].autoExpand		= true;
+	fl.getDocumentDOM().selection[0].textType		= "static";
+	fl.getDocumentDOM().setElementProperty("fontRenderingMode","bitmap"); 
 }
