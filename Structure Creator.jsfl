@@ -49,7 +49,7 @@ function createFLA(folderPath, fileName, asVersion, width, height, framerate)
 	fl.getDocumentDOM().width							= width;
 	fl.getDocumentDOM().height							= height;
 	fl.getDocumentDOM().getTimeline().layers[0].name	= "as";
-	fl.getDocumentDOM().getTimeline().layers[0].locked=true;
+	fl.getDocumentDOM().getTimeline().layers[0].locked	= true;
 	
 	var xml, from, to, delta;
 
@@ -166,14 +166,17 @@ function createFLA(folderPath, fileName, asVersion, width, height, framerate)
 	fl.getDocumentDOM().importPublishProfile(profilePath);
 
 	// add watermark for fun
-	if(fileName=="main"){
+	if (fileName=="main")
+	{
 		watermark();
 	}
 
 	// save and publish the fla
 	fl.saveDocument(fl.getDocumentDOM(), folderPath + "/" + fileName + ".fla");
 	fl.getDocumentDOM().publish();
-	if(fileName!="main"){
+	
+	if (fileName!="main")
+	{
 		fl.closeDocument(fl.getDocumentDOM());
 	}
 	
@@ -184,12 +187,14 @@ function createFLA(folderPath, fileName, asVersion, width, height, framerate)
 }
 
 
-function watermark(){
+function watermark()
+{
 	fl.getDocumentDOM().getTimeline().addNewLayer("watermark","normal",false);
-	fl.getDocumentDOM().addNewText({left:0, top:0, right:100, bottom:100} , "-created by Danny, Edward & Shang!" );
+	fl.getDocumentDOM().addNewText({left:0, top:0, right:100, bottom:100} , "» Created by Danny, Edward & Shang!");
 	fl.getDocumentDOM().selectAll();
+	fl.getDocumentDOM().selection[0].autoExpand = true;
+	fl.getDocumentDOM().selection[0].fontRenderMode = "bitmap";
 	fl.getDocumentDOM().selection[0].setTextAttr("face","Verdana");
 	fl.getDocumentDOM().selection[0].setTextAttr("fillColor",0);
 	fl.getDocumentDOM().selection[0].setTextAttr("size","11");
-	fl.getDocumentDOM().selection[0].fontRenderMode="bitmap";
 }

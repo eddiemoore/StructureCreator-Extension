@@ -4,17 +4,11 @@
 	<folder name='release'>
 		<folder name='css'>
 			<file name='style.css'><![CDATA[@charset "utf-8";
-html
-{
-	height: 100%;
-}
-body
-{
-	background-color: #000000;
-	height: 100%;
-	margin: 0px;
-	padding: 0px;
-}]]></file>
+* {margin:0; padding:0;border:0px;}
+html, body { background:#000000;overflow:hidden;height:100%; }
+img {border:0;}
+#container { text-align:center;height:100%; }
+#main { position:absolute;top:50%;left:50%;margin:-%SWFHALFHEIGHT%px 0 0 -%SWFHALFWIDTH%px; }]]></file>
 		</folder>
 		<folder name='images' />
 		<folder name='js'>
@@ -40,29 +34,30 @@ var swfobject=function(){var b="undefined",Q="object",n="Shockwave Flash",p="Sho
 	<liveurl>http://www.yourdomain.com</liveurl>
 </config>]]></file>
 		</folder>
-		<file name='index.html'><![CDATA[<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Website Title</title>
-<link href="css/style.css" rel="stylesheet" type="text/css" />
-<script language="javascript" src="js/swfaddress.js"></script>
-<script language="javascript" src="js/swfobject.js"></script>
-<script type="text/javascript">
-swfobject.embedSWF("main.swf", "flashcontent", "%SWFWIDTH%", "%SWFHEIGHT%", "9.0.0", "false", {}, {menu: "false"}, {});
-</script>
-</head>
-<body>
-<table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
-	<tr valign="middle">
-		<td align="center">
-			<div id="flashcontent">
-				<p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
-			</div>
-		</td>
-	</tr>
-</table>
-</body>
+		<file name='index.html'><![CDATA[<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+    <head>
+        <title>SWFAddress Website</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+        <script type="text/javascript" src="js/swfobject.js"></script>
+        <script type="text/javascript" src="js/swfaddress.js"></script>
+        <script type="text/javascript">
+            swfobject.embedSWF('main.swf', 'main', '%SWFWIDTH%', '%SWFHEIGHT%', '9.0.45', 'js/expressinstall.swf', {}, {menu: 'false'}, {id: 'main'});
+        </script>
+    </head>
+    <body>
+    	<div id="container">
+            <div id="main">
+                <p>In order to view this page you need Flash Player 9+ support!</p>
+                <p>
+                    <a href="http://www.adobe.com/go/getflashplayer">
+                        <img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" />
+                    </a>
+                </p>
+            </div>
+        </div>
+    </body>
 </html>]]></file>
 	</folder>
 	<folder name='source'>
