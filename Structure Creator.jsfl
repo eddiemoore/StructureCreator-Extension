@@ -200,5 +200,5 @@ function watermark()
 	fl.getDocumentDOM().selection[0].fontRenderMode = "bitmap";
 	fl.getDocumentDOM().selection[0].lineType = "single line";
 	fl.getDocumentDOM().selection[0].textType = "static";
-	//fl.getDocumentDOM().setElementTextAttr("alignment", "left");
+	fl.getDocumentDOM().selectNone();
 }
