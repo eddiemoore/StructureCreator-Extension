@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <macromedia-extension
 	name="Structure Creator"
-	version="1.0"
+	version="1.1"
 	type="flashpanel"
 	requires-restart="true">
 	<author name="Danny Murong, Edward Moore, Shang Liang" />
@@ -10,7 +10,10 @@
 	</products> | 
 	<description>
 		<![CDATA[
-		Plugin for Flash to setup the project folder structure with files. It streamlines the workflow. 
+		This Extension panel is driven by xml schema, which can be customized to fit specific project requirements. It automatically creates fla, html, css and javascript files defined in the schema. It also includes swfobject and swfaddress by default.
+
+
+Using this extension can effectively streamline new project creation work flow. It only takes 2 clicks to achieve which usually takes hours to recreate, duplicate or customize from previous projects.
 		]]>
 	</description>
 	<ui-access>
@@ -26,6 +29,5 @@
 	<files>
 		<file source="Structure Creator.swf" destination="$flash/WindowSWF" />
 		<file source="Structure Creator.jsfl" destination="$flash/WindowSWF" />
-		<file source="Structure Schema.xml" destination="$flash/WindowSWF" />
 	</files>
 </macromedia-extension>

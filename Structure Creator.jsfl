@@ -46,12 +46,13 @@ function createFolder(folderURI, folderName)
  * @param fileName		name of the fla
  * @param asVersion		actionscript version 2 or 3 
  */
-function createFLA(folderPath, fileName, asVersion, width, height, framerate)
+function createFLA(folderPath, fileName, asVersion, width, height, framerate, documentClass)
 {
 	fl.createDocument();
 	fl.getDocumentDOM().frameRate						= framerate;
 	fl.getDocumentDOM().width							= width;
 	fl.getDocumentDOM().height							= height;
+	fl.getDocumentDOM().docClass 						= documentClass;
 	fl.getDocumentDOM().getTimeline().layers[0].name	= "as";
 	fl.getDocumentDOM().getTimeline().layers[0].locked	= true;
 	
@@ -189,13 +190,15 @@ function createFLA(folderPath, fileName, asVersion, width, height, framerate)
 
 function watermark()
 {
-	fl.getDocumentDOM().getTimeline().addNewLayer("watermark", "normal" ,false);
+	fl.getDocumentDOM().getTimeline().addNewLayer("watermark", "normal", false);
 	fl.getDocumentDOM().addNewText({left:0, top:0, right:100, bottom:100} , "» Created by Danny, Edward & Shang!");
 	fl.getDocumentDOM().selectAll();
 	fl.getDocumentDOM().selection[0].setTextAttr("face", "Verdana");
 	fl.getDocumentDOM().selection[0].setTextAttr("fillColor", 0);
-	fl.getDocumentDOM().selection[0].setTextAttr("size", "11");
-	fl.getDocumentDOM().selection[0].autoExpand		= true;
-	fl.getDocumentDOM().selection[0].textType		= "static";
-	fl.getDocumentDOM().setElementProperty("fontRenderingMode","bitmap"); 
+	fl.getDocumentDOM().selection[0].setTextAttr("size", "11");	
+	fl.getDocumentDOM().selection[0].autoExpand = true;
+	fl.getDocumentDOM().selection[0].fontRenderMode = "bitmap";
+	fl.getDocumentDOM().selection[0].lineType = "single line";
+	fl.getDocumentDOM().selection[0].textType = "static";
+	//fl.getDocumentDOM().setElementTextAttr("alignment", "left");
 }
