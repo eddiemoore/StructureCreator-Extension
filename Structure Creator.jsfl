@@ -164,7 +164,7 @@ function createFLA(folderPath, fileName, asVersion, width, height, framerate, do
 	if (asVersion == 2)
 		xml = xml.split(delta).join("<PackagePaths>" + classPath + "classes");
 	else
-		xml = xml.split(delta).join("<AS3PackagePaths>" + classPath + "classes");
+		xml = xml.split(delta).join("<AS3PackagePaths>" + classPath + "classes" + ";.");
 	
 	// write the modified profile and import it
 	FLfile.write(profilePath, xml);
