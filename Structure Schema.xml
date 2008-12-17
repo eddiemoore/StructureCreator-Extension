@@ -24,6 +24,6 @@
 				</folder>
 			</folder>
 		</folder>
-		<file name='main.fla' />
+		<file name='main.fla' exportpath="../release/" />
 	</folder>
 </folder>
