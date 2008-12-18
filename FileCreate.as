@@ -7,6 +7,7 @@
 	/**
 	 * ...
 	 * @author Danny Murong
+	 * @modified Ed Moore
 	 */
 	public class FileCreate
 	{
@@ -29,14 +30,11 @@
 		{
 			var stringData:String = _urlLoader.data;
 
-			if (_fileNameExtension == "index.html")
+			if (_fileNameExtension.split(".")[1] == "html" || _fileNameExtension.split(".")[1] == "css")
 			{
 				stringData = stringData.replace("%SWFWIDTH%", _stage.widthInput_txt.text);
 				stringData = stringData.replace("%SWFHEIGHT%", _stage.heightInput_txt.text);
-			}
-			
-			if (_fileNameExtension == "style.css")
-			{
+				
 				var w:int = int(_stage.widthInput_txt.text) * 0.5;
 				var h:int = int(_stage.heightInput_txt.text) * 0.5;
 				stringData = stringData.replace("%SWFHALFWIDTH%", w);

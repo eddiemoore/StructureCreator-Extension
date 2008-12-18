@@ -21,7 +21,7 @@ function createFile(folderURI, fileName, stringData)
 {
 	if (FLfile.exists(folderURI + "/" + fileName))
 	{
-		return "File (" + fileName + ") already exist! Overwrite file.";
+		return "File (" + fileName + ") already exists! Overwrite file.";
 	}
 		
 	FLfile.write(folderURI + "/" + fileName, unescape(stringData));
@@ -32,7 +32,7 @@ function createFolder(folderURI, folderName)
 {
 	if (FLfile.exists(folderURI))
 	{
-		return "Folder (" + folderName + ") already exist!";
+		return "Folder (" + folderName + ") already exists!";
 	}
 	else
 	{
