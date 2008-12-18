@@ -46,7 +46,7 @@ function createFolder(folderURI, folderName)
  * @param fileName		name of the fla
  * @param asVersion		actionscript version 2 or 3 
  */
-function createFLA(folderPath, fileName, asVersion, width, height, framerate, documentClass)
+function createFLA(folderPath, fileName, asVersion, width, height, framerate, documentClass, exportPath)
 {
 	fl.createDocument();
 	fl.getDocumentDOM().frameRate						= framerate;
@@ -99,7 +99,7 @@ function createFLA(folderPath, fileName, asVersion, width, height, framerate, do
 		}
 	}
 	
-	xml = xml.split(delta).join("<flashFileName>" + parentPath + "release/" + fileName + ".swf");
+	xml = xml.split(delta).join("<flashFileName>" + exportPath + fileName + ".swf");
 
 	// the other publish formats
 	var types = {};
