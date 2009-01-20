@@ -1,16 +1,21 @@
 /**
- * SWFAddress 2.1: Deep linking for Flash and Ajax - http://www.asual.com/swfaddress/
- * 
- * SWFAddress is (c) 2006-2007 Rostislav Hristov and is released under the MIT License:
- * http://www.opensource.org/licenses/mit-license.php
+ * SWFAddress 2.2: Deep linking for Flash and Ajax <http://www.asual.com/swfaddress/>
+ *
+ * SWFAddress is (c) 2006-2008 Rostislav Hristov and contributors
+ * This software is released under the MIT License <http://www.opensource.org/licenses/mit-license.php>
  *
  */
-
+ 
+/**
+ * @author Rostislav Hristov <http://www.asual.com>
+ * @author Matthew J Tretter <http://www.exanimo.com>
+ * @author Piotr Zema <http://felixz.mark-naegeli.com>
+ */
 package com.asual.swfaddress {
 
     import flash.events.Event;
     import com.asual.swfaddress.SWFAddress;
-
+    
     /**
      * Event class for SWFAddress.
      */
@@ -39,14 +44,13 @@ package com.asual.swfaddress {
          */
         public function SWFAddressEvent(type:String) {
             super(type, false, false);
-            _value = SWFAddress.getValue();
-            _path = SWFAddress.getPath();
-            _pathNames = SWFAddress.getPathNames();
-            _parameters = new Object();
-            _parametersNames = SWFAddress.getParameterNames();
-            for (var i:int = 0; i < _parametersNames.length; i++) {
-                _parameters[_parametersNames[i]] = SWFAddress.getParameter(_parametersNames[i]);
-            }
+        }
+
+        /**
+         * The current target of this event.
+         */
+        public override function get currentTarget():Object {
+            return SWFAddress;
         }
 
         /**
@@ -67,6 +71,9 @@ package com.asual.swfaddress {
          * The value of this event.
          */
         public function get value():String {
+            if (_value == null) {
+                _value = SWFAddress.getValue();
+            }
             return _value;
         }
 
@@ -74,6 +81,9 @@ package com.asual.swfaddress {
          * The path of this event.
          */
         public function get path():String {
+            if (_path == null) {
+                _path = SWFAddress.getPath();
+            }
             return _path;
         }
         
@@ -81,6 +91,9 @@ package com.asual.swfaddress {
          * The folders in the deep linking path of this event.
          */         
         public function get pathNames():Array {
+            if (_pathNames == null) {
+                _pathNames = SWFAddress.getPathNames();
+            }
             return _pathNames;
         }
         
@@ -88,6 +101,12 @@ package com.asual.swfaddress {
          * The parameters of this event.
          */
         public function get parameters():Object {
+            if (_parameters == null) {
+                _parameters = new Object();
+                for (var i:int = 0; i < parametersNames.length; i++) {
+                    _parameters[parametersNames[i]] = SWFAddress.getParameter(parametersNames[i]);
+                }
+            }
             return _parameters;
         }
         
@@ -95,6 +114,9 @@ package com.asual.swfaddress {
          * The parameters names of this event.
          */    
         public function get parametersNames():Array {
+            if (_parametersNames == null) {
+                _parametersNames = SWFAddress.getParameterNames();            
+            }
             return _parametersNames;
         }
     
@@ -103,6 +125,14 @@ package com.asual.swfaddress {
          */
         public override function clone():Event {
             return new SWFAddressEvent(type);
+        }
+    
+        /**
+         * The string representation of the object.
+         */
+        public override function toString():String {
+            return formatToString('SWFAddressEvent', 'type', 'bubbles', 'cancelable', 
+                'eventPhase', 'value', 'path', 'pathNames', 'parameters', 'parametersNames');
         }
     }
 }

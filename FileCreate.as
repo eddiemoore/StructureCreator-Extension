@@ -39,6 +39,8 @@
 				var h:int = int(_stage.heightInput_txt.text) * 0.5;
 				stringData = stringData.replace("%SWFHALFWIDTH%", w);
 				stringData = stringData.replace("%SWFHALFHEIGHT%", h);
+				
+				stringData = stringData.replace("%SWFNAME%", _stage.swfFileName);
 			}
 			
 			stringData = escape(stringData);
