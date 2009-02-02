@@ -29,20 +29,17 @@
 		private function completeHandler(evt:Event)
 		{
 			var stringData:String = _urlLoader.data;
-
-			//if (_fileNameExtension.split(".")[1] == "html" || _fileNameExtension.split(".")[1] == "css")
-			//{
-				stringData = stringData.replace("%SWFWIDTH%", _stage.widthInput_txt.text);
-				stringData = stringData.replace("%SWFHEIGHT%", _stage.heightInput_txt.text);
-				
-				var w:int = int(_stage.widthInput_txt.text) * 0.5;
-				var h:int = int(_stage.heightInput_txt.text) * 0.5;
-				stringData = stringData.replace("%SWFHALFWIDTH%", w);
-				stringData = stringData.replace("%SWFHALFHEIGHT%", h);
-				
-				stringData = stringData.replace("%SWFNAME%", StructureCreator.swfFileName);
-				stringData = stringData.replace("%SWFFPS%", _stage.framerateInput_txt.text);
-			//}
+			
+			stringData = stringData.replace("%SWFWIDTH%", _stage.widthInput_txt.text);
+			stringData = stringData.replace("%SWFHEIGHT%", _stage.heightInput_txt.text);
+			
+			var w:int = int(_stage.widthInput_txt.text) * 0.5;
+			var h:int = int(_stage.heightInput_txt.text) * 0.5;
+			stringData = stringData.replace("%SWFHALFWIDTH%", w);
+			stringData = stringData.replace("%SWFHALFHEIGHT%", h);
+			
+			stringData = stringData.replace("%SWFNAME%", StructureCreator.swfFileName);
+			stringData = stringData.replace("%SWFFPS%", _stage.framerateInput_txt.text);
 			
 			stringData = escape(stringData);
 			_stage.info_txt.htmlText += _stage.executeJSFL('"createFile", "' + _folderURI + '", "' + _fileNameExtension + '", "' + stringData + '"') + "\n";
