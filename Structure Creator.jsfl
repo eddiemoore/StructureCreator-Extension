@@ -17,6 +17,11 @@ function getDefaultSchemaURL()
 	return fl.configURI + "WindowSWF/Structure%20Schema.xml";
 }
 
+function openSchema(fileURI)
+{
+	return fl.openDocument(fileURI);
+}
+
 function createFile(folderURI, fileName, stringData)
 {
 	if (FLfile.exists(folderURI + "/" + fileName))
