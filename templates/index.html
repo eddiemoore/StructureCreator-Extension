@@ -7,12 +7,12 @@
         <script type="text/javascript" src="js/swfobject.js"></script>
         <script type="text/javascript" src="js/swfaddress.js"></script>
         <script type="text/javascript">
-            swfobject.embedSWF('%SWFNAME%.swf', 'main', '%SWFWIDTH%', '%SWFHEIGHT%', '9.0.45', 'js/expressinstall.swf', {}, {menu: 'false'}, {id: 'main'});
+            swfobject.embedSWF('%SWFNAME%.swf', '%SWFNAME%', '%SWFWIDTH%', '%SWFHEIGHT%', '9.0.45', 'js/expressinstall.swf', {}, {menu: 'false'}, {id: '%SWFNAME%'});
         </script>
     </head>
     <body>
     	<div id="container">
-            <div id="main">
+            <div id="%SWFNAME%">
                 <p>In order to view this page you need Flash Player 9+ support!</p>
                 <p>
                     <a href="http://www.adobe.com/go/getflashplayer">
