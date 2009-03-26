@@ -1,33 +1,38 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <macromedia-extension
-	name="Structure Creator"
-	version="1.1.5"
-	type="flashpanel"
-	requires-restart="true">
+	 name="Structure Creator"
+	 version="1.1.6"
+	 type="flashpanel"
+	 requires-restart="true">
+
 	<author name="Danny Murong, Edward Moore, Shang Liang" />
+
 	<products>
 		<product name="Flash" version="9" primary="true" />
-	</products> | 
+	</products>
+
 	<description>
-		<![CDATA[
-		This Extension panel is driven by xml schema, which can be customized to fit specific project requirements. It automatically creates fla, html, css and javascript files defined in the schema. It also includes swfobject and swfaddress by default.
-
-
-Using this extension can effectively streamline new project creation work flow. It only takes 2 clicks to achieve which usually takes hours to recreate, duplicate or customize from previous projects.
-		]]>
+	<![CDATA[
+	This extension panel is driven by a xml schema, which can be customized to fit specific project requirements. It automatically creates fla, html, css and javascript files defined in the schema. It also includes swfobject, swfaddress and Tweener by default. The default schema also creates a FlashDevelop project file.<br>
+Using this extension can effectively streamline new project creation work flow. It only takes a few clicks to achieve what usually takes hours to recreate, duplicate or customize from previous projects.
+	]]>
 	</description>
+
 	<ui-access>
-		<![CDATA[
-		Access the Structure Creator panel by selecting 'Window > Other Panels > Structure Creator'.
-		]]>
+	<![CDATA[
+	Access the Structure Creator panel by selecting 'Window > Other Panels > Structure Creator'.
+	]]>
 	</ui-access>
+
+	<license-agreement>
+	<![CDATA[
 	
-	<licence-agreement>
-		<![CDATA[
-		]]>
-	</licence-agreement>
+	]]>
+	</license-agreement>
+
 	<files>
 		<file source="Structure Creator.swf" destination="$flash/WindowSWF" />
 		<file source="Structure Creator.jsfl" destination="$flash/WindowSWF" />
 	</files>
+
 </macromedia-extension>
