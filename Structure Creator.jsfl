@@ -1,6 +1,6 @@
 ﻿/**
  * @Author Danny Murong, Edward Moore, Shang Liang
- * @Code to create fla is based off code by Steven Sacks
+ * @Code to create fla is based off code by Steven Sacks (http://www.stevensacks.net/)
  */
 
 function getMainFolderURI()
