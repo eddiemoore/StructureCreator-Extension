@@ -44,7 +44,6 @@
 				</folder>
 			</folder>
 		</folder>
-		<file name='project.as3proj' url='http://flashstructurecreator.googlecode.com/svn/trunk/templates/Project.as3proj' />
 		<file name='main.fla' exportpath="../release/" />
 	</folder>
 </folder>
