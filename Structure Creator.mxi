@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <macromedia-extension
 	 name="Structure Creator"
-	 version="1.2"
+	 version="1.2.1"
 	 type="flashpanel"
 	 requires-restart="true">
 
