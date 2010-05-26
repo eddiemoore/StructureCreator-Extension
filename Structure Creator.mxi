@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <macromedia-extension
 	 name="Structure Creator"
-	 version="1.2.1"
+	 version="1.3"
 	 type="flashpanel"
 	 requires-restart="true">
 
-	<author name="Danny Murong, Edward Moore, Shang Liang" />
+	<author name="Danny Murong, Ed Moore, Shang Liang" />
 
 	<products>
 		<product name="Flash" version="9" primary="true" />
@@ -32,7 +32,13 @@ Using this extension can effectively streamline new project creation work flow. 
 
 	<files>
 		<file source="Structure Creator.swf" destination="$flash/WindowSWF" />
-		<file source="Structure Creator.jsfl" destination="$flash/WindowSWF" />
+		<file source="Structure Creator.jsfl" destination="$flash/StructureCreator" />
+		<file source="templates/Project.as3proj" destination="$flash/StructureCreator" />
+		<file source="templates/Class.as" destination="$flash/StructureCreator" />
+		<file source="templates/.actionScriptProperties" destination="$flash/StructureCreator/fb" />
+		<file source="templates/.project" destination="$flash/StructureCreator/fb" />
+		<file source="templates/org.eclipse.core.resources.prefs" destination="$flash/StructureCreator/fb" />
+		<file source="update.xml" destination="$flash/StructureCreator" />
 	</files>
 
 </macromedia-extension>
