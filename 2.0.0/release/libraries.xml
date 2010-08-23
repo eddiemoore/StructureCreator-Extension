@@ -1,0 +1,1683 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<libraries>
+	<library name="Tweener 1.33.74" id="tweener">
+		<folder name='caurina'>
+			<folder name='transitions'>
+				<folder name='properties'>
+					<file name='ColorShortcuts.as' url='http://flashstructurecreator.googlecode.com/svn/trunk/templates/caurina/transitions/properties/ColorShortcuts.as' />
+					<file name='CurveModifiers.as' url='http://flashstructurecreator.googlecode.com/svn/trunk/templates/caurina/transitions/properties/CurveModifiers.as' />
+					<file name='DisplayShortcuts.as' url='http://flashstructurecreator.googlecode.com/svn/trunk/templates/caurina/transitions/properties/DisplayShortcuts.as' />
+					<file name='FilterShortcuts.as' url='http://flashstructurecreator.googlecode.com/svn/trunk/templates/caurina/transitions/properties/FilterShortcuts.as' />
+					<file name='SoundShortcuts.as' url='http://flashstructurecreator.googlecode.com/svn/trunk/templates/caurina/transitions/properties/SoundShortcuts.as' />
+					<file name='TextShortcuts.as' url='http://flashstructurecreator.googlecode.com/svn/trunk/templates/caurina/transitions/properties/TextShortcuts.as' />
+				</folder>
+				<file name='AuxFunctions.as' url='http://flashstructurecreator.googlecode.com/svn/trunk/templates/caurina/transitions/AuxFunctions.as' />
+				<file name='Equations.as' url='http://flashstructurecreator.googlecode.com/svn/trunk/templates/caurina/transitions/Equations.as' />
+				<file name='PropertyInfoObj.as' url='http://flashstructurecreator.googlecode.com/svn/trunk/templates/caurina/transitions/PropertyInfoObj.as' />
+				<file name='SpecialProperty.as' url='http://flashstructurecreator.googlecode.com/svn/trunk/templates/caurina/transitions/SpecialProperty.as' />
+				<file name='SpecialPropertyModifier.as' url='http://flashstructurecreator.googlecode.com/svn/trunk/templates/caurina/transitions/SpecialPropertyModifier.as' />
+				<file name='SpecialPropertySplitter.as' url='http://flashstructurecreator.googlecode.com/svn/trunk/templates/caurina/transitions/SpecialPropertySplitter.as' />
+				<file name='Tweener.as' url='http://flashstructurecreator.googlecode.com/svn/trunk/templates/caurina/transitions/Tweener.as' />
+				<file name='TweenListObj.as' url='http://flashstructurecreator.googlecode.com/svn/trunk/templates/caurina/transitions/TweenListObj.as' />
+			</folder>
+		</folder>
+	</library>
+	<library name="Adobe (as3corelib)" id="as3corelib">
+		<folder name="com">
+			<folder name="adobe">
+				<folder name="air">
+					<folder name="crypto">
+						<file name='EncryptionKeyGenerator.as' url='templates/com/adobe/air/crypto/EncryptionKeyGenerator.as' />
+					</folder>
+					<folder name="filesystem">
+						<folder name="events">
+							<file name='FileMonitorEventFileMonitorEvent.as' url='templates/com/adobe/air/filesystem/events/FileMonitorEvent.as' />
+						</folder>
+						<file name='FileMonitor.as' url='templates/com/adobe/air/filesystem/FileMonitor.as' />
+						<file name='FileUtil.as' url='templates/com/adobe/air/filesystem/FileUtil.as' />
+						<file name='VolumeMonitor.as' url='templates/com/adobe/air/filesystem/VolumeMonitor.as' />
+					</folder>
+					<folder name="logging">
+						<file name='FileTarget.as' url='templates/com/adobe/air/logging/FileTarget.as' />
+					</folder>
+					<folder name="net">
+						<folder name="events">
+							<file name='ResourceCacheEvent.as' url='templates/com/adobe/air/net/events/ResourceCacheEvent.as' />
+						</folder>
+						<file name='ResourceCache.as' url='templates/com/adobe/air/net/ResourceCache.as' />
+					</folder>
+				</folder>
+				<folder name="crypto">
+					<file name='HMAC.as' url='templates/com/adobe/crypto/HMAC.as' />
+					<file name='MD5.as' url='templates/com/adobe/crypto/MD5.as' />
+					<file name='MD5Stream.as' url='templates/com/adobe/crypto/MD5Stream.as' />
+					<file name='SHA1.as' url='templates/com/adobe/crypto/SHA1.as' />
+					<file name='SHA224.as' url='templates/com/adobe/crypto/SHA224.as' />
+					<file name='SHA256.as' url='templates/com/adobe/crypto/SHA256.as' />
+					<file name='WSSEUsernameToken.as' url='templates/com/adobe/crypto/WSSEUsernameToken.as' />
+				</folder>
+				<folder name="errors">
+					<file name='IllegalStateError.as' url='templates/com/adobe/errors/IllegalStateError.as' />
+				</folder>
+				<folder name="fileformats">
+					<folder name="vcard">
+						<file name='Address.as' url='templates/com/adobe/fileformats/vcard/Address.as' />
+						<file name='Email.as' url='templates/com/adobe/fileformats/vcard/Email.as' />
+						<file name='Phone.as' url='templates/com/adobe/fileformats/vcard/Phone.as' />
+						<file name='VCard.as' url='templates/com/adobe/fileformats/vcard/VCard.as' />
+						<file name='VCardParser.as' url='templates/com/adobe/fileformats/vcard/VCardParser.as' />
+					</folder>
+				</folder>
+				<folder name="images">
+					<file name='BitString.as' url='templates/com/adobe/images/BitString.as' />
+					<file name='JPGEncoder.as' url='templates/com/adobe/images/JPGEncoder.as' />
+					<file name='PNGEncoder.as' url='templates/com/adobe/images/PNGEncoder.as' />
+				</folder>
+				<folder name="net">
+					<folder name="proxies">
+						<file name='RFC2817Socket.as' url='templates/com/adobe/net/proxies/RFC2817Socket.as' />
+					</folder>
+					<file name='DynamicURLLoader.as' url='templates/com/adobe/net/DynamicURLLoader.as' />
+					<file name='IURIResolver.as' url='templates/com/adobe/net/IURIResolver.as' />
+					<file name='MimeTypeMap.as' url='templates/com/adobe/net/MimeTypeMap.as' />
+					<file name='URI.as' url='templates/com/adobe/net/URI.as' />
+					<file name='URIEncodingBitmap.as' url='templates/com/adobe/net/URIEncodingBitmap.as' />
+				</folder>
+				<folder name="protocols">
+					<folder name="dict">
+						<folder name="events">
+							<file name='ConnectedEvent.as' url='templates/com/adobe/protocols/dict/events/ConnectedEvent.as' />
+							<file name='DatabaseEvent.as' url='templates/com/adobe/protocols/dict/events/DatabaseEvent.as' />
+							<file name='DefinitionEvent.as' url='templates/com/adobe/protocols/dict/events/DefinitionEvent.as' />
+							<file name='DefinitionHeaderEvent.as' url='templates/com/adobe/protocols/dict/events/DefinitionHeaderEvent.as' />
+							<file name='DictionaryServerEvent.as' url='templates/com/adobe/protocols/dict/events/DictionaryServerEvent.as' />
+							<file name='DisconnectedEvent.as' url='templates/com/adobe/protocols/dict/events/DisconnectedEvent.as' />
+							<file name='ErrorEvent.as' url='templates/com/adobe/protocols/dict/events/ErrorEvent.as' />
+							<file name='MatchEvent.as' url='templates/com/adobe/protocols/dict/events/MatchEvent.as' />
+							<file name='MatchStrategiesEvent.as' url='templates/com/adobe/protocols/dict/events/MatchStrategiesEvent.as' />
+							<file name='NoMatchEvent.as' url='templates/com/adobe/protocols/dict/events/NoMatchEvent.as' />
+						</folder>
+						<folder name="util">
+							<file name='CompleteResponseEvent.as' url='templates/com/adobe/protocols/dict/util/CompleteResponseEvent.as' />
+							<file name='SocketHelper.as' url='templates/com/adobe/protocols/dict/util/SocketHelper.as' />
+						</folder>
+						<file name='Database.as' url='templates/com/adobe/protocols/dict/Database.as' />
+						<file name='Definition.as' url='templates/com/adobe/protocols/dict/Definition.as' />
+						<file name='Dict.as' url='templates/com/adobe/protocols/dict/Dict.as' />
+						<file name='DictionaryServer.as' url='templates/com/adobe/protocols/dict/DictionaryServer.as' />
+						<file name='MatchStrategy.as' url='templates/com/adobe/protocols/dict/MatchStrategy.as' />
+						<file name='Response.as' url='templates/com/adobe/protocols/dict/Response.as' />
+					</folder>
+				</folder>
+				<folder name="serialization">
+					<folder name="json">
+						<file name='JSON.as' url='templates/com/adobe/serialization/json/JSON.as' />
+						<file name='JSONDecoder.as' url='templates/com/adobe/serialization/json/JSONDecoder.as' />
+						<file name='JSONEncoder.as' url='templates/com/adobe/serialization/json/JSONEncoder.as' />
+						<file name='JSONParseError.as' url='templates/com/adobe/serialization/json/JSONParseError.as' />
+						<file name='JSONToken.as' url='templates/com/adobe/serialization/json/JSONToken.as' />
+						<file name='JSONTokenizer.as' url='templates/com/adobe/serialization/json/JSONTokenizer.as' />
+						<file name='JSONTokenType.as' url='templates/com/adobe/serialization/json/JSONTokenType.as' />
+					</folder>
+				</folder>
+				<folder name="utils">
+					<file name='ArrayUtil.as' url='templates/com/adobe/utils/ArrayUtil.as' />
+					<file name='DateUtil.as' url='templates/com/adobe/utils/DateUtil.as' />
+					<file name='DictionaryUtil.as' url='templates/com/adobe/utils/DictionaryUtil.as' />
+					<file name='IntUtil.as' url='templates/com/adobe/utils/IntUtil.as' />
+					<file name='NumberFormatter.as' url='templates/com/adobe/utils/NumberFormatter.as' />
+					<file name='StringUtil.as' url='templates/com/adobe/utils/StringUtil.as' />
+					<file name='XMLUtil.as' url='templates/com/adobe/utils/XMLUtil.as' />
+				</folder>
+				<folder name="webapis">
+					<folder name="events">
+						<file name='ServiceEvent.as' url='templates/com/adobe/webapis/events/ServiceEvent.as' />
+					</folder>
+					<file name='ServiceBase.as' url='templates/com/adobe/webapis/ServiceBase.as' />
+					<file name='URLLoaderBase.as' url='templates/com/adobe/webapis/URLLoaderBase.as' />
+				</folder>
+			</folder>
+		</folder>
+	</library>
+	<library name="Papervision3D 2.1.920" id="papervision3D">
+		<folder name="nochump">
+			<folder name="util">
+				<folder name="zip">
+					<file name="CRC32.as" url="templates/nochump/util/zip/CRC32.as" />
+					<file name="Deflater.as" url="templates/nochump/util/zip/Deflater.as" />
+					<file name="Inflater.as" url="templates/nochump/util/zip/Inflater.as" />
+					<file name="ZipConstants.as" url="templates/nochump/util/zip/ZipConstants.as" />
+					<file name="ZipEntry.as" url="templates/nochump/util/zip/ZipEntry.as" />
+					<file name="ZipError.as" url="templates/nochump/util/zip/ZipError.as" />
+					<file name="ZipFile.as" url="templates/nochump/util/zip/ZipFile.as" />
+					<file name="ZipOutput.as" url="templates/nochump/util/zip/ZipOutput.as" />
+				</folder>
+			</folder>
+		</folder>
+		<folder name="org">
+			<folder name="ascollada">
+				<file name="ASCollada.as" url="templates/org/ascollada/ASCollada.as" />
+				<folder name="core">
+					<file name="DaeAccessor.as" url="templates/org/ascollada/core/DaeAccessor.as" />
+					<file name="DaeAnimation.as" url="templates/org/ascollada/core/DaeAnimation.as" />
+					<file name="DaeAnimationClip.as" url="templates/org/ascollada/core/DaeAnimationClip.as" />
+					<file name="DaeAnimationCurve.as" url="templates/org/ascollada/core/DaeAnimationCurve.as" />
+					<file name="DaeAsset.as" url="templates/org/ascollada/core/DaeAsset.as" />
+					<file name="DaeBlendWeight.as" url="templates/org/ascollada/core/DaeBlendWeight.as" />
+					<file name="DaeCamera.as" url="templates/org/ascollada/core/DaeCamera.as" />
+					<file name="DaeChannel.as" url="templates/org/ascollada/core/DaeChannel.as" />
+					<file name="DaeContributor.as" url="templates/org/ascollada/core/DaeContributor.as" />
+					<file name="DaeController.as" url="templates/org/ascollada/core/DaeController.as" />
+					<file name="DaeDocument.as" url="templates/org/ascollada/core/DaeDocument.as" />
+					<file name="DaeEntity.as" url="templates/org/ascollada/core/DaeEntity.as" />
+					<file name="DaeGeometry.as" url="templates/org/ascollada/core/DaeGeometry.as" />
+					<file name="DaeImage.as" url="templates/org/ascollada/core/DaeImage.as" />
+					<file name="DaeInput.as" url="templates/org/ascollada/core/DaeInput.as" />
+					<file name="DaeInstanceController.as" url="templates/org/ascollada/core/DaeInstanceController.as" />
+					<file name="DaeInstanceGeometry.as" url="templates/org/ascollada/core/DaeInstanceGeometry.as" />
+					<file name="DaeInstanceNode.as" url="templates/org/ascollada/core/DaeInstanceNode.as" />
+					<file name="DaeMesh.as" url="templates/org/ascollada/core/DaeMesh.as" />
+					<file name="DaeMorph.as" url="templates/org/ascollada/core/DaeMorph.as" />
+					<file name="DaeNode.as" url="templates/org/ascollada/core/DaeNode.as" />
+					<file name="DaePrimitive.as" url="templates/org/ascollada/core/DaePrimitive.as" />
+					<file name="DaeSampler.as" url="templates/org/ascollada/core/DaeSampler.as" />
+					<file name="DaeSkin.as" url="templates/org/ascollada/core/DaeSkin.as" />
+					<file name="DaeSource.as" url="templates/org/ascollada/core/DaeSource.as" />
+					<file name="DaeSpline.as" url="templates/org/ascollada/core/DaeSpline.as" />
+					<file name="DaeVertexWeights.as" url="templates/org/ascollada/core/DaeVertexWeights.as" />
+					<file name="DaeVertices.as" url="templates/org/ascollada/core/DaeVertices.as" />
+					<file name="DaeVisualScene.as" url="templates/org/ascollada/core/DaeVisualScene.as" />
+				</folder>
+				<folder name="fx">
+					<file name="DaeBindMaterial.as" url="templates/org/ascollada/fx/DaeBindMaterial.as" />
+					<file name="DaeBindVertexInput.as" url="templates/org/ascollada/fx/DaeBindVertexInput.as" />
+					<file name="DaeBlinn.as" url="templates/org/ascollada/fx/DaeBlinn.as" />
+					<file name="DaeConstant.as" url="templates/org/ascollada/fx/DaeConstant.as" />
+					<file name="DaeEffect.as" url="templates/org/ascollada/fx/DaeEffect.as" />
+					<file name="DaeInstanceMaterial.as" url="templates/org/ascollada/fx/DaeInstanceMaterial.as" />
+					<file name="DaeLambert.as" url="templates/org/ascollada/fx/DaeLambert.as" />
+					<file name="DaeMaterial.as" url="templates/org/ascollada/fx/DaeMaterial.as" />
+					<file name="DaeNewParam.as" url="templates/org/ascollada/fx/DaeNewParam.as" />
+					<file name="DaePhong.as" url="templates/org/ascollada/fx/DaePhong.as" />
+					<file name="DaeSampler2D.as" url="templates/org/ascollada/fx/DaeSampler2D.as" />
+					<file name="DaeSurface.as" url="templates/org/ascollada/fx/DaeSurface.as" />
+					<file name="DaeTexture.as" url="templates/org/ascollada/fx/DaeTexture.as" />
+				</folder>
+				<folder name="io">
+					<file name="DaeReader.as" url="templates/org/ascollada/io/DaeReader.as" />
+					<file name="DaeWriter.as" url="templates/org/ascollada/io/DaeWriter.as" />
+				</folder>
+				<folder name="namespaces">
+					<file name="collada.as" url="templates/org/ascollada/namespaces/collada.as" />
+				</folder>
+				<folder name="physics">
+					<file name="DaeBox.as" url="templates/org/ascollada/physics/DaeBox.as" />
+					<file name="DaeCapsule.as" url="templates/org/ascollada/physics/DaeCapsule.as" />
+					<file name="DaeConvexMesh.as" url="templates/org/ascollada/physics/DaeConvexMesh.as" />
+					<file name="DaeCylinder.as" url="templates/org/ascollada/physics/DaeCylinder.as" />
+					<file name="DaeForceField.as" url="templates/org/ascollada/physics/DaeForceField.as" />
+					<file name="DaeInstanceForceField.as" url="templates/org/ascollada/physics/DaeInstanceForceField.as" />
+					<file name="DaeInstancePhysicsMaterial.as" url="templates/org/ascollada/physics/DaeInstancePhysicsMaterial.as" />
+					<file name="DaeInstancePhysicsModel.as" url="templates/org/ascollada/physics/DaeInstancePhysicsModel.as" />
+					<file name="DaeInstanceRigidBody.as" url="templates/org/ascollada/physics/DaeInstanceRigidBody.as" />
+					<file name="DaePhysicsMaterial.as" url="templates/org/ascollada/physics/DaePhysicsMaterial.as" />
+					<file name="DaePhysicsModel.as" url="templates/org/ascollada/physics/DaePhysicsModel.as" />
+					<file name="DaePhysicsScene.as" url="templates/org/ascollada/physics/DaePhysicsScene.as" />
+					<file name="DaePlane.as" url="templates/org/ascollada/physics/DaePlane.as" />
+					<file name="DaeRigidBody.as" url="templates/org/ascollada/physics/DaeRigidBody.as" />
+					<file name="DaeRigidConstraint.as" url="templates/org/ascollada/physics/DaeRigidConstraint.as" />
+					<file name="DaeShape.as" url="templates/org/ascollada/physics/DaeShape.as" />
+					<file name="DaeSphere.as" url="templates/org/ascollada/physics/DaeSphere.as" />
+					<file name="DaeTaperedCapsule.as" url="templates/org/ascollada/physics/DaeTaperedCapsule.as" />
+					<file name="DaeTaperedCylinder.as" url="templates/org/ascollada/physics/DaeTaperedCylinder.as" />
+				</folder>
+				<folder name="types">
+					<file name="DaeAddressSyntax.as" url="templates/org/ascollada/types/DaeAddressSyntax.as" />
+					<file name="DaeArray.as" url="templates/org/ascollada/types/DaeArray.as" />
+					<file name="DaeColorOrTexture.as" url="templates/org/ascollada/types/DaeColorOrTexture.as" />
+					<file name="DaeTransform.as" url="templates/org/ascollada/types/DaeTransform.as" />
+				</folder>
+				<folder name="utils">
+					<file name="FPS.as" url="templates/org/ascollada/utils/FPS.as" />
+					<file name="Logger.as" url="templates/org/ascollada/utils/Logger.as" />
+					<file name="StringUtil.as" url="templates/org/ascollada/utils/StringUtil.as" />
+				</folder>
+			</folder>
+			<folder name="papervision3d">
+				<folder name="cameras">
+					<file name="Camera3D.as" url="templates/org/papervision3d/cameras/Camera3D.as" />
+					<file name="CameraType.as" url="templates/org/papervision3d/cameras/CameraType.as" />
+					<file name="DebugCamera3D.as" url="templates/org/papervision3d/cameras/DebugCamera3D.as" />
+					<file name="SpringCamera3D.as" url="templates/org/papervision3d/cameras/SpringCamera3D.as" />
+				</folder>
+				<folder name="core">
+					<folder name="animation">
+						<folder name="channel">
+							<file name="Channel3D.as" url="templates/org/papervision3d/core/animation/channel/Channel3D.as" />
+							<folder name="controller">
+								<file name="MorphWeightChannel3D.as" url="templates/org/papervision3d/core/animation/channel/controller/MorphWeightChannel3D.as" />
+							</folder>
+							<folder name="geometry">
+								<file name="GeometryChannel3D.as" url="templates/org/papervision3d/core/animation/channel/geometry/GeometryChannel3D.as" />
+								<file name="VertexChannel3D.as" url="templates/org/papervision3d/core/animation/channel/geometry/VertexChannel3D.as" />
+								<file name="VerticesChannel3D.as" url="templates/org/papervision3d/core/animation/channel/geometry/VerticesChannel3D.as" />
+							</folder>
+							<folder name="transform">
+								<file name="MatrixChannel3D.as" url="templates/org/papervision3d/core/animation/channel/transform/MatrixChannel3D.as" />
+								<file name="RotationChannel3D.as" url="templates/org/papervision3d/core/animation/channel/transform/RotationChannel3D.as" />
+								<file name="ScaleChannel3D.as" url="templates/org/papervision3d/core/animation/channel/transform/ScaleChannel3D.as" />
+								<file name="TransformChannel3D.as" url="templates/org/papervision3d/core/animation/channel/transform/TransformChannel3D.as" />
+								<file name="TransformStackChannel3D.as" url="templates/org/papervision3d/core/animation/channel/transform/TransformStackChannel3D.as" />
+								<file name="TranslationChannel3D.as" url="templates/org/papervision3d/core/animation/channel/transform/TranslationChannel3D.as" />
+							</folder>
+						</folder>
+						<folder name="clip">
+							<file name="AnimationClip3D.as" url="templates/org/papervision3d/core/animation/clip/AnimationClip3D.as" />
+						</folder>
+						<folder name="curve">
+							<file name="Curve3D.as" url="templates/org/papervision3d/core/animation/curve/Curve3D.as" />
+						</folder>
+						<folder name="enum">
+							<file name="InfinityType.as" url="templates/org/papervision3d/core/animation/enum/InfinityType.as" />
+							<file name="InterpolationType.as" url="templates/org/papervision3d/core/animation/enum/InterpolationType.as" />
+						</folder>
+						<file name="IAnimatable.as" url="templates/org/papervision3d/core/animation/IAnimatable.as" />
+						<file name="IAnimationProvider.as" url="templates/org/papervision3d/core/animation/IAnimationProvider.as" />
+						<folder name="key">
+							<file name="BezierCurveKey3D.as" url="templates/org/papervision3d/core/animation/key/BezierCurveKey3D.as" />
+							<file name="CurveKey3D.as" url="templates/org/papervision3d/core/animation/key/CurveKey3D.as" />
+							<file name="LinearCurveKey3D.as" url="templates/org/papervision3d/core/animation/key/LinearCurveKey3D.as" />
+							<file name="StepCurveKey3D.as" url="templates/org/papervision3d/core/animation/key/StepCurveKey3D.as" />
+						</folder>
+					</folder>
+					<folder name="clipping">
+						<file name="DefaultClipping.as" url="templates/org/papervision3d/core/clipping/DefaultClipping.as" />
+						<folder name="draw">
+							<file name="Clipping.as" url="templates/org/papervision3d/core/clipping/draw/Clipping.as" />
+							<file name="RectangleClipping.as" url="templates/org/papervision3d/core/clipping/draw/RectangleClipping.as" />
+						</folder>
+						<file name="FrustumClipping.as" url="templates/org/papervision3d/core/clipping/FrustumClipping.as" />
+					</folder>
+					<folder name="controller">
+						<file name="AnimationController.as" url="templates/org/papervision3d/core/controller/AnimationController.as" />
+						<file name="IControllerProvider.as" url="templates/org/papervision3d/core/controller/IControllerProvider.as" />
+						<file name="IObjectController.as" url="templates/org/papervision3d/core/controller/IObjectController.as" />
+						<file name="MorphController.as" url="templates/org/papervision3d/core/controller/MorphController.as" />
+						<file name="SkinController.as" url="templates/org/papervision3d/core/controller/SkinController.as" />
+					</folder>
+					<folder name="culling">
+						<file name="CompositeTriangleCuller.as" url="templates/org/papervision3d/core/culling/CompositeTriangleCuller.as" />
+						<file name="DefaultLineCuller.as" url="templates/org/papervision3d/core/culling/DefaultLineCuller.as" />
+						<file name="DefaultParticleCuller.as" url="templates/org/papervision3d/core/culling/DefaultParticleCuller.as" />
+						<file name="DefaultTriangleCuller.as" url="templates/org/papervision3d/core/culling/DefaultTriangleCuller.as" />
+						<file name="FrustumCuller.as" url="templates/org/papervision3d/core/culling/FrustumCuller.as" />
+						<file name="FrustumTestMethod.as" url="templates/org/papervision3d/core/culling/FrustumTestMethod.as" />
+						<file name="ILineCuller.as" url="templates/org/papervision3d/core/culling/ILineCuller.as" />
+						<file name="IObjectCuller.as" url="templates/org/papervision3d/core/culling/IObjectCuller.as" />
+						<file name="IParticleCuller.as" url="templates/org/papervision3d/core/culling/IParticleCuller.as" />
+						<file name="ITriangleCuller.as" url="templates/org/papervision3d/core/culling/ITriangleCuller.as" />
+						<file name="NullTriangleCuller.as" url="templates/org/papervision3d/core/culling/NullTriangleCuller.as" />
+						<file name="RectangleLineCuller.as" url="templates/org/papervision3d/core/culling/RectangleLineCuller.as" />
+						<file name="RectangleParticleCuller.as" url="templates/org/papervision3d/core/culling/RectangleParticleCuller.as" />
+						<file name="RectangleTriangleCuller.as" url="templates/org/papervision3d/core/culling/RectangleTriangleCuller.as" />
+						<file name="ViewportObjectFilter.as" url="templates/org/papervision3d/core/culling/ViewportObjectFilter.as" />
+						<file name="ViewportObjectFilterMode.as" url="templates/org/papervision3d/core/culling/ViewportObjectFilterMode.as" />
+					</folder>
+					<folder name="data">
+						<file name="UserData.as" url="templates/org/papervision3d/core/data/UserData.as" />
+					</folder>
+					<folder name="dyn">
+						<file name="DynamicTriangles.as" url="templates/org/papervision3d/core/dyn/DynamicTriangles.as" />
+					</folder>
+					<folder name="effects">
+						<file name="AbstractEffect.as" url="templates/org/papervision3d/core/effects/AbstractEffect.as" />
+						<file name="BitmapColorEffect.as" url="templates/org/papervision3d/core/effects/BitmapColorEffect.as" />
+						<file name="BitmapFireEffect.as" url="templates/org/papervision3d/core/effects/BitmapFireEffect.as" />
+						<file name="BitmapLayerEffect.as" url="templates/org/papervision3d/core/effects/BitmapLayerEffect.as" />
+						<file name="BitmapMotionEffect.as" url="templates/org/papervision3d/core/effects/BitmapMotionEffect.as" />
+						<file name="BitmapPixelateEffect.as" url="templates/org/papervision3d/core/effects/BitmapPixelateEffect.as" />
+						<file name="IEffect.as" url="templates/org/papervision3d/core/effects/IEffect.as" />
+						<folder name="objects">
+							<file name="LensFlare.as" url="templates/org/papervision3d/core/effects/objects/LensFlare.as" />
+						</folder>
+						<folder name="utils">
+							<file name="BitmapClearMode.as" url="templates/org/papervision3d/core/effects/utils/BitmapClearMode.as" />
+							<file name="BitmapDrawCommand.as" url="templates/org/papervision3d/core/effects/utils/BitmapDrawCommand.as" />
+							<file name="ConvolutionMatrices.as" url="templates/org/papervision3d/core/effects/utils/ConvolutionMatrices.as" />
+						</folder>
+						<folder name="view">
+							<file name="ReflectionView.as" url="templates/org/papervision3d/core/effects/view/ReflectionView.as" />
+						</folder>
+					</folder>
+					<folder name="geom">
+						<file name="Lines3D.as" url="templates/org/papervision3d/core/geom/Lines3D.as" />
+						<file name="Particles.as" url="templates/org/papervision3d/core/geom/Particles.as" />
+						<file name="Pixels.as" url="templates/org/papervision3d/core/geom/Pixels.as" />
+						<folder name="renderables">
+							<file name="AbstractRenderable.as" url="templates/org/papervision3d/core/geom/renderables/AbstractRenderable.as" />
+							<file name="IRenderable.as" url="templates/org/papervision3d/core/geom/renderables/IRenderable.as" />
+							<file name="Line3D.as" url="templates/org/papervision3d/core/geom/renderables/Line3D.as" />
+							<file name="Particle.as" url="templates/org/papervision3d/core/geom/renderables/Particle.as" />
+							<file name="Pixel3D.as" url="templates/org/papervision3d/core/geom/renderables/Pixel3D.as" />
+							<file name="Triangle3D.as" url="templates/org/papervision3d/core/geom/renderables/Triangle3D.as" />
+							<file name="Triangle3DInstance.as" url="templates/org/papervision3d/core/geom/renderables/Triangle3DInstance.as" />
+							<file name="VectorShapeRenderable.as" url="templates/org/papervision3d/core/geom/renderables/VectorShapeRenderable.as" />
+							<file name="Vertex3D.as" url="templates/org/papervision3d/core/geom/renderables/Vertex3D.as" />
+							<file name="Vertex3DInstance.as" url="templates/org/papervision3d/core/geom/renderables/Vertex3DInstance.as" />
+						</folder>
+						<file name="TriangleMesh3D.as" url="templates/org/papervision3d/core/geom/TriangleMesh3D.as" />
+						<file name="Vertices3D.as" url="templates/org/papervision3d/core/geom/Vertices3D.as" />
+					</folder>
+					<folder name="io">
+						<file name="BasicExporter.as" url="templates/org/papervision3d/core/io/BasicExporter.as" />
+						<folder name="exporters">
+							<file name="ExportCollada.as" url="templates/org/papervision3d/core/io/exporters/ExportCollada.as" />
+							<file name="ExportFileFormat.as" url="templates/org/papervision3d/core/io/exporters/ExportFileFormat.as" />
+						</folder>
+					</folder>
+					<folder name="log">
+						<file name="AbstractPaperLogger.as" url="templates/org/papervision3d/core/log/AbstractPaperLogger.as" />
+						<folder name="event">
+							<file name="PaperLoggerEvent.as" url="templates/org/papervision3d/core/log/event/PaperLoggerEvent.as" />
+						</folder>
+						<file name="IPaperLogger.as" url="templates/org/papervision3d/core/log/IPaperLogger.as" />
+						<file name="LogLevel.as" url="templates/org/papervision3d/core/log/LogLevel.as" />
+						<file name="PaperLogger.as" url="templates/org/papervision3d/core/log/PaperLogger.as" />
+						<file name="PaperLogVO.as" url="templates/org/papervision3d/core/log/PaperLogVO.as" />
+						<file name="PaperTraceLogger.as" url="templates/org/papervision3d/core/log/PaperTraceLogger.as" />
+					</folder>
+					<folder name="material">
+						<file name="AbstractLightShadeMaterial.as" url="templates/org/papervision3d/core/material/AbstractLightShadeMaterial.as" />
+						<file name="AbstractSmoothShadeMaterial.as" url="templates/org/papervision3d/core/material/AbstractSmoothShadeMaterial.as" />
+						<file name="TriangleMaterial.as" url="templates/org/papervision3d/core/material/TriangleMaterial.as" />
+					</folder>
+					<folder name="math">
+						<file name="AxisAlignedBoundingBox.as" url="templates/org/papervision3d/core/math/AxisAlignedBoundingBox.as" />
+						<file name="BoundingSphere.as" url="templates/org/papervision3d/core/math/BoundingSphere.as" />
+						<file name="Matrix3D.as" url="templates/org/papervision3d/core/math/Matrix3D.as" />
+						<file name="Number2D.as" url="templates/org/papervision3d/core/math/Number2D.as" />
+						<file name="Number3D.as" url="templates/org/papervision3d/core/math/Number3D.as" />
+						<file name="NumberUV.as" url="templates/org/papervision3d/core/math/NumberUV.as" />
+						<file name="Plane3D.as" url="templates/org/papervision3d/core/math/Plane3D.as" />
+						<file name="Quaternion.as" url="templates/org/papervision3d/core/math/Quaternion.as" />
+						<file name="Ray3D.as" url="templates/org/papervision3d/core/math/Ray3D.as" />
+						<file name="Sphere3D.as" url="templates/org/papervision3d/core/math/Sphere3D.as" />
+						<folder name="util">
+							<file name="ClassificationUtil.as" url="templates/org/papervision3d/core/math/util/ClassificationUtil.as" />
+							<file name="FastRectangleTools.as" url="templates/org/papervision3d/core/math/util/FastRectangleTools.as" />
+							<file name="GLU.as" url="templates/org/papervision3d/core/math/util/GLU.as" />
+							<file name="InterpolationUtil.as" url="templates/org/papervision3d/core/math/util/InterpolationUtil.as" />
+							<file name="Intersection.as" url="templates/org/papervision3d/core/math/util/Intersection.as" />
+							<file name="TriangleUtil.as" url="templates/org/papervision3d/core/math/util/TriangleUtil.as" />
+						</folder>
+					</folder>
+					<folder name="ns">
+						<file name="pv3dview.as" url="templates/org/papervision3d/core/ns/pv3dview.as" />
+					</folder>
+					<folder name="proto">
+						<file name="CameraObject3D.as" url="templates/org/papervision3d/core/proto/CameraObject3D.as" />
+						<file name="DisplayObjectContainer3D.as" url="templates/org/papervision3d/core/proto/DisplayObjectContainer3D.as" />
+						<file name="GeometryObject3D.as" url="templates/org/papervision3d/core/proto/GeometryObject3D.as" />
+						<file name="LightObject3D.as" url="templates/org/papervision3d/core/proto/LightObject3D.as" />
+						<file name="MaterialObject3D.as" url="templates/org/papervision3d/core/proto/MaterialObject3D.as" />
+						<file name="SceneObject3D.as" url="templates/org/papervision3d/core/proto/SceneObject3D.as" />
+					</folder>
+					<folder name="render">
+						<file name="AbstractRenderEngine.as" url="templates/org/papervision3d/core/render/AbstractRenderEngine.as" />
+						<folder name="command">
+							<file name="AbstractRenderListItem.as" url="templates/org/papervision3d/core/render/command/AbstractRenderListItem.as" />
+							<file name="IRenderListItem.as" url="templates/org/papervision3d/core/render/command/IRenderListItem.as" />
+							<file name="RenderableListItem.as" url="templates/org/papervision3d/core/render/command/RenderableListItem.as" />
+							<file name="RenderFog.as" url="templates/org/papervision3d/core/render/command/RenderFog.as" />
+							<file name="RenderLine.as" url="templates/org/papervision3d/core/render/command/RenderLine.as" />
+							<file name="RenderParticle.as" url="templates/org/papervision3d/core/render/command/RenderParticle.as" />
+							<file name="RenderPixels.as" url="templates/org/papervision3d/core/render/command/RenderPixels.as" />
+							<file name="RenderTriangle.as" url="templates/org/papervision3d/core/render/command/RenderTriangle.as" />
+							<file name="RenderVectorShape.as" url="templates/org/papervision3d/core/render/command/RenderVectorShape.as" />
+							<file name="VectorShapeHitTest.as" url="templates/org/papervision3d/core/render/command/VectorShapeHitTest.as" />
+						</folder>
+						<folder name="data">
+							<file name="QuadTree.as" url="templates/org/papervision3d/core/render/data/QuadTree.as" />
+							<file name="QuadTreeNode.as" url="templates/org/papervision3d/core/render/data/QuadTreeNode.as" />
+							<file name="RenderHitData.as" url="templates/org/papervision3d/core/render/data/RenderHitData.as" />
+							<file name="RenderSessionData.as" url="templates/org/papervision3d/core/render/data/RenderSessionData.as" />
+							<file name="RenderStatistics.as" url="templates/org/papervision3d/core/render/data/RenderStatistics.as" />
+						</folder>
+						<folder name="draw">
+							<file name="ILineDrawer.as" url="templates/org/papervision3d/core/render/draw/ILineDrawer.as" />
+							<file name="IParticleDrawer.as" url="templates/org/papervision3d/core/render/draw/IParticleDrawer.as" />
+							<file name="ITriangleDrawer.as" url="templates/org/papervision3d/core/render/draw/ITriangleDrawer.as" />
+						</folder>
+						<folder name="filter">
+							<file name="AbstractQuadrantFilter.as" url="templates/org/papervision3d/core/render/filter/AbstractQuadrantFilter.as" />
+							<file name="BasicRenderFilter.as" url="templates/org/papervision3d/core/render/filter/BasicRenderFilter.as" />
+							<file name="FogFilter.as" url="templates/org/papervision3d/core/render/filter/FogFilter.as" />
+							<file name="IRenderFilter.as" url="templates/org/papervision3d/core/render/filter/IRenderFilter.as" />
+							<file name="QuadrantFilter.as" url="templates/org/papervision3d/core/render/filter/QuadrantFilter.as" />
+							<file name="QuadrantZFilter.as" url="templates/org/papervision3d/core/render/filter/QuadrantZFilter.as" />
+						</folder>
+						<file name="IRenderEngine.as" url="templates/org/papervision3d/core/render/IRenderEngine.as" />
+						<folder name="material">
+							<file name="IUpdateAfterMaterial.as" url="templates/org/papervision3d/core/render/material/IUpdateAfterMaterial.as" />
+							<file name="IUpdateBeforeMaterial.as" url="templates/org/papervision3d/core/render/material/IUpdateBeforeMaterial.as" />
+							<file name="MaterialManager.as" url="templates/org/papervision3d/core/render/material/MaterialManager.as" />
+						</folder>
+						<folder name="project">
+							<folder name="basic">
+								<file name="IProjector.as" url="templates/org/papervision3d/core/render/project/basic/IProjector.as" />
+							</folder>
+							<file name="BasicProjectionPipeline.as" url="templates/org/papervision3d/core/render/project/BasicProjectionPipeline.as" />
+							<file name="ProjectionPipeline.as" url="templates/org/papervision3d/core/render/project/ProjectionPipeline.as" />
+						</folder>
+						<folder name="shader">
+							<file name="IShaderRenderer.as" url="templates/org/papervision3d/core/render/shader/IShaderRenderer.as" />
+							<file name="ShaderObjectData.as" url="templates/org/papervision3d/core/render/shader/ShaderObjectData.as" />
+							<file name="ShaderRenderer.as" url="templates/org/papervision3d/core/render/shader/ShaderRenderer.as" />
+						</folder>
+						<folder name="sort">
+							<file name="BasicRenderSorter.as" url="templates/org/papervision3d/core/render/sort/BasicRenderSorter.as" />
+							<file name="IRenderSorter.as" url="templates/org/papervision3d/core/render/sort/IRenderSorter.as" />
+							<file name="NullSorter.as" url="templates/org/papervision3d/core/render/sort/NullSorter.as" />
+						</folder>
+					</folder>
+					<folder name="utils">
+						<file name="InteractiveSceneManager.as" url="templates/org/papervision3d/core/utils/InteractiveSceneManager.as" />
+						<file name="InteractiveUtils.as" url="templates/org/papervision3d/core/utils/InteractiveUtils.as" />
+						<file name="MeshUtil.as" url="templates/org/papervision3d/core/utils/MeshUtil.as" />
+						<file name="Mouse3D.as" url="templates/org/papervision3d/core/utils/Mouse3D.as" />
+						<file name="StopWatch.as" url="templates/org/papervision3d/core/utils/StopWatch.as" />
+						<folder name="virtualmouse">
+							<file name="IVirtualMouseEvent.as" url="templates/org/papervision3d/core/utils/virtualmouse/IVirtualMouseEvent.as" />
+							<file name="VirtualMouse.as" url="templates/org/papervision3d/core/utils/virtualmouse/VirtualMouse.as" />
+							<file name="VirtualMouseEvent.as" url="templates/org/papervision3d/core/utils/virtualmouse/VirtualMouseEvent.as" />
+							<file name="VirtualMouseMouseEvent.as" url="templates/org/papervision3d/core/utils/virtualmouse/VirtualMouseMouseEvent.as" />
+						</folder>
+					</folder>
+					<folder name="view">
+						<file name="IView.as" url="templates/org/papervision3d/core/view/IView.as" />
+						<file name="IViewport3D.as" url="templates/org/papervision3d/core/view/IViewport3D.as" />
+					</folder>
+				</folder>
+				<folder name="events">
+					<file name="AnimationEvent.as" url="templates/org/papervision3d/events/AnimationEvent.as" />
+					<file name="FileLoadEvent.as" url="templates/org/papervision3d/events/FileLoadEvent.as" />
+					<file name="InteractiveScene3DEvent.as" url="templates/org/papervision3d/events/InteractiveScene3DEvent.as" />
+					<file name="RendererEvent.as" url="templates/org/papervision3d/events/RendererEvent.as" />
+				</folder>
+				<folder name="lights">
+					<file name="PointLight3D.as" url="templates/org/papervision3d/lights/PointLight3D.as" />
+				</folder>
+				<folder name="materials">
+					<file name="BitmapAssetMaterial.as" url="templates/org/papervision3d/materials/BitmapAssetMaterial.as" />
+					<file name="BitmapColorMaterial.as" url="templates/org/papervision3d/materials/BitmapColorMaterial.as" />
+					<file name="BitmapFileMaterial.as" url="templates/org/papervision3d/materials/BitmapFileMaterial.as" />
+					<file name="BitmapMaterial.as" url="templates/org/papervision3d/materials/BitmapMaterial.as" />
+					<file name="BitmapViewportMaterial.as" url="templates/org/papervision3d/materials/BitmapViewportMaterial.as" />
+					<file name="BitmapWireframeMaterial.as" url="templates/org/papervision3d/materials/BitmapWireframeMaterial.as" />
+					<file name="ColorMaterial.as" url="templates/org/papervision3d/materials/ColorMaterial.as" />
+					<file name="MovieAssetMaterial.as" url="templates/org/papervision3d/materials/MovieAssetMaterial.as" />
+					<file name="MovieMaterial.as" url="templates/org/papervision3d/materials/MovieMaterial.as" />
+					<folder name="shadematerials">
+						<file name="CellMaterial.as" url="templates/org/papervision3d/materials/shadematerials/CellMaterial.as" />
+						<file name="EnvMapMaterial.as" url="templates/org/papervision3d/materials/shadematerials/EnvMapMaterial.as" />
+						<file name="FlatShadeMaterial.as" url="templates/org/papervision3d/materials/shadematerials/FlatShadeMaterial.as" />
+						<file name="GouraudMaterial.as" url="templates/org/papervision3d/materials/shadematerials/GouraudMaterial.as" />
+						<file name="PhongMaterial.as" url="templates/org/papervision3d/materials/shadematerials/PhongMaterial.as" />
+					</folder>
+					<folder name="shaders">
+						<file name="CellShader.as" url="templates/org/papervision3d/materials/shaders/CellShader.as" />
+						<file name="EnvMapShader.as" url="templates/org/papervision3d/materials/shaders/EnvMapShader.as" />
+						<file name="FlatShader.as" url="templates/org/papervision3d/materials/shaders/FlatShader.as" />
+						<file name="GouraudShader.as" url="templates/org/papervision3d/materials/shaders/GouraudShader.as" />
+						<file name="ILightShader.as" url="templates/org/papervision3d/materials/shaders/ILightShader.as" />
+						<file name="IShader.as" url="templates/org/papervision3d/materials/shaders/IShader.as" />
+						<file name="LightShader.as" url="templates/org/papervision3d/materials/shaders/LightShader.as" />
+						<file name="PhongShader.as" url="templates/org/papervision3d/materials/shaders/PhongShader.as" />
+						<file name="ShadedMaterial.as" url="templates/org/papervision3d/materials/shaders/ShadedMaterial.as" />
+						<file name="Shader.as" url="templates/org/papervision3d/materials/shaders/Shader.as" />
+						<file name="ShaderCompositeModes.as" url="templates/org/papervision3d/materials/shaders/ShaderCompositeModes.as" />
+					</folder>
+					<folder name="special">
+						<file name="BitmapParticleMaterial.as" url="templates/org/papervision3d/materials/special/BitmapParticleMaterial.as" />
+						<file name="CompositeMaterial.as" url="templates/org/papervision3d/materials/special/CompositeMaterial.as" />
+						<file name="FogMaterial.as" url="templates/org/papervision3d/materials/special/FogMaterial.as" />
+						<file name="Letter3DMaterial.as" url="templates/org/papervision3d/materials/special/Letter3DMaterial.as" />
+						<file name="LineMaterial.as" url="templates/org/papervision3d/materials/special/LineMaterial.as" />
+						<file name="MovieAssetParticleMaterial.as" url="templates/org/papervision3d/materials/special/MovieAssetParticleMaterial.as" />
+						<file name="MovieParticleMaterial.as" url="templates/org/papervision3d/materials/special/MovieParticleMaterial.as" />
+						<file name="ParticleBitmap.as" url="templates/org/papervision3d/materials/special/ParticleBitmap.as" />
+						<file name="ParticleMaterial.as" url="templates/org/papervision3d/materials/special/ParticleMaterial.as" />
+						<file name="VectorShapeMaterial.as" url="templates/org/papervision3d/materials/special/VectorShapeMaterial.as" />
+					</folder>
+					<folder name="utils">
+						<file name="BitmapMaterialTools.as" url="templates/org/papervision3d/materials/utils/BitmapMaterialTools.as" />
+						<file name="BumpmapGenerator.as" url="templates/org/papervision3d/materials/utils/BumpmapGenerator.as" />
+						<file name="LightMaps.as" url="templates/org/papervision3d/materials/utils/LightMaps.as" />
+						<file name="LightMatrix.as" url="templates/org/papervision3d/materials/utils/LightMatrix.as" />
+						<file name="MaterialsList.as" url="templates/org/papervision3d/materials/utils/MaterialsList.as" />
+						<file name="PrecisionMode.as" url="templates/org/papervision3d/materials/utils/PrecisionMode.as" />
+						<file name="RenderRecStorage.as" url="templates/org/papervision3d/materials/utils/RenderRecStorage.as" />
+					</folder>
+					<file name="VideoStreamMaterial.as" url="templates/org/papervision3d/materials/VideoStreamMaterial.as" />
+					<file name="WireframeMaterial.as" url="templates/org/papervision3d/materials/WireframeMaterial.as" />
+				</folder>
+				<folder name="objects">
+					<file name="DisplayObject3D.as" url="templates/org/papervision3d/objects/DisplayObject3D.as" />
+					<folder name="parsers">
+						<file name="Ase.as" url="templates/org/papervision3d/objects/parsers/Ase.as" />
+						<file name="Collada.as" url="templates/org/papervision3d/objects/parsers/Collada.as" />
+						<file name="DAE.as" url="templates/org/papervision3d/objects/parsers/DAE.as" />
+						<file name="KMZ.as" url="templates/org/papervision3d/objects/parsers/KMZ.as" />
+						<file name="Max3DS.as" url="templates/org/papervision3d/objects/parsers/Max3DS.as" />
+						<file name="MD2.as" url="templates/org/papervision3d/objects/parsers/MD2.as" />
+						<file name="Sketchup.as" url="templates/org/papervision3d/objects/parsers/Sketchup.as" />
+						<file name="SketchupCollada.as" url="templates/org/papervision3d/objects/parsers/SketchupCollada.as" />
+					</folder>
+					<folder name="primitives">
+						<file name="Arrow.as" url="templates/org/papervision3d/objects/primitives/Arrow.as" />
+						<file name="Cone.as" url="templates/org/papervision3d/objects/primitives/Cone.as" />
+						<file name="Cube.as" url="templates/org/papervision3d/objects/primitives/Cube.as" />
+						<file name="Cylinder.as" url="templates/org/papervision3d/objects/primitives/Cylinder.as" />
+						<file name="PaperPlane.as" url="templates/org/papervision3d/objects/primitives/PaperPlane.as" />
+						<file name="Plane.as" url="templates/org/papervision3d/objects/primitives/Plane.as" />
+						<file name="Sphere.as" url="templates/org/papervision3d/objects/primitives/Sphere.as" />
+					</folder>
+					<folder name="special">
+						<folder name="commands">
+							<file name="BeginFill.as" url="templates/org/papervision3d/objects/special/commands/BeginFill.as" />
+							<file name="CurveTo.as" url="templates/org/papervision3d/objects/special/commands/CurveTo.as" />
+							<file name="EndFill.as" url="templates/org/papervision3d/objects/special/commands/EndFill.as" />
+							<file name="IVectorShape.as" url="templates/org/papervision3d/objects/special/commands/IVectorShape.as" />
+							<file name="LineStyle.as" url="templates/org/papervision3d/objects/special/commands/LineStyle.as" />
+							<file name="LineTo.as" url="templates/org/papervision3d/objects/special/commands/LineTo.as" />
+							<file name="MoveTo.as" url="templates/org/papervision3d/objects/special/commands/MoveTo.as" />
+						</folder>
+						<file name="Graphics3D.as" url="templates/org/papervision3d/objects/special/Graphics3D.as" />
+						<file name="ParticleField.as" url="templates/org/papervision3d/objects/special/ParticleField.as" />
+						<file name="SimpleLevelOfDetail.as" url="templates/org/papervision3d/objects/special/SimpleLevelOfDetail.as" />
+						<file name="Skin3D.as" url="templates/org/papervision3d/objects/special/Skin3D.as" />
+						<file name="Sound3D.as" url="templates/org/papervision3d/objects/special/Sound3D.as" />
+						<file name="UCS.as" url="templates/org/papervision3d/objects/special/UCS.as" />
+						<file name="VectorShape3D.as" url="templates/org/papervision3d/objects/special/VectorShape3D.as" />
+					</folder>
+				</folder>
+				<file name="Papervision3D.as" url="templates/org/papervision3d/Papervision3D.as" />
+				<folder name="render">
+					<file name="BasicRenderEngine.as" url="templates/org/papervision3d/render/BasicRenderEngine.as" />
+					<file name="LazyRenderEngine.as" url="templates/org/papervision3d/render/LazyRenderEngine.as" />
+					<file name="QuadrantRenderEngine.as" url="templates/org/papervision3d/render/QuadrantRenderEngine.as" />
+				</folder>
+				<folder name="scenes">
+					<file name="Scene3D.as" url="templates/org/papervision3d/scenes/Scene3D.as" />
+				</folder>
+				<folder name="typography">
+					<file name="Font3D.as" url="templates/org/papervision3d/typography/Font3D.as" />
+					<folder name="fonts">
+						<file name="HelveticaBold.as" url="templates/org/papervision3d/typography/fonts/HelveticaBold.as" />
+						<file name="HelveticaLight.as" url="templates/org/papervision3d/typography/fonts/HelveticaLight.as" />
+						<file name="HelveticaMedium.as" url="templates/org/papervision3d/typography/fonts/HelveticaMedium.as" />
+						<file name="HelveticaRoman.as" url="templates/org/papervision3d/typography/fonts/HelveticaRoman.as" />
+						<file name="use of fonts.txt" url="templates/org/papervision3d/typography/fonts/use%20of%20fonts.txt" />
+					</folder>
+					<file name="Letter3D.as" url="templates/org/papervision3d/typography/Letter3D.as" />
+					<file name="Text3D.as" url="templates/org/papervision3d/typography/Text3D.as" />
+					<file name="VectorLetter3D.as" url="templates/org/papervision3d/typography/VectorLetter3D.as" />
+				</folder>
+				<folder name="view">
+					<file name="AbstractView.as" url="templates/org/papervision3d/view/AbstractView.as" />
+					<file name="BasicView.as" url="templates/org/papervision3d/view/BasicView.as" />
+					<file name="BitmapViewport3D.as" url="templates/org/papervision3d/view/BitmapViewport3D.as" />
+					<folder name="layer">
+						<file name="BitmapEffectLayer.as" url="templates/org/papervision3d/view/layer/BitmapEffectLayer.as" />
+						<folder name="util">
+							<file name="ViewportLayerSortMode.as" url="templates/org/papervision3d/view/layer/util/ViewportLayerSortMode.as" />
+						</folder>
+						<file name="ViewportBaseLayer.as" url="templates/org/papervision3d/view/layer/ViewportBaseLayer.as" />
+						<file name="ViewportLayer.as" url="templates/org/papervision3d/view/layer/ViewportLayer.as" />
+						<file name="ViewportLayerEvent.as" url="templates/org/papervision3d/view/layer/ViewportLayerEvent.as" />
+					</folder>
+					<folder name="stats">
+						<file name="AbstractStatsView.as" url="templates/org/papervision3d/view/stats/AbstractStatsView.as" />
+						<file name="StatsView.as" url="templates/org/papervision3d/view/stats/StatsView.as" />
+					</folder>
+					<file name="Viewport3D.as" url="templates/org/papervision3d/view/Viewport3D.as" />
+				</folder>
+			</folder>
+		</folder>
+	</library>
+	<library name="Away3D 3.5.0" id="away3d">
+		<folder name="away3d">
+			<folder name="animators">
+				<file name="Animator.as" url="templates/away3d/animators/Animator.as" />
+				<file name="BonesAnimator.as" url="templates/away3d/animators/BonesAnimator.as" />
+				<folder name="data">
+					<file name="Channel.as" url="templates/away3d/animators/data/Channel.as" />
+					<file name="SkinController.as" url="templates/away3d/animators/data/SkinController.as" />
+					<file name="SkinVertex.as" url="templates/away3d/animators/data/SkinVertex.as" />
+				</folder>
+				<file name="FaceLink.as" url="templates/away3d/animators/FaceLink.as" />
+				<file name="PathAnimator.as" url="templates/away3d/animators/PathAnimator.as" />
+				<folder name="utils">
+					<file name="AWTweener.as" url="templates/away3d/animators/utils/AWTweener.as" />
+					<file name="PathUtils.as" url="templates/away3d/animators/utils/PathUtils.as" />
+				</folder>
+				<file name="VertexAnimator.as" url="templates/away3d/animators/VertexAnimator.as" />
+			</folder>
+			<file name="arcane.as" url="templates/away3d/arcane.as" />
+			<folder name="audio">
+				<folder name="drivers">
+					<file name="AbstractSound3DDriver.as" url="templates/away3d/audio/drivers/AbstractSound3DDriver.as" />
+					<file name="ISound3DDriver.as" url="templates/away3d/audio/drivers/ISound3DDriver.as" />
+					<file name="SimplePanVolumeDriver.as" url="templates/away3d/audio/drivers/SimplePanVolumeDriver.as" />
+				</folder>
+				<file name="Sound3D.as" url="templates/away3d/audio/Sound3D.as" />
+			</folder>
+			<file name="away3d-license.txt" url="templates/away3d/away3d-license.txt" />
+			<folder name="blockers">
+				<file name="ConvexBlock.as" url="templates/away3d/blockers/ConvexBlock.as" />
+			</folder>
+			<folder name="cameras">
+				<file name="Camera3D.as" url="templates/away3d/cameras/Camera3D.as" />
+				<file name="HoverCamera3D.as" url="templates/away3d/cameras/HoverCamera3D.as" />
+				<folder name="lenses">
+					<file name="AbstractLens.as" url="templates/away3d/cameras/lenses/AbstractLens.as" />
+					<file name="OrthogonalLens.as" url="templates/away3d/cameras/lenses/OrthogonalLens.as" />
+					<file name="PerspectiveLens.as" url="templates/away3d/cameras/lenses/PerspectiveLens.as" />
+					<file name="SphericalLens.as" url="templates/away3d/cameras/lenses/SphericalLens.as" />
+					<file name="ZoomFocusLens.as" url="templates/away3d/cameras/lenses/ZoomFocusLens.as" />
+				</folder>
+				<file name="SpringCam.as" url="templates/away3d/cameras/SpringCam.as" />
+				<file name="TargetCamera3D.as" url="templates/away3d/cameras/TargetCamera3D.as" />
+			</folder>
+			<folder name="containers">
+				<file name="Bone.as" url="templates/away3d/containers/Bone.as" />
+				<file name="ILODObject.as" url="templates/away3d/containers/ILODObject.as" />
+				<file name="IPhysicsScene.as" url="templates/away3d/containers/IPhysicsScene.as" />
+				<file name="LODObject.as" url="templates/away3d/containers/LODObject.as" />
+				<file name="ObjectContainer3D.as" url="templates/away3d/containers/ObjectContainer3D.as" />
+				<file name="Scene3D.as" url="templates/away3d/containers/Scene3D.as" />
+				<file name="View3D.as" url="templates/away3d/containers/View3D.as" />
+			</folder>
+			<folder name="core">
+				<folder name="base">
+					<file name="Element.as" url="templates/away3d/core/base/Element.as" />
+					<file name="Face.as" url="templates/away3d/core/base/Face.as" />
+					<file name="Geometry.as" url="templates/away3d/core/base/Geometry.as" />
+					<file name="Graphics3D.as" url="templates/away3d/core/base/Graphics3D.as" />
+					<file name="Mesh.as" url="templates/away3d/core/base/Mesh.as" />
+					<file name="Morpher.as" url="templates/away3d/core/base/Morpher.as" />
+					<file name="Object3D.as" url="templates/away3d/core/base/Object3D.as" />
+					<file name="Segment.as" url="templates/away3d/core/base/Segment.as" />
+					<file name="UV.as" url="templates/away3d/core/base/UV.as" />
+					<file name="Vertex.as" url="templates/away3d/core/base/Vertex.as" />
+					<file name="VertexClassification.as" url="templates/away3d/core/base/VertexClassification.as" />
+				</folder>
+				<folder name="block">
+					<file name="Blocker.as" url="templates/away3d/core/block/Blocker.as" />
+					<file name="BlockerArray.as" url="templates/away3d/core/block/BlockerArray.as" />
+					<file name="ConvexBlocker.as" url="templates/away3d/core/block/ConvexBlocker.as" />
+					<file name="IBlockerConsumer.as" url="templates/away3d/core/block/IBlockerConsumer.as" />
+					<file name="IBlockerProvider.as" url="templates/away3d/core/block/IBlockerProvider.as" />
+				</folder>
+				<folder name="clip">
+					<file name="Clipping.as" url="templates/away3d/core/clip/Clipping.as" />
+					<file name="FrustumClipping.as" url="templates/away3d/core/clip/FrustumClipping.as" />
+					<file name="NearfieldClipping.as" url="templates/away3d/core/clip/NearfieldClipping.as" />
+					<file name="RectangleClipping.as" url="templates/away3d/core/clip/RectangleClipping.as" />
+				</folder>
+				<folder name="draw">
+					<file name="DrawBitmap.as" url="templates/away3d/core/draw/DrawBitmap.as" />
+					<file name="DrawDisplayObject.as" url="templates/away3d/core/draw/DrawDisplayObject.as" />
+					<file name="DrawFog.as" url="templates/away3d/core/draw/DrawFog.as" />
+					<file name="DrawPrimitive.as" url="templates/away3d/core/draw/DrawPrimitive.as" />
+					<file name="DrawScaledBitmap.as" url="templates/away3d/core/draw/DrawScaledBitmap.as" />
+					<file name="DrawSegment.as" url="templates/away3d/core/draw/DrawSegment.as" />
+					<file name="DrawSprite.as" url="templates/away3d/core/draw/DrawSprite.as" />
+					<file name="DrawTriangle.as" url="templates/away3d/core/draw/DrawTriangle.as" />
+					<file name="IPrimitiveConsumer.as" url="templates/away3d/core/draw/IPrimitiveConsumer.as" />
+					<file name="IPrimitiveProvider.as" url="templates/away3d/core/draw/IPrimitiveProvider.as" />
+					<file name="PrimitiveQuadrantTreeNode.as" url="templates/away3d/core/draw/PrimitiveQuadrantTreeNode.as" />
+					<file name="PrimitiveVolumeBlock.as" url="templates/away3d/core/draw/PrimitiveVolumeBlock.as" />
+					<file name="PrimitiveVolumeBlockNode.as" url="templates/away3d/core/draw/PrimitiveVolumeBlockNode.as" />
+					<file name="ScreenVertex.as" url="templates/away3d/core/draw/ScreenVertex.as" />
+				</folder>
+				<folder name="filter">
+					<file name="AnotherRivalFilter.as" url="templates/away3d/core/filter/AnotherRivalFilter.as" />
+					<file name="FogFilter.as" url="templates/away3d/core/filter/FogFilter.as" />
+					<file name="IPrimitiveFilter.as" url="templates/away3d/core/filter/IPrimitiveFilter.as" />
+					<file name="IPrimitiveQuadrantFilter.as" url="templates/away3d/core/filter/IPrimitiveQuadrantFilter.as" />
+					<file name="IPrimitiveVolumeBlockFilter.as" url="templates/away3d/core/filter/IPrimitiveVolumeBlockFilter.as" />
+					<file name="MaxPolyFilter.as" url="templates/away3d/core/filter/MaxPolyFilter.as" />
+					<file name="QuadrantRiddleFilter.as" url="templates/away3d/core/filter/QuadrantRiddleFilter.as" />
+					<file name="ZDepthFilter.as" url="templates/away3d/core/filter/ZDepthFilter.as" />
+					<file name="ZSortFilter.as" url="templates/away3d/core/filter/ZSortFilter.as" />
+				</folder>
+				<folder name="geom">
+					<file name="Frustum.as" url="templates/away3d/core/geom/Frustum.as" />
+					<file name="Line2D.as" url="templates/away3d/core/geom/Line2D.as" />
+					<file name="NGon.as" url="templates/away3d/core/geom/NGon.as" />
+					<file name="Path.as" url="templates/away3d/core/geom/Path.as" />
+					<file name="PathCommand.as" url="templates/away3d/core/geom/PathCommand.as" />
+					<file name="PathDebug.as" url="templates/away3d/core/geom/PathDebug.as" />
+					<file name="Plane3D.as" url="templates/away3d/core/geom/Plane3D.as" />
+				</folder>
+				<folder name="light">
+					<file name="AmbientLight.as" url="templates/away3d/core/light/AmbientLight.as" />
+					<file name="DirectionalLight.as" url="templates/away3d/core/light/DirectionalLight.as" />
+					<file name="ILightConsumer.as" url="templates/away3d/core/light/ILightConsumer.as" />
+					<file name="ILightProvider.as" url="templates/away3d/core/light/ILightProvider.as" />
+					<file name="LightArray.as" url="templates/away3d/core/light/LightArray.as" />
+					<file name="LightPrimitive.as" url="templates/away3d/core/light/LightPrimitive.as" />
+					<file name="PointLight.as" url="templates/away3d/core/light/PointLight.as" />
+				</folder>
+				<folder name="math">
+					<file name="MatrixAway3D.as" url="templates/away3d/core/math/MatrixAway3D.as" />
+					<file name="Number2D.as" url="templates/away3d/core/math/Number2D.as" />
+					<file name="Number3D.as" url="templates/away3d/core/math/Number3D.as" />
+					<file name="Quaternion.as" url="templates/away3d/core/math/Quaternion.as" />
+				</folder>
+				<folder name="project">
+					<file name="ConvexBlockProjector.as" url="templates/away3d/core/project/ConvexBlockProjector.as" />
+					<file name="DirSpriteProjector.as" url="templates/away3d/core/project/DirSpriteProjector.as" />
+					<file name="DofSpriteProjector.as" url="templates/away3d/core/project/DofSpriteProjector.as" />
+					<file name="MeshProjector.as" url="templates/away3d/core/project/MeshProjector.as" />
+					<file name="MovieClipSpriteProjector.as" url="templates/away3d/core/project/MovieClipSpriteProjector.as" />
+					<file name="ObjectContainerProjector.as" url="templates/away3d/core/project/ObjectContainerProjector.as" />
+					<file name="ProjectorType.as" url="templates/away3d/core/project/ProjectorType.as" />
+					<file name="SpriteProjector.as" url="templates/away3d/core/project/SpriteProjector.as" />
+				</folder>
+				<folder name="render">
+					<file name="AbstractRenderSession.as" url="templates/away3d/core/render/AbstractRenderSession.as" />
+					<file name="BasicRenderer.as" url="templates/away3d/core/render/BasicRenderer.as" />
+					<file name="BitmapRenderSession.as" url="templates/away3d/core/render/BitmapRenderSession.as" />
+					<file name="BSPRenderer.as" url="templates/away3d/core/render/BSPRenderer.as" />
+					<file name="IRenderer.as" url="templates/away3d/core/render/IRenderer.as" />
+					<file name="QuadrantRenderer.as" url="templates/away3d/core/render/QuadrantRenderer.as" />
+					<file name="Renderer.as" url="templates/away3d/core/render/Renderer.as" />
+					<file name="SpriteRenderSession.as" url="templates/away3d/core/render/SpriteRenderSession.as" />
+				</folder>
+				<folder name="stats">
+					<file name="Logo.as" url="templates/away3d/core/stats/Logo.as" />
+					<file name="StaticTextField.as" url="templates/away3d/core/stats/StaticTextField.as" />
+					<file name="Stats.as" url="templates/away3d/core/stats/Stats.as" />
+					<file name="Tasks.as" url="templates/away3d/core/stats/Tasks.as" />
+				</folder>
+				<folder name="traverse">
+					<file name="LightTraverser.as" url="templates/away3d/core/traverse/LightTraverser.as" />
+					<file name="PrimitiveTraverser.as" url="templates/away3d/core/traverse/PrimitiveTraverser.as" />
+					<file name="ProjectionTraverser.as" url="templates/away3d/core/traverse/ProjectionTraverser.as" />
+					<file name="SessionTraverser.as" url="templates/away3d/core/traverse/SessionTraverser.as" />
+					<file name="TickTraverser.as" url="templates/away3d/core/traverse/TickTraverser.as" />
+					<file name="Traverser.as" url="templates/away3d/core/traverse/Traverser.as" />
+				</folder>
+				<folder name="utils">
+					<file name="BezierUtils.as" url="templates/away3d/core/utils/BezierUtils.as" />
+					<file name="CacheStore.as" url="templates/away3d/core/utils/CacheStore.as" />
+					<file name="CameraVarsStore.as" url="templates/away3d/core/utils/CameraVarsStore.as" />
+					<file name="Cast.as" url="templates/away3d/core/utils/Cast.as" />
+					<file name="CastError.as" url="templates/away3d/core/utils/CastError.as" />
+					<file name="Color.as" url="templates/away3d/core/utils/Color.as" />
+					<file name="Debug.as" url="templates/away3d/core/utils/Debug.as" />
+					<file name="DofCache.as" url="templates/away3d/core/utils/DofCache.as" />
+					<file name="DrawPrimitiveStore.as" url="templates/away3d/core/utils/DrawPrimitiveStore.as" />
+					<file name="FaceDictionaryVO.as" url="templates/away3d/core/utils/FaceDictionaryVO.as" />
+					<file name="FaceMaterialVO.as" url="templates/away3d/core/utils/FaceMaterialVO.as" />
+					<file name="FaceNormalShader.as" url="templates/away3d/core/utils/FaceNormalShader.as" />
+					<file name="FaceNormalShaderVO.as" url="templates/away3d/core/utils/FaceNormalShaderVO.as" />
+					<file name="FaceVO.as" url="templates/away3d/core/utils/FaceVO.as" />
+					<file name="IClonable.as" url="templates/away3d/core/utils/IClonable.as" />
+					<file name="Init.as" url="templates/away3d/core/utils/Init.as" />
+					<file name="SegmentVO.as" url="templates/away3d/core/utils/SegmentVO.as" />
+					<file name="SpriteVO.as" url="templates/away3d/core/utils/SpriteVO.as" />
+					<file name="ValueObject.as" url="templates/away3d/core/utils/ValueObject.as" />
+				</folder>
+			</folder>
+			<folder name="debug">
+				<file name="AwayStats.as" url="templates/away3d/debug/AwayStats.as" />
+			</folder>
+			<folder name="dev">
+			</folder>
+			<folder name="events">
+				<file name="AnimatorEvent.as" url="templates/away3d/events/AnimatorEvent.as" />
+				<file name="BSPBuildEvent.as" url="templates/away3d/events/BSPBuildEvent.as" />
+				<file name="CameraEvent.as" url="templates/away3d/events/CameraEvent.as" />
+				<file name="ClippingEvent.as" url="templates/away3d/events/ClippingEvent.as" />
+				<file name="ElementEvent.as" url="templates/away3d/events/ElementEvent.as" />
+				<file name="ExporterEvent.as" url="templates/away3d/events/ExporterEvent.as" />
+				<file name="GeometryEvent.as" url="templates/away3d/events/GeometryEvent.as" />
+				<file name="IteratorEvent.as" url="templates/away3d/events/IteratorEvent.as" />
+				<file name="Loader3DEvent.as" url="templates/away3d/events/Loader3DEvent.as" />
+				<file name="MaterialEvent.as" url="templates/away3d/events/MaterialEvent.as" />
+				<file name="MouseEvent3D.as" url="templates/away3d/events/MouseEvent3D.as" />
+				<file name="Object3DEvent.as" url="templates/away3d/events/Object3DEvent.as" />
+				<file name="ParserEvent.as" url="templates/away3d/events/ParserEvent.as" />
+				<file name="PathEvent.as" url="templates/away3d/events/PathEvent.as" />
+				<file name="SessionEvent.as" url="templates/away3d/events/SessionEvent.as" />
+				<file name="SpriteEvent.as" url="templates/away3d/events/SpriteEvent.as" />
+				<file name="TraceEvent.as" url="templates/away3d/events/TraceEvent.as" />
+				<file name="VideoEvent.as" url="templates/away3d/events/VideoEvent.as" />
+				<file name="ViewEvent.as" url="templates/away3d/events/ViewEvent.as" />
+			</folder>
+			<folder name="exporters">
+				<file name="AS3Exporter.as" url="templates/away3d/exporters/AS3Exporter.as" />
+				<file name="AS3LiteExporter.as" url="templates/away3d/exporters/AS3LiteExporter.as" />
+				<file name="AWDataExporter.as" url="templates/away3d/exporters/AWDataExporter.as" />
+				<file name="Elevation2AS3.as" url="templates/away3d/exporters/Elevation2AS3.as" />
+				<file name="ObjExporter.as" url="templates/away3d/exporters/ObjExporter.as" />
+			</folder>
+			<folder name="extrusions">
+				<file name="CollisionMap.as" url="templates/away3d/extrusions/CollisionMap.as" />
+				<file name="Elevation.as" url="templates/away3d/extrusions/Elevation.as" />
+				<file name="ElevationModifier.as" url="templates/away3d/extrusions/ElevationModifier.as" />
+				<file name="ElevationReader.as" url="templates/away3d/extrusions/ElevationReader.as" />
+				<file name="LatheExtrusion.as" url="templates/away3d/extrusions/LatheExtrusion.as" />
+				<file name="LinearExtrusion.as" url="templates/away3d/extrusions/LinearExtrusion.as" />
+				<file name="PathDuplicator.as" url="templates/away3d/extrusions/PathDuplicator.as" />
+				<file name="PathExtrusion.as" url="templates/away3d/extrusions/PathExtrusion.as" />
+				<file name="SkinExtrude.as" url="templates/away3d/extrusions/SkinExtrude.as" />
+				<file name="TextExtrusion.as" url="templates/away3d/extrusions/TextExtrusion.as" />
+			</folder>
+			<folder name="graphs">
+				<folder name="bsp">
+					<file name="BSPMeshManager.as" url="templates/away3d/graphs/bsp/BSPMeshManager.as" />
+					<file name="BSPNode.as" url="templates/away3d/graphs/bsp/BSPNode.as" />
+					<file name="BSPPortal.as" url="templates/away3d/graphs/bsp/BSPPortal.as" />
+					<file name="BSPTree.as" url="templates/away3d/graphs/bsp/BSPTree.as" />
+					<folder name="builder">
+						<file name="AbstractBuilderDecorator.as" url="templates/away3d/graphs/bsp/builder/AbstractBuilderDecorator.as" />
+						<file name="BSPBuilder.as" url="templates/away3d/graphs/bsp/builder/BSPBuilder.as" />
+						<file name="BSPCollisionPlaneBuilder.as" url="templates/away3d/graphs/bsp/builder/BSPCollisionPlaneBuilder.as" />
+						<file name="BSPGeometryBuilder.as" url="templates/away3d/graphs/bsp/builder/BSPGeometryBuilder.as" />
+						<file name="BSPPortalBuilder.as" url="templates/away3d/graphs/bsp/builder/BSPPortalBuilder.as" />
+						<file name="BSPPVSBuilder.as" url="templates/away3d/graphs/bsp/builder/BSPPVSBuilder.as" />
+						<file name="BSPTJunctionFixer.as" url="templates/away3d/graphs/bsp/builder/BSPTJunctionFixer.as" />
+						<file name="IBSPBuilder.as" url="templates/away3d/graphs/bsp/builder/IBSPBuilder.as" />
+						<file name="IBSPPlanePicker.as" url="templates/away3d/graphs/bsp/builder/IBSPPlanePicker.as" />
+						<file name="IBSPPortalProvider.as" url="templates/away3d/graphs/bsp/builder/IBSPPortalProvider.as" />
+						<file name="SimplePlanePicker.as" url="templates/away3d/graphs/bsp/builder/SimplePlanePicker.as" />
+					</folder>
+				</folder>
+				<file name="IIterator.as" url="templates/away3d/graphs/IIterator.as" />
+				<file name="ITreeNode.as" url="templates/away3d/graphs/ITreeNode.as" />
+				<file name="TreeIterator.as" url="templates/away3d/graphs/TreeIterator.as" />
+				<file name="VectorIterator.as" url="templates/away3d/graphs/VectorIterator.as" />
+			</folder>
+			<folder name="lights">
+				<file name="AbstractLight.as" url="templates/away3d/lights/AbstractLight.as" />
+				<file name="AmbientLight3D.as" url="templates/away3d/lights/AmbientLight3D.as" />
+				<file name="DirectionalLight3D.as" url="templates/away3d/lights/DirectionalLight3D.as" />
+				<file name="PointLight3D.as" url="templates/away3d/lights/PointLight3D.as" />
+			</folder>
+			<folder name="loaders">
+				<file name="AbstractParser.as" url="templates/away3d/loaders/AbstractParser.as" />
+				<file name="Ase.as" url="templates/away3d/loaders/Ase.as" />
+				<file name="AWData.as" url="templates/away3d/loaders/AWData.as" />
+				<file name="Collada.as" url="templates/away3d/loaders/Collada.as" />
+				<folder name="data">
+					<file name="AnimationData.as" url="templates/away3d/loaders/data/AnimationData.as" />
+					<file name="AnimationDataType.as" url="templates/away3d/loaders/data/AnimationDataType.as" />
+					<file name="BoneData.as" url="templates/away3d/loaders/data/BoneData.as" />
+					<file name="ChannelData.as" url="templates/away3d/loaders/data/ChannelData.as" />
+					<file name="ContainerData.as" url="templates/away3d/loaders/data/ContainerData.as" />
+					<file name="FaceData.as" url="templates/away3d/loaders/data/FaceData.as" />
+					<file name="GeometryData.as" url="templates/away3d/loaders/data/GeometryData.as" />
+					<file name="MaterialData.as" url="templates/away3d/loaders/data/MaterialData.as" />
+					<file name="MeshData.as" url="templates/away3d/loaders/data/MeshData.as" />
+					<file name="MeshMaterialData.as" url="templates/away3d/loaders/data/MeshMaterialData.as" />
+					<file name="ObjectData.as" url="templates/away3d/loaders/data/ObjectData.as" />
+				</folder>
+				<file name="Kmz.as" url="templates/away3d/loaders/Kmz.as" />
+				<file name="Loader3D.as" url="templates/away3d/loaders/Loader3D.as" />
+				<file name="LoaderCube.as" url="templates/away3d/loaders/LoaderCube.as" />
+				<file name="Max3DS.as" url="templates/away3d/loaders/Max3DS.as" />
+				<file name="Md2.as" url="templates/away3d/loaders/Md2.as" />
+				<file name="Obj.as" url="templates/away3d/loaders/Obj.as" />
+				<file name="Swf.as" url="templates/away3d/loaders/Swf.as" />
+				<folder name="utils">
+					<file name="AnimationLibrary.as" url="templates/away3d/loaders/utils/AnimationLibrary.as" />
+					<file name="CentralMaterialLibrary.as" url="templates/away3d/loaders/utils/CentralMaterialLibrary.as" />
+					<file name="ChannelLibrary.as" url="templates/away3d/loaders/utils/ChannelLibrary.as" />
+					<file name="GeometryLibrary.as" url="templates/away3d/loaders/utils/GeometryLibrary.as" />
+					<file name="MaterialLibrary.as" url="templates/away3d/loaders/utils/MaterialLibrary.as" />
+					<file name="TextureLoader.as" url="templates/away3d/loaders/utils/TextureLoader.as" />
+					<file name="TextureLoadQueue.as" url="templates/away3d/loaders/utils/TextureLoadQueue.as" />
+				</folder>
+			</folder>
+			<folder name="materials">
+				<file name="AnimatedBitmapMaterial.as" url="templates/away3d/materials/AnimatedBitmapMaterial.as" />
+				<file name="BitmapFileMaterial.as" url="templates/away3d/materials/BitmapFileMaterial.as" />
+				<file name="BitmapMaskMaterial.as" url="templates/away3d/materials/BitmapMaskMaterial.as" />
+				<file name="BitmapMaterial.as" url="templates/away3d/materials/BitmapMaterial.as" />
+				<file name="ColorMaterial.as" url="templates/away3d/materials/ColorMaterial.as" />
+				<file name="CompositeMaterial.as" url="templates/away3d/materials/CompositeMaterial.as" />
+				<file name="CubicEnvMapPBMaterial.as" url="templates/away3d/materials/CubicEnvMapPBMaterial.as" />
+				<file name="DepthBitmapMaterial.as" url="templates/away3d/materials/DepthBitmapMaterial.as" />
+				<file name="DiffuseMultiPassMaterial.as" url="templates/away3d/materials/DiffuseMultiPassMaterial.as" />
+				<file name="DiffusePBMaterial.as" url="templates/away3d/materials/DiffusePBMaterial.as" />
+				<file name="Dot3BitmapMaterial.as" url="templates/away3d/materials/Dot3BitmapMaterial.as" />
+				<file name="Dot3BitmapMaterialF10.as" url="templates/away3d/materials/Dot3BitmapMaterialF10.as" />
+				<file name="Dot3MovieMaterial.as" url="templates/away3d/materials/Dot3MovieMaterial.as" />
+				<file name="EnviroBitmapMaterial.as" url="templates/away3d/materials/EnviroBitmapMaterial.as" />
+				<file name="EnviroColorMaterial.as" url="templates/away3d/materials/EnviroColorMaterial.as" />
+				<file name="FresnelPBMaterial.as" url="templates/away3d/materials/FresnelPBMaterial.as" />
+				<file name="LayerMaterial.as" url="templates/away3d/materials/LayerMaterial.as" />
+				<file name="Material.as" url="templates/away3d/materials/Material.as" />
+				<file name="MovieMaterial.as" url="templates/away3d/materials/MovieMaterial.as" />
+				<file name="MultiPassShaderMaterial.as" url="templates/away3d/materials/MultiPassShaderMaterial.as" />
+				<file name="PhongBitmapMaterial.as" url="templates/away3d/materials/PhongBitmapMaterial.as" />
+				<file name="PhongColorMaterial.as" url="templates/away3d/materials/PhongColorMaterial.as" />
+				<file name="PhongMovieMaterial.as" url="templates/away3d/materials/PhongMovieMaterial.as" />
+				<file name="PhongMultiPassMaterial.as" url="templates/away3d/materials/PhongMultiPassMaterial.as" />
+				<file name="PhongPBMaterial.as" url="templates/away3d/materials/PhongPBMaterial.as" />
+				<file name="PixelShaderMaterial.as" url="templates/away3d/materials/PixelShaderMaterial.as" />
+				<folder name="shaders">
+					<file name="AbstractShader.as" url="templates/away3d/materials/shaders/AbstractShader.as" />
+					<file name="AmbientShader.as" url="templates/away3d/materials/shaders/AmbientShader.as" />
+					<file name="DepthShader.as" url="templates/away3d/materials/shaders/DepthShader.as" />
+					<file name="DiffuseDot3Shader.as" url="templates/away3d/materials/shaders/DiffuseDot3Shader.as" />
+					<file name="DiffusePhongShader.as" url="templates/away3d/materials/shaders/DiffusePhongShader.as" />
+					<file name="EnviroShader.as" url="templates/away3d/materials/shaders/EnviroShader.as" />
+					<file name="SpecularDot3Shader.as" url="templates/away3d/materials/shaders/SpecularDot3Shader.as" />
+					<file name="SpecularPhongShader.as" url="templates/away3d/materials/shaders/SpecularPhongShader.as" />
+				</folder>
+				<file name="ShadingColorMaterial.as" url="templates/away3d/materials/ShadingColorMaterial.as" />
+				<file name="SinglePassShaderMaterial.as" url="templates/away3d/materials/SinglePassShaderMaterial.as" />
+				<file name="SpecularMultiPassMaterial.as" url="templates/away3d/materials/SpecularMultiPassMaterial.as" />
+				<file name="SpecularPBMaterial.as" url="templates/away3d/materials/SpecularPBMaterial.as" />
+				<file name="SphericEnvMapPBMaterial.as" url="templates/away3d/materials/SphericEnvMapPBMaterial.as" />
+				<file name="TransformBitmapMaterial.as" url="templates/away3d/materials/TransformBitmapMaterial.as" />
+				<folder name="utils">
+					<folder name="data">
+						<file name="Grow.as" url="templates/away3d/materials/utils/data/Grow.as" />
+						<file name="LightData.as" url="templates/away3d/materials/utils/data/LightData.as" />
+						<file name="LScan.as" url="templates/away3d/materials/utils/data/LScan.as" />
+						<file name="MeshData.as" url="templates/away3d/materials/utils/data/MeshData.as" />
+						<file name="Ray.as" url="templates/away3d/materials/utils/data/Ray.as" />
+						<file name="RenderData.as" url="templates/away3d/materials/utils/data/RenderData.as" />
+					</folder>
+					<file name="HeightMapDataChannel.as" url="templates/away3d/materials/utils/HeightMapDataChannel.as" />
+					<file name="HeightMapGenerator.as" url="templates/away3d/materials/utils/HeightMapGenerator.as" />
+					<file name="LightPrebaker.as" url="templates/away3d/materials/utils/LightPrebaker.as" />
+					<file name="NormalBumpMaker.as" url="templates/away3d/materials/utils/NormalBumpMaker.as" />
+					<file name="NormalMapGenerator.as" url="templates/away3d/materials/utils/NormalMapGenerator.as" />
+					<file name="NormalMapType.as" url="templates/away3d/materials/utils/NormalMapType.as" />
+					<file name="Projector.as" url="templates/away3d/materials/utils/Projector.as" />
+					<file name="SimpleShadow.as" url="templates/away3d/materials/utils/SimpleShadow.as" />
+					<file name="TangentToObjectMapper.as" url="templates/away3d/materials/utils/TangentToObjectMapper.as" />
+					<file name="WaterMap.as" url="templates/away3d/materials/utils/WaterMap.as" />
+				</folder>
+				<file name="VideoMaterial.as" url="templates/away3d/materials/VideoMaterial.as" />
+				<file name="WhiteShadingBitmapMaterial.as" url="templates/away3d/materials/WhiteShadingBitmapMaterial.as" />
+				<file name="WireColorMaterial.as" url="templates/away3d/materials/WireColorMaterial.as" />
+				<file name="WireframeMaterial.as" url="templates/away3d/materials/WireframeMaterial.as" />
+			</folder>
+			<folder name="modifiers">
+				<folder name="data">
+					<file name="VertexData.as" url="templates/away3d/modifiers/data/VertexData.as" />
+				</folder>
+				<file name="HeightMapModifier.as" url="templates/away3d/modifiers/HeightMapModifier.as" />
+				<file name="PathAlignModifier.as" url="templates/away3d/modifiers/PathAlignModifier.as" />
+			</folder>
+			<folder name="overlays">
+				<file name="IOverlay.as" url="templates/away3d/overlays/IOverlay.as" />
+				<file name="LensFlare.as" url="templates/away3d/overlays/LensFlare.as" />
+			</folder>
+			<folder name="pbks">
+				<file name="CubicEnvNormalMapShader.pbj" url="templates/away3d/pbks/CubicEnvNormalMapShader.pbj" />
+				<file name="CubicEnvNormalMapShader.pbk" url="templates/away3d/pbks/CubicEnvNormalMapShader.pbk" />
+				<file name="CubicEnvReflMapShader.pbj" url="templates/away3d/pbks/CubicEnvReflMapShader.pbj" />
+				<file name="CubicEnvReflMapShader.pbk" url="templates/away3d/pbks/CubicEnvReflMapShader.pbk" />
+				<file name="FresnelShader.pbj" url="templates/away3d/pbks/FresnelShader.pbj" />
+				<file name="FresnelShader.pbk" url="templates/away3d/pbks/FresnelShader.pbk" />
+				<file name="LambertMultiPassDirShader.pbj" url="templates/away3d/pbks/LambertMultiPassDirShader.pbj" />
+				<file name="LambertMultiPassDirShader.pbk" url="templates/away3d/pbks/LambertMultiPassDirShader.pbk" />
+				<file name="LambertMultiPassShader.pbj" url="templates/away3d/pbks/LambertMultiPassShader.pbj" />
+				<file name="LambertMultiPassShader.pbk" url="templates/away3d/pbks/LambertMultiPassShader.pbk" />
+				<file name="LambertNormalMapShader.pbj" url="templates/away3d/pbks/LambertNormalMapShader.pbj" />
+				<file name="LambertNormalMapShader.pbk" url="templates/away3d/pbks/LambertNormalMapShader.pbk" />
+				<file name="normalMapping.pbj" url="templates/away3d/pbks/normalMapping.pbj" />
+				<file name="normalMapping.pbk" url="templates/away3d/pbks/normalMapping.pbk" />
+				<file name="PhongMultiPassDirShader.pbj" url="templates/away3d/pbks/PhongMultiPassDirShader.pbj" />
+				<file name="PhongMultiPassDirShader.pbk" url="templates/away3d/pbks/PhongMultiPassDirShader.pbk" />
+				<file name="PhongMultiPassShader.pbj" url="templates/away3d/pbks/PhongMultiPassShader.pbj" />
+				<file name="PhongMultiPassShader.pbk" url="templates/away3d/pbks/PhongMultiPassShader.pbk" />
+				<file name="PhongMultiPassSpecularDirShader.pbj" url="templates/away3d/pbks/PhongMultiPassSpecularDirShader.pbj" />
+				<file name="PhongMultiPassSpecularDirShader.pbk" url="templates/away3d/pbks/PhongMultiPassSpecularDirShader.pbk" />
+				<file name="PhongMultiPassSpecularShader.pbj" url="templates/away3d/pbks/PhongMultiPassSpecularShader.pbj" />
+				<file name="PhongMultiPassSpecularShader.pbk" url="templates/away3d/pbks/PhongMultiPassSpecularShader.pbk" />
+				<file name="PhongNormalMapShader.pbj" url="templates/away3d/pbks/PhongNormalMapShader.pbj" />
+				<file name="PhongNormalMapShader.pbk" url="templates/away3d/pbks/PhongNormalMapShader.pbk" />
+				<file name="PhongNormalSpecularShader.pbj" url="templates/away3d/pbks/PhongNormalSpecularShader.pbj" />
+				<file name="PhongNormalSpecularShader.pbk" url="templates/away3d/pbks/PhongNormalSpecularShader.pbk" />
+				<file name="PositionInterpolator.pbj" url="templates/away3d/pbks/PositionInterpolator.pbj" />
+				<file name="PositionInterpolator.pbk" url="templates/away3d/pbks/PositionInterpolator.pbk" />
+				<file name="SpecularMultiPassDirShader.pbj" url="templates/away3d/pbks/SpecularMultiPassDirShader.pbj" />
+				<file name="SpecularMultiPassDirShader.pbk" url="templates/away3d/pbks/SpecularMultiPassDirShader.pbk" />
+				<file name="SpecularMultiPassShader.pbj" url="templates/away3d/pbks/SpecularMultiPassShader.pbj" />
+				<file name="SpecularMultiPassShader.pbk" url="templates/away3d/pbks/SpecularMultiPassShader.pbk" />
+				<file name="SpecularMultiPassSpecularDirShader.pbj" url="templates/away3d/pbks/SpecularMultiPassSpecularDirShader.pbj" />
+				<file name="SpecularMultiPassSpecularDirShader.pbk" url="templates/away3d/pbks/SpecularMultiPassSpecularDirShader.pbk" />
+				<file name="SpecularMultiPassSpecularShader.pbj" url="templates/away3d/pbks/SpecularMultiPassSpecularShader.pbj" />
+				<file name="SpecularMultiPassSpecularShader.pbk" url="templates/away3d/pbks/SpecularMultiPassSpecularShader.pbk" />
+				<file name="SpecularNormalMapShader.pbj" url="templates/away3d/pbks/SpecularNormalMapShader.pbj" />
+				<file name="SpecularNormalMapShader.pbk" url="templates/away3d/pbks/SpecularNormalMapShader.pbk" />
+				<file name="SpecularNormalSpecularShader.pbj" url="templates/away3d/pbks/SpecularNormalSpecularShader.pbj" />
+				<file name="SpecularNormalSpecularShader.pbk" url="templates/away3d/pbks/SpecularNormalSpecularShader.pbk" />
+				<file name="SphericEnvNormalMapShader.pbj" url="templates/away3d/pbks/SphericEnvNormalMapShader.pbj" />
+				<file name="SphericEnvNormalMapShader.pbk" url="templates/away3d/pbks/SphericEnvNormalMapShader.pbk" />
+				<file name="SphericEnvReflMapShader.pbj" url="templates/away3d/pbks/SphericEnvReflMapShader.pbj" />
+				<file name="SphericEnvReflMapShader.pbk" url="templates/away3d/pbks/SphericEnvReflMapShader.pbk" />
+				<file name="TangentToObject.pbj" url="templates/away3d/pbks/TangentToObject.pbj" />
+				<file name="TangentToObject.pbk" url="templates/away3d/pbks/TangentToObject.pbk" />
+				<file name="TangentToObjectSmooth.pbj" url="templates/away3d/pbks/TangentToObjectSmooth.pbj" />
+				<file name="TangentToObjectSmooth.pbk" url="templates/away3d/pbks/TangentToObjectSmooth.pbk" />
+			</folder>
+			<folder name="physics">
+				<file name="BSPCollider.as" url="templates/away3d/physics/BSPCollider.as" />
+			</folder>
+			<folder name="primitives">
+				<file name="AbstractPrimitive.as" url="templates/away3d/primitives/AbstractPrimitive.as" />
+				<file name="BezierPatch.as" url="templates/away3d/primitives/BezierPatch.as" />
+				<file name="Cone.as" url="templates/away3d/primitives/Cone.as" />
+				<file name="Cube.as" url="templates/away3d/primitives/Cube.as" />
+				<file name="CubeMappingType.as" url="templates/away3d/primitives/CubeMappingType.as" />
+				<file name="CurveLineSegment.as" url="templates/away3d/primitives/CurveLineSegment.as" />
+				<file name="Cylinder.as" url="templates/away3d/primitives/Cylinder.as" />
+				<folder name="data">
+					<file name="CubeMaterialsData.as" url="templates/away3d/primitives/data/CubeMaterialsData.as" />
+					<file name="PatchData.as" url="templates/away3d/primitives/data/PatchData.as" />
+				</folder>
+				<file name="GeodesicSphere.as" url="templates/away3d/primitives/GeodesicSphere.as" />
+				<file name="GridPlane.as" url="templates/away3d/primitives/GridPlane.as" />
+				<file name="LineSegment.as" url="templates/away3d/primitives/LineSegment.as" />
+				<file name="Plane.as" url="templates/away3d/primitives/Plane.as" />
+				<file name="ReflectivePlane.as" url="templates/away3d/primitives/ReflectivePlane.as" />
+				<file name="RegularPolygon.as" url="templates/away3d/primitives/RegularPolygon.as" />
+				<file name="RoundedCube.as" url="templates/away3d/primitives/RoundedCube.as" />
+				<file name="SeaTurtle.as" url="templates/away3d/primitives/SeaTurtle.as" />
+				<file name="Skybox.as" url="templates/away3d/primitives/Skybox.as" />
+				<file name="Skybox6.as" url="templates/away3d/primitives/Skybox6.as" />
+				<file name="Sphere.as" url="templates/away3d/primitives/Sphere.as" />
+				<file name="TextField3D.as" url="templates/away3d/primitives/TextField3D.as" />
+				<file name="Torus.as" url="templates/away3d/primitives/Torus.as" />
+				<file name="Triangle.as" url="templates/away3d/primitives/Triangle.as" />
+				<file name="Trident.as" url="templates/away3d/primitives/Trident.as" />
+				<folder name="utils">
+					<file name="CubeFaces.as" url="templates/away3d/primitives/utils/CubeFaces.as" />
+				</folder>
+				<file name="WireCone.as" url="templates/away3d/primitives/WireCone.as" />
+				<file name="WireCube.as" url="templates/away3d/primitives/WireCube.as" />
+				<file name="WireCylinder.as" url="templates/away3d/primitives/WireCylinder.as" />
+				<file name="WirePlane.as" url="templates/away3d/primitives/WirePlane.as" />
+				<file name="WireRegularPolygon.as" url="templates/away3d/primitives/WireRegularPolygon.as" />
+				<file name="WireSphere.as" url="templates/away3d/primitives/WireSphere.as" />
+				<file name="WireTorus.as" url="templates/away3d/primitives/WireTorus.as" />
+			</folder>
+			<folder name="sprites">
+				<file name="DirSprite2D.as" url="templates/away3d/sprites/DirSprite2D.as" />
+				<file name="DofSprite2D.as" url="templates/away3d/sprites/DofSprite2D.as" />
+				<file name="MovieClipSprite.as" url="templates/away3d/sprites/MovieClipSprite.as" />
+				<file name="Sprite2D.as" url="templates/away3d/sprites/Sprite2D.as" />
+				<file name="Sprite3D.as" url="templates/away3d/sprites/Sprite3D.as" />
+			</folder>
+			<folder name="test">
+				<file name="BaseDemo.as" url="templates/away3d/test/BaseDemo.as" />
+				<file name="Button.as" url="templates/away3d/test/Button.as" />
+				<file name="Panel.as" url="templates/away3d/test/Panel.as" />
+				<file name="SimpleView.as" url="templates/away3d/test/SimpleView.as" />
+				<file name="Slide.as" url="templates/away3d/test/Slide.as" />
+			</folder>
+			<folder name="tools">
+				<file name="Align.as" url="templates/away3d/tools/Align.as" />
+				<file name="Explode.as" url="templates/away3d/tools/Explode.as" />
+				<file name="Grid.as" url="templates/away3d/tools/Grid.as" />
+				<file name="Merge.as" url="templates/away3d/tools/Merge.as" />
+				<file name="Mirror.as" url="templates/away3d/tools/Mirror.as" />
+				<file name="Replicate.as" url="templates/away3d/tools/Replicate.as" />
+				<file name="Weld.as" url="templates/away3d/tools/Weld.as" />
+			</folder>
+		</folder>
+		<folder name="nochump">
+			<file name="lgpl.txt" url="templates/nochump/lgpl.txt" />
+			<folder name="util">
+				<folder name="zip">
+					<file name="CRC32.as" url="templates/nochump/util/zip/CRC32.as" />
+					<file name="Deflater.as" url="templates/nochump/util/zip/Deflater.as" />
+					<file name="Inflater.as" url="templates/nochump/util/zip/Inflater.as" />
+					<file name="ZipConstants.as" url="templates/nochump/util/zip/ZipConstants.as" />
+					<file name="ZipEntry.as" url="templates/nochump/util/zip/ZipEntry.as" />
+					<file name="ZipError.as" url="templates/nochump/util/zip/ZipError.as" />
+					<file name="ZipErrorEvent.as" url="templates/nochump/util/zip/ZipErrorEvent.as" />
+					<file name="ZipEvent.as" url="templates/nochump/util/zip/ZipEvent.as" />
+					<file name="ZipFile.as" url="templates/nochump/util/zip/ZipFile.as" />
+					<file name="ZipOutput.as" url="templates/nochump/util/zip/ZipOutput.as" />
+				</folder>
+			</folder>
+		</folder>
+		<folder name="wumedia">
+			<folder name="parsers">
+				<folder name="swf">
+					<file name="Color.as" url="templates/wumedia/parsers/swf/Color.as" />
+					<file name="Data.as" url="templates/wumedia/parsers/swf/Data.as" />
+					<file name="DefineFont.as" url="templates/wumedia/parsers/swf/DefineFont.as" />
+					<file name="DefineShape.as" url="templates/wumedia/parsers/swf/DefineShape.as" />
+					<file name="Edge.as" url="templates/wumedia/parsers/swf/Edge.as" />
+					<file name="FillStyle.as" url="templates/wumedia/parsers/swf/FillStyle.as" />
+					<file name="KerningRecord.as" url="templates/wumedia/parsers/swf/KerningRecord.as" />
+					<file name="LineStyle.as" url="templates/wumedia/parsers/swf/LineStyle.as" />
+					<file name="ShapeRecord.as" url="templates/wumedia/parsers/swf/ShapeRecord.as" />
+					<file name="SWFParser.as" url="templates/wumedia/parsers/swf/SWFParser.as" />
+					<file name="Tag.as" url="templates/wumedia/parsers/swf/Tag.as" />
+					<file name="TagTypes.as" url="templates/wumedia/parsers/swf/TagTypes.as" />
+				</folder>
+			</folder>
+			<folder name="vector">
+				<file name="VectorShapes.as" url="templates/wumedia/vector/VectorShapes.as" />
+				<file name="VectorText.as" url="templates/wumedia/vector/VectorText.as" />
+			</folder>
+		</folder>
+	</library>
+	<library name="Facebook 3.4" id="facebook">
+		<folder name="com">
+			<folder name="adobe">
+				<folder name="crypto">
+					<file name='MD5.as' url='templates/com/adobe/crypto/MD5.as' />
+				</folder>
+				<folder name="images">
+					<file name='BitString.as' url='templates/com/adobe/images/BitString.as' />
+					<file name='JPGEncoder.as' url='templates/com/adobe/images/JPGEncoder.as' />
+					<file name='PNGEncoder.as' url='templates/com/adobe/images/PNGEncoder.as' />
+				</folder>
+				<folder name="serialization">
+					<folder name="json">
+						<file name='JSON.as' url='templates/com/adobe/serialization/json/JSON.as' />
+						<file name='JSONDecoder.as' url='templates/com/adobe/serialization/json/JSONDecoder.as' />
+						<file name='JSONEncoder.as' url='templates/com/adobe/serialization/json/JSONEncoder.as' />
+						<file name='JSONParseError.as' url='templates/com/adobe/serialization/json/JSONParseError.as' />
+						<file name='JSONToken.as' url='templates/com/adobe/serialization/json/JSONToken.as' />
+						<file name='JSONTokenizer.as' url='templates/com/adobe/serialization/json/JSONTokenizer.as' />
+						<file name='JSONTokenType.as' url='templates/com/adobe/serialization/json/JSONTokenType.as' />
+					</folder>
+				</folder>
+				<folder name="utils">
+					<file name='IntUtil.as' url='templates/com/adobe/utils/IntUtil.as' />
+				</folder>
+			</folder>
+			<folder name="facebook">
+				<folder name="air">
+					<file name='JSONCall.as' url='templates/com/facebook/air/JSONCall.as' />
+					<file name='JSONEvent.as' url='templates/com/facebook/air/JSONEvent.as' />
+					<file name='SessionData.as' url='templates/com/facebook/air/SessionData.as' />
+				</folder>
+				<folder name="commands">
+					<folder name="admin">
+						<file name='BanUsers.as' url='templates/com/facebook/commands/admin/BanUsers.as' />
+						<file name='GetAllocation.as' url='templates/com/facebook/commands/admin/GetAllocation.as' />
+						<file name='GetAppProperties.as' url='templates/com/facebook/commands/admin/GetAppProperties.as' />
+						<file name='GetBannedUsers.as' url='templates/com/facebook/commands/admin/GetBannedUsers.as' />
+						<file name='GetMetrics.as' url='templates/com/facebook/commands/admin/GetMetrics.as' />
+						<file name='GetRestrictionInfo.as' url='templates/com/facebook/commands/admin/GetRestrictionInfo.as' />
+						<file name='SetAppProperties.as' url='templates/com/facebook/commands/admin/SetAppProperties.as' />
+						<file name='SetRestrictionInfo.as' url='templates/com/facebook/commands/admin/SetRestrictionInfo.as' />
+						<file name='UnbanUsers.as' url='templates/com/facebook/commands/admin/UnbanUsers.as' />
+					</folder>
+					<folder name="application">
+						<file name='GetPublicInfo.as' url='templates/com/facebook/commands/application/GetPublicInfo.as' />
+					</folder>
+					<folder name="auth">
+						<file name='CreateToken.as' url='templates/com/facebook/commands/auth/CreateToken.as' />
+						<file name='ExpireSession.as' url='templates/com/facebook/commands/auth/ExpireSession.as' />
+						<file name='GetSession.as' url='templates/com/facebook/commands/auth/GetSession.as' />
+						<file name='PromoteSession.as' url='templates/com/facebook/commands/auth/PromoteSession.as' />
+						<file name='RevokeAuthorization.as' url='templates/com/facebook/commands/auth/RevokeAuthorization.as' />
+						<file name='RevokeExtendedPermission.as' url='templates/com/facebook/commands/auth/RevokeExtendedPermission.as' />
+					</folder>
+					<folder name="batch">
+						<file name='BatchRun.as' url='templates/com/facebook/commands/batch/BatchRun.as' />
+					</folder>
+					<folder name="comments">
+						<file name='AddComments.as' url='templates/com/facebook/commands/comments/AddComments.as' />
+						<file name='GetComments.as' url='templates/com/facebook/commands/comments/GetComments.as' />
+						<file name='RemoveComments.as' url='templates/com/facebook/commands/comments/RemoveComments.as' />
+					</folder>
+					<folder name="connect">
+						<file name='GetUnconnectedFriendsCount.as' url='templates/com/facebook/commands/connect/GetUnconnectedFriendsCount.as' />
+						<file name='RegisterUsers.as' url='templates/com/facebook/commands/connect/RegisterUsers.as' />
+						<file name='UnregisterUsers.as' url='templates/com/facebook/commands/connect/UnregisterUsers.as' />
+					</folder>
+					<folder name="data">
+						<file name='CreateObject.as' url='templates/com/facebook/commands/data/CreateObject.as' />
+						<file name='CreateObjectType.as' url='templates/com/facebook/commands/data/CreateObjectType.as' />
+						<file name='DefineAssociation.as' url='templates/com/facebook/commands/data/DefineAssociation.as' />
+						<file name='DefineObjectProperty.as' url='templates/com/facebook/commands/data/DefineObjectProperty.as' />
+						<file name='DeleteObject.as' url='templates/com/facebook/commands/data/DeleteObject.as' />
+						<file name='DeleteObjects.as' url='templates/com/facebook/commands/data/DeleteObjects.as' />
+						<file name='DropObjectType.as' url='templates/com/facebook/commands/data/DropObjectType.as' />
+						<file name='GetAssociatedObjectCount.as' url='templates/com/facebook/commands/data/GetAssociatedObjectCount.as' />
+						<file name='GetAssociatedObjectCounts.as' url='templates/com/facebook/commands/data/GetAssociatedObjectCounts.as' />
+						<file name='GetAssociatedObjects.as' url='templates/com/facebook/commands/data/GetAssociatedObjects.as' />
+						<file name='GetAssociationDefinition.as' url='templates/com/facebook/commands/data/GetAssociationDefinition.as' />
+						<file name='GetAssociationDefinitions.as' url='templates/com/facebook/commands/data/GetAssociationDefinitions.as' />
+						<file name='GetAssociations.as' url='templates/com/facebook/commands/data/GetAssociations.as' />
+						<file name='GetCookies.as' url='templates/com/facebook/commands/data/GetCookies.as' />
+						<file name='GetCookiesData.as' url='templates/com/facebook/commands/data/GetCookiesData.as' />
+						<file name='GetHashValue.as' url='templates/com/facebook/commands/data/GetHashValue.as' />
+						<file name='GetObject.as' url='templates/com/facebook/commands/data/GetObject.as' />
+						<file name='GetObjectProperty.as' url='templates/com/facebook/commands/data/GetObjectProperty.as' />
+						<file name='GetObjects.as' url='templates/com/facebook/commands/data/GetObjects.as' />
+						<file name='GetObjectType.as' url='templates/com/facebook/commands/data/GetObjectType.as' />
+						<file name='GetObjectTypes.as' url='templates/com/facebook/commands/data/GetObjectTypes.as' />
+						<file name='GetUserPreference.as' url='templates/com/facebook/commands/data/GetUserPreference.as' />
+						<file name='GetUserPreferences.as' url='templates/com/facebook/commands/data/GetUserPreferences.as' />
+						<file name='IncHashValue.as' url='templates/com/facebook/commands/data/IncHashValue.as' />
+						<file name='RemoveAssociatedObjects.as' url='templates/com/facebook/commands/data/RemoveAssociatedObjects.as' />
+						<file name='RemoveAssociation.as' url='templates/com/facebook/commands/data/RemoveAssociation.as' />
+						<file name='RemoveAssociations.as' url='templates/com/facebook/commands/data/RemoveAssociations.as' />
+						<file name='RemoveHashKey.as' url='templates/com/facebook/commands/data/RemoveHashKey.as' />
+						<file name='RemoveHashKeys.as' url='templates/com/facebook/commands/data/RemoveHashKeys.as' />
+						<file name='RenameAssociation.as' url='templates/com/facebook/commands/data/RenameAssociation.as' />
+						<file name='RenameObjectProperty.as' url='templates/com/facebook/commands/data/RenameObjectProperty.as' />
+						<file name='RenameObjectType.as' url='templates/com/facebook/commands/data/RenameObjectType.as' />
+						<file name='SetAssociation.as' url='templates/com/facebook/commands/data/SetAssociation.as' />
+						<file name='SetAssociations.as' url='templates/com/facebook/commands/data/SetAssociations.as' />
+						<file name='SetCookie.as' url='templates/com/facebook/commands/data/SetCookie.as' />
+						<file name='SetHashValue.as' url='templates/com/facebook/commands/data/SetHashValue.as' />
+						<file name='SetObjectProperty.as' url='templates/com/facebook/commands/data/SetObjectProperty.as' />
+						<file name='SetUserPreference.as' url='templates/com/facebook/commands/data/SetUserPreference.as' />
+						<file name='SetUserPreferences.as' url='templates/com/facebook/commands/data/SetUserPreferences.as' />
+						<file name='UndefineAssociation.as' url='templates/com/facebook/commands/data/UndefineAssociation.as' />
+						<file name='UndefineObjectProperty.as' url='templates/com/facebook/commands/data/UndefineObjectProperty.as' />
+						<file name='UpdateObject.as' url='templates/com/facebook/commands/data/UpdateObject.as' />
+					</folder>
+					<folder name="events">
+						<file name='CancelEvent.as' url='templates/com/facebook/commands/events/CancelEvent.as' />
+						<file name='CreateEvent.as' url='templates/com/facebook/commands/events/CreateEvent.as' />
+						<file name='EditEvent.as' url='templates/com/facebook/commands/events/EditEvent.as' />
+						<file name='GetEvents.as' url='templates/com/facebook/commands/events/GetEvents.as' />
+						<file name='GetMembers.as' url='templates/com/facebook/commands/events/GetMembers.as' />
+						<file name='Invite.as' url='templates/com/facebook/commands/events/Invite.as' />
+						<file name='RSVP.as' url='templates/com/facebook/commands/events/RSVP.as' />
+					</folder>
+					<folder name="fbml">
+						<file name='DeleteCustomTags.as' url='templates/com/facebook/commands/fbml/DeleteCustomTags.as' />
+						<file name='GetCustomTags.as' url='templates/com/facebook/commands/fbml/GetCustomTags.as' />
+						<file name='RefreshImgSrc.as' url='templates/com/facebook/commands/fbml/RefreshImgSrc.as' />
+						<file name='RefreshRefUrl.as' url='templates/com/facebook/commands/fbml/RefreshRefUrl.as' />
+						<file name='RegisterCustomTags.as' url='templates/com/facebook/commands/fbml/RegisterCustomTags.as' />
+						<file name='SetRefHandle.as' url='templates/com/facebook/commands/fbml/SetRefHandle.as' />
+					</folder>
+					<folder name="feed">
+						<file name='DeactivateTemplateBundleByID.as' url='templates/com/facebook/commands/feed/DeactivateTemplateBundleByID.as' />
+						<file name='GetRegisteredTemplateBundleByID.as' url='templates/com/facebook/commands/feed/GetRegisteredTemplateBundleByID.as' />
+						<file name='GetRegisteredTemplateBundles.as' url='templates/com/facebook/commands/feed/GetRegisteredTemplateBundles.as' />
+						<file name='PublishTemplatizedAction.as' url='templates/com/facebook/commands/feed/PublishTemplatizedAction.as' />
+						<file name='PublishUserAction.as' url='templates/com/facebook/commands/feed/PublishUserAction.as' />
+						<file name='RegisterTemplateBundle.as' url='templates/com/facebook/commands/feed/RegisterTemplateBundle.as' />
+					</folder>
+					<folder name="fql">
+						<file name='FqlMultiquery.as' url='templates/com/facebook/commands/fql/FqlMultiquery.as' />
+						<file name='FqlQuery.as' url='templates/com/facebook/commands/fql/FqlQuery.as' />
+					</folder>
+					<folder name="friends">
+						<file name='AreFriends.as' url='templates/com/facebook/commands/friends/AreFriends.as' />
+						<file name='GetAppUsers.as' url='templates/com/facebook/commands/friends/GetAppUsers.as' />
+						<file name='GetFriends.as' url='templates/com/facebook/commands/friends/GetFriends.as' />
+						<file name='GetLists.as' url='templates/com/facebook/commands/friends/GetLists.as' />
+						<file name='GetMutualFriends.as' url='templates/com/facebook/commands/friends/GetMutualFriends.as' />
+					</folder>
+					<folder name="groups">
+						<file name='GetGroupMembers.as' url='templates/com/facebook/commands/groups/GetGroupMembers.as' />
+						<file name='GetGroups.as' url='templates/com/facebook/commands/groups/GetGroups.as' />
+					</folder>
+					<folder name="intl">
+						<file name='GetTranslations.as' url='templates/com/facebook/commands/intl/GetTranslations.as' />
+						<file name='UploadNativeStrings.as' url='templates/com/facebook/commands/intl/UploadNativeStrings.as' />
+					</folder>
+					<folder name="links">
+						<file name='GetLinks.as' url='templates/com/facebook/commands/links/GetLinks.as' />
+						<file name='PostLink.as' url='templates/com/facebook/commands/links/PostLink.as' />
+					</folder>
+					<folder name="livemessage">
+						<file name='SendLiveMessage.as' url='templates/com/facebook/commands/livemessage/SendLiveMessage.as' />
+					</folder>
+					<folder name="message">
+						<file name='GetThreadsInFolder.as' url='templates/com/facebook/commands/message/GetThreadsInFolder.as' />
+					</folder>
+					<folder name="notes">
+						<file name='CreateNotes.as' url='templates/com/facebook/commands/notes/CreateNotes.as' />
+						<file name='DeleteNotes.as' url='templates/com/facebook/commands/notes/DeleteNotes.as' />
+						<file name='EditNotes.as' url='templates/com/facebook/commands/notes/EditNotes.as' />
+						<file name='GetNotes.as' url='templates/com/facebook/commands/notes/GetNotes.as' />
+					</folder>
+					<folder name="notifications">
+						<file name='GetList.as' url='templates/com/facebook/commands/notifications/GetList.as' />
+						<file name='GetNotifications.as' url='templates/com/facebook/commands/notifications/GetNotifications.as' />
+						<file name='MarkRead.as' url='templates/com/facebook/commands/notifications/MarkRead.as' />
+						<file name='SendEmail.as' url='templates/com/facebook/commands/notifications/SendEmail.as' />
+						<file name='SendNotification.as' url='templates/com/facebook/commands/notifications/SendNotification.as' />
+					</folder>
+					<folder name="pages">
+						<file name='GetPageInfo.as' url='templates/com/facebook/commands/pages/GetPageInfo.as' />
+						<file name='IsAdmin.as' url='templates/com/facebook/commands/pages/IsAdmin.as' />
+						<file name='IsAppAdded.as' url='templates/com/facebook/commands/pages/IsAppAdded.as' />
+						<file name='IsFan.as' url='templates/com/facebook/commands/pages/IsFan.as' />
+					</folder>
+					<folder name="photos">
+						<file name='AddTag.as' url='templates/com/facebook/commands/photos/AddTag.as' />
+						<file name='CreateAlbum.as' url='templates/com/facebook/commands/photos/CreateAlbum.as' />
+						<file name='GetAlbums.as' url='templates/com/facebook/commands/photos/GetAlbums.as' />
+						<file name='GetPhotos.as' url='templates/com/facebook/commands/photos/GetPhotos.as' />
+						<file name='GetTags.as' url='templates/com/facebook/commands/photos/GetTags.as' />
+						<file name='UploadPhoto.as' url='templates/com/facebook/commands/photos/UploadPhoto.as' />
+						<file name='UploadPhotoTypes.as' url='templates/com/facebook/commands/photos/UploadPhotoTypes.as' />
+					</folder>
+					<folder name="profile">
+						<file name='GetFBML.as' url='templates/com/facebook/commands/profile/GetFBML.as' />
+						<file name='GetInfoOptions.as' url='templates/com/facebook/commands/profile/GetInfoOptions.as' />
+						<file name='ProfileGetInfo.as' url='templates/com/facebook/commands/profile/ProfileGetInfo.as' />
+						<file name='SetFBML.as' url='templates/com/facebook/commands/profile/SetFBML.as' />
+						<file name='SetInfo.as' url='templates/com/facebook/commands/profile/SetInfo.as' />
+						<file name='SetInfoOptions.as' url='templates/com/facebook/commands/profile/SetInfoOptions.as' />
+					</folder>
+					<folder name="sms">
+						<file name='CanSendSMS.as' url='templates/com/facebook/commands/sms/CanSendSMS.as' />
+						<file name='SendSMS.as' url='templates/com/facebook/commands/sms/SendSMS.as' />
+					</folder>
+					<folder name="status">
+						<file name='GetStatus.as' url='templates/com/facebook/commands/status/GetStatus.as' />
+						<file name='SetStatus.as' url='templates/com/facebook/commands/status/SetStatus.as' />
+					</folder>
+					<folder name="stream">
+						<file name='AddComment.as' url='templates/com/facebook/commands/stream/AddComment.as' />
+						<file name='AddLike.as' url='templates/com/facebook/commands/stream/AddLike.as' />
+						<file name='GetComments.as' url='templates/com/facebook/commands/stream/GetComments.as' />
+						<file name='GetFilters.as' url='templates/com/facebook/commands/stream/GetFilters.as' />
+						<file name='GetStream.as' url='templates/com/facebook/commands/stream/GetStream.as' />
+						<file name='PublishPost.as' url='templates/com/facebook/commands/stream/PublishPost.as' />
+						<file name='RemoveComment.as' url='templates/com/facebook/commands/stream/RemoveComment.as' />
+						<file name='RemoveLike.as' url='templates/com/facebook/commands/stream/RemoveLike.as' />
+						<file name='RemovePost.as' url='templates/com/facebook/commands/stream/RemovePost.as' />
+					</folder>
+					<folder name="users">
+						<file name='GetInfo.as' url='templates/com/facebook/commands/users/GetInfo.as' />
+						<file name='GetLoggedInUser.as' url='templates/com/facebook/commands/users/GetLoggedInUser.as' />
+						<file name='GetStandardInfo.as' url='templates/com/facebook/commands/users/GetStandardInfo.as' />
+						<file name='HasAppPermission.as' url='templates/com/facebook/commands/users/HasAppPermission.as' />
+						<file name='IsAppUser.as' url='templates/com/facebook/commands/users/IsAppUser.as' />
+						<file name='IsVerified.as' url='templates/com/facebook/commands/users/IsVerified.as' />
+						<file name='SetStatus.as' url='templates/com/facebook/commands/users/SetStatus.as' />
+					</folder>
+					<folder name="video">
+						<file name='GetUploadLimits.as' url='templates/com/facebook/commands/video/GetUploadLimits.as' />
+						<file name='UploadVideo.as' url='templates/com/facebook/commands/video/UploadVideo.as' />
+						<file name='UploadVideoTypes.as' url='templates/com/facebook/commands/video/UploadVideoTypes.as' />
+					</folder>
+				</folder>
+				<folder name="data">
+					<folder name="admin">
+						<file name='GetAllocationData.as' url='templates/com/facebook/data/admin/GetAllocationData.as' />
+						<file name='GetAllocationValues.as' url='templates/com/facebook/data/admin/GetAllocationValues.as' />
+						<file name='GetAppPropertiesData.as' url='templates/com/facebook/data/admin/GetAppPropertiesData.as' />
+						<file name='GetMetricsData.as' url='templates/com/facebook/data/admin/GetMetricsData.as' />
+						<file name='GetMetricsPeriodValues.as' url='templates/com/facebook/data/admin/GetMetricsPeriodValues.as' />
+						<file name='GetMetricsValues.as' url='templates/com/facebook/data/admin/GetMetricsValues.as' />
+						<file name='MetricsData.as' url='templates/com/facebook/data/admin/MetricsData.as' />
+						<file name='MetricsDataCollection.as' url='templates/com/facebook/data/admin/MetricsDataCollection.as' />
+						<file name='RestrictionData.as' url='templates/com/facebook/data/admin/RestrictionData.as' />
+					</folder>
+					<folder name="application">
+						<file name='GetPublicInfoData.as' url='templates/com/facebook/data/application/GetPublicInfoData.as' />
+					</folder>
+					<folder name="auth">
+						<file name='ExtendedPermissionValues.as' url='templates/com/facebook/data/auth/ExtendedPermissionValues.as' />
+						<file name='GetSessionData.as' url='templates/com/facebook/data/auth/GetSessionData.as' />
+					</folder>
+					<folder name="batch">
+						<file name='BatchCollection.as' url='templates/com/facebook/data/batch/BatchCollection.as' />
+						<file name='BatchResult.as' url='templates/com/facebook/data/batch/BatchResult.as' />
+					</folder>
+					<folder name="connect">
+						<file name='ConnectAccountMapCollection.as' url='templates/com/facebook/data/connect/ConnectAccountMapCollection.as' />
+						<file name='ConnectAccountMapData.as' url='templates/com/facebook/data/connect/ConnectAccountMapData.as' />
+					</folder>
+					<folder name="data">
+						<file name='AssocInfoData.as' url='templates/com/facebook/data/data/AssocInfoData.as' />
+						<file name='AssocTypeValue.as' url='templates/com/facebook/data/data/AssocTypeValue.as' />
+						<file name='GetObjectTypeData.as' url='templates/com/facebook/data/data/GetObjectTypeData.as' />
+						<file name='GetObjectTypesData.as' url='templates/com/facebook/data/data/GetObjectTypesData.as' />
+						<file name='GetUserPreferencesData.as' url='templates/com/facebook/data/data/GetUserPreferencesData.as' />
+						<file name='NameValueCollection.as' url='templates/com/facebook/data/data/NameValueCollection.as' />
+						<file name='NameValueData.as' url='templates/com/facebook/data/data/NameValueData.as' />
+						<file name='ObjectTypesCollection.as' url='templates/com/facebook/data/data/ObjectTypesCollection.as' />
+						<file name='ObjectTypesData.as' url='templates/com/facebook/data/data/ObjectTypesData.as' />
+						<file name='PreferenceCollection.as' url='templates/com/facebook/data/data/PreferenceCollection.as' />
+						<file name='PreferenceData.as' url='templates/com/facebook/data/data/PreferenceData.as' />
+						<file name='SetAssociationsData.as' url='templates/com/facebook/data/data/SetAssociationsData.as' />
+						<file name='SetAssociationsDataCollection.as' url='templates/com/facebook/data/data/SetAssociationsDataCollection.as' />
+					</folder>
+					<folder name="events">
+						<file name='CreateEventData.as' url='templates/com/facebook/data/events/CreateEventData.as' />
+						<file name='EditEventData.as' url='templates/com/facebook/data/events/EditEventData.as' />
+						<file name='EventCategoriesValues.as' url='templates/com/facebook/data/events/EventCategoriesValues.as' />
+						<file name='EventCollection.as' url='templates/com/facebook/data/events/EventCollection.as' />
+						<file name='EventData.as' url='templates/com/facebook/data/events/EventData.as' />
+						<file name='EventPrivacyTypeValues.as' url='templates/com/facebook/data/events/EventPrivacyTypeValues.as' />
+						<file name='EventSubCategoriesValues.as' url='templates/com/facebook/data/events/EventSubCategoriesValues.as' />
+						<file name='FacebookEventData.as' url='templates/com/facebook/data/events/FacebookEventData.as' />
+						<file name='FacebookEventDataCollection.as' url='templates/com/facebook/data/events/FacebookEventDataCollection.as' />
+						<file name='GetEventsData.as' url='templates/com/facebook/data/events/GetEventsData.as' />
+						<file name='GetMembersData.as' url='templates/com/facebook/data/events/GetMembersData.as' />
+						<file name='RSVPStatus.as' url='templates/com/facebook/data/events/RSVPStatus.as' />
+						<file name='RSVPStatusValues.as' url='templates/com/facebook/data/events/RSVPStatusValues.as' />
+					</folder>
+					<folder name="fbml">
+						<file name='AbstractTagData.as' url='templates/com/facebook/data/fbml/AbstractTagData.as' />
+						<file name='AttributeCollection.as' url='templates/com/facebook/data/fbml/AttributeCollection.as' />
+						<file name='AttributeData.as' url='templates/com/facebook/data/fbml/AttributeData.as' />
+						<file name='ContainerTagData.as' url='templates/com/facebook/data/fbml/ContainerTagData.as' />
+						<file name='GetCustomTagsData.as' url='templates/com/facebook/data/fbml/GetCustomTagsData.as' />
+						<file name='LeafTagData.as' url='templates/com/facebook/data/fbml/LeafTagData.as' />
+						<file name='TagCollection.as' url='templates/com/facebook/data/fbml/TagCollection.as' />
+						<file name='TagData.as' url='templates/com/facebook/data/fbml/TagData.as' />
+					</folder>
+					<folder name="feed">
+						<file name='ActionLinkCollection.as' url='templates/com/facebook/data/feed/ActionLinkCollection.as' />
+						<file name='ActionLinkData.as' url='templates/com/facebook/data/feed/ActionLinkData.as' />
+						<file name='GetRegisteredTemplateBundleByIDData.as' url='templates/com/facebook/data/feed/GetRegisteredTemplateBundleByIDData.as' />
+						<file name='GetRegisteredTemplateBundleData.as' url='templates/com/facebook/data/feed/GetRegisteredTemplateBundleData.as' />
+						<file name='StorySizeValues.as' url='templates/com/facebook/data/feed/StorySizeValues.as' />
+						<file name='TemplateBundleCollection.as' url='templates/com/facebook/data/feed/TemplateBundleCollection.as' />
+						<file name='TemplateCollection.as' url='templates/com/facebook/data/feed/TemplateCollection.as' />
+						<file name='TemplateData.as' url='templates/com/facebook/data/feed/TemplateData.as' />
+					</folder>
+					<folder name="friends">
+						<file name='AreFriendsData.as' url='templates/com/facebook/data/friends/AreFriendsData.as' />
+						<file name='FriendsCollection.as' url='templates/com/facebook/data/friends/FriendsCollection.as' />
+						<file name='FriendsData.as' url='templates/com/facebook/data/friends/FriendsData.as' />
+						<file name='GetAppUserData.as' url='templates/com/facebook/data/friends/GetAppUserData.as' />
+						<file name='GetFriendsData.as' url='templates/com/facebook/data/friends/GetFriendsData.as' />
+						<file name='GetListsData.as' url='templates/com/facebook/data/friends/GetListsData.as' />
+						<file name='GetLoggedInUserData.as' url='templates/com/facebook/data/friends/GetLoggedInUserData.as' />
+						<file name='ListsData.as' url='templates/com/facebook/data/friends/ListsData.as' />
+					</folder>
+					<folder name="groups">
+						<file name='GetGroupData.as' url='templates/com/facebook/data/groups/GetGroupData.as' />
+						<file name='GetMemberData.as' url='templates/com/facebook/data/groups/GetMemberData.as' />
+						<file name='GroupCollection.as' url='templates/com/facebook/data/groups/GroupCollection.as' />
+						<file name='GroupData.as' url='templates/com/facebook/data/groups/GroupData.as' />
+					</folder>
+					<folder name="notes">
+						<file name='GetNotesData.as' url='templates/com/facebook/data/notes/GetNotesData.as' />
+						<file name='NoteData.as' url='templates/com/facebook/data/notes/NoteData.as' />
+						<file name='NotesCollection.as' url='templates/com/facebook/data/notes/NotesCollection.as' />
+					</folder>
+					<folder name="notifications">
+						<file name='GetNotificationData.as' url='templates/com/facebook/data/notifications/GetNotificationData.as' />
+						<file name='GetNotificationValue.as' url='templates/com/facebook/data/notifications/GetNotificationValue.as' />
+						<file name='NotificationCollection.as' url='templates/com/facebook/data/notifications/NotificationCollection.as' />
+						<file name='NotificationMessageData.as' url='templates/com/facebook/data/notifications/NotificationMessageData.as' />
+						<file name='NotificationPokeData.as' url='templates/com/facebook/data/notifications/NotificationPokeData.as' />
+						<file name='NotificationShareData.as' url='templates/com/facebook/data/notifications/NotificationShareData.as' />
+					</folder>
+					<folder name="pages">
+						<file name='GenreData.as' url='templates/com/facebook/data/pages/GenreData.as' />
+						<file name='GetPageInfoData.as' url='templates/com/facebook/data/pages/GetPageInfoData.as' />
+						<file name='PageInfoCollection.as' url='templates/com/facebook/data/pages/PageInfoCollection.as' />
+						<file name='PageInfoData.as' url='templates/com/facebook/data/pages/PageInfoData.as' />
+						<file name='PageInfoFieldValues.as' url='templates/com/facebook/data/pages/PageInfoFieldValues.as' />
+						<file name='PageTypeValue.as' url='templates/com/facebook/data/pages/PageTypeValue.as' />
+					</folder>
+					<folder name="photos">
+						<file name='AlbumCollection.as' url='templates/com/facebook/data/photos/AlbumCollection.as' />
+						<file name='AlbumData.as' url='templates/com/facebook/data/photos/AlbumData.as' />
+						<file name='FacebookPhoto.as' url='templates/com/facebook/data/photos/FacebookPhoto.as' />
+						<file name='GetAlbumsData.as' url='templates/com/facebook/data/photos/GetAlbumsData.as' />
+						<file name='GetCreateAlbumData.as' url='templates/com/facebook/data/photos/GetCreateAlbumData.as' />
+						<file name='GetPhotosData.as' url='templates/com/facebook/data/photos/GetPhotosData.as' />
+						<file name='GetTagsData.as' url='templates/com/facebook/data/photos/GetTagsData.as' />
+						<file name='PhotoCollection.as' url='templates/com/facebook/data/photos/PhotoCollection.as' />
+						<file name='PhotoData.as' url='templates/com/facebook/data/photos/PhotoData.as' />
+						<file name='PhotoTagCollection.as' url='templates/com/facebook/data/photos/PhotoTagCollection.as' />
+						<file name='PhotoVisibleValue.as' url='templates/com/facebook/data/photos/PhotoVisibleValue.as' />
+						<file name='TagData.as' url='templates/com/facebook/data/photos/TagData.as' />
+					</folder>
+					<folder name="profile">
+						<file name='GetInfoOptionsData.as' url='templates/com/facebook/data/profile/GetInfoOptionsData.as' />
+						<file name='InfoFieldsData.as' url='templates/com/facebook/data/profile/InfoFieldsData.as' />
+						<file name='InfoItemCollection.as' url='templates/com/facebook/data/profile/InfoItemCollection.as' />
+						<file name='InfoItemData.as' url='templates/com/facebook/data/profile/InfoItemData.as' />
+						<file name='ProfileTypeValues.as' url='templates/com/facebook/data/profile/ProfileTypeValues.as' />
+						<file name='SetInfoTypeValue.as' url='templates/com/facebook/data/profile/SetInfoTypeValue.as' />
+					</folder>
+					<folder name="status">
+						<file name='GetStatusData.as' url='templates/com/facebook/data/status/GetStatusData.as' />
+						<file name='Status.as' url='templates/com/facebook/data/status/Status.as' />
+					</folder>
+					<folder name="stream">
+						<file name='ActionLinkCollection.as' url='templates/com/facebook/data/stream/ActionLinkCollection.as' />
+						<file name='ActionLinkData.as' url='templates/com/facebook/data/stream/ActionLinkData.as' />
+						<file name='AttachmentData.as' url='templates/com/facebook/data/stream/AttachmentData.as' />
+						<file name='CommentsData.as' url='templates/com/facebook/data/stream/CommentsData.as' />
+						<file name='FlashMedia.as' url='templates/com/facebook/data/stream/FlashMedia.as' />
+						<file name='GetCommentsData.as' url='templates/com/facebook/data/stream/GetCommentsData.as' />
+						<file name='GetFiltersData.as' url='templates/com/facebook/data/stream/GetFiltersData.as' />
+						<file name='GetStreamData.as' url='templates/com/facebook/data/stream/GetStreamData.as' />
+						<file name='LikesData.as' url='templates/com/facebook/data/stream/LikesData.as' />
+						<file name='MediaTypes.as' url='templates/com/facebook/data/stream/MediaTypes.as' />
+						<file name='MusicMedia.as' url='templates/com/facebook/data/stream/MusicMedia.as' />
+						<file name='PhotoMedia.as' url='templates/com/facebook/data/stream/PhotoMedia.as' />
+						<file name='PostCommentData.as' url='templates/com/facebook/data/stream/PostCommentData.as' />
+						<file name='ProfileCollection.as' url='templates/com/facebook/data/stream/ProfileCollection.as' />
+						<file name='ProfileData.as' url='templates/com/facebook/data/stream/ProfileData.as' />
+						<file name='StoryType.as' url='templates/com/facebook/data/stream/StoryType.as' />
+						<file name='StreamFilterCollection.as' url='templates/com/facebook/data/stream/StreamFilterCollection.as' />
+						<file name='StreamFilterData.as' url='templates/com/facebook/data/stream/StreamFilterData.as' />
+						<file name='StreamMediaData.as' url='templates/com/facebook/data/stream/StreamMediaData.as' />
+						<file name='StreamStoryCollection.as' url='templates/com/facebook/data/stream/StreamStoryCollection.as' />
+						<file name='StreamStoryData.as' url='templates/com/facebook/data/stream/StreamStoryData.as' />
+						<file name='VideoMedia.as' url='templates/com/facebook/data/stream/VideoMedia.as' />
+					</folder>
+					<folder name="users">
+						<file name='AffiliationCollection.as' url='templates/com/facebook/data/application/AffiliationCollection.as' />
+						<file name='AffiliationData.as' url='templates/com/facebook/data/application/AffiliationData.as' />
+						<file name='FacebookUser.as' url='templates/com/facebook/data/application/FacebookUser.as' />
+						<file name='FacebookUserCollection.as' url='templates/com/facebook/data/application/FacebookUserCollection.as' />
+						<file name='FriendsGetData.as' url='templates/com/facebook/data/application/FriendsGetData.as' />
+						<file name='GetInfoData.as' url='templates/com/facebook/data/application/GetInfoData.as' />
+						<file name='GetInfoFieldValues.as' url='templates/com/facebook/data/application/GetInfoFieldValues.as' />
+						<file name='GetStandardInfoData.as' url='templates/com/facebook/data/application/GetStandardInfoData.as' />
+						<file name='HasAppPermissionValues.as' url='templates/com/facebook/data/application/HasAppPermissionValues.as' />
+						<file name='StatusData.as' url='templates/com/facebook/data/application/StatusData.as' />
+						<file name='UserCollection.as' url='templates/com/facebook/data/application/UserCollection.as' />
+						<file name='UserData.as' url='templates/com/facebook/data/application/UserData.as' />
+					</folder>
+					<file name='ArrayResultData.as' url='templates/com/facebook/data/ArrayResultData.as' />
+					<file name='BooleanResultData.as' url='templates/com/facebook/data/BooleanResultData.as' />
+					<file name='FacebookData.as' url='templates/com/facebook/data/FacebookData.as' />
+					<file name='FacebookEducationInfo.as' url='templates/com/facebook/data/FacebookEducationInfo.as' />
+					<file name='FacebookErrorCodes.as' url='templates/com/facebook/data/FacebookErrorCodes.as' />
+					<file name='FacebookErrorReason.as' url='templates/com/facebook/data/FacebookErrorReason.as' />
+					<file name='FacebookLocation.as' url='templates/com/facebook/data/FacebookLocation.as' />
+					<file name='FacebookNetwork.as' url='templates/com/facebook/data/FacebookNetwork.as' />
+					<file name='FacebookWorkInfo.as' url='templates/com/facebook/data/FacebookWorkInfo.as' />
+					<file name='FBJSData.as' url='templates/com/facebook/data/FBJSData.as' />
+					<file name='InternalErrorMessages.as' url='templates/com/facebook/data/InternalErrorMessages.as' />
+					<file name='JSONResultData.as' url='templates/com/facebook/data/JSONResultData.as' />
+					<file name='NumberResultData.as' url='templates/com/facebook/data/NumberResultData.as' />
+					<file name='StringResultData.as' url='templates/com/facebook/data/StringResultData.as' />
+					<file name='XMLDataParser.as' url='templates/com/facebook/data/XMLDataParser.as' />
+				</folder>
+				<folder name="delegates">
+					<file name='AbstractFileUploadDelegate.as' url='templates/com/facebook/delegates/AbstractFileUploadDelegate.as' />
+					<file name='DesktopDelegate.as' url='templates/com/facebook/delegates/DesktopDelegate.as' />
+					<file name='IFacebookCallDelegate.as' url='templates/com/facebook/delegates/IFacebookCallDelegate.as' />
+					<file name='JSDelegate.as' url='templates/com/facebook/delegates/JSDelegate.as' />
+					<file name='RequestHelper.as' url='templates/com/facebook/delegates/RequestHelper.as' />
+					<file name='VideoUploadDelegate.as' url='templates/com/facebook/delegates/VideoUploadDelegate.as' />
+					<file name='WebDelegate.as' url='templates/com/facebook/delegates/WebDelegate.as' />
+					<file name='WebImageUploadDelegate.as' url='templates/com/facebook/delegates/WebImageUploadDelegate.as' />
+				</folder>
+				<folder name="errors">
+					<file name='FacebookError.as' url='templates/com/facebook/errors/FacebookError.as' />
+				</folder>
+				<folder name="events">
+					<file name='FacebookEvent.as' url='templates/com/facebook/events/FacebookEvent.as' />
+				</folder>
+				<folder name="net">
+					<file name='FacebookCall.as' url='templates/com/facebook/net/FacebookCall.as' />
+					<file name='IUploadPhoto.as' url='templates/com/facebook/net/IUploadPhoto.as' />
+					<file name='IUploadVideo.as' url='templates/com/facebook/net/IUploadVideo.as' />
+				</folder>
+				<folder name="session">
+					<file name='DesktopSession.as' url='templates/com/facebook/session/DesktopSession.as' />
+					<file name='IFacebookSession.as' url='templates/com/facebook/session/IFacebookSession.as' />
+					<file name='JSSession.as' url='templates/com/facebook/session/JSSession.as' />
+					<file name='WebSession.as' url='templates/com/facebook/session/WebSession.as' />
+				</folder>
+				<folder name="utils">
+					<file name='DesktopSessionHelper.as' url='templates/com/facebook/utils/DesktopSessionHelper.as' />
+					<file name='EmailHashUtil.as' url='templates/com/facebook/utils/EmailHashUtil.as' />
+					<file name='FacebookArrayCollection.as' url='templates/com/facebook/utils/FacebookArrayCollection.as' />
+					<file name='FacebookConnectUtil.as' url='templates/com/facebook/utils/FacebookConnectUtil.as' />
+					<file name='FacebookDataUtils.as' url='templates/com/facebook/utils/FacebookDataUtils.as' />
+					<file name='FacebookSessionUtil.as' url='templates/com/facebook/utils/FacebookSessionUtil.as' />
+					<file name='FacebookStreamXMLParser.as' url='templates/com/facebook/utils/FacebookStreamXMLParser.as' />
+					<file name='FacebookUserXMLParser.as' url='templates/com/facebook/utils/FacebookUserXMLParser.as' />
+					<file name='FacebookXMLParserUtils.as' url='templates/com/facebook/utils/FacebookXMLParserUtils.as' />
+					<file name='FBJSBridgeUtil.as' url='templates/com/facebook/utils/FBJSBridgeUtil.as' />
+					<file name='IFacebookResultParser.as' url='templates/com/facebook/utils/IFacebookResultParser.as' />
+					<file name='JavascriptRequestHelper.as' url='templates/com/facebook/utils/JavascriptRequestHelper.as' />
+					<file name='PlayerUtils.as' url='templates/com/facebook/utils/PlayerUtils.as' />
+					<file name='PostRequest.as' url='templates/com/facebook/utils/PostRequest.as' />
+					<file name='ValidationUtils.as' url='templates/com/facebook/utils/ValidationUtils.as' />
+				</folder>
+				<folder name="views">
+					<file name='BaseWindow.as' url='templates/com/facebook/views/BaseWindow.as' />
+					<file name='Distractor.as' url='templates/com/facebook/views/Distractor.as' />
+					<file name='LoginWindow.as' url='templates/com/facebook/views/LoginWindow.as' />
+					<file name='PermissionWindow.as' url='templates/com/facebook/views/PermissionWindow.as' />
+				</folder>
+				<file name='Facebook.as' url='templates/com/facebook/Facebook.as' />
+				<file name='facebook_internal.as' url='templates/com/facebook/facebook_internal.as' />
+			</folder>
+		</folder>
+	</library>
+	<library name="Mr. Doob (Stats)" id="stats">
+		<folder name="net">
+			<folder name="hires">
+				<folder name="debug">
+					<file name="Stats.as" url="templates/net/hires/debug/Stats.as" />
+				</folder>
+			</folder>
+		</folder>
+	</library>
+	<library name="De MonsterDebugger 2.5.1" id="demonster">
+		<folder name='nl'>
+			<folder name='demonsters'>
+				<folder name='debugger'>
+					<file name='MonsterDebugger.as' url='templates/nl/demonsters/debugger/MonsterDebugger.as' />
+				</folder>
+			</folder>
+		</folder>
+	</library>
+</libraries>
