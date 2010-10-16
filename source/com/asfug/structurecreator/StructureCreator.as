@@ -22,8 +22,9 @@ package com.asfug.structurecreator
 	public class StructureCreator extends MovieClip
 	{
 		private static const CURRENT_VERSION:String = "2.0.0";
-		private static const VERSION_CHECK:String = "http://flashstructurecreator.googlecode.com/svn/trunk/latestversion.txt";
-		private static const DEFAULT_SCHEMA_URL:String = "http://flashstructurecreator.googlecode.com/svn/trunk/Structure_Schema_1_4.xml";
+		//private static const VERSION_CHECK:String = "http://flashstructurecreator.googlecode.com/svn/trunk/latestversion.txt";
+		private static const VERSION_CHECK:String = "http://structurecreator.com/latestversion.txt";
+		private static const DEFAULT_SCHEMA_URL:String = "http://structurecreator.com/schemas/Structure_Schema_2.xml";
 		private static const DEFAULT_PROJECT_NAME:String = "New Project";
 		private static const DEFAULT_WIDTH:int = 970;
 		private static const DEFAULT_HEIGHT:int = 570;
@@ -164,11 +165,11 @@ package com.asfug.structurecreator
 					flashbuilder_cb.dispatchEvent(new MouseEvent(MouseEvent.CLICK));
 			}
 			
-			var cb:WidgetCheckBox;
+			var cb:WidgetCheckbox;
 			//var cb:CheckBox;
 			for (var i:int = 0; i < _librariesXML.library.length(); i++) 
 			{
-				cb = _custLib.getChildByName('lib_'+_librariesXML.library[i].@id) as WidgetCheckBox;
+				cb = _custLib.getChildByName('lib_'+_librariesXML.library[i].@id) as WidgetCheckbox;
 				//cb = _custLib.getChildByName('lib_'+_librariesXML.library[i].@id) as CheckBox;
 				if (Boolean(_savedSettings.data['lib_' + _librariesXML.library[i].@id]))
 				{
@@ -367,11 +368,11 @@ package com.asfug.structurecreator
 			_savedSettings.data.defaultCb = default_cb.selected;
 			_savedSettings.data.flashdevelopCb = flashdevelop_cb.selected;
 			_savedSettings.data.flashbuilderCb = flashbuilder_cb.selected;
-			var cb:WidgetCheckBox;
+			var cb:WidgetCheckbox;
 			//var cb:CheckBox;
 			for (var i:int = 0; i < _librariesXML.library.length(); i++) 
 			{
-				cb = _custLib.getChildByName('lib_'+_librariesXML.library[i].@id) as WidgetCheckBox;
+				cb = _custLib.getChildByName('lib_'+_librariesXML.library[i].@id) as WidgetCheckbox;
 				//cb = _custLib.getChildByName('lib_'+_librariesXML.library[i].@id) as CheckBox;
 				_savedSettings.data['lib_' + _librariesXML.library[i].@id] = cb.selected;
 			}
@@ -523,13 +524,13 @@ package com.asfug.structurecreator
 			
 			info_txt.text += 'the folder URI for other libs is ' + folderURI + '\n';
 			
-			var cb:WidgetCheckBox;
+			var cb:WidgetCheckbox;
 			var xml:XML;
 			var folderList:XMLList
 			var folderItemXML:XML;
 			for (var i:int = 0; i < _otherLibs.length; i++) 
 			{
-				cb = _otherLibs[i] as WidgetCheckBox;
+				cb = _otherLibs[i] as WidgetCheckbox;
 				if (cb.selected)
 				{
 					xml = _librariesXML.library[i] as XML;
@@ -681,7 +682,7 @@ package com.asfug.structurecreator
 		private function packagesLoaded(e:Event):void 
 		{
 			_librariesXML = new XML(e.currentTarget.data);
-			var cb:WidgetCheckBox;
+			var cb:WidgetCheckbox;
 			//var cb:CheckBox;
 			var yPos:int = 0;
 			_otherLibs = [];
@@ -689,7 +690,7 @@ package com.asfug.structurecreator
 			libraries_scrollpane.source = _custLib;
 			for (var i:int = 0; i < _librariesXML.library.length(); i++) 
 			{
-				cb = new WidgetCheckBox();
+				cb = new WidgetCheckbox();
 				//cb = new CheckBox();
 				cb.label = _librariesXML.library[i].@name;
 				cb.name = 'lib_' + _librariesXML.library[i].@id;

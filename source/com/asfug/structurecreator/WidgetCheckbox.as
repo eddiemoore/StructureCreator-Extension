@@ -6,10 +6,10 @@ package com.asfug.structurecreator
     import flash.display.Shape;
     import flash.text.TextFieldAutoSize;
     
-    public class WidgetCheckBox extends CheckBox
+    public class WidgetCheckbox extends CheckBox
     {
         
-        public function WidgetCheckBox()
+        public function WidgetCheckbox()
         {
         }
         
