@@ -1,0 +1,6 @@
+@charset "utf-8";
+*{margin:0;padding:0;border:0px;}
+html,body{background:#000000;overflow:hidden;height:100%;}
+img{border:0;}
+#container{text-align:center;height:100%;}
+#main{position:absolute;top:50%;left:50%;margin:-%SWFHALFHEIGHT%px 0 0 -%SWFHALFWIDTH%px;}

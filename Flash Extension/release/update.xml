@@ -1,0 +1,3 @@
+<dialog title="Update Available" buttons="accept,cancel">
+<label value="There is an update available for Structure Creator" />
+<label value="Would you like to get the update?" />

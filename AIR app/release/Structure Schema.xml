@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<folder>
+	<folder name='assets' />
+	<folder name='docs' />
+	<folder name='release'>
+		<folder name='css'>
+			<file name='style.css'><![CDATA[*{ margin:0; padding:0 }]]></file>
+		</folder>
+		<folder name='images'>
+			<file name='five_children.jpg' url='http://rosemaryhall.com/images/five_children.jpg' quality='94' />
+			<file name='mainmenu.png' url='http://rosemaryhall.com/images/mainmenu.png' />
+			<file name='anbird1_e0.gif' url='http://www.animatedgif.net/animals/birds/anbird1_e0.gif' />
+			<file name='bird.tif' url='http://www.fba.org.au/programs/images/COPYRIGHT%20(John%20Augusteyn)%20Female%20yellow%20chat.tif' />
+			<!--<file name='There You Go Again.mp3' url='file:///D|/Ed/My Music/There You Go Again.mp3' />
+			<file name='notify.wav' url='file:///C|/WINDOWS/Media/notify.wav' />
+			<file name='Fireworks.ogg' url='http://images.wikia.com/runescape/images/7/7f/Level_99_Fireworks.ogg' />
+			<file name='VIDTEST.avi' url='file:///C|/Program Files/PCDR5/Resources/pcdravi/VIDTEST.avi' />
+			<file name='ibm_bff.mov' url='file:///D|/Ed/IBM/ibm_bff.mov' />
+			<file name='New Stories (Highway Blues).wma' url='file:///C|/Documents and Settings/All Users/Documents/My Music/Sample Music/New Stories (Highway Blues).wma' />
+			<file name='youreka_soundtrack_short.aif' url='file:///D|/Ed/Yahoo/yahoo_purple_hunt_site/sg - my/youreka_soundtrack_short.aif' />
+			<!--<file name='TwistAndShout.mid' url='http://www.mididatabase.com/20091028/rock/beatles/TwistAndShout.mid' />DOESN'T WORK-->
+		</folder>
+		<folder name='js' />
+		<folder name='xml'>
+			<file name='config.xml' url="http://flashstructurecreator.googlecode.com/svn/trunk/templates/config.xml" />
+		</folder>
+		<file name='index.html'><![CDATA[<!DOCTYPE html>
+<head>
+	<title>%PROJECT_TITLE%</title>
+</head>
+<body>
+
+</body>
+</html>]]></file>
+	</folder>
+	<!--<file name='WSJ CODES.xls' url='file:///D|/Ed/WSJ CODES.xls' />
+	<file name='USVN Admin Guide.doc' url='file:///D|/Ed/SVN/USVN Admin Guide.doc' />
+	<file name='Need Chinese Word (Not Done)_OK.ppt' url='file:///D|/Ed/dumex/DBN-HK_CR_201002-004/Need Chinese Word (Not Done)_OK.ppt' />
+	<file name='test2.fla' url='file:///D|/test2.fla' />
+	<file name='Adobe Intro to Scripting.pdf' url='file:///C|/Program Files/Adobe/Adobe Utilities/ExtendScript Toolkit 2/SDK/Adobe Intro to Scripting.pdf' />
+	<file name='TwitterBackground.psd' url='file:///D|/TwitterBackground.psd' />
+	<file name='ARIAL.TTF' url='file:///C|/WINDOWS/Fonts/ARIAL.TTF' />-->
+</folder>
