@@ -32,41 +32,41 @@ that you have created using Structure Creator, we would love to see it.
 
 Example Schema
 --------------
-<folder name='%BASE%'>
-	<folder name='assets' />
-	<folder name='docs' />
-	<folder name='release'>
-		<folder name='css'>
-			<file name='style.css' url="http://flashstructurecreator.googlecode.com/svn/trunk/templates/style.css" />
+	<folder name='%BASE%'>
+		<folder name='assets' />
+		<folder name='docs' />
+		<folder name='release'>
+			<folder name='css'>
+				<file name='style.css' url="http://flashstructurecreator.googlecode.com/svn/trunk/templates/style.css" />
+			</folder>
+			<folder name='images' />
+			<folder name='js'>
+				<file name='swfaddress.js' url="http://flashstructurecreator.googlecode.com/svn/trunk/templates/swfaddress.js" />
+				<file name='swfobject.js' url="http://flashstructurecreator.googlecode.com/svn/trunk/templates/swfobject.js" />
+			</folder>
+			<folder name='xml' />
+			<file name='index.html' url="http://flashstructurecreator.googlecode.com/svn/trunk/templates/index.html" />
 		</folder>
-		<folder name='images' />
-		<folder name='js'>
-			<file name='swfaddress.js' url="http://flashstructurecreator.googlecode.com/svn/trunk/templates/swfaddress.js" />
-			<file name='swfobject.js' url="http://flashstructurecreator.googlecode.com/svn/trunk/templates/swfobject.js" />
+		<folder name='source'>
+			<file name='main.fla' exportpath="../release/" />
 		</folder>
-		<folder name='xml' />
-		<file name='index.html' url="http://flashstructurecreator.googlecode.com/svn/trunk/templates/index.html" />
 	</folder>
-	<folder name='source'>
-		<file name='main.fla' exportpath="../release/" />
-	</folder>
-</folder>
 
 
 
 ### Create a folder
-<folder name='XXXXX'></folder>
+	<folder name='XXXXX'></folder>
 
 This will create a folder with the name XXXXX
 
 ### Create a file
-<file name='XXXX.XXX' url='http://linktotemplate' />
+	<file name='XXXX.XXX' url='http://linktotemplate' />
 
 This will create a file called XXXX.XXX (e.g index.html) based on a template file linked in the url attribute. 
 Replace http://linktotemplate with the link to your template file. More information on templates are located below.
 
 When adding a FLA file to your structure use this method
-<file name='main.fla' exportpath="../release/" classpath="../classes/" />
+	<file name='main.fla' exportpath="../release/" classpath="../classes/" />
 
 If you don't specify the export path then the swf will export into the same directory as the fla.
 If you don't specify the classpath it will assume that the class folders are in the same directory as the fla file.
@@ -88,32 +88,32 @@ The following, lists current available variables.
 
 Example Template for index.html
 -------------------------------
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head>
-	<title>%PROJECTNAME% - Created with Flash Structure Creator</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link rel="stylesheet" type="text/css" href="css/style.css" />
-	<script type="text/javascript" src="js/swfobject.js"></script>
-	<script type="text/javascript" src="js/swfaddress.js"></script>
-	<script type="text/javascript">
-		var flashvars = {};
-		var params = {menu: 'false'};
-		var attributes = {id: '%SWFNAME%'};
-		swfobject.embedSWF('%SWFNAME%.swf', '%SWFNAME%', '%SWFWIDTH%', '%SWFHEIGHT%', '9.0.45', 'js/expressinstall.swf', flashvars, params, attributes);
-	</script>
-</head>
-<body>
-	<div id="container">
-		<div id="%SWFNAME%">
-			<h1>%PROJECTNAME%</h1>
-			<p>In order to view this page you need Flash Player 9+ support!</p>
-			<p>
-				<a href="http://www.adobe.com/go/getflashplayer">
-					<img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" />
-				</a>
-			</p>
+	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+	<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+	<head>
+		<title>%PROJECTNAME% - Created with Flash Structure Creator</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<script type="text/javascript" src="js/swfobject.js"></script>
+		<script type="text/javascript" src="js/swfaddress.js"></script>
+		<script type="text/javascript">
+			var flashvars = {};
+			var params = {menu: 'false'};
+			var attributes = {id: '%SWFNAME%'};
+			swfobject.embedSWF('%SWFNAME%.swf', '%SWFNAME%', '%SWFWIDTH%', '%SWFHEIGHT%', '9.0.45', 'js/expressinstall.swf', flashvars, params, attributes);
+		</script>
+	</head>
+	<body>
+		<div id="container">
+			<div id="%SWFNAME%">
+				<h1>%PROJECTNAME%</h1>
+				<p>In order to view this page you need Flash Player 9+ support!</p>
+				<p>
+					<a href="http://www.adobe.com/go/getflashplayer">
+						<img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" />
+					</a>
+				</p>
+			</div>
 		</div>
-	</div>
-</body>
-</html>
+	</body>
+	</html>
