@@ -76,15 +76,15 @@ Templates
 ---------
 If you are creating your own templates there are some variables that can be replaced with values when a new project is created. 
 The following, lists current available variables.
-%SWFWIDTH% - Width of swf 
-%SWFHEIGHT% - Height of swf
-%SWFHALFWIDTH% - Half of swf width
-%SWFHALFHEIGHT% - Half of swf height
-%SWFNAME% - Name of swf
-%SWFFPS% - Swf frames per second
-%PACKAGENAME% - Class package (for Document Class)
-%CLASSNAME% - Name of Class (for Document Class)
-%PROJECTNAME% - Name of Project (available in v1.2+)
+- %SWFWIDTH% - Width of swf 
+- %SWFHEIGHT% - Height of swf
+- %SWFHALFWIDTH% - Half of swf width
+- %SWFHALFHEIGHT% - Half of swf height
+- %SWFNAME% - Name of swf
+- %SWFFPS% - Swf frames per second
+- %PACKAGENAME% - Class package (for Document Class)
+- %CLASSNAME% - Name of Class (for Document Class)
+- %PROJECTNAME% - Name of Project (available in v1.2+)
 
 Example Template for index.html
 -------------------------------
