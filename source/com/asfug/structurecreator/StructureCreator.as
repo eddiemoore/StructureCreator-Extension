@@ -23,8 +23,8 @@ package com.asfug.structurecreator
 	{
 		private static const CURRENT_VERSION:String = "2.0.0";
 		//private static const VERSION_CHECK:String = "http://flashstructurecreator.googlecode.com/svn/trunk/latestversion.txt";
-		private static const VERSION_CHECK:String = "http://structurecreator.com/latestversion.txt";
-		private static const DEFAULT_SCHEMA_URL:String = "http://structurecreator.com/schemas/Structure_Schema_2.xml";
+		private static const VERSION_CHECK:String = "http://structurecreator.com/versions/extension/latestversion.txt";
+		private static const DEFAULT_SCHEMA_URL:String = "http://flashstructurecreator.googlecode.com/svn/trunk/Structure_Schema_2.xml";
 		private static const DEFAULT_PROJECT_NAME:String = "New Project";
 		private static const DEFAULT_WIDTH:int = 970;
 		private static const DEFAULT_HEIGHT:int = 570;

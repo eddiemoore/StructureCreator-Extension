@@ -1,6 +1,5 @@
 This Extension panel is driven by xml schema, which can be customized to fit specific project requirements. It automatically creates fla, html, css and javascript files 
-defined in the schema. It also includes [swfobject 2.2](http://code.google.com/p/swfobject/), [swfaddress 2.4](http://www.asual.com/swfaddress/), and 
-[Tweener 1.31.74](http://code.google.com/p/tweener/) in the default schema. 
+defined in the schema. It also includes [swfobject 2.2](http://code.google.com/p/swfobject/) and [swfaddress 2.4](http://www.asual.com/swfaddress/) in the default schema. 
 
 Using this extension can effectively streamline new project creation work flow. It only takes a few clicks to achieve which usually takes hours to recreate, duplicate or 
 customize from previous projects.
@@ -11,6 +10,13 @@ like to thank [Steven Sacks](http://www.stevensacks.net/) for his excellent JSFL
 Structure Creator works with Flash CS3, CS4 and now on **CS5**</b> (version 1.3+) on Windows and Mac.
 It allows for a custom export path for fla files in the xml schema.
 **Default template HTML and CSS files pass the W3C XHTML Strict 1.0 and CSS 2.1 tests.**
+
+New in Version 2.0.0
+--------------------
+  - Now has a package selector which includes [Away3d](http://away3d.com), [Papervision3D](http://www.papervision3d.org/), [Tweener](http://code.google.com/p/tweener/), [as3corelib](http://github.com/mikechambers/as3corelib), [Facebook API](http://code.google.com/p/facebook-actionscript-api/), [Mr. Doob's Stats](http://github.com/mrdoob/Hi-ReS-Stats) and [De MonsterDebugger](http://demonsterdebugger.com/).
+  - Package selector works with classpath attribute in schema, to place files in correct location.
+  - Redesigned
+  - Scaleable
 
 New in Version 1.3
 ------------------
