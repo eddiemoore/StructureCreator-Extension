@@ -13,7 +13,7 @@ It allows for a custom export path for fla files in the xml schema.
 
 New in Version 2.0.1
 --------------------
-  - Added [TweenMax](http://www.greensock.com/tweenmax/) to package selector
+  - Added [TweenMax](http://www.greensock.com/tweenmax/) to package selector. (See [http://www.greensock.com/licensing/](http://www.greensock.com/licensing/) for licensing details)
 
 New in Version 2.0.0
 --------------------
