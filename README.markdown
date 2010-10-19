@@ -32,7 +32,7 @@ If you are using Structure Creator please email me [eddie.moore@gmail.com](mailt
 what you think about Structure Creator. Was it useful? What could be improved? You can send the link of the website 
 that you have created using Structure Creator, we would love to see it.
 
-![alt text](http://eddie-moore.com/structurecreator/images/structure_creator_1_3.png "StructureCreator")
+![alt text](http://structurecreator.com/images/sc2.0.jpg "StructureCreator")
 
 **Please only download the latest release**
 
