@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <macromedia-extension
 	 name="Structure Creator"
-	 version="2.0.0"
+	 version="2.0.1"
 	 type="flashpanel"
 	 requires-restart="true">
 
@@ -841,6 +841,116 @@
 		<file source="templates/com/facebook/views/Distractor.as" destination="$flash/StructureCreator/templates/com/facebook/views" />
 		<file source="templates/com/facebook/views/LoginWindow.as" destination="$flash/StructureCreator/templates/com/facebook/views" />
 		<file source="templates/com/facebook/views/PermissionWindow.as" destination="$flash/StructureCreator/templates/com/facebook/views" />
+		<file source="templates/com/greensock/changelog.txt" destination="$flash/StructureCreator/templates/com/greensock" />
+		<file source="templates/com/greensock/core/PropTween.as" destination="$flash/StructureCreator/templates/com/greensock/core" />
+		<file source="templates/com/greensock/core/SimpleTimeline.as" destination="$flash/StructureCreator/templates/com/greensock/core" />
+		<file source="templates/com/greensock/core/TweenCore.as" destination="$flash/StructureCreator/templates/com/greensock/core" />
+		<file source="templates/com/greensock/data/BevelFilterVars.as" destination="$flash/StructureCreator/templates/com/greensock/data" />
+		<file source="templates/com/greensock/data/BlurFilterVars.as" destination="$flash/StructureCreator/templates/com/greensock/data" />
+		<file source="templates/com/greensock/data/ColorMatrixFilterVars.as" destination="$flash/StructureCreator/templates/com/greensock/data" />
+		<file source="templates/com/greensock/data/ColorTransformVars.as" destination="$flash/StructureCreator/templates/com/greensock/data" />
+		<file source="templates/com/greensock/data/DropShadowFilterVars.as" destination="$flash/StructureCreator/templates/com/greensock/data" />
+		<file source="templates/com/greensock/data/FilterVars.as" destination="$flash/StructureCreator/templates/com/greensock/data" />
+		<file source="templates/com/greensock/data/GlowFilterVars.as" destination="$flash/StructureCreator/templates/com/greensock/data" />
+		<file source="templates/com/greensock/data/TransformAroundCenterVars.as" destination="$flash/StructureCreator/templates/com/greensock/data" />
+		<file source="templates/com/greensock/data/TransformAroundPointVars.as" destination="$flash/StructureCreator/templates/com/greensock/data" />
+		<file source="templates/com/greensock/data/TweenLiteVars.as" destination="$flash/StructureCreator/templates/com/greensock/data" />
+		<file source="templates/com/greensock/data/TweenMaxVars.as" destination="$flash/StructureCreator/templates/com/greensock/data" />
+		<file source="templates/com/greensock/data/VarsCore.as" destination="$flash/StructureCreator/templates/com/greensock/data" />
+		<file source="templates/com/greensock/easing/Back.as" destination="$flash/StructureCreator/templates/com/greensock/easing" />
+		<file source="templates/com/greensock/easing/Bounce.as" destination="$flash/StructureCreator/templates/com/greensock/easing" />
+		<file source="templates/com/greensock/easing/Circ.as" destination="$flash/StructureCreator/templates/com/greensock/easing" />
+		<file source="templates/com/greensock/easing/Cubic.as" destination="$flash/StructureCreator/templates/com/greensock/easing" />
+		<file source="templates/com/greensock/easing/EaseLookup.as" destination="$flash/StructureCreator/templates/com/greensock/easing" />
+		<file source="templates/com/greensock/easing/easing_readme.txt" destination="$flash/StructureCreator/templates/com/greensock/easing" />
+		<file source="templates/com/greensock/easing/Elastic.as" destination="$flash/StructureCreator/templates/com/greensock/easing" />
+		<file source="templates/com/greensock/easing/Expo.as" destination="$flash/StructureCreator/templates/com/greensock/easing" />
+		<file source="templates/com/greensock/easing/FastEase.as" destination="$flash/StructureCreator/templates/com/greensock/easing" />
+		<file source="templates/com/greensock/easing/Linear.as" destination="$flash/StructureCreator/templates/com/greensock/easing" />
+		<file source="templates/com/greensock/easing/Quad.as" destination="$flash/StructureCreator/templates/com/greensock/easing" />
+		<file source="templates/com/greensock/easing/Quart.as" destination="$flash/StructureCreator/templates/com/greensock/easing" />
+		<file source="templates/com/greensock/easing/Quint.as" destination="$flash/StructureCreator/templates/com/greensock/easing" />
+		<file source="templates/com/greensock/easing/RoughEase.as" destination="$flash/StructureCreator/templates/com/greensock/easing" />
+		<file source="templates/com/greensock/easing/Sine.as" destination="$flash/StructureCreator/templates/com/greensock/easing" />
+		<file source="templates/com/greensock/easing/Strong.as" destination="$flash/StructureCreator/templates/com/greensock/easing" />
+		<file source="templates/com/greensock/events/LoaderEvent.as" destination="$flash/StructureCreator/templates/com/greensock/events" />
+		<file source="templates/com/greensock/events/TweenEvent.as" destination="$flash/StructureCreator/templates/com/greensock/events" />
+		<file source="templates/com/greensock/layout/AlignMode.as" destination="$flash/StructureCreator/templates/com/greensock/layout" />
+		<file source="templates/com/greensock/layout/AutoFitArea.as" destination="$flash/StructureCreator/templates/com/greensock/layout" />
+		<file source="templates/com/greensock/layout/ScaleMode.as" destination="$flash/StructureCreator/templates/com/greensock/layout" />
+		<file source="templates/com/greensock/loading/changelog.txt" destination="$flash/StructureCreator/templates/com/greensock/loading" />
+		<file source="templates/com/greensock/loading/core/DisplayObjectLoader.as" destination="$flash/StructureCreator/templates/com/greensock/loading/core" />
+		<file source="templates/com/greensock/loading/core/LoaderCore.as" destination="$flash/StructureCreator/templates/com/greensock/loading/core" />
+		<file source="templates/com/greensock/loading/core/LoaderItem.as" destination="$flash/StructureCreator/templates/com/greensock/loading/core" />
+		<file source="templates/com/greensock/loading/CSSLoader.as" destination="$flash/StructureCreator/templates/com/greensock/loading" />
+		<file source="templates/com/greensock/loading/data/core/DisplayObjectLoaderVars.as" destination="$flash/StructureCreator/templates/com/greensock/loading/data/core" />
+		<file source="templates/com/greensock/loading/data/core/LoaderCoreVars.as" destination="$flash/StructureCreator/templates/com/greensock/loading/data/core" />
+		<file source="templates/com/greensock/loading/data/core/LoaderItemVars.as" destination="$flash/StructureCreator/templates/com/greensock/loading/data/core" />
+		<file source="templates/com/greensock/loading/data/CSSLoaderVars.as" destination="$flash/StructureCreator/templates/com/greensock/loading/data" />
+		<file source="templates/com/greensock/loading/data/DataLoaderVars.as" destination="$flash/StructureCreator/templates/com/greensock/loading/data" />
+		<file source="templates/com/greensock/loading/data/ImageLoaderVars.as" destination="$flash/StructureCreator/templates/com/greensock/loading/data" />
+		<file source="templates/com/greensock/loading/data/LoaderMaxVars.as" destination="$flash/StructureCreator/templates/com/greensock/loading/data" />
+		<file source="templates/com/greensock/loading/data/MP3LoaderVars.as" destination="$flash/StructureCreator/templates/com/greensock/loading/data" />
+		<file source="templates/com/greensock/loading/data/SWFLoaderVars.as" destination="$flash/StructureCreator/templates/com/greensock/loading/data" />
+		<file source="templates/com/greensock/loading/data/VideoLoaderVars.as" destination="$flash/StructureCreator/templates/com/greensock/loading/data" />
+		<file source="templates/com/greensock/loading/data/XMLLoaderVars.as" destination="$flash/StructureCreator/templates/com/greensock/loading/data" />
+		<file source="templates/com/greensock/loading/DataLoader.as" destination="$flash/StructureCreator/templates/com/greensock/loading" />
+		<file source="templates/com/greensock/loading/display/ContentDisplay.as" destination="$flash/StructureCreator/templates/com/greensock/loading/display" />
+		<file source="templates/com/greensock/loading/display/FlexContentDisplay.as" destination="$flash/StructureCreator/templates/com/greensock/loading/display" />
+		<file source="templates/com/greensock/loading/ImageLoader.as" destination="$flash/StructureCreator/templates/com/greensock/loading" />
+		<file source="templates/com/greensock/loading/LoaderMax.as" destination="$flash/StructureCreator/templates/com/greensock/loading" />
+		<file source="templates/com/greensock/loading/LoaderStatus.as" destination="$flash/StructureCreator/templates/com/greensock/loading" />
+		<file source="templates/com/greensock/loading/MP3Loader.as" destination="$flash/StructureCreator/templates/com/greensock/loading" />
+		<file source="templates/com/greensock/loading/SelfLoader.as" destination="$flash/StructureCreator/templates/com/greensock/loading" />
+		<file source="templates/com/greensock/loading/SWFLoader.as" destination="$flash/StructureCreator/templates/com/greensock/loading" />
+		<file source="templates/com/greensock/loading/VideoLoader.as" destination="$flash/StructureCreator/templates/com/greensock/loading" />
+		<file source="templates/com/greensock/loading/XMLLoader.as" destination="$flash/StructureCreator/templates/com/greensock/loading" />
+		<file source="templates/com/greensock/motionPaths/CirclePath2D.as" destination="$flash/StructureCreator/templates/com/greensock/motionPaths" />
+		<file source="templates/com/greensock/motionPaths/Direction.as" destination="$flash/StructureCreator/templates/com/greensock/motionPaths" />
+		<file source="templates/com/greensock/motionPaths/LinePath2D.as" destination="$flash/StructureCreator/templates/com/greensock/motionPaths" />
+		<file source="templates/com/greensock/motionPaths/MotionPath.as" destination="$flash/StructureCreator/templates/com/greensock/motionPaths" />
+		<file source="templates/com/greensock/motionPaths/PathFollower.as" destination="$flash/StructureCreator/templates/com/greensock/motionPaths" />
+		<file source="templates/com/greensock/motionPaths/RectanglePath2D.as" destination="$flash/StructureCreator/templates/com/greensock/motionPaths" />
+		<file source="templates/com/greensock/OverwriteManager.as" destination="$flash/StructureCreator/templates/com/greensock" />
+		<file source="templates/com/greensock/plugins/AutoAlphaPlugin.as" destination="$flash/StructureCreator/templates/com/greensock/plugins" />
+		<file source="templates/com/greensock/plugins/BevelFilterPlugin.as" destination="$flash/StructureCreator/templates/com/greensock/plugins" />
+		<file source="templates/com/greensock/plugins/BezierPlugin.as" destination="$flash/StructureCreator/templates/com/greensock/plugins" />
+		<file source="templates/com/greensock/plugins/BezierThroughPlugin.as" destination="$flash/StructureCreator/templates/com/greensock/plugins" />
+		<file source="templates/com/greensock/plugins/BlurFilterPlugin.as" destination="$flash/StructureCreator/templates/com/greensock/plugins" />
+		<file source="templates/com/greensock/plugins/CacheAsBitmapPlugin.as" destination="$flash/StructureCreator/templates/com/greensock/plugins" />
+		<file source="templates/com/greensock/plugins/CirclePath2DPlugin.as" destination="$flash/StructureCreator/templates/com/greensock/plugins" />
+		<file source="templates/com/greensock/plugins/ColorMatrixFilterPlugin.as" destination="$flash/StructureCreator/templates/com/greensock/plugins" />
+		<file source="templates/com/greensock/plugins/ColorTransformPlugin.as" destination="$flash/StructureCreator/templates/com/greensock/plugins" />
+		<file source="templates/com/greensock/plugins/DropShadowFilterPlugin.as" destination="$flash/StructureCreator/templates/com/greensock/plugins" />
+		<file source="templates/com/greensock/plugins/EndArrayPlugin.as" destination="$flash/StructureCreator/templates/com/greensock/plugins" />
+		<file source="templates/com/greensock/plugins/EndVectorPlugin.as" destination="$flash/StructureCreator/templates/com/greensock/plugins" />
+		<file source="templates/com/greensock/plugins/FilterPlugin.as" destination="$flash/StructureCreator/templates/com/greensock/plugins" />
+		<file source="templates/com/greensock/plugins/FrameBackwardPlugin.as" destination="$flash/StructureCreator/templates/com/greensock/plugins" />
+		<file source="templates/com/greensock/plugins/FrameForwardPlugin.as" destination="$flash/StructureCreator/templates/com/greensock/plugins" />
+		<file source="templates/com/greensock/plugins/FrameLabelPlugin.as" destination="$flash/StructureCreator/templates/com/greensock/plugins" />
+		<file source="templates/com/greensock/plugins/FramePlugin.as" destination="$flash/StructureCreator/templates/com/greensock/plugins" />
+		<file source="templates/com/greensock/plugins/GlowFilterPlugin.as" destination="$flash/StructureCreator/templates/com/greensock/plugins" />
+		<file source="templates/com/greensock/plugins/HexColorsPlugin.as" destination="$flash/StructureCreator/templates/com/greensock/plugins" />
+		<file source="templates/com/greensock/plugins/QuaternionsPlugin.as" destination="$flash/StructureCreator/templates/com/greensock/plugins" />
+		<file source="templates/com/greensock/plugins/RemoveTintPlugin.as" destination="$flash/StructureCreator/templates/com/greensock/plugins" />
+		<file source="templates/com/greensock/plugins/RoundPropsPlugin.as" destination="$flash/StructureCreator/templates/com/greensock/plugins" />
+		<file source="templates/com/greensock/plugins/ScalePlugin.as" destination="$flash/StructureCreator/templates/com/greensock/plugins" />
+		<file source="templates/com/greensock/plugins/ScrollRectPlugin.as" destination="$flash/StructureCreator/templates/com/greensock/plugins" />
+		<file source="templates/com/greensock/plugins/SetActualSizePlugin.as" destination="$flash/StructureCreator/templates/com/greensock/plugins" />
+		<file source="templates/com/greensock/plugins/SetSizePlugin.as" destination="$flash/StructureCreator/templates/com/greensock/plugins" />
+		<file source="templates/com/greensock/plugins/ShortRotationPlugin.as" destination="$flash/StructureCreator/templates/com/greensock/plugins" />
+		<file source="templates/com/greensock/plugins/SoundTransformPlugin.as" destination="$flash/StructureCreator/templates/com/greensock/plugins" />
+		<file source="templates/com/greensock/plugins/TintPlugin.as" destination="$flash/StructureCreator/templates/com/greensock/plugins" />
+		<file source="templates/com/greensock/plugins/TransformMatrixPlugin.as" destination="$flash/StructureCreator/templates/com/greensock/plugins" />
+		<file source="templates/com/greensock/plugins/TweenPlugin.as" destination="$flash/StructureCreator/templates/com/greensock/plugins" />
+		<file source="templates/com/greensock/plugins/VisiblePlugin.as" destination="$flash/StructureCreator/templates/com/greensock/plugins" />
+		<file source="templates/com/greensock/plugins/VolumePlugin.as" destination="$flash/StructureCreator/templates/com/greensock/plugins" />
+		<file source="templates/com/greensock/TimelineLite.as" destination="$flash/StructureCreator/templates/com/greensock" />
+		<file source="templates/com/greensock/TimelineMax.as" destination="$flash/StructureCreator/templates/com/greensock" />
+		<file source="templates/com/greensock/TweenAlign.as" destination="$flash/StructureCreator/templates/com/greensock" />
+		<file source="templates/com/greensock/TweenLite.as" destination="$flash/StructureCreator/templates/com/greensock" />
+		<file source="templates/com/greensock/TweenMax.as" destination="$flash/StructureCreator/templates/com/greensock" />
+		<file source="templates/com/greensock/TweenNano.as" destination="$flash/StructureCreator/templates/com/greensock" />
 		<file source="templates/net/hires/debug/Stats.as" destination="$flash/StructureCreator/templates/net/hires/debug" />
 		<file source="templates/nl/demonsters/debugger/MonsterDebugger.as" destination="$flash/StructureCreator/templates/nl/demonsters/debugger" />
 		<file source="templates/nochump/lgpl.txt" destination="$flash/StructureCreator/templates/nochump" />
@@ -1208,6 +1318,7 @@
 		<file source="templates/wumedia/parsers/swf/TagTypes.as" destination="$flash/StructureCreator/templates/wumedia/parsers/swf" />
 		<file source="templates/wumedia/vector/VectorShapes.as" destination="$flash/StructureCreator/templates/wumedia/vector" />
 		<file source="templates/wumedia/vector/VectorText.as" destination="$flash/StructureCreator/templates/wumedia/vector" />
+
 	</files>
 
 </macromedia-extension>

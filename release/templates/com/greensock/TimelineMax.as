@@ -1,6 +1,6 @@
 /**
- * VERSION: 1.381
- * DATE: 2010-05-17
+ * VERSION: 1.392
+ * DATE: 2010-10-13
  * AS3 (AS2 version is also available)
  * UPDATES AND DOCUMENTATION AT: http://www.greensock.com/timelinemax/
  **/
@@ -9,7 +9,6 @@ package com.greensock {
 	import com.greensock.events.TweenEvent;
 	
 	import flash.events.*;
-	import flash.utils.*;
 /**
  * 	TimelineMax extends TimelineLite, offering exactly the same functionality plus useful 
  *  (but non-essential) features like AS3 event dispatching, repeat, repeatDelay, yoyo, 
@@ -146,14 +145,14 @@ package com.greensock {
  **/
 	public class TimelineMax extends TimelineLite implements IEventDispatcher {
 		/** @private **/
-		public static const version:Number = 1.381;
+		public static const version:Number = 1.392;
 		
 		/** @private **/
 		protected var _repeat:int;
 		/** @private **/
 		protected var _repeatDelay:Number;
 		/** @private **/
-		protected var _cyclesComplete:uint;
+		protected var _cyclesComplete:int;
 		/** @private **/
 		protected var _dispatcher:EventDispatcher;
 		/** @private **/
@@ -475,13 +474,13 @@ package com.greensock {
 				
 			if (_repeat != 0) {
 				var cycleDuration:Number = this.cachedDuration + _repeatDelay;
+				var prevCycles:int = _cyclesComplete;
 				if (isComplete) {
 					if (this.yoyo && _repeat % 2) {
 						this.cachedTime = 0;
 					}
 				} else if (time > 0) {
-					var prevCycles:int = _cyclesComplete;
-					_cyclesComplete = int(this.cachedTotalTime / cycleDuration);
+					_cyclesComplete = (this.cachedTotalTime / cycleDuration) >> 0; //rounds result, like int()
 					if (_cyclesComplete == this.cachedTotalTime / cycleDuration) {
 						_cyclesComplete--; //otherwise when rendered exactly at the end time, it will act as though it is repeating (at the beginning)
 					}
@@ -635,9 +634,9 @@ package com.greensock {
 		 */
 		public function getActive(nested:Boolean=true, tweens:Boolean=true, timelines:Boolean=false):Array {
 			var a:Array = [], all:Array = getChildren(nested, tweens, timelines), i:int;
-			var l:uint = all.length;
-			var cnt:uint = 0;
-			for (i = 0; i < l; i++) {
+			var l:int = all.length;
+			var cnt:int = 0;
+			for (i = 0; i < l; i += 1) {
 				if (TweenCore(all[i]).active) {
 					a[cnt++] = all[i];
 				}
@@ -670,8 +669,8 @@ package com.greensock {
 				time = this.cachedTime;
 			}
 			var labels:Array = getLabelsArray();
-			var l:uint = labels.length;
-			for (var i:int = 0; i < l; i++) {
+			var l:int = labels.length;
+			for (var i:int = 0; i < l; i += 1) {
 				if (labels[i].time > time) {
 					return labels[i].name;
 				}
@@ -801,7 +800,7 @@ package com.greensock {
 			return this.cachedTotalDuration;
 		}
 		
-		/** @inheritDoc **/
+		/** @private **/
 		override public function set currentTime(n:Number):void {
 			if (_cyclesComplete == 0) {
 				setTotalTime(n, false);

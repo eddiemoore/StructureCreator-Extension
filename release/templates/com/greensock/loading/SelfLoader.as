@@ -1,6 +1,6 @@
 /**
- * VERSION: 1.2
- * DATE: 2010-07-28
+ * VERSION: 1.631
+ * DATE: 2010-10-13
  * AS3
  * UPDATES AND DOCS AT: http://www.greensock.com/loadermax/
  **/
@@ -91,7 +91,7 @@ function errorHandler(event:LoaderEvent):void {
 			_loaderInfo.addEventListener(Event.COMPLETE, _completeHandler, false, 0, true);
 			_cachedBytesTotal = _loaderInfo.bytesTotal;
 			_cachedBytesLoaded = _loaderInfo.bytesLoaded;
-			_status = LoaderStatus.LOADING;
+			_status = (_cachedBytesLoaded == _cachedBytesTotal) ? LoaderStatus.COMPLETED : LoaderStatus.LOADING;		
 			_auditedSize = true;
 			_content = self;
 		}

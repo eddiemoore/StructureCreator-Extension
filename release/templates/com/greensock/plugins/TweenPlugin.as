@@ -1,6 +1,6 @@
 /**
- * VERSION: 1.31
- * DATE: 10/22/2009
+ * VERSION: 1.32
+ * DATE: 2010-09-18
  * ACTIONSCRIPT VERSION: 3.0 
  * UPDATES AND DOCUMENTATION AT: http://www.TweenMax.com
  **/
@@ -65,7 +65,7 @@ package com.greensock.plugins {
  * @author Jack Doyle, jack@greensock.com
  */
 	public class TweenPlugin {
-		public static const VERSION:Number = 1.31;
+		public static const VERSION:Number = 1.32;
 		/** @private If the API/Framework for plugins changes in the future, this number helps determine compatibility **/
 		public static const API:Number = 1.0; 
 		
@@ -156,14 +156,18 @@ package com.greensock.plugins {
 			var i:int = _tweens.length, pt:PropTween;
 			if (this.round) {
 				var val:Number;
-				while (i--) {
+				while (--i > -1) {
 					pt = _tweens[i];
 					val = pt.start + (pt.change * changeFactor);
-					pt.target[pt.property] = (val > 0) ? int(val + 0.5) : int(val - 0.5); //4 times as fast as Math.round()
+					if (val > 0) {
+						pt.target[pt.property] = (val + 0.5) >> 0; //4 times as fast as Math.round()
+					} else {
+						pt.target[pt.property] = (val - 0.5) >> 0; //4 times as fast as Math.round()
+					}
 				}
 				
 			} else {
-				while (i--) {
+				while (--i > -1) {
 					pt = _tweens[i];
 					pt.target[pt.property] = pt.start + (pt.change * changeFactor);
 				}
@@ -201,13 +205,13 @@ package com.greensock.plugins {
 		 */
 		public function killProps(lookup:Object):void {
 			var i:int = this.overwriteProps.length;
-			while (i--) {
+			while (--i > -1) {
 				if (this.overwriteProps[i] in lookup) {
 					this.overwriteProps.splice(i, 1);
 				}
 			}
 			i = _tweens.length;
-			while (i--) {
+			while (--i > -1) {
 				if (PropTween(_tweens[i]).name in lookup) {
 					_tweens.splice(i, 1);
 				}

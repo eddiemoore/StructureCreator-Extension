@@ -11,6 +11,10 @@ Structure Creator works with Flash CS3, CS4 and now on **CS5**</b> (version 1.3+
 It allows for a custom export path for fla files in the xml schema.
 **Default template HTML and CSS files pass the W3C XHTML Strict 1.0 and CSS 2.1 tests.**
 
+New in Version 2.0.1
+--------------------
+  - Added [TweenMax](http://www.greensock.com/tweenmax/) to package selector
+
 New in Version 2.0.0
 --------------------
   - Now has a package selector which includes [Away3d](http://away3d.com), [Papervision3D](http://www.papervision3d.org/), [Tweener](http://code.google.com/p/tweener/), [as3corelib](http://github.com/mikechambers/as3corelib), [Facebook API](http://code.google.com/p/facebook-actionscript-api/), [Mr. Doob's Stats](http://github.com/mrdoob/Hi-ReS-Stats) and [De MonsterDebugger](http://demonsterdebugger.com/).

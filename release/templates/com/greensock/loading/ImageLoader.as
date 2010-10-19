@@ -1,6 +1,6 @@
 /**
- * VERSION: 1.2
- * DATE: 2010-07-28
+ * VERSION: 1.6
+ * DATE: 2010-10-02
  * AS3
  * UPDATES AND DOCS AT: http://www.greensock.com/loadermax/
  **/
@@ -12,10 +12,11 @@ package com.greensock.loading {
 /**
  * Loads an image file (png, jpg, or gif) and automatically applies smoothing by default. <br /><br />
  * 
- * The ImageLoader's <code>content</code> refers to a <code>ContentDisplay</code> (a Sprite) that is 
- * created immediately so that you can add it to the display list or manipulate it while the image is
- * loading (use the ImageLoader's <code>content</code> property to get the ContentDisplay, or simply define 
- * a <code>container</code> and ImageLoader will automatically add it to that container). <br /><br />
+ * The ImageLoader's <code>content</code> refers to a <code>ContentDisplay</code> (Sprite) that 
+ * is created immediately so that you can position/scale/rotate it or add ROLL_OVER/ROLL_OUT/CLICK listeners
+ * before (or while) the image loads. Use the ImageLoader's <code>content</code> property to get the ContentDisplay 
+ * Sprite, or use the <code>rawContent</code> property to get the actual Bitmap. If a <code>container</code>
+ * is defined in the <code>vars</code> object, the ContentDisplay will immediately be added to that container). <br /><br />
  * 
  * If you define a <code>width</code> and <code>height</code>, it will draw a rectangle 
  * in the ContentDisplay so that interactive events fire appropriately (rollovers, etc.) and width/height/bounds
@@ -51,14 +52,15 @@ package com.greensock.loading {
  * </ul><br />
  * 
  * <strong>OPTIONAL VARS PROPERTIES</strong><br />
- * The following special properties can be passed into the ImageLoader constructor via its <code>vars</code> parameter:<br />
+ * The following special properties can be passed into the ImageLoader constructor via its <code>vars</code> 
+ * parameter which can be either a generic object or an <code><a href="data/ImageLoaderVars.html">ImageLoaderVars</a></code> object:<br />
  * <ul>
  * 		<li><strong> name : String</strong> - A name that is used to identify the ImageLoader instance. This name can be fed to the <code>LoaderMax.getLoader()</code> or <code>LoaderMax.getContent()</code> methods or traced at any time. Each loader's name should be unique. If you don't define one, a unique name will be created automatically, like "loader21".</li>
  * 		<li><strong> container : DisplayObjectContainer</strong> - A DisplayObjectContainer into which the <code>ContentDisplay</code> Sprite should be added immediately.</li>
  * 		<li><strong> smoothing : Boolean</strong> - When <code>smoothing</code> is <code>true</code> (the default), smoothing will be enabled for the image which typically leads to much better scaling results (otherwise the image can look crunchy/jagged). If your image is loaded from another domain where the appropriate crossdomain.xml file doesn't grant permission, Flash will not allow smoothing to be enabled (it's a security restriction).</li>
  * 		<li><strong> width : Number</strong> - Sets the <code>ContentDisplay</code>'s <code>width</code> property (applied before rotation, scaleX, and scaleY).</li>
  * 		<li><strong> height : Number</strong> - Sets the <code>ContentDisplay</code>'s <code>height</code> property (applied before rotation, scaleX, and scaleY).</li>
- * 		<li><strong> centerRegistration : Boolean </strong> - if <code>true</code>, the registration point will be placed in the center of the ContentDisplay which can be useful if, for example, you want to animate its scale and have it grow/shrink from its center.</li>
+ * 		<li><strong> centerRegistration : Boolean </strong> - If <code>true</code>, the registration point will be placed in the center of the ContentDisplay which can be useful if, for example, you want to animate its scale and have it grow/shrink from its center.</li>
  * 		<li><strong> scaleMode : String </strong> - When a <code>width</code> and <code>height</code> are defined, the <code>scaleMode</code> controls how the loaded image will be scaled to fit the area. The following values are recognized (you may use the <code>com.greensock.layout.ScaleMode</code> constants if you prefer):
  * 			<ul>
  * 				<li><code>"stretch"</code> (the default) - The image will fill the width/height exactly.</li>
@@ -89,7 +91,7 @@ package com.greensock.loading {
  * 		<li><strong> alpha : Number</strong> - Sets the <code>ContentDisplay</code>'s <code>alpha</code> property.</li>
  * 		<li><strong> visible : Boolean</strong> - Sets the <code>ContentDisplay</code>'s <code>visible</code> property.</li>
  * 		<li><strong> blendMode : String</strong> - Sets the <code>ContentDisplay</code>'s <code>blendMode</code> property.</li>
- * 		<li><strong> bgColor : uint </strong> - When a <code>width</code> and <code>height</code> are defined, a rectangle will be drawn inside the <code>ContentDisplay</code> Sprite immediately in order to ease the development process. It is transparent by default, but you may define a <code>bgColor</code> if you prefer.</li>
+ * 		<li><strong> bgColor : uint </strong> - When a <code>width</code> and <code>height</code> are defined, a rectangle will be drawn inside the <code>ContentDisplay</code> Sprite immediately in order to ease the development process. It is transparent by default, but you may define a <code>bgAlpha</code> if you prefer.</li>
  * 		<li><strong> bgAlpha : Number </strong> - Controls the alpha of the rectangle that is drawn when a <code>width</code> and <code>height</code> are defined.</li>
  * 		<li><strong> context : LoaderContext</strong> - To control whether or not a policy file is checked (which is required if you're loading an image from another domain and you want to use it in BitmapData operations), define a <code>LoaderContext</code> object. By default, the policy file <strong>will</strong> be checked when running remotely, so make sure the appropriate crossdomain.xml file is in place. See Adobe's <code>LoaderContext</code> documentation for details and precautions. </li>
  * 		<li><strong> estimatedBytes : uint</strong> - Initially, the loader's <code>bytesTotal</code> is set to the <code>estimatedBytes</code> value (or <code>LoaderMax.defaultEstimatedBytes</code> if one isn't defined). Then, when the loader begins loading and it can accurately determine the bytesTotal, it will do so. Setting <code>estimatedBytes</code> is optional, but the more accurate the value, the more accurate your loaders' overall progress will be initially. If the loader will be inserted into a LoaderMax instance (for queue management), its <code>auditSize</code> feature can attempt to automatically determine the <code>bytesTotal</code> at runtime (there is a slight performance penalty for this, however - see LoaderMax's documentation for details).</li>
@@ -111,6 +113,15 @@ package com.greensock.loading {
  * 		<li><strong> onSecurityError : Function</strong> - A handler function for <code>LoaderEvent.SECURITY_ERROR</code> events which onError handles as well, so you can use that as more of a catch-all whereas onSecurityError is specifically for SECURITY_ERROR events. Make sure your onSecurityError function accepts a single parameter of type <code>LoaderEvent</code> (<code>com.greensock.events.LoaderEvent</code>).</li>
  * 		<li><strong> onScriptAccessDenied : Function</strong> - A handler function for <code>LoaderEvent.SCRIPT_ACCESS_DENIED</code> events which are dispatched when the image is loaded from another domain and no crossdomain.xml is in place to grant full script access for things like smoothing or BitmapData manipulation. You can also check the loader's <code>scriptAccessDenied</code> property after the image has loaded. Make sure your function accepts a single parameter of type <code>LoaderEvent</code> (<code>com.greensock.events.LoaderEvent</code>).</li>
  * </ul><br />
+ * 
+ * <strong>Note:</strong> Using a <code><a href="data/ImageLoaderVars.html">ImageLoaderVars</a></code> instance 
+ * instead of a generic object to define your <code>vars</code> is a bit more verbose but provides 
+ * code hinting and improved debugging because it enforces strict data typing. Use whichever one you prefer.<br /><br />
+ * 
+ * <strong>Jerky animation?</strong> If you animate the image after loading it and you notice that the movement 
+ * is rather jerky, try setting the scaleX and/or scaleY to something other than 1, like 1.001 because there is 
+ * a bug in Flash that forces Bitmaps to always act like their <code>pixelSnapping</code> is <code>"auto"</code> 
+ * when their scaleX/scaleY are 1.<br /><br />
  * 
  * <code>content</code> data type: <strong><code>com.greensock.loading.display.ContentDisplay</code></strong> (a Sprite). 
  * When the image has finished loading, the <code>rawContent</code> will be added to the <code>ContentDisplay</code> Sprite 
@@ -144,12 +155,6 @@ package com.greensock.loading {
  //start loading
  queue.load();
  
- //pause loading
- queue.pause();
- 
- //resume loading
- queue.resume();
- 
  function progressHandler(event:LoaderEvent):void {
      trace("progress: " + queue.progress);
  }
@@ -170,6 +175,8 @@ package com.greensock.loading {
  * 
  * <b>Copyright 2010, GreenSock. All rights reserved.</b> This work is subject to the terms in <a href="http://www.greensock.com/terms_of_use.html">http://www.greensock.com/terms_of_use.html</a> or for corporate Club GreenSock members, the software agreement that was issued with the corporate membership.
  * 
+ * @see com.greensock.loading.data.ImageLoaderVars
+ * 
  * @author Jack Doyle, jack@greensock.com
  */	
 	public class ImageLoader extends DisplayObjectLoader {
@@ -181,7 +188,8 @@ package com.greensock.loading {
 		 * @param urlOrRequest The url (<code>String</code>) or <code>URLRequest</code> from which the loader should get its content
 		 * @param vars An object containing optional configuration details. For example: <code>new ImageLoader("img/photo1.jpg", {name:"photo1", container:this, x:100, y:50, alpha:0, onComplete:completeHandler, onProgress:progressHandler})</code>.<br /><br />
 		 * 
-		 * The following special properties can be passed into the constructor via the <code>vars</code> parameter:<br />
+		 * The following special properties can be passed into the constructor via the <code>vars</code> parameter
+		 * which can be either a generic object or an <code><a href="data/ImageLoaderVars.html">ImageLoaderVars</a></code> object:<br />
 		 * <ul>
 		 * 		<li><strong> name : String</strong> - A name that is used to identify the ImageLoader instance. This name can be fed to the <code>LoaderMax.getLoader()</code> or <code>LoaderMax.getContent()</code> methods or traced at any time. Each loader's name should be unique. If you don't define one, a unique name will be created automatically, like "loader21".</li>
 		 * 		<li><strong> container : DisplayObjectContainer</strong> - A DisplayObjectContainer into which the <code>ContentDisplay</code> Sprite should be added immediately.</li>
@@ -219,7 +227,7 @@ package com.greensock.loading {
 		 * 		<li><strong> alpha : Number</strong> - Sets the <code>ContentDisplay</code>'s <code>alpha</code> property.</li>
 		 * 		<li><strong> visible : Boolean</strong> - Sets the <code>ContentDisplay</code>'s <code>visible</code> property.</li>
 		 * 		<li><strong> blendMode : String</strong> - Sets the <code>ContentDisplay</code>'s <code>blendMode</code> property.</li>
-		 * 		<li><strong> bgColor : uint </strong> - When a <code>width</code> and <code>height</code> are defined, a rectangle will be drawn inside the <code>ContentDisplay</code> Sprite immediately in order to ease the development process. It is transparent by default, but you may define a <code>bgColor</code> if you prefer.</li>
+		 * 		<li><strong> bgColor : uint </strong> - When a <code>width</code> and <code>height</code> are defined, a rectangle will be drawn inside the <code>ContentDisplay</code> Sprite immediately in order to ease the development process. It is transparent by default, but you may define a <code>bgAlpha</code> if you prefer.</li>
 		 * 		<li><strong> bgAlpha : Number </strong> - Controls the alpha of the rectangle that is drawn when a <code>width</code> and <code>height</code> are defined.</li>
 		 * 		<li><strong> context : LoaderContext</strong> - To control whether or not a policy file is checked (which is required if you're loading an image from another domain and you want to use it in BitmapData operations), define a <code>LoaderContext</code> object. By default, the policy file <strong>will</strong> be checked when running remotely, so make sure the appropriate crossdomain.xml file is in place. See Adobe's <code>LoaderContext</code> documentation for details and precautions. </li>
 		 * 		<li><strong> estimatedBytes : uint</strong> - Initially, the loader's <code>bytesTotal</code> is set to the <code>estimatedBytes</code> value (or <code>LoaderMax.defaultEstimatedBytes</code> if one isn't defined). Then, when the loader begins loading and it can accurately determine the bytesTotal, it will do so. Setting <code>estimatedBytes</code> is optional, but the more accurate the value, the more accurate your loaders' overall progress will be initially. If the loader will be inserted into a LoaderMax instance (for queue management), its <code>auditSize</code> feature can attempt to automatically determine the <code>bytesTotal</code> at runtime (there is a slight performance penalty for this, however - see LoaderMax's documentation for details).</li>
@@ -241,6 +249,7 @@ package com.greensock.loading {
 		 * 		<li><strong> onSecurityError : Function</strong> - A handler function for <code>LoaderEvent.SECURITY_ERROR</code> events which onError handles as well, so you can use that as more of a catch-all whereas onSecurityError is specifically for SECURITY_ERROR events. Make sure your onSecurityError function accepts a single parameter of type <code>LoaderEvent</code> (<code>com.greensock.events.LoaderEvent</code>).</li>
 		 * 		<li><strong> onScriptAccessDenied : Function</strong> - A handler function for <code>LoaderEvent.SCRIPT_ACCESS_DENIED</code> events which are dispatched when the image is loaded from another domain and no crossdomain.xml is in place to grant full script access for things like smoothing or BitmapData manipulation. You can also check the loader's <code>scriptAccessDenied</code> property after the image has loaded. Make sure your function accepts a single parameter of type <code>LoaderEvent</code> (<code>com.greensock.events.LoaderEvent</code>).</li>
 		 * </ul>
+		 * @see com.greensock.loading.data.ImageLoaderVars
 		 */
 		public function ImageLoader(urlOrRequest:*, vars:Object=null) {
 			super(urlOrRequest, vars);
@@ -260,10 +269,6 @@ package com.greensock.loading {
 			}
 			super._initHandler(event);
 		}
-		
-		
-//---- GETTERS / SETTERS -------------------------------------------------------------------------
-		
 		
 	}
 }

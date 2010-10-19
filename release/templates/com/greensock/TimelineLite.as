@@ -1,13 +1,11 @@
 ﻿/**
- * VERSION: 1.382
- * DATE: 2010-05-25
+ * VERSION: 1.392
+ * DATE: 2010-10-13
  * AS3 (AS2 version is also available)
  * UPDATES AND DOCUMENTATION AT: http://www.greensock.com/timelinelite/
  **/
 package com.greensock {
 	import com.greensock.core.*;
-	
-	import flash.utils.*;
 /**
  * 	TimelineLite is a lightweight, intuitive timeline class for building and managing sequences of 
  * 	TweenLite, TweenMax, TimelineLite, and/or TimelineMax instances. You can think of a TimelineLite instance 
@@ -115,7 +113,7 @@ package com.greensock {
  **/
 	public class TimelineLite extends SimpleTimeline {
 		/** @private **/
-		public static const version:Number = 1.382;
+		public static const version:Number = 1.392;
 		/** @private **/
 		private static var _overwriteMode:int = (OverwriteManager.enabled) ? OverwriteManager.mode : OverwriteManager.init(2); //Ensures that TweenLite instances don't overwrite each other before being put into the timeline/sequence.
 		/** @private **/
@@ -229,6 +227,9 @@ package com.greensock {
 				tween.setEnabled(true, true);
 			}
 			setDirtyCache(true);
+			if (tween.cachedPauseTime || tween.cachedPauseTime == 0) {  //faster than isNaN()
+				tween.cachedPauseTime = tween.cachedStartTime + tween.cachedTime / tween.cachedTimeScale;
+			}
 			
 			//now make sure it is inserted in the proper order...
 			
@@ -316,8 +317,9 @@ package com.greensock {
 		 * 
 		 * @param tween TweenLite, TweenMax, TimelineLite, or TimelineMax instance to insert
 		 * @param timeOrLabel The time in seconds (or frames for frames-based timelines) or label at which the tween/timeline should be inserted. For example, myTimeline.insert(myTween, 3) would insert myTween 3-seconds into the timeline, and myTimeline.insert(myTween, "myLabel") would insert it at the "myLabel" label.
+		 * @return TweenLite, TweenMax, TimelineLite, or TimelineMax instance that was inserted
 		 */
-		public function insert(tween:TweenCore, timeOrLabel:*=0):void {
+		public function insert(tween:TweenCore, timeOrLabel:*=0):TweenCore {
 			if (typeof(timeOrLabel) == "string") {
 				if (!(timeOrLabel in _labels)) {
 					addLabel(timeOrLabel, this.duration);
@@ -331,6 +333,7 @@ package com.greensock {
 			*/
 			tween.cachedStartTime = Number(timeOrLabel) + tween.delay;
 			addChild(tween);
+			return tween;
 		}
 		
 		/**
@@ -341,9 +344,10 @@ package com.greensock {
 		 * 
 		 * @param tween TweenLite, TweenMax, TimelineLite, or TimelineMax instance to append.
 		 * @param offset Amount of seconds (or frames for frames-based timelines) to offset the insertion point of the tween from the end of the timeline. For example, to append a tween 3 seconds after the end of the timeline (leaving a 3-second gap), set the offset to 3. Or to have the tween appended so that it overlaps with the last 2 seconds of the timeline, set the offset to -2. The default is 0 so that the insertion point is exactly at the end of the timeline.
+		 * @return TweenLite, TweenMax, TimelineLite, or TimelineMax instance that was appended 
 		 */
-		public function append(tween:TweenCore, offset:Number=0):void {
-			insert(tween, this.duration + offset);
+		public function append(tween:TweenCore, offset:Number=0):TweenCore {
+			return insert(tween, this.duration + offset);
 		}
 		
 		/**
@@ -353,10 +357,11 @@ package com.greensock {
 		 * 
 		 * @param tween TweenLite, TweenMax, TimelineLite, or TimelineMax instance to prepend
 		 * @param adjustLabels If true, all existing labels will be adjusted back in time along with the existing tweens to keep them aligned. (default is false)
+		 * @return TweenLite, TweenMax, TimelineLite, or TimelineMax instance that was prepended
 		 */
-		public function prepend(tween:TweenCore, adjustLabels:Boolean=false):void {
+		public function prepend(tween:TweenCore, adjustLabels:Boolean=false):TweenCore {
 			shiftChildren((tween.totalDuration / tween.cachedTimeScale) + tween.delay, adjustLabels, 0);
-			insert(tween, 0);
+			return insert(tween, 0);
 		}
 		
 		/**
@@ -368,16 +373,17 @@ package com.greensock {
 		 * @param timeOrLabel time in seconds (or frame if the timeline is frames-based) or label that serves as the point of insertion. For example, the number 2 would insert the tweens beginning at 2-seconds into the timeline, or "myLabel" would ihsert them wherever "myLabel" is.
 		 * @param align determines how the tweens will be aligned in relation to each other before getting inserted. Options are: TweenAlign.SEQUENCE (aligns the tweens one-after-the-other in a sequence), TweenAlign.START (aligns the start times of all of the tweens (ignores delays)), and TweenAlign.NORMAL (aligns the start times of all the tweens (honors delays)). The default is NORMAL.
 		 * @param stagger staggers the tweens by a set amount of time (in seconds) (or in frames for frames-based timelines). For example, if the stagger value is 0.5 and the "align" property is set to TweenAlign.START, the second tween will start 0.5 seconds after the first one starts, then 0.5 seconds later the third one will start, etc. If the align property is TweenAlign.SEQUENCE, there would be 0.5 seconds added between each tween. Default is 0.
+		 * @return The array of tweens that were inserted
 		 */
-		public function insertMultiple(tweens:Array, timeOrLabel:*=0, align:String="normal", stagger:Number=0):void {
-			var i:int, tween:TweenCore, curTime:Number = Number(timeOrLabel) || 0, l:uint = tweens.length;
+		public function insertMultiple(tweens:Array, timeOrLabel:*=0, align:String="normal", stagger:Number=0):Array {
+			var i:int, tween:TweenCore, curTime:Number = Number(timeOrLabel) || 0, l:int = tweens.length;
 			if (typeof(timeOrLabel) == "string") {
 				if (!(timeOrLabel in _labels)) {
 					addLabel(timeOrLabel, this.duration);
 				}
 				curTime = _labels[timeOrLabel];
 			}
-			for (i = 0; i < l; i++) {
+			for (i = 0; i < l; i += 1) {
 				tween = tweens[i] as TweenCore;
 				insert(tween, curTime);
 				if (align == "sequence") {
@@ -387,6 +393,7 @@ package com.greensock {
 				}
 				curTime += stagger;
 			}
+			return tweens;
 		}
 		
 		/**
@@ -398,9 +405,10 @@ package com.greensock {
 		 * @param offset Amount of seconds (or frames for frames-based timelines) to offset the insertion point of the tweens from the end of the timeline. For example, to start appending the tweens 3 seconds after the end of the timeline (leaving a 3-second gap), set the offset to 3. Or to have the tweens appended so that the insertion point overlaps with the last 2 seconds of the timeline, set the offset to -2. The default is 0 so that the insertion point is exactly at the end of the timeline. 
 		 * @param align determines how the tweens will be aligned in relation to each other before getting appended. Options are: TweenAlign.SEQUENCE (aligns the tweens one-after-the-other in a sequence), TweenAlign.START (aligns the start times of all of the tweens (ignores delays)), and TweenAlign.NORMAL (aligns the start times of all the tweens (honors delays)). The default is NORMAL.
 		 * @param stagger staggers the tweens by a set amount of time (in seconds) (or in frames for frames-based timelines). For example, if the stagger value is 0.5 and the "align" property is set to TweenAlign.START, the second tween will start 0.5 seconds after the first one starts, then 0.5 seconds later the third one will start, etc. If the align property is TweenAlign.SEQUENCE, there would be 0.5 seconds added between each tween. Default is 0.
+		 * @return The array of tweens that were appended
 		 */
-		public function appendMultiple(tweens:Array, offset:Number=0, align:String="normal", stagger:Number=0):void {
-			insertMultiple(tweens, this.duration + offset, align, stagger);
+		public function appendMultiple(tweens:Array, offset:Number=0, align:String="normal", stagger:Number=0):Array {
+			return insertMultiple(tweens, this.duration + offset, align, stagger);
 		}
 		
 		/**
@@ -410,12 +418,14 @@ package com.greensock {
 		 * @param tweens an Array containing any or all of the following: TweenLite, TweenMax, TimelineLite, and/or TimelineMax instances  
 		 * @param align determines how the tweens will be aligned in relation to each other before getting prepended. Options are: TweenAlign.SEQUENCE (aligns the tweens one-after-the-other in a sequence), TweenAlign.START (aligns the start times of all of the tweens (ignores delays)), and TweenAlign.NORMAL (aligns the start times of all the tweens (honors delays)). The default is NORMAL.
 		 * @param stagger staggers the tweens by a set amount of time (in seconds) (or in frames for frames-based timelines). For example, if the stagger value is 0.5 and the "align" property is set to TweenAlign.START, the second tween will start 0.5 seconds after the first one starts, then 0.5 seconds later the third one will start, etc. If the align property is TweenAlign.SEQUENCE, there would be 0.5 seconds added between each tween. Default is 0.
+		 * @return The array of tweens that were prepended
 		 */
-		public function prependMultiple(tweens:Array, align:String="normal", stagger:Number=0, adjustLabels:Boolean=false):void {
+		public function prependMultiple(tweens:Array, align:String="normal", stagger:Number=0, adjustLabels:Boolean=false):Array {
 			var tl:TimelineLite = new TimelineLite({tweens:tweens, align:align, stagger:stagger}); //dump them into a new temporary timeline initially so that we can determine the overall duration.
 			shiftChildren(tl.duration, adjustLabels, 0);
 			insertMultiple(tweens, 0, align, stagger);
 			tl.kill();
+			return tweens;
 		}
 		
 		
@@ -701,7 +711,7 @@ package com.greensock {
 		 * @return an Array containing the child tweens/timelines.
 		 */
 		public function getChildren(nested:Boolean=true, tweens:Boolean=true, timelines:Boolean=true, ignoreBeforeTime:Number=-9999999999):Array {
-			var a:Array = [], cnt:uint = 0, tween:TweenCore = (this.gc) ? _endCaps[0] : _firstChild;
+			var a:Array = [], cnt:int = 0, tween:TweenCore = (this.gc) ? _endCaps[0] : _firstChild;
 			while (tween) {
 				if (tween.cachedStartTime < ignoreBeforeTime) {
 					//do nothing
@@ -731,9 +741,9 @@ package com.greensock {
 		 */
 		public function getTweensOf(target:Object, nested:Boolean=true):Array {
 			var tweens:Array = getChildren(nested, true, false), a:Array = [], i:int;
-			var l:uint = tweens.length;
-			var cnt:uint = 0;
-			for (i = 0; i < l; i++) {
+			var l:int = tweens.length;
+			var cnt:int = 0;
+			for (i = 0; i < l; i += 1) {
 				if (TweenLite(tweens[i]).target == target) {
 					a[cnt++] = tweens[i];
 				}
@@ -829,7 +839,7 @@ package com.greensock {
 		/** @private **/
 		override public function setEnabled(enabled:Boolean, ignoreTimeline:Boolean=false):Boolean {
 			if (enabled == this.gc) {
-				var tween:TweenCore, next:TweenCore;
+				var tween:TweenCore;
 				/*
 				NOTE: To avoid circular references (TweenCore.timeline and SimpleTimeline._firstChild/_lastChild) which cause garbage collection
 				problems, store the _firstChild and _lastChild in the _endCaps Array when the timeline is disabled.
@@ -945,7 +955,7 @@ package com.greensock {
 			if (n == 0) { //can't allow zero because it'll throw the math off
 				n = 0.0001;
 			}
-			var tlTime:Number = (_pauseTime || _pauseTime == 0) ? _pauseTime : this.timeline.cachedTotalTime;
+			var tlTime:Number = (this.cachedPauseTime || this.cachedPauseTime == 0) ? this.cachedPauseTime : this.timeline.cachedTotalTime;
 			this.cachedStartTime = tlTime - ((tlTime - this.cachedStartTime) * this.cachedTimeScale / n);
 			this.cachedTimeScale = n;
 			setDirtyCache(false);

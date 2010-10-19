@@ -1,6 +1,6 @@
 ﻿/**
- * VERSION: 11.37
- * DATE: 2010-05-14
+ * VERSION: 11.391
+ * DATE: 2010-09-28
  * AS3 (AS2 version is also available)
  * UPDATES AND DOCUMENTATION AT: http://www.TweenMax.com 
  **/
@@ -292,7 +292,7 @@ package com.greensock {
  */
 	public class TweenMax extends TweenLite implements IEventDispatcher {
 		/** @private **/
-		public static const version:Number = 11.37;
+		public static const version:Number = 11.391;
 		
 		TweenPlugin.activate([
 			
@@ -359,11 +359,11 @@ package com.greensock {
 		/** @private **/
 		protected var _repeatDelay:Number = 0;
 		/** @private **/
-		protected var _cyclesComplete:uint = 0;
+		protected var _cyclesComplete:int = 0;
 		/** @private Indicates the strength of the fast ease - only used for eases that are optimized to make use of the internal code in the render() loop (ones that are activated with FastEase.activate()) **/
-		protected var _easePower:uint;
+		protected var _easePower:int;
 		/** @private 0 = standard function, 1 = optimized easeIn, 2 = optimized easeOut, 3 = optimized easeInOut. Only used for eases that are optimized to make use of the internal code in the render() loop (ones that are activated with FastEase.activate()) **/
-		protected var _easeType:uint; 
+		protected var _easeType:int; 
 		
 		
 		/** 
@@ -387,7 +387,7 @@ package com.greensock {
 				throw new Error("TweenMax error! Please update your TweenLite class or try deleting your ASO files. TweenMax requires a more recent version. Download updates at http://www.TweenMax.com.");
 			}
 			this.yoyo = Boolean(this.vars.yoyo);
-			_repeat = (this.vars.repeat) ? int(this.vars.repeat) : 0;
+			_repeat = uint(this.vars.repeat);
 			_repeatDelay = (this.vars.repeatDelay) ? Number(this.vars.repeatDelay) : 0;
 			this.cacheIsDirty = true; //ensures that if there is any repeat, the totalDuration will get recalculated to accurately report it.
 
@@ -424,7 +424,7 @@ package com.greensock {
 			}
 			//accommodate rounding if necessary...
 			if (this.vars.roundProps != null && "roundProps" in TweenLite.plugins) {
-				var j:int, prop:String, multiProps:String, rp:Array = this.vars.roundProps, plugin:Object, ptPlugin:PropTween, pt:PropTween;
+				var prop:String, multiProps:String, rp:Array = this.vars.roundProps, plugin:Object, ptPlugin:PropTween, pt:PropTween;
 				var i:int = rp.length;
 				while (--i > -1) {
 					prop = rp[i];
@@ -662,7 +662,7 @@ package com.greensock {
 					}
 				} else if (time > 0) {
 					var prevCycles:int = _cyclesComplete;
-					_cyclesComplete = int(this.cachedTotalTime / cycleDuration);
+					_cyclesComplete = (this.cachedTotalTime / cycleDuration) >> 0; //rounds result, like int()
 					if (_cyclesComplete == this.cachedTotalTime / cycleDuration) {
 						_cyclesComplete--; //otherwise when rendered exactly at the end time, it will act as though it is repeating (at the beginning)
 					}
@@ -940,13 +940,13 @@ package com.greensock {
 		 */
 		public static function allTo(targets:Array, duration:Number, vars:Object, stagger:Number=0, onCompleteAll:Function=null, onCompleteAllParams:Array=null):Array {
 			var i:int, varsDup:Object, p:String;
-			var l:uint = targets.length;
+			var l:int = targets.length;
 			var a:Array = [];
 			var curDelay:Number = ("delay" in vars) ? Number(vars.delay) : 0;
 			var onCompleteProxy:Function = vars.onComplete;
 			var onCompleteParamsProxy:Array = vars.onCompleteParams;
 			var lastIndex:int = (stagger <= 0) ? 0 : l - 1;
-			for (i = 0; i < l; i++) {
+			for (i = 0; i < l; i += 1) {
 				varsDup = {};
 				for (p in vars) {
 					varsDup[p] = vars[p];
@@ -1049,9 +1049,9 @@ package com.greensock {
 			var toReturn:Array = [];
 			if (a) {
 				var i:int = a.length;
-				var cnt:uint = 0;
+				var cnt:int = 0;
 				while (--i > -1) {
-					if (!a[i].gc) {
+					if (!TweenLite(a[i]).gc) {
 						toReturn[cnt++] = a[i];
 					}
 				}
@@ -1088,7 +1088,7 @@ package com.greensock {
 		 */
 		public static function getAllTweens():Array {
 			var ml:Dictionary = masterList; //speeds things up slightly
-			var cnt:uint = 0;
+			var cnt:int = 0;
 			var toReturn:Array = [], a:Array, i:int;
 			for each (a in ml) {
 				i = a.length;
@@ -1102,8 +1102,20 @@ package com.greensock {
 		}
 		
 		/**
-		 * Kills all tweens and/or delayedCalls/callbacks, optionally forcing them to completion first.
+		 * Kills all tweens and/or delayedCalls/callbacks, optionally forcing them to completion first. The 
+		 * various parameters provide a way to distinguish between delayedCalls and tweens, so if you want to 
+		 * kill EVERYTHING (tweens and delayedCalls), you'd do:<br /><br /><code>
 		 * 
+		 * TweenMax.killAll(false, true, true);<br /><br /></code>
+		 * 
+		 * But if you want to kill only the tweens but allow the delayedCalls to continue, you'd do:<br /><br /><code>
+		 * 
+		 * TweenMax.killAll(false, false, true);<br /><br /></code>
+		 * 
+		 * And if you want to kill only the delayedCalls but not the tweens, you'd do:<br /><br /><code>
+		 * 
+		 * TweenMax.killAll(false, true, false);<br /></code>
+		 *  
 		 * @param complete Determines whether or not the tweens/delayedCalls/callbacks should be forced to completion before being killed.
 		 * @param tweens If true, all tweens will be killed
 		 * @param delayedCalls If true, all delayedCalls will be killed. TimelineMax callbacks are treated the same as delayedCalls.
@@ -1284,7 +1296,7 @@ package com.greensock {
 			if (n == 0) { //can't allow zero because it'll throw the math off
 				n = 0.0001;
 			}
-			var tlTime:Number = (_pauseTime || _pauseTime == 0) ? _pauseTime : this.timeline.cachedTotalTime;
+			var tlTime:Number = (this.cachedPauseTime || this.cachedPauseTime == 0) ? this.cachedPauseTime : this.timeline.cachedTotalTime;
 			this.cachedStartTime = tlTime - ((tlTime - this.cachedStartTime) * this.cachedTimeScale / n);
 			this.cachedTimeScale = n;
 			setDirtyCache(false);

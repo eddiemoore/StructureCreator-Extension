@@ -5,8 +5,7 @@
  * UPDATES AND DOCUMENTATION AT: http://www.TweenMax.com
  **/
 package com.greensock.plugins {
-	import flash.display.*;
-	import flash.filters.*;
+	import flash.filters.ColorMatrixFilter;
 	import com.greensock.*;
 /**
  * ColorMatrixFilter tweening offers an easy way to tween a DisplayObject's saturation, hue, contrast,
@@ -214,8 +213,8 @@ package com.greensock.plugins {
 				return m2;
 			}
 			var temp:Array = [], i:int = 0, z:int = 0, y:int, x:int;
-			for (y = 0; y < 4; y++) {
-				for (x = 0; x < 5; x++) {
+			for (y = 0; y < 4; y += 1) {
+				for (x = 0; x < 5; x += 1) {
 					if (x == 4) {
 						z = m[i + 4];
 					} else {

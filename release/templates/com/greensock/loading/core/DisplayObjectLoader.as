@@ -1,6 +1,6 @@
 /**
- * VERSION: 1.21
- * DATE: 2010-07-30
+ * VERSION: 1.6
+ * DATE: 2010-10-02
  * AS3
  * UPDATES AND DOCS AT: http://www.greensock.com/loadermax/
  **/
@@ -143,8 +143,9 @@ package com.greensock.loading.core {
 			if (_gcCycles == 0) {
 				_gcDispatcher.removeEventListener(Event.ENTER_FRAME, _forceGCHandler);
 				_gcDispatcher = null;
+			} else {
+				_gcCycles--;
 			}
-			_gcCycles--;
 			try {
 				new LocalConnection().connect("FORCE_GC");
 				new LocalConnection().connect("FORCE_GC");
@@ -184,7 +185,7 @@ package com.greensock.loading.core {
 		/** @private **/
 		protected function _securityErrorHandler(event:ErrorEvent):void {
 			//If a security error is thrown because of a missing crossdomain.xml file for example and the user didn't define a specific LoaderContext, we'll try again without checking the policy file, accepting the restrictions that come along with it because typically people would rather have the content show up on the screen rather than just error out (and they can always check the scriptAccessDenied property if they need to figure out whether it's safe to do BitmapData stuff on it, etc.)
-			if (_context != null && _context.checkPolicyFile && !("context" in this.vars)) {
+			if (_context != null && _context.checkPolicyFile && !(this.vars.context is LoaderContext)) {
 				_context = new LoaderContext(false);
 				_scriptAccessDenied = true;
 				dispatchEvent(new LoaderEvent(LoaderEvent.SCRIPT_ACCESS_DENIED, this, event.text));

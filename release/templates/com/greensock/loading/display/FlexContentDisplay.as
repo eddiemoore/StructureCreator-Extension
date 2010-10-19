@@ -1,6 +1,6 @@
 /**
- * VERSION: 1.2
- * DATE: 2010-07-28
+ * VERSION: 1.5
+ * DATE: 2010-09-27
  * AS3
  * UPDATES AND DOCS AT: http://www.greensock.com/loadermax/
  **/
@@ -14,11 +14,11 @@ package com.greensock.loading.display {
 	import flash.media.Video;
 	
 	import mx.core.UIComponent;
-	
 /**
  * A container for visual content that is loaded by any of the following: ImageLoaders, SWFLoaders, 
  * or VideoLoaders which is to be used in Flex. It is essentially a UIComponent that has a <code>loader</code> 
- * property for easily referencing the original loader, as well as a <code>rawContent</code> property. That way, 
+ * property for easily referencing the original loader, as well as several other useful properties for 
+ * controling the placement of <code>rawContent</code> and the way it is scaled to fit (if at all). That way, 
  * you can add a FlexContentDisplay to the display list or populate an array with as many as you want and then if 
  * you ever need to unload() the content or reload it or figure out its url, etc., you can reference your 
  * FlexContentDisplay's <code>loader</code> property like <code>myContent.loader.url</code> or 
@@ -44,15 +44,29 @@ package com.greensock.loading.display {
  */	
 	public class FlexContentDisplay extends UIComponent {
 		/** @private **/
-		protected static var _transformProps:Object = {x:1, y:1, scaleX:1, scaleY:1, rotation:1, alpha:1, visible:true, blendMode:"normal"};
-		/** @private **/
-		protected var _fitRect:Rectangle;
+		protected static var _transformProps:Object = {x:1, y:1, scaleX:1, scaleY:1, rotation:1, alpha:1, visible:true, blendMode:"normal", centerRegistration:false, crop:false, scaleMode:"stretch", hAlign:"center", vAlign:"center"};
 		/** @private **/
 		protected var _loader:LoaderItem;
 		/** @private **/
 		protected var _rawContent:DisplayObject;
 		/** @private **/
-		protected var _vars:Object;
+		protected var _centerRegistration:Boolean;
+		/** @private **/
+		protected var _crop:Boolean;
+		/** @private **/
+		protected var _scaleMode:String = "stretch";
+		/** @private **/
+		protected var _hAlign:String = "center";
+		/** @private **/
+		protected var _vAlign:String = "center";
+		/** @private **/
+		protected var _bgColor:uint;
+		/** @private **/
+		protected var _bgAlpha:Number = 0;
+		/** @private **/
+		protected var _fitWidth:Number;
+		/** @private **/
+		protected var _fitHeight:Number;
 		
 		/** @private A place to reference an object that should be protected from gc - this is used in VideoLoader in order to protect the NetStream object when the loader is disposed. **/
 		public var gcProtect:*;
@@ -77,13 +91,14 @@ package com.greensock.loading.display {
 		 */
 		public function dispose(unloadLoader:Boolean=true, disposeLoader:Boolean=true):void {
 			if (this.parent != null) {
-				if (this.parent.hasOwnProperty("addElement")) {
+				if (this.parent.hasOwnProperty("removeElement")) {
 					(this.parent as Object).removeElement(this);
 				} else {
 					this.parent.removeChild(this);
 				}
 			}
 			this.rawContent = null;
+			this.gcProtect = null;
 			if (_loader != null) {
 				if (unloadLoader) {
 					_loader.unload();
@@ -95,8 +110,264 @@ package com.greensock.loading.display {
 			}
 		}
 		
+		/** @private **/
+		protected function _update():void {
+			var left:Number = (_centerRegistration && _fitWidth > 0) ? _fitWidth / -2 : 0;
+			var top:Number = (_centerRegistration && _fitHeight > 0) ? _fitHeight / -2 : 0;
+			graphics.clear();
+			if (_fitWidth > 0 && _fitHeight > 0) {
+				graphics.beginFill(_bgColor, _bgAlpha);
+				graphics.drawRect(left, top, _fitWidth, _fitHeight);
+				graphics.endFill();
+			}
+			if (_rawContent == null) {
+				return;
+			}
+			var mc:DisplayObject = _rawContent;
+			var contentWidth:Number =  mc.width;
+			var contentHeight:Number = mc.height;
+			if (_loader.hasOwnProperty("getClass") && !_loader.scriptAccessDenied) { //for SWFLoaders, use loaderInfo.width/height so that everything is based on the stage size, not the bounding box of the DisplayObjects that happen to be on the stage (which could be much larger or smaller than the swf's stage)
+				contentWidth = mc.loaderInfo.width;
+				contentHeight = mc.loaderInfo.height;
+			}
+			
+			if (_fitWidth > 0 && _fitHeight > 0) {
+				var w:Number = _fitWidth;
+				var h:Number = _fitHeight;
+				
+				var wGap:Number = w - contentWidth;
+				var hGap:Number = h - contentHeight;
+				
+				if (_scaleMode != "none") {
+					var displayRatio:Number = w / h;
+					var contentRatio:Number = contentWidth / contentHeight;
+					if ((contentRatio < displayRatio && _scaleMode == "proportionalInside") || (contentRatio > displayRatio && _scaleMode == "proportionalOutside")) {
+						w = h * contentRatio;
+					}
+					if ((contentRatio > displayRatio && _scaleMode == "proportionalInside") || (contentRatio < displayRatio && _scaleMode == "proportionalOutside")) {
+						h = w / contentRatio;
+					}
+					
+					if (_scaleMode != "heightOnly") {
+						mc.width *= w / contentWidth;
+						wGap = _fitWidth - w;
+					} 
+					if (_scaleMode != "widthOnly") {
+						mc.height *= h / contentHeight;
+						hGap = _fitHeight - h;
+					}
+				}
+				
+				if (_hAlign == "left") {
+					wGap = 0;
+				} else if (_hAlign != "right") {
+					wGap *= 0.5;
+				}
+				if (_vAlign == "top") {
+					hGap = 0;
+				} else if (_vAlign != "bottom") {
+					hGap *= 0.5;
+				}
+				
+				mc.x = left;
+				mc.y = top;
+				
+				if (_crop) {
+					mc.scrollRect = new Rectangle(-wGap / mc.scaleX, -hGap / mc.scaleY, _fitWidth / mc.scaleX, _fitHeight / mc.scaleY);
+				} else {
+					mc.x += wGap;
+					mc.y += hGap;
+				}
+			} else {
+				mc.x = (_centerRegistration) ? -contentWidth / 2 : 0;
+				mc.y = (_centerRegistration) ? -contentHeight / 2 : 0;
+			}
+			measure();
+		}
+		
+		override protected function measure():void {
+			var bounds:Rectangle = this.getBounds(this);
+			this.explicitWidth = bounds.width;
+			this.explicitHeight = bounds.height;
+			if (this.parent) {
+				bounds = this.getBounds(this.parent);
+				this.width = bounds.width;
+				this.height = bounds.height;
+			}
+			super.measure();
+		}
 		
 //---- GETTERS / SETTERS -------------------------------------------------------------------------
+
+		/** 
+		 * The width to which the <code>rawContent</code> should be fit according to the FlexContentDisplay's <code>scaleMode</code>
+		 * (this width is figured before rotation, scaleX, and scaleY). When a "width" property is defined in the loader's <code>vars</code>
+		 * property/parameter, it is automatically applied to this <code>fitWidth</code> property. For example, the following code will
+		 * set the loader's FlexContentDisplay <code>fitWidth</code> to 100:<code><br /><br />
+		 * 
+		 * var loader:ImageLoader = new ImageLoader("photo.jpg", {width:100, height:80, container:this});</code>
+		 * 
+		 * @see #fitHeight
+		 * @see #scaleMode
+		 **/
+		public function get fitWidth():Number {
+			return _fitWidth;
+		}
+		public function set fitWidth(value:Number):void {
+			_fitWidth = value;
+			_update();
+		}
+		
+		/** 
+		 * The height to which the <code>rawContent</code> should be fit according to the FlexContentDisplay's <code>scaleMode</code>
+		 * (this height is figured before rotation, scaleX, and scaleY). When a "height" property is defined in the loader's <code>vars</code>
+		 * property/parameter, it is automatically applied to this <code>fitHeight</code> property. For example, the following code will
+		 * set the loader's FlexContentDisplay <code>fitHeight</code> to 80:<code><br /><br />
+		 * 
+		 * var loader:ImageLoader = new ImageLoader("photo.jpg", {width:100, height:80, container:this});</code>
+		 * 
+		 * @see #fitWidth
+		 * @see #scaleMode
+		 **/
+		public function get fitHeight():Number {
+			return _fitHeight;
+		}
+		public function set fitHeight(value:Number):void {
+			_fitHeight = value;
+			_update();
+		}
+		
+		/** 
+		 * When the FlexContentDisplay's <code>fitWidth</code> and <code>fitHeight</code> properties are defined (or <code>width</code> 
+		 * and <code>height</code> in the loader's <code>vars</code> property/parameter), the <code>scaleMode</code> controls how 
+		 * the <code>rawContent</code> will be scaled to fit the area. The following values are recognized (you may use the 
+		 * <code>com.greensock.layout.ScaleMode</code> constants if you prefer):
+		 * <ul>
+		 * 		<li><code>"stretch"</code> (the default) - The <code>rawContent</code> will fill the width/height exactly.</li>
+		 * 		<li><code>"proportionalInside"</code> - The <code>rawContent</code> will be scaled proportionally to fit inside the area defined by the width/height</li>
+		 * 		<li><code>"proportionalOutside"</code> - The <code>rawContent</code> will be scaled proportionally to completely fill the area, allowing portions of it to exceed the bounds defined by the width/height.</li>
+		 * 		<li><code>"widthOnly"</code> - Only the width of the <code>rawContent</code> will be adjusted to fit.</li>
+		 * 		<li><code>"heightOnly"</code> - Only the height of the <code>rawContent</code> will be adjusted to fit.</li>
+		 * 		<li><code>"none"</code> - No scaling of the <code>rawContent</code> will occur.</li>
+		 * </ul> 
+		 **/
+		public function get scaleMode():String {
+			return _scaleMode;
+		}
+		public function set scaleMode(value:String):void {
+			if (value == "none" && _rawContent != null) {
+				_rawContent.scaleX = _rawContent.scaleY = 1;
+			}
+			_scaleMode = value;
+			_update();
+		}
+		
+		/** 
+		 * If <code>true</code>, the FlexContentDisplay's registration point will be placed in the center of the <code>rawContent</code> 
+		 * which can be useful if, for example, you want to animate its scale and have it grow/shrink from its center. 
+		 * @see #scaleMode
+		 **/
+		public function get centerRegistration():Boolean {
+			return _centerRegistration;
+		}
+		public function set centerRegistration(value:Boolean):void {
+			_centerRegistration = value;
+			_update();
+		}
+		
+		/** 
+		 * When the FlexContentDisplay's <code>fitWidth</code> and <code>fitHeight</code> properties are defined (or <code>width</code> 
+		 * and <code>height</code> in the loader's <code>vars</code> property/parameter), setting <code>crop</code> to 
+		 * <code>true</code> will cause the <code>rawContent</code> to be cropped within that area (by applying a <code>scrollRect</code> 
+		 * for maximum performance). This is typically useful when the <code>scaleMode</code> is <code>"proportionalOutside"</code> 
+		 * or <code>"none"</code> so that any parts of the <code>rawContent</code> that exceed the dimensions defined by 
+		 * <code>fitWidth</code> and <code>fitHeight</code> are visually chopped off. Use the <code>hAlign</code> and 
+		 * <code>vAlign</code> properties to control the vertical and horizontal alignment within the cropped area. 
+		 * 
+		 * @see #scaleMode
+		 **/
+		public function get crop():Boolean {
+			return _crop;
+		}
+		public function set crop(value:Boolean):void {
+			_crop = value;
+			_update();
+		}
+		
+		/** 
+		 * When the FlexContentDisplay's <code>fitWidth</code> and <code>fitHeight</code> properties are defined (or <code>width</code> 
+		 * and <code>height</code> in the loader's <code>vars</code> property/parameter), the <code>hAlign</code> determines how 
+		 * the <code>rawContent</code> is horizontally aligned within that area. The following values are recognized (you may use the 
+		 * <code>com.greensock.layout.AlignMode</code> constants if you prefer):
+		 * <ul>
+		 * 		<li><code>"center"</code> (the default) - The <code>rawContent</code> will be centered horizontally in the FlexContentDisplay</li>
+		 * 		<li><code>"left"</code> - The <code>rawContent</code> will be aligned with the left side of the FlexContentDisplay</li>
+		 * 		<li><code>"right"</code> - The <code>rawContent</code> will be aligned with the right side of the FlexContentDisplay</li>
+		 * </ul> 
+		 * @see #scaleMode
+		 * @see #vAlign
+		 **/
+		public function get hAlign():String {
+			return _hAlign;
+		}
+		public function set hAlign(value:String):void {
+			_hAlign = value;
+			_update();
+		}
+		
+		/** 
+		 * When the FlexContentDisplay's <code>fitWidth</code> and <code>fitHeight</code> properties are defined (or <code>width</code> 
+		 * and <code>height</code> in the loader's <code>vars</code> property/parameter), the <code>vAlign</code> determines how 
+		 * the <code>rawContent</code> is vertically aligned within that area. The following values are recognized (you may use the 
+		 * <code>com.greensock.layout.AlignMode</code> constants if you prefer):
+		 * <ul>
+		 * 		<li><code>"center"</code> (the default) - The <code>rawContent</code> will be centered vertically in the FlexContentDisplay</li>
+		 * 		<li><code>"top"</code> - The <code>rawContent</code> will be aligned with the top of the FlexContentDisplay</li>
+		 * 		<li><code>"bottom"</code> - The <code>rawContent</code> will be aligned with the bottom of the FlexContentDisplay</li>
+		 * </ul> 
+		 * @see #scaleMode
+		 * @see #hAlign
+		 **/
+		public function get vAlign():String {
+			return _vAlign;
+		}
+		public function set vAlign(value:String):void {
+			_vAlign = value;
+			_update();
+		}
+		
+		/** 
+		 * When the FlexContentDisplay's <code>fitWidth</code> and <code>fitHeight</code> properties are defined (or <code>width</code> 
+		 * and <code>height</code> in the loader's <code>vars</code> property/parameter), a rectangle will be drawn inside the 
+		 * FlexContentDisplay object immediately in order to ease the development process (for example, you can add <code>ROLL_OVER/ROLL_OUT</code>
+		 * event listeners immediately). It is transparent by default, but you may define a <code>bgAlpha</code> if you prefer. 
+		 * @see #bgAlpha
+		 * @see #fitWidth
+		 * @see #fitHeight
+		 **/
+		public function get bgColor():uint {
+			return _bgColor;
+		}
+		public function set bgColor(value:uint):void {
+			_bgColor = value;
+			_update();
+		}
+		
+		/** 
+		 * Controls the alpha of the rectangle that is drawn when the FlexContentDisplay's <code>fitWidth</code> and <code>fitHeight</code> 
+		 * properties are defined (or <code>width</code> and <code>height</code> in the loader's <code>vars</code> property/parameter). 
+		 * @see #bgColor
+		 * @see #fitWidth
+		 * @see #fitHeight
+		 **/
+		public function get bgAlpha():Number {
+			return _bgAlpha;
+		}
+		public function set bgAlpha(value:Number):void {
+			_bgAlpha = value;
+			_update();
+		}
+		
 		
 		/** The raw content which can be a Bitmap, a MovieClip, a Loader, or a Video depending on the type of loader associated with the FlexContentDisplay. **/
 		public function get rawContent():* {
@@ -107,72 +378,12 @@ package com.greensock.loading.display {
 			if (_rawContent != null && _rawContent != value && _rawContent.parent == this) {
 				removeChild(_rawContent);
 			}
-			var mc:DisplayObject = _rawContent = value as DisplayObject;
-			if (mc == null || _vars == null) {
+			_rawContent = value as DisplayObject;
+			if (_rawContent == null) {
 				return;
 			}
-			addChildAt(mc, 0);
-			
-			var contentWidth:Number =  mc.width;
-			var contentHeight:Number = mc.height;
-			if (_loader.hasOwnProperty("getClass") && !_loader.scriptAccessDenied) { //for SWFLoaders, use loaderInfo.width/height so that everything is based on the stage size, not the bounding box of the DisplayObjects that happen to be on the stage (which could be much larger or smaller than the swf's stage)
-				contentWidth = mc.loaderInfo.width;
-				contentHeight = mc.loaderInfo.height;
-			}
-			
-			if (_fitRect != null) {
-				var w:Number = _fitRect.width;
-				var h:Number = _fitRect.height;
-				
-				var wGap:Number = w - contentWidth;
-				var hGap:Number = h - contentHeight;
-				
-				var scaleMode:String = _vars.scaleMode;
-				if (scaleMode != "none") {
-					var displayRatio:Number = w / h;
-					var contentRatio:Number = contentWidth / contentHeight;
-					if ((contentRatio < displayRatio && scaleMode == "proportionalInside") || (contentRatio > displayRatio && scaleMode == "proportionalOutside")) {
-						w = h * contentRatio;
-					}
-					if ((contentRatio > displayRatio && scaleMode == "proportionalInside") || (contentRatio < displayRatio && scaleMode == "proportionalOutside")) {
-						h = w / contentRatio;
-					}
-					
-					if (scaleMode != "heightOnly") {
-						mc.width *= w / contentWidth;
-						wGap = _fitRect.width - w;
-					} 
-					if (scaleMode != "widthOnly") {
-						mc.height *= h / contentHeight;
-						hGap = _fitRect.height - h;
-					}
-				}
-				
-				if (_vars.hAlign == "left") {
-					wGap = 0;
-				} else if (_vars.hAlign != "right") {
-					wGap *= 0.5;
-				}
-				if (_vars.vAlign == "top") {
-					hGap = 0;
-				} else if (_vars.vAlign != "bottom") {
-					hGap *= 0.5;
-				}
-				
-				mc.x = _fitRect.x;
-				mc.y = _fitRect.y;
-				
-				if (_vars.crop == true) {
-					mc.scrollRect = new Rectangle(-wGap / mc.scaleX, -hGap / mc.scaleY, _fitRect.width / mc.scaleX, _fitRect.height / mc.scaleY);
-				} else {
-					mc.x += wGap;
-					mc.y += hGap;
-				}
-				
-			} else {
-				mc.x = (_vars.centerRegistration) ? -contentWidth / 2 : 0;
-				mc.y = (_vars.centerRegistration) ? -contentHeight / 2 : 0;
-			}
+			addChildAt(_rawContent as DisplayObject, 0);
+			_update();
 		}
 		
 		/** The loader whose rawContent populates this FlexContentDisplay. If you get the loader's <code>content</code>, it will return this FlexContentDisplay object. **/
@@ -187,31 +398,25 @@ package com.greensock.loading.display {
 			} else if (!_loader.hasOwnProperty("setContentDisplay")) {
 				throw new Error("Incompatible loader used for a FlexContentDisplay");
 			}
-			graphics.clear();
-			_fitRect = null;
-			_vars = _loader.vars;
 			this.name = _loader.name;
-			if (_vars.container is DisplayObjectContainer) {
-				if (_vars.container.hasOwnProperty("addElement")) {
-					(_vars.container as Object).addElement(this);
-				} else {
-					(_vars.container as DisplayObjectContainer).addChild(this);
-				}
-			}
 			var type:String;
 			for (var p:String in _transformProps) {
-				if (p in _vars) {
+				if (p in _loader.vars) {
 					type = typeof(_transformProps[p]);
-					this[p] = (type == "number") ? Number(_vars[p]) : (type == "string") ? String(_vars[p]) : Boolean(_vars[p]);
+					this[p] = (type == "number") ? Number(_loader.vars[p]) : (type == "string") ? String(_loader.vars[p]) : Boolean(_loader.vars[p]);
 				}
 			}
-			if ("width" in _vars && "height" in _vars) {
-				_fitRect = new Rectangle(0, 0, Number(_vars.width), Number(_vars.height));
-				_fitRect.x = (_vars.centerRegistration) ? -_fitRect.width / 2 : 0;
-				_fitRect.y = (_vars.centerRegistration) ? -_fitRect.height / 2 : 0;
-				graphics.beginFill(("bgColor" in _vars) ? uint(_vars.bgColor) : 0xFFFFFF, ("bgAlpha" in _vars) ? Number(_vars.bgAlpha) : ("bgColor" in _vars) ? 1 : 0);
-				graphics.drawRect(_fitRect.x, _fitRect.y, _fitRect.width, _fitRect.height);
-				graphics.endFill();
+			_bgColor = uint(_loader.vars.bgColor);
+			_bgAlpha = ("bgAlpha" in _loader.vars) ? Number(_loader.vars.bgAlpha) : ("bgColor" in _loader.vars) ? 1 : 0;
+			_fitWidth = ("fitWidth" in _loader.vars) ? Number(_loader.vars.fitWidth) : Number(_loader.vars.width);
+			_fitHeight = ("fitHeight" in _loader.vars) ? Number(_loader.vars.fitHeight) : Number(_loader.vars.height);
+			_update();
+			if (_loader.vars.container is DisplayObjectContainer) {
+				if (_loader.vars.container.hasOwnProperty("addElement")) {
+					(_loader.vars.container as Object).addElement(this);
+				} else {
+					(_loader.vars.container as DisplayObjectContainer).addChild(this);
+				}
 			}
 			if (_loader.content != this) {
 				(_loader as Object).setContentDisplay(this);

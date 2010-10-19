@@ -1,6 +1,6 @@
 ﻿/**
- * VERSION: 11.36
- * DATE: 2010-04-27
+ * VERSION: 11.39
+ * DATE: 2010-09-27
  * AS3 (AS2 version is also available)
  * UPDATES AND DOCUMENTATION AT: http://www.TweenLite.com
  **/
@@ -231,7 +231,7 @@ package com.greensock {
 		}
 		
 		/** @private **/
-		public static const version:Number = 11.36;
+		public static const version:Number = 11.39;
 		/** @private When plugins are activated, the class is added (named based on the special property) to this object so that we can quickly look it up in the initTweenVals() method.**/
 		public static var plugins:Object = {}; 
 		/** @private **/
@@ -270,7 +270,7 @@ package com.greensock {
 		/** @private Easing method to use which determines how the values animate over time. Examples are Elastic.easeOut and Strong.easeIn. Many are found in the fl.motion.easing package or com.greensock.easing. **/
 		protected var _ease:Function;
 		/** @private 0 = NONE, 1 = ALL, 2 = AUTO 3 = CONCURRENT, 4 = ALL_AFTER **/
-		protected var _overwrite:uint;
+		protected var _overwrite:int;
 		/** @private When other tweens overwrite properties in this tween, the properties get added to this object. Remember, sometimes properties are overwritten BEFORE the tween inits, like when two tweens start at the same time, the later one overwrites the previous one. **/
 		protected var _overwrittenProps:Object; 
 		/** @private If this tween has any TweenPlugins, we set this to true - it helps speed things up in onComplete **/
@@ -627,7 +627,7 @@ package com.greensock {
 		 */
 		 protected static function updateAll(e:Event = null):void {
 			rootTimeline.renderTime(((getTimer() * 0.001) - rootTimeline.cachedStartTime) * rootTimeline.cachedTimeScale, false, false);
-			rootFrame++;
+			rootFrame += 1;
 			rootFramesTimeline.renderTime((rootFrame - rootFramesTimeline.cachedStartTime) * rootFramesTimeline.cachedTimeScale, false, false);
 			
 			if (!(rootFrame % 60)) { //garbage collect every 60 frames...

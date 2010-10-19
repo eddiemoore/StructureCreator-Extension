@@ -1,6 +1,6 @@
 /**
- * VERSION: 1.2
- * DATE: 2010-07-28
+ * VERSION: 1.6
+ * DATE: 2010-10-02
  * AS3
  * UPDATES AND DOCS AT: http://www.greensock.com/loadermax/
  **/
@@ -13,9 +13,9 @@ package com.greensock.loading {
 	import flash.net.URLLoader;
 	
 	/** Dispatched when the loader's <code>httpStatus</code> value changes. **/
-	[Event(name="httpStatus", type="com.greensock.events.LoaderEvent")]
+	[Event(name="httpStatus", 		type="com.greensock.events.LoaderEvent")]
 	/** Dispatched when the loader experiences a SECURITY_ERROR while loading or auditing its size. **/
-	[Event(name="securityError", type="com.greensock.events.LoaderEvent")]
+	[Event(name="securityError", 	type="com.greensock.events.LoaderEvent")]
 /**
  * Loads generic data which can be text (the default), binary data, or URL-encoded variables. <br /><br />
  * 
@@ -24,7 +24,8 @@ package com.greensock.loading {
  * If the <code>format</code> vars property is "variables", the <code>content</code> will be a <code>URLVariables</code> object containing the URL-encoded variables<br /><br />
  * 
  * <strong>OPTIONAL VARS PROPERTIES</strong><br />
- * The following special properties can be passed into the DataLoader constructor via its <code>vars</code> parameter:<br />
+ * The following special properties can be passed into the DataLoader constructor via its <code>vars</code> 
+ * parameter which can be either a generic object or a <code><a href="data/DataLoaderVars.html">DataLoaderVars</a></code> object:<br />
  * <ul>
  * 		<li><strong> name : String</strong> - A name that is used to identify the loader instance. This name can be fed to the <code>LoaderMax.getLoader()</code> or <code>LoaderMax.getContent()</code> methods or traced at any time. Each loader's name should be unique. If you don't define one, a unique name will be created automatically, like "loader21".</li>
  * 		<li><strong> format : String</strong> - Controls whether the downloaded data is received as text (<code>"text"</code>), raw binary data (<code>"binary"</code>), or URL-encoded variables (<code>"variables"</code>). </li>
@@ -44,6 +45,10 @@ package com.greensock.loading {
  * 		<li><strong> onIOError : Function</strong> - A handler function for <code>LoaderEvent.IO_ERROR</code> events which will also call the onError handler, so you can use that as more of a catch-all whereas <code>onIOError</code> is specifically for LoaderEvent.IO_ERROR events. Make sure your onIOError function accepts a single parameter of type <code>LoaderEvent</code> (<code>com.greensock.events.LoaderEvent</code>).</li>
  * 		<li><strong> onHTTPStatus : Function</strong> - A handler function for <code>LoaderEvent.HTTP_STATUS</code> events. Make sure your onHTTPStatus function accepts a single parameter of type <code>LoaderEvent</code> (<code>com.greensock.events.LoaderEvent</code>). You can determine the httpStatus code using the LoaderEvent's <code>target.httpStatus</code> (LoaderItems keep track of their <code>httpStatus</code> when possible, although certain environments prevent Flash from getting httpStatus information).</li>
  * </ul><br />
+ * 
+ * <strong>Note:</strong> Using a <code><a href="data/DataLoaderVars.html">DataLoaderVars</a></code> instance 
+ * instead of a generic object to define your <code>vars</code> is a bit more verbose but provides 
+ * code hinting and improved debugging because it enforces strict data typing. Use whichever one you prefer.<br /><br />
  * 
  * @example Example AS3 code:<listing version="3.0">
  import com.greensock.loading.~~;
@@ -86,6 +91,8 @@ function errorHandler(event:LoaderEvent):void {
  * 
  * <b>Copyright 2010, GreenSock. All rights reserved.</b> This work is subject to the terms in <a href="http://www.greensock.com/terms_of_use.html">http://www.greensock.com/terms_of_use.html</a> or for corporate Club GreenSock members, the software agreement that was issued with the corporate membership.
  * 
+ * @see com.greensock.loading.data.DataLoaderVars
+ * 
  * @author Jack Doyle, jack@greensock.com
  */	
 	public class DataLoader extends LoaderItem {
@@ -100,7 +107,8 @@ function errorHandler(event:LoaderEvent):void {
 		 * @param urlOrRequest The url (<code>String</code>) or <code>URLRequest</code> from which the loader should get its content.
 		 * @param vars An object containing optional configuration details. For example: <code>new DataLoader("text/data.txt", {name:"data", onComplete:completeHandler, onProgress:progressHandler})</code>.<br /><br />
 		 * 
-		 * The following special properties can be passed into the constructor via the <code>vars</code> parameter:<br />
+		 * The following special properties can be passed into the constructor via the <code>vars</code> parameter
+		 * which can be either a generic object or a <code><a href="data/DataLoaderVars.html">DataLoaderVars</a></code> object:<br />
 		 * <ul>
 		 * 		<li><strong> name : String</strong> - A name that is used to identify the loader instance. This name can be fed to the <code>LoaderMax.getLoader()</code> or <code>LoaderMax.getContent()</code> methods or traced at any time. Each loader's name should be unique. If you don't define one, a unique name will be created automatically, like "loader21".</li>
 		 * 		<li><strong> format : String</strong> - Controls whether the downloaded data is received as text (<code>"text"</code>), raw binary data (<code>"binary"</code>), or URL-encoded variables (<code>"variables"</code>). </li>
@@ -120,6 +128,7 @@ function errorHandler(event:LoaderEvent):void {
 		 * 		<li><strong> onIOError : Function</strong> - A handler function for <code>LoaderEvent.IO_ERROR</code> events which will also call the onError handler, so you can use that as more of a catch-all whereas <code>onIOError</code> is specifically for LoaderEvent.IO_ERROR events. Make sure your onIOError function accepts a single parameter of type <code>LoaderEvent</code> (<code>com.greensock.events.LoaderEvent</code>).</li>
 		 * 		<li><strong> onHTTPStatus : Function</strong> - A handler function for <code>LoaderEvent.HTTP_STATUS</code> events. Make sure your onHTTPStatus function accepts a single parameter of type <code>LoaderEvent</code> (<code>com.greensock.events.LoaderEvent</code>). You can determine the httpStatus code using the LoaderEvent's <code>target.httpStatus</code> (LoaderItems keep track of their <code>httpStatus</code> when possible, although certain environments prevent Flash from getting httpStatus information).</li>
 		 * </ul>
+		 * @see com.greensock.loading.data.DataLoaderVars
 		 */
 		public function DataLoader(urlOrRequest:*, vars:Object=null) {
 			super(urlOrRequest, vars);

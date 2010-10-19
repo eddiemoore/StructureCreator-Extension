@@ -1,6 +1,45 @@
 CHANGE LOG : GREENSOCK TWEENING PLATFORM
 ----------------------------------------
 
+2010-10-13
+---------------------------------------------
+TimelineLite		1.392
+TimelineMax			1.392
+TweenCore			1.392
+RoughEase			0.61
+	- Fixed issue that caused a TimelineLite/Max not to fire its onComplete when its autoRemoveChildren property was true
+	- Changed RoughEase so that when a name isn't defined, the instance isn't stored in the lookup table that's used for byName(), making the instance eligible for gc
+	- Added a dispose() method to RoughEase to manually release an instance for gc.
+
+2010-09-27
+----------------------------------------------
+TweenLite			1.39
+TweenMax			1.39
+TimelineLite		1.39
+TimelineMax			1.39
+TweenCore			1.39
+	- Added return values for append(), insert(), prepend(), insertMultiple(), appendMultiple(), and prependMultiple() in TimelineLite and TimelineMax
+	- Fixed issue that could cause the parent timeline's totalDuration to be miscalculated when a paused tween or timeline is added to a TimelineLite or TimelineMax instance and then unpaused (very uncommon scenario)
+
+2010-09-25
+---------------------------------------------
+TransformMatrixPlugin		1.0
+	- Added shortRotation capability to TransformMatrixPlugin, so you can do TweenLite.to(mc, 1, {transformMatrix:{shortRotation:164, scaleX:2, scaleY:2}});
+
+2010-09-16
+----------------------------------------------
+TweenLite			11.38
+TweenMax			11.38
+TimelineLite		1.383
+TimelineMax			1.383
+OverwriteManager	6.04
+	- Very minor speed improvements. 
+
+2010-08-31
+----------------------------------------------
+OverwriteManager	6.03
+	- Worked around a bug in Flash that could (in EXTREMELY rare circumstances) cause an error in OverwriteManager.
+
 2010-05-25
 ----------------------------------------------
 TimelineLite		1.382

@@ -1,26 +1,25 @@
 /**
- * VERSION: 0.96
- * DATE: 1/9/2010
+ * VERSION: 1.02
+ * DATE: 2010-10-11
  * ACTIONSCRIPT VERSION: 3.0 
- * UPDATES AND DOCUMENTATION AT: http://www.TweenMax.com
+ * UPDATES AND DOCUMENTATION AT: http://www.GreenSock.com
  **/
 package com.greensock.plugins {
 	import com.greensock.*;
 	
-	import flash.display.*;
 	import flash.geom.Matrix;
 	import flash.geom.Transform;
 /**
  * TransformMatrixPlugin allows you to tween a DisplayObject's transform.matrix values directly 
- * (<code>a, b, c, d, tx, and ty</code>) or use common properties like <code>x, y, scaleX, scaleY, skewX, skewY,</code> and <code>rotation</code>.
+ * (<code>a, b, c, d, tx, and ty</code>) or use common properties like <code>x, y, scaleX, scaleY, 
+ * skewX, skewY, rotation</code> and even <code>shortRotation</code>.
  * To skew without adjusting scale visually, use skewX2 and skewY2 instead of skewX and skewY. 
  * <br /><br />
  * 
  * <b>USAGE:</b><br /><br />
  * <code>
  * 		import com.greensock.TweenLite; <br />
- * 		import com.greensock.plugins.TweenPlugin; <br />
- * 		import com.greensock.plugins.TransformMatrixPlugin; <br />
+ * 		import com.greensock.plugins.~~; <br />
  * 		TweenPlugin.activate([TransformMatrixPlugin]); //activation is permanent in the SWF, so this line only needs to be run once.<br /><br />
  * 
  * 		TweenLite.to(mc, 1, {transformMatrix:{x:50, y:300, scaleX:2, scaleY:2}}); <br /><br />
@@ -40,8 +39,6 @@ package com.greensock.plugins {
 		public static const API:Number = 1.0; //If the API/Framework for plugins changes in the future, this number helps determine compatibility
 		/** @private **/
 		private static const _DEG2RAD:Number = Math.PI / 180;
-		/** @private **/
-		private static const _RAD2DEG:Number = 180 / Math.PI;
 		
 		/** @private **/
 		protected var _transform:Transform;
@@ -78,7 +75,7 @@ package com.greensock.plugins {
 		public function TransformMatrixPlugin() {
 			super();
 			this.propName = "transformMatrix";
-			this.overwriteProps = ["x","y","scaleX","scaleY","rotation","transformMatrix","transformAroundPoint","transformAroundCenter"];
+			this.overwriteProps = ["x","y","scaleX","scaleY","rotation","transformMatrix","transformAroundPoint","transformAroundCenter","shortRotation"];
 		}
 		
 		/** @private **/
@@ -112,7 +109,7 @@ package com.greensock.plugins {
 			_cChange = ("c" in value) ? value.c - _cStart : 0;
 			_dChange = ("d" in value) ? value.d - _dStart : 0;
 			
-			if (("rotation" in value) || ("scale" in value) || ("scaleX" in value) || ("scaleY" in value) || ("skewX" in value) || ("skewY" in value) || ("skewX2" in value) || ("skewY2" in value)) {
+			if (("rotation" in value) || ("shortRotation" in value) || ("scale" in value && !(value is Matrix)) || ("scaleX" in value) || ("scaleY" in value) || ("skewX" in value) || ("skewY" in value) || ("skewX2" in value) || ("skewY2" in value)) {
 				var ratioX:Number, ratioY:Number;
 				var scaleX:Number = Math.sqrt(matrix.a * matrix.a + matrix.b * matrix.b); //Bugs in the Flex framework prevent DisplayObject.scaleX from working consistently, so we must determine it using the matrix.
 				if (matrix.a < 0 && matrix.d > 0) {
@@ -128,17 +125,29 @@ package com.greensock.plugins {
 				}
 				var skewX:Number = Math.atan2(-_matrix.c, _matrix.d) - angle;
 				
-				var finalAngle:Number = ("rotation" in value) ? (typeof(value.rotation) == "number") ? value.rotation * _DEG2RAD : Number(value.rotation) * _DEG2RAD + angle : angle;
+				var finalAngle:Number = angle;
+				if ("shortRotation" in value) {
+					var dif:Number = ((value.shortRotation * _DEG2RAD) - angle) % (Math.PI * 2);
+					if (dif > Math.PI) {
+						dif -= Math.PI * 2;
+					} else if (dif < -Math.PI) {
+						dif += Math.PI * 2;
+					}
+					finalAngle += dif;
+				} else if ("rotation" in value) {
+					finalAngle = (typeof(value.rotation) == "number") ? value.rotation * _DEG2RAD : Number(value.rotation) * _DEG2RAD + angle;
+				}
+				
 				var finalSkewX:Number = ("skewX" in value) ? (typeof(value.skewX) == "number") ? Number(value.skewX) * _DEG2RAD : Number(value.skewX) * _DEG2RAD + skewX : 0;
 				
-				if ("skewY" in value) { //skewY is just a combonation of rotation and skewX
+				if ("skewY" in value) { //skewY is just a combination of rotation and skewX
 					var skewY:Number = (typeof(value.skewY) == "number") ? value.skewY * _DEG2RAD : Number(value.skewY) * _DEG2RAD - skewX;
 					finalAngle += skewY + skewX;
 					finalSkewX -= skewY;
 				}
 				
 				if (finalAngle != angle) {
-					if ("rotation" in value) {
+					if (("rotation" in value) || ("shortRotation" in value)) {
 						_angleChange = finalAngle - angle;
 						finalAngle = angle; //to correctly affect the skewX calculations below
 					} else {
@@ -188,11 +197,11 @@ package com.greensock.plugins {
 					}
 				}
 				
-				if (ratioX) {
+				if (ratioX || ratioX == 0) { //faster than isNaN()
 					matrix.a *= ratioX;
 					matrix.b *= ratioX;
 				}
-				if (ratioY) {
+				if (ratioY || ratioY == 0) {
 					matrix.c *= ratioY;
 					matrix.d *= ratioY;
 				}
@@ -200,11 +209,11 @@ package com.greensock.plugins {
 				_bChange = matrix.b - _bStart;
 				_cChange = matrix.c - _cStart;
 				_dChange = matrix.d - _dStart;
+				
 			}
 			
 			return true;
 		}
-		
 		
 		/** @private **/
 		override public function set changeFactor(n:Number):void {
@@ -213,7 +222,15 @@ package com.greensock.plugins {
 			_matrix.c = _cStart + (n * _cChange);
 			_matrix.d = _dStart + (n * _dChange);
 			if (_angleChange) {
-				_matrix.rotate(_angleChange * n);
+				//about 3-4 times faster than _matrix.rotate(_angleChange * n);
+				var cos:Number = Math.cos(_angleChange * n);
+				var sin:Number = Math.sin(_angleChange * n);
+				var a:Number = _matrix.a;
+				var c:Number = _matrix.c;
+				_matrix.a = a * cos - _matrix.b * sin;
+				_matrix.b = a * sin + _matrix.b * cos;
+				_matrix.c = c * cos - _matrix.d * sin;
+				_matrix.d = c * sin + _matrix.d * cos;
 			}
 			_matrix.tx = _txStart + (n * _txChange);
 			_matrix.ty = _tyStart + (n * _tyChange);

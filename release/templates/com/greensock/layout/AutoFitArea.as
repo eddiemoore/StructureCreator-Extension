@@ -1,6 +1,6 @@
 /**
- * VERSION: 1.56
- * DATE: 2010-06-25
+ * VERSION: 1.61
+ * DATE: 2010-10-01
  * AS3
  * UPDATES AND DOCUMENTATION AT: http://www.greensock.com/autofitarea/
  **/
@@ -74,7 +74,7 @@ var area:AutoFitArea = AutoFitArea.createAround(myImage);
  */	 
 	public class AutoFitArea extends Shape {
 		/** @private **/
-		public static const version:Number = 1.56;
+		public static const version:Number = 1.61;
 		
 		/** @private **/
 		private static var _bd:BitmapData;
@@ -360,17 +360,17 @@ var area:AutoFitArea = AutoFitArea.createAround(myImage);
 				if (item.hAlign == AlignMode.LEFT) {
 					target.x += (x - bounds.x);
 				} else if (item.hAlign == AlignMode.CENTER) {
-					target.x += (x - bounds.x) + ((width - target.width) * 0.5);
+					target.x += (x - bounds.x) + ((width - bounds.width) * 0.5);
 				} else {
-					target.x += (x - bounds.x) + (width - target.width);
+					target.x += (x - bounds.x) + (width - bounds.width);
 				}
 				
 				if (item.vAlign == AlignMode.TOP) {
 					target.y += (y - bounds.y);
 				} else if (item.vAlign == AlignMode.CENTER) {
-					target.y += (y - bounds.y) + ((height - target.height) * 0.5);
+					target.y += (y - bounds.y) + ((height - bounds.height) * 0.5);
 				} else {
-					target.y += (y - bounds.y) + (height - target.height);
+					target.y += (y - bounds.y) + (height - bounds.height);
 				}
 				
 				if (item.mask) {
@@ -459,6 +459,8 @@ var area:AutoFitArea = AutoFitArea.createAround(myImage);
 			if (_bd == null) {
 				_bd = new BitmapData(2800, 2800, true, 0x00FFFFFF);
 			}
+			var msk:DisplayObject = target.mask;
+			target.mask = null;
 			_bd.fillRect(_rect, 0x00FFFFFF);
 			_matrix.tx = _matrix.ty = 0;
 			var offset:Rectangle = target.getBounds(targetCoordinateSpace);
@@ -469,6 +471,7 @@ var area:AutoFitArea = AutoFitArea.createAround(myImage);
 			var bounds:Rectangle = _bd.getColorBoundsRect(0xFF000000, 0x00000000, false);
 			bounds.x += offset.x;
 			bounds.y += offset.y;
+			target.mask = msk;
 			return bounds;
 		}
 		

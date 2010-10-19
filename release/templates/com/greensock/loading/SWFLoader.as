@@ -1,6 +1,6 @@
 /**
- * VERSION: 1.23
- * DATE: 2010-08-05
+ * VERSION: 1.6
+ * DATE: 2010-10-02
  * AS3
  * UPDATES AND DOCS AT: http://www.greensock.com/loadermax/
  **/
@@ -19,21 +19,21 @@ package com.greensock.loading {
 	import flash.utils.getQualifiedClassName;
 	
 	/** Dispatched when any loader that the SWFLoader discovered in the subloaded swf dispatches an OPEN event. **/
-	[Event(name="childOpen", type="com.greensock.events.LoaderEvent")]
+	[Event(name="childOpen", 			type="com.greensock.events.LoaderEvent")]
 	/** Dispatched when any loader that the SWFLoader discovered in the subloaded swf dispatches a PROGRESS event. **/
-	[Event(name="childProgress", type="com.greensock.events.LoaderEvent")]
+	[Event(name="childProgress", 		type="com.greensock.events.LoaderEvent")]
 	/** Dispatched when any loader that the SWFLoader discovered in the subloaded swf dispatches a COMPLETE event. **/
-	[Event(name="childComplete", type="com.greensock.events.LoaderEvent")]
+	[Event(name="childComplete", 		type="com.greensock.events.LoaderEvent")]
 	/** Dispatched when any loader that the SWFLoader discovered in the subloaded swf dispatches a FAIL event. **/
-	[Event(name="childFail", type="com.greensock.events.LoaderEvent")]
+	[Event(name="childFail", 			type="com.greensock.events.LoaderEvent")]
 	/** Dispatched when any loader that the SWFLoader discovered in the subloaded swf dispatches a CANCEL event. **/
-	[Event(name="childCancel", type="com.greensock.events.LoaderEvent")]
+	[Event(name="childCancel", 			type="com.greensock.events.LoaderEvent")]
 	/** Dispatched when the loader is denied script access to the swf which can happen if it is loaded from another domain and there's no crossdomain.xml file in place. **/
-	[Event(name="scriptAccessDenied", type="com.greensock.events.LoaderEvent")]
+	[Event(name="scriptAccessDenied", 	type="com.greensock.events.LoaderEvent")]
 	/** Dispatched when the loader's <code>httpStatus</code> value changes. **/
-	[Event(name="httpStatus", type="com.greensock.events.LoaderEvent")]
+	[Event(name="httpStatus", 			type="com.greensock.events.LoaderEvent")]
 	/** Dispatched when the loader experiences a SECURITY_ERROR while loading or auditing its size. **/
-	[Event(name="securityError", type="com.greensock.events.LoaderEvent")]
+	[Event(name="securityError", 		type="com.greensock.events.LoaderEvent")]
 /**
  * Loads a swf file and automatically searches for active loaders in that swf that have 
  * the <code>requireWithRoot</code> vars property set to that swf's <code>root</code>. If it finds any, 
@@ -41,9 +41,11 @@ package com.greensock.loading {
  * <code>COMPLETE</code> event until the nested loaders have finished. <br /><br />
  * 
  * The SWFLoader's <code>content</code> refers to a <code>ContentDisplay</code> (a Sprite) that 
- * is created immediately so that you can add it to the display list or manipulate it while the swf is
- * loading (use the SWFLoader's <code>content</code> property to get the ContentDisplay Sprite, or simply define 
- * a <code>container</code> and SWFLoader will automatically add it to that container). <br /><br />
+ * is created immediately so that you can position/scale/rotate it or add ROLL_OVER/ROLL_OUT/CLICK listeners
+ * before (or while) the swf loads. Use the SWFLoader's <code>content</code> property to get the ContentDisplay 
+ * Sprite, or use the <code>rawContent</code> property to get the actual root of the loaded swf file itself. 
+ * If a <code>container</code> is defined in the <code>vars</code> object, the ContentDisplay will 
+ * immediately be added to that container). <br /><br />
  * 
  * If you define a <code>width</code> and <code>height</code>, it will draw a rectangle 
  * in the ContentDisplay so that interactive events fire appropriately (rollovers, etc.) and width/height/bounds
@@ -84,7 +86,8 @@ package com.greensock.loading {
  * </ul><br />
  * 
  * <strong>OPTIONAL VARS PROPERTIES</strong><br />
- * The following special properties can be passed into the SWFLoader constructor via its <code>vars</code> parameter:<br />
+ * The following special properties can be passed into the SWFLoader constructor via its <code>vars</code> 
+ * parameter which can be either a generic object or an <code><a href="data/SWFLoaderVars.html">SWFLoaderVars</a></code> object:<br />
  * <ul>
  * 		<li><strong> name : String</strong> - A name that is used to identify the SWFLoader instance. This name can be fed to the <code>LoaderMax.getLoader()</code> or <code>LoaderMax.getContent()</code> methods. This name is also applied to the Sprite that is created to hold the swf (The SWFLoader's <code>content</code> refers to this Sprite). Each loader's name should be unique. If you don't define one, a unique name will be created automatically, like "loader21".</li>
  * 		<li><strong> container : DisplayObjectContainer</strong> - A DisplayObjectContainer into which the <code>content</code> Sprite should be added immediately.</li>
@@ -122,7 +125,7 @@ package com.greensock.loading {
  * 		<li><strong> visible : Boolean</strong> - Sets the <code>ContentDisplay</code>'s <code>visible</code> property.</li>
  * 		<li><strong> blendMode : String</strong> - Sets the <code>ContentDisplay</code>'s <code>blendMode</code> property.</li>
  * 		<li><strong> autoPlay : Boolean</strong> - If <code>autoPlay</code> is <code>true</code> (the default), the swf will begin playing immediately when the <code>INIT</code> event fires. To prevent this behavior, set <code>autoPlay</code> to <code>false</code> which will also mute the swf until the SWFLoader completes.</li>
- * 		<li><strong> bgColor : uint </strong> - When a <code>width</code> and <code>height</code> are defined, a rectangle will be drawn inside the <code>ContentDisplay</code> Sprite immediately in order to ease the development process. It is transparent by default, but you may define a <code>bgColor</code> if you prefer.</li>
+ * 		<li><strong> bgColor : uint </strong> - When a <code>width</code> and <code>height</code> are defined, a rectangle will be drawn inside the <code>ContentDisplay</code> Sprite immediately in order to ease the development process. It is transparent by default, but you may define a <code>bgAlpha</code> if you prefer.</li>
  * 		<li><strong> bgAlpha : Number </strong> - Controls the alpha of the rectangle that is drawn when a <code>width</code> and <code>height</code> are defined.</li>
  * 		<li><strong> context : LoaderContext</strong> - To control things like the ApplicationDomain, SecurityDomain, and whether or not a policy file is checked, define a <code>LoaderContext</code> object. The default context is null when running locally and <code>new LoaderContext(true, new ApplicationDomain(ApplicationDomain.currentDomain), SecurityDomain.currentDomain)</code> when running remotely in order to avoid common security sandbox errors (see Adobe's LoaderContext documentation for details and precautions). Please make sure that if you load swfs from another domain that you have a crossdomain.xml file installed on that remote server that grants your swf access rights (see Adobe's docs for crossdomain.xml details). Again, if you want to impose security restrictions on the loaded swf, please define your own LoaderContext.</li>
  * 		<li><strong> integrateProgress : Boolean</strong> - By default, a SWFLoader instance will automatically look for LoaderMax loaders in the swf when it initializes. Every loader found with a <code>requireWithRoot</code> parameter set to that swf's <code>root</code> will be integrated into the SWFLoader's overall progress. The SWFLoader's <code>COMPLETE</code> event won't fire until all such loaders are also complete. If you prefer NOT to integrate the subloading loaders into the SWFLoader's overall progress, set <code>integrateProgress</code> to <code>false</code>.</li>
@@ -150,6 +153,10 @@ package com.greensock.loading {
  * 		<li><strong> onChildCancel : Function</strong> - A handler function for <code>LoaderEvent.CHILD_CANCEL</code> events which are dispatched each time loading is aborted on any nested LoaderMax-related loaders (active ones that the SWFLoader found inside the subloading swf that had their <code>requireWithRoot</code> set to its <code>root</code>) due to either an error or because another loader was prioritized in the queue or because <code>cancel()</code> was manually called on the child loader. Make sure your onChildCancel function accepts a single parameter of type <code>LoaderEvent</code> (<code>com.greensock.events.LoaderEvent</code>).</li>
  * 		<li><strong> onChildFail : Function</strong> - A handler function for <code>LoaderEvent.CHILD_FAIL</code> events which are dispatched each time any nested LoaderMax-related loaders (active ones that the SWFLoader found inside the subloading swf that had their <code>requireWithRoot</code> set to its <code>root</code>) fails (and its <code>status</code> chances to <code>LoaderStatus.FAILED</code>). Make sure your onChildFail function accepts a single parameter of type <code>LoaderEvent</code> (<code>com.greensock.events.LoaderEvent</code>).</li>
  * </ul><br />
+ * 
+ * <strong>Note:</strong> Using a <code><a href="data/SWFLoaderVars.html">SWFLoaderVars</a></code> instance 
+ * instead of a generic object to define your <code>vars</code> is a bit more verbose but provides 
+ * code hinting and improved debugging because it enforces strict data typing. Use whichever one you prefer.<br /><br />
  * 
  * <code>content</code> data type: <strong><code>com.greensock.loading.display.ContentDisplay</code></strong> (a Sprite). 
  * When the swf has finished loading, the <code>rawContent</code> will be added to the <code>ContentDisplay</code> 
@@ -187,12 +194,6 @@ package com.greensock.loading {
  
  //start loading
  queue.load();
- 
- //pause loading
- queue.pause();
- 
- //resume loading
- queue.resume(); 
 
  function progressHandler(event:LoaderEvent):void {
      trace("progress: " + event.target.progress);
@@ -209,6 +210,8 @@ package com.greensock.loading {
  * 
  * <b>Copyright 2010, GreenSock. All rights reserved.</b> This work is subject to the terms in <a href="http://www.greensock.com/terms_of_use.html">http://www.greensock.com/terms_of_use.html</a> or for corporate Club GreenSock members, the software agreement that was issued with the corporate membership.
  * 
+ * @see com.greensock.loading.data.SWFLoaderVars
+ * 
  * @author Jack Doyle, jack@greensock.com
  */	
 	public class SWFLoader extends DisplayObjectLoader {
@@ -220,6 +223,8 @@ package com.greensock.loading {
 		protected var _hasRSL:Boolean;
 		/** @private **/
 		protected var _rslAddedCount:uint;
+		/** @private In certain browsers, there's a bug in the Flash Player that incorrectly reports the Loader's bytesLoaded as never reaching bytesTotal even AFTER the Loader completes (only when gzip is enabled on the server). This helps us get around that bug. **/
+		protected var _loaderCompleted:Boolean;
 		
 		/**
 		 * Constructor
@@ -227,7 +232,8 @@ package com.greensock.loading {
 		 * @param urlOrRequest The url (<code>String</code>) or <code>URLRequest</code> from which the loader should get its content
 		 * @param vars An object containing optional configuration details. For example: <code>new SWFLoader("swf/main.swf", {name:"main", container:this, x:100, y:50, alpha:0, autoPlay:false, onComplete:completeHandler, onProgress:progressHandler})</code>.<br /><br />
 		 * 
-		 * The following special properties can be passed into the constructor via the <code>vars</code> parameter:<br />
+		 * The following special properties can be passed into the constructor via the <code>vars</code> parameter
+		 * which can be either a generic object or an <code><a href="data/SWFLoaderVars.html">SWFLoaderVars</a></code> object:<br />
 		 * <ul>
 		 * 		<li><strong> name : String</strong> - A name that is used to identify the SWFLoader instance. This name can be fed to the <code>LoaderMax.getLoader()</code> or <code>LoaderMax.getContent()</code> methods. This name is also applied to the Sprite that is created to hold the swf (The SWFLoader's <code>content</code> refers to this Sprite). Each loader's name should be unique. If you don't define one, a unique name will be created automatically, like "loader21".</li>
 		 * 		<li><strong> container : DisplayObjectContainer</strong> - A DisplayObjectContainer into which the <code>content</code> Sprite should be added immediately.</li>
@@ -265,7 +271,7 @@ package com.greensock.loading {
 		 * 		<li><strong> visible : Boolean</strong> - Sets the <code>ContentDisplay</code>'s <code>visible</code> property.</li>
 		 * 		<li><strong> blendMode : String</strong> - Sets the <code>ContentDisplay</code>'s <code>blendMode</code> property.</li>
 		 * 		<li><strong> autoPlay : Boolean</strong> - If <code>autoPlay</code> is <code>true</code> (the default), the swf will begin playing immediately when the <code>INIT</code> event fires. To prevent this behavior, set <code>autoPlay</code> to <code>false</code> which will also mute the swf until the SWFLoader completes.</li>
-		 * 		<li><strong> bgColor : uint </strong> - When a <code>width</code> and <code>height</code> are defined, a rectangle will be drawn inside the <code>ContentDisplay</code> Sprite immediately in order to ease the development process. It is transparent by default, but you may define a <code>bgColor</code> if you prefer.</li>
+		 * 		<li><strong> bgColor : uint </strong> - When a <code>width</code> and <code>height</code> are defined, a rectangle will be drawn inside the <code>ContentDisplay</code> Sprite immediately in order to ease the development process. It is transparent by default, but you may define a <code>bgAlpha</code> if you prefer.</li>
 		 * 		<li><strong> bgAlpha : Number </strong> - Controls the alpha of the rectangle that is drawn when a <code>width</code> and <code>height</code> are defined.</li>
 		 * 		<li><strong> context : LoaderContext</strong> - To control things like the ApplicationDomain, SecurityDomain, and whether or not a policy file is checked, define a <code>LoaderContext</code> object. The default context is null when running locally and <code>new LoaderContext(true, new ApplicationDomain(ApplicationDomain.currentDomain), SecurityDomain.currentDomain)</code> when running remotely in order to avoid common security sandbox errors (see Adobe's LoaderContext documentation for details and precautions). Please make sure that if you load swfs from another domain that you have a crossdomain.xml file installed on that remote server that grants your swf access rights (see Adobe's docs for crossdomain.xml details). Again, if you want to impose security restrictions on the loaded swf, please define your own LoaderContext.</li>
 		 * 		<li><strong> integrateProgress : Boolean</strong> - By default, a SWFLoader instance will automatically look for LoaderMax loaders in the swf when it initializes. Every loader found with a <code>requireWithRoot</code> parameter set to that swf's <code>root</code> will be integrated into the SWFLoader's overall progress. The SWFLoader's <code>COMPLETE</code> event won't fire until all such loaders are also complete. If you prefer NOT to integrate the subloading loaders into the SWFLoader's overall progress, set <code>integrateProgress</code> to <code>false</code>.</li>
@@ -293,6 +299,7 @@ package com.greensock.loading {
 		 * 		<li><strong> onChildCancel : Function</strong> - A handler function for <code>LoaderEvent.CHILD_CANCEL</code> events which are dispatched each time loading is aborted on any nested LoaderMax-related loaders (active ones that the SWFLoader found inside the subloading swf that had their <code>requireWithRoot</code> set to its <code>root</code>) due to either an error or because another loader was prioritized in the queue or because <code>cancel()</code> was manually called on the child loader. Make sure your onChildCancel function accepts a single parameter of type <code>LoaderEvent</code> (<code>com.greensock.events.LoaderEvent</code>).</li>
 		 * 		<li><strong> onChildFail : Function</strong> - A handler function for <code>LoaderEvent.CHILD_FAIL</code> events which are dispatched each time any nested LoaderMax-related loaders (active ones that the SWFLoader found inside the subloading swf that had their <code>requireWithRoot</code> set to its <code>root</code>) fails (and its <code>status</code> chances to <code>LoaderStatus.FAILED</code>). Make sure your onChildFail function accepts a single parameter of type <code>LoaderEvent</code> (<code>com.greensock.events.LoaderEvent</code>).</li>
 		 * </ul>
+		 * @see com.greensock.loading.data.SWFLoaderVars
 		 */
 		public function SWFLoader(urlOrRequest:*, vars:Object=null) {
 			super(urlOrRequest, vars);
@@ -311,6 +318,12 @@ package com.greensock.loading {
 				_changeQueueListeners(true);
 				_queue.load(false);
 			}
+		}
+		
+		/** @private **/
+		override protected function _refreshLoader(unloadContent:Boolean=true):void {
+			super._refreshLoader(unloadContent);
+			_loaderCompleted = false;
 		}
 		
 		/** @private **/
@@ -363,11 +376,18 @@ package com.greensock.loading {
 					}
 				}
 			}
+			if (_stealthMode) {
+				try {
+					_loader.close();
+				} catch (error:Error) {
+					
+				}
+			}
 			_stealthMode = _hasRSL = false;
 			_cacheIsDirty = true;
 			if (scrubLevel >= 1) {
 				_queue = null;
-				_initted = false;
+				_initted = _loaderCompleted = false;
 				super._dump(scrubLevel, newStatus, suppressEvents);
 			} else {
 				var content:* = _content;
@@ -410,14 +430,14 @@ package com.greensock.loading {
 		override protected function _calculateProgress():void { 
 			_cachedBytesLoaded = (_stealthMode) ? 0 : _loader.contentLoaderInfo.bytesLoaded;
 			_cachedBytesTotal =  _loader.contentLoaderInfo.bytesTotal;
-			if (_cachedBytesTotal < _cachedBytesLoaded || _initted) {
+			if (_cachedBytesTotal < _cachedBytesLoaded || _loaderCompleted) {
 				//In Chrome when the file exceeds a certain size and gzip is enabled on the server, Adobe's Loader reports bytesTotal as 0!!!
 				//and in Firefox, if gzip was enabled, on very small files the Loader's bytesLoaded would never quite reach the bytesTotal even after the COMPLETE event fired!
 				_cachedBytesTotal = _cachedBytesLoaded; 
 			}
 			if (this.vars.integrateProgress == false) {
 				// do nothing
-			} else if (_queue != null && (!("estimatedBytes" in this.vars) || _queue.auditedSize || uint(this.vars.estimatedBytes) < _cachedBytesLoaded)) { //make sure that estimatedBytes is prioritized until the _queue has audited its size successfully!
+			} else if (_queue != null && (uint(this.vars.estimatedBytes) < _cachedBytesLoaded || _queue.auditedSize)) { //make sure that estimatedBytes is prioritized until the _queue has audited its size successfully!
 				if (_queue.status <= LoaderStatus.COMPLETED) {
 					_cachedBytesLoaded += _queue.bytesLoaded;
 					_cachedBytesTotal  += _queue.bytesTotal;	
@@ -633,6 +653,7 @@ package com.greensock.loading {
 		
 		/** @private **/
 		override protected function _completeHandler(event:Event=null):void {
+			_loaderCompleted = true;
 			_checkRequiredLoaders();
 			_calculateProgress();
 			if (this.progress == 1) {

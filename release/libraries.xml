@@ -1,5 +1,145 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <libraries>
+	<library name="TweenMax 11.391" id="tweenmax">
+		<folder name='com'>
+			<folder name='greensock'>
+				<file name="changelog.txt" url="templates/com/greensock/changelog.txt" />
+				<folder name="core">
+					<file name="PropTween.as" url="templates/com/greensock/core/PropTween.as" />
+					<file name="SimpleTimeline.as" url="templates/com/greensock/core/SimpleTimeline.as" />
+					<file name="TweenCore.as" url="templates/com/greensock/core/TweenCore.as" />
+				</folder>
+				<folder name="data">
+					<file name="BevelFilterVars.as" url="templates/com/greensock/data/BevelFilterVars.as" />
+					<file name="BlurFilterVars.as" url="templates/com/greensock/data/BlurFilterVars.as" />
+					<file name="ColorMatrixFilterVars.as" url="templates/com/greensock/data/ColorMatrixFilterVars.as" />
+					<file name="ColorTransformVars.as" url="templates/com/greensock/data/ColorTransformVars.as" />
+					<file name="DropShadowFilterVars.as" url="templates/com/greensock/data/DropShadowFilterVars.as" />
+					<file name="FilterVars.as" url="templates/com/greensock/data/FilterVars.as" />
+					<file name="GlowFilterVars.as" url="templates/com/greensock/data/GlowFilterVars.as" />
+					<file name="TransformAroundCenterVars.as" url="templates/com/greensock/data/TransformAroundCenterVars.as" />
+					<file name="TransformAroundPointVars.as" url="templates/com/greensock/data/TransformAroundPointVars.as" />
+					<file name="TweenLiteVars.as" url="templates/com/greensock/data/TweenLiteVars.as" />
+					<file name="TweenMaxVars.as" url="templates/com/greensock/data/TweenMaxVars.as" />
+					<file name="VarsCore.as" url="templates/com/greensock/data/VarsCore.as" />
+				</folder>
+				<folder name="easing">
+					<file name="Back.as" url="templates/com/greensock/easing/Back.as" />
+					<file name="Bounce.as" url="templates/com/greensock/easing/Bounce.as" />
+					<file name="Circ.as" url="templates/com/greensock/easing/Circ.as" />
+					<file name="Cubic.as" url="templates/com/greensock/easing/Cubic.as" />
+					<file name="EaseLookup.as" url="templates/com/greensock/easing/EaseLookup.as" />
+					<file name="easing_readme.txt" url="templates/com/greensock/easing/easing_readme.txt" />
+					<file name="Elastic.as" url="templates/com/greensock/easing/Elastic.as" />
+					<file name="Expo.as" url="templates/com/greensock/easing/Expo.as" />
+					<file name="FastEase.as" url="templates/com/greensock/easing/FastEase.as" />
+					<file name="Linear.as" url="templates/com/greensock/easing/Linear.as" />
+					<file name="Quad.as" url="templates/com/greensock/easing/Quad.as" />
+					<file name="Quart.as" url="templates/com/greensock/easing/Quart.as" />
+					<file name="Quint.as" url="templates/com/greensock/easing/Quint.as" />
+					<file name="RoughEase.as" url="templates/com/greensock/easing/RoughEase.as" />
+					<file name="Sine.as" url="templates/com/greensock/easing/Sine.as" />
+					<file name="Strong.as" url="templates/com/greensock/easing/Strong.as" />
+				</folder>
+				<folder name="events">
+					<file name="LoaderEvent.as" url="templates/com/greensock/events/LoaderEvent.as" />
+					<file name="TweenEvent.as" url="templates/com/greensock/events/TweenEvent.as" />
+				</folder>
+				<folder name="layout">
+					<file name="AlignMode.as" url="templates/com/greensock/layout/AlignMode.as" />
+					<file name="AutoFitArea.as" url="templates/com/greensock/layout/AutoFitArea.as" />
+					<file name="ScaleMode.as" url="templates/com/greensock/layout/ScaleMode.as" />
+				</folder>
+				<folder name="loading">
+					<file name="changelog.txt" url="templates/com/greensock/loading/changelog.txt" />
+					<folder name="core">
+						<file name="DisplayObjectLoader.as" url="templates/com/greensock/loading/core/DisplayObjectLoader.as" />
+						<file name="LoaderCore.as" url="templates/com/greensock/loading/core/LoaderCore.as" />
+						<file name="LoaderItem.as" url="templates/com/greensock/loading/core/LoaderItem.as" />
+					</folder>
+					<file name="CSSLoader.as" url="templates/com/greensock/loading/CSSLoader.as" />
+					<folder name="data">
+						<folder name="core">
+							<file name="DisplayObjectLoaderVars.as" url="templates/com/greensock/loading/data/core/DisplayObjectLoaderVars.as" />
+							<file name="LoaderCoreVars.as" url="templates/com/greensock/loading/data/core/LoaderCoreVars.as" />
+							<file name="LoaderItemVars.as" url="templates/com/greensock/loading/data/core/LoaderItemVars.as" />
+						</folder>
+						<file name="CSSLoaderVars.as" url="templates/com/greensock/loading/data/CSSLoaderVars.as" />
+						<file name="DataLoaderVars.as" url="templates/com/greensock/loading/data/DataLoaderVars.as" />
+						<file name="ImageLoaderVars.as" url="templates/com/greensock/loading/data/ImageLoaderVars.as" />
+						<file name="LoaderMaxVars.as" url="templates/com/greensock/loading/data/LoaderMaxVars.as" />
+						<file name="MP3LoaderVars.as" url="templates/com/greensock/loading/data/MP3LoaderVars.as" />
+						<file name="SWFLoaderVars.as" url="templates/com/greensock/loading/data/SWFLoaderVars.as" />
+						<file name="VideoLoaderVars.as" url="templates/com/greensock/loading/data/VideoLoaderVars.as" />
+						<file name="XMLLoaderVars.as" url="templates/com/greensock/loading/data/XMLLoaderVars.as" />
+					</folder>
+					<file name="DataLoader.as" url="templates/com/greensock/loading/DataLoader.as" />
+					<folder name="display">
+						<file name="ContentDisplay.as" url="templates/com/greensock/loading/display/ContentDisplay.as" />
+						<file name="FlexContentDisplay.as" url="templates/com/greensock/loading/display/FlexContentDisplay.as" />
+					</folder>
+					<file name="ImageLoader.as" url="templates/com/greensock/loading/ImageLoader.as" />
+					<file name="LoaderMax.as" url="templates/com/greensock/loading/LoaderMax.as" />
+					<file name="LoaderStatus.as" url="templates/com/greensock/loading/LoaderStatus.as" />
+					<file name="MP3Loader.as" url="templates/com/greensock/loading/MP3Loader.as" />
+					<file name="SelfLoader.as" url="templates/com/greensock/loading/SelfLoader.as" />
+					<file name="SWFLoader.as" url="templates/com/greensock/loading/SWFLoader.as" />
+					<file name="VideoLoader.as" url="templates/com/greensock/loading/VideoLoader.as" />
+					<file name="XMLLoader.as" url="templates/com/greensock/loading/XMLLoader.as" />
+				</folder>
+				<folder name="motionPaths">
+					<file name="CirclePath2D.as" url="templates/com/greensock/motionPaths/CirclePath2D.as" />
+					<file name="Direction.as" url="templates/com/greensock/motionPaths/Direction.as" />
+					<file name="LinePath2D.as" url="templates/com/greensock/motionPaths/LinePath2D.as" />
+					<file name="MotionPath.as" url="templates/com/greensock/motionPaths/MotionPath.as" />
+					<file name="PathFollower.as" url="templates/com/greensock/motionPaths/PathFollower.as" />
+					<file name="RectanglePath2D.as" url="templates/com/greensock/motionPaths/RectanglePath2D.as" />
+				</folder>
+				<file name="OverwriteManager.as" url="templates/com/greensock/OverwriteManager.as" />
+				<folder name="plugins">
+					<file name="AutoAlphaPlugin.as" url="templates/com/greensock/plugins/AutoAlphaPlugin.as" />
+					<file name="BevelFilterPlugin.as" url="templates/com/greensock/plugins/BevelFilterPlugin.as" />
+					<file name="BezierPlugin.as" url="templates/com/greensock/plugins/BezierPlugin.as" />
+					<file name="BezierThroughPlugin.as" url="templates/com/greensock/plugins/BezierThroughPlugin.as" />
+					<file name="BlurFilterPlugin.as" url="templates/com/greensock/plugins/BlurFilterPlugin.as" />
+					<file name="CacheAsBitmapPlugin.as" url="templates/com/greensock/plugins/CacheAsBitmapPlugin.as" />
+					<file name="CirclePath2DPlugin.as" url="templates/com/greensock/plugins/CirclePath2DPlugin.as" />
+					<file name="ColorMatrixFilterPlugin.as" url="templates/com/greensock/plugins/ColorMatrixFilterPlugin.as" />
+					<file name="ColorTransformPlugin.as" url="templates/com/greensock/plugins/ColorTransformPlugin.as" />
+					<file name="DropShadowFilterPlugin.as" url="templates/com/greensock/plugins/DropShadowFilterPlugin.as" />
+					<file name="EndArrayPlugin.as" url="templates/com/greensock/plugins/EndArrayPlugin.as" />
+					<file name="EndVectorPlugin.as" url="templates/com/greensock/plugins/EndVectorPlugin.as" />
+					<file name="FilterPlugin.as" url="templates/com/greensock/plugins/FilterPlugin.as" />
+					<file name="FrameBackwardPlugin.as" url="templates/com/greensock/plugins/FrameBackwardPlugin.as" />
+					<file name="FrameForwardPlugin.as" url="templates/com/greensock/plugins/FrameForwardPlugin.as" />
+					<file name="FrameLabelPlugin.as" url="templates/com/greensock/plugins/FrameLabelPlugin.as" />
+					<file name="FramePlugin.as" url="templates/com/greensock/plugins/FramePlugin.as" />
+					<file name="GlowFilterPlugin.as" url="templates/com/greensock/plugins/GlowFilterPlugin.as" />
+					<file name="HexColorsPlugin.as" url="templates/com/greensock/plugins/HexColorsPlugin.as" />
+					<file name="QuaternionsPlugin.as" url="templates/com/greensock/plugins/QuaternionsPlugin.as" />
+					<file name="RemoveTintPlugin.as" url="templates/com/greensock/plugins/RemoveTintPlugin.as" />
+					<file name="RoundPropsPlugin.as" url="templates/com/greensock/plugins/RoundPropsPlugin.as" />
+					<file name="ScalePlugin.as" url="templates/com/greensock/plugins/ScalePlugin.as" />
+					<file name="ScrollRectPlugin.as" url="templates/com/greensock/plugins/ScrollRectPlugin.as" />
+					<file name="SetActualSizePlugin.as" url="templates/com/greensock/plugins/SetActualSizePlugin.as" />
+					<file name="SetSizePlugin.as" url="templates/com/greensock/plugins/SetSizePlugin.as" />
+					<file name="ShortRotationPlugin.as" url="templates/com/greensock/plugins/ShortRotationPlugin.as" />
+					<file name="SoundTransformPlugin.as" url="templates/com/greensock/plugins/SoundTransformPlugin.as" />
+					<file name="TintPlugin.as" url="templates/com/greensock/plugins/TintPlugin.as" />
+					<file name="TransformMatrixPlugin.as" url="templates/com/greensock/plugins/TransformMatrixPlugin.as" />
+					<file name="TweenPlugin.as" url="templates/com/greensock/plugins/TweenPlugin.as" />
+					<file name="VisiblePlugin.as" url="templates/com/greensock/plugins/VisiblePlugin.as" />
+					<file name="VolumePlugin.as" url="templates/com/greensock/plugins/VolumePlugin.as" />
+				</folder>
+				<file name="TimelineLite.as" url="templates/com/greensock/TimelineLite.as" />
+				<file name="TimelineMax.as" url="templates/com/greensock/TimelineMax.as" />
+				<file name="TweenAlign.as" url="templates/com/greensock/TweenAlign.as" />
+				<file name="TweenLite.as" url="templates/com/greensock/TweenLite.as" />
+				<file name="TweenMax.as" url="templates/com/greensock/TweenMax.as" />
+				<file name="TweenNano.as" url="templates/com/greensock/TweenNano.as" />
+			</folder>
+		</folder>
+	</library>
 	<library name="Tweener 1.33.74" id="tweener">
 		<folder name='caurina'>
 			<folder name='transitions'>

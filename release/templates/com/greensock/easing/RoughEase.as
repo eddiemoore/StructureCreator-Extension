@@ -1,8 +1,8 @@
 /**
- * VERSION: 0.6
- * DATE: 1/19/2010
+ * VERSION: 0.61
+ * DATE: 2010-10-13
  * AS3
- * UPDATES AND DOCUMENTATION AT: http://www.GreenSock.com/roughease/
+ * UPDATES AND DOCS AT: http://www.grensock.com/roughease/
  **/
 package com.greensock.easing {
 /**
@@ -35,7 +35,7 @@ package com.greensock.easing {
  */	 
 	public class RoughEase {		
 		/** @private **/
-		private static var _all:Object = {}; //keeps track of all instances so we can find them by name.
+		private static var _lookup:Object = {}; //keeps track of all named instances so we can find them in byName().
 		/** @private **/
 		private static var _count:uint = 0;
 		
@@ -59,19 +59,18 @@ package com.greensock.easing {
 		 */
 		public function RoughEase(strength:Number=1, points:uint=20, restrictMaxAndMin:Boolean=false, templateEase:Function=null, taper:String="none", randomize:Boolean=true, name:String="") {
 			if (name == "") {
-				_count++;
-				_name = "roughEase" + _count;
+				_name = "roughEase" + (_count++);
 			} else {
 				_name = name;
+				_lookup[_name] = this; //only store it if a name is defined. This way, unnamed eases can be garbage collected without needing a dispose() call. 
 			}
 			if (taper == "" || taper == null) {
 				taper = "none";
 			}
-			_all[_name] = this;
 			var a:Array = [];
-			var cnt:uint = 0;
+			var cnt:int = 0;
 			var x:Number, y:Number, bump:Number, invX:Number, obj:Object;
-			var i:uint = points;
+			var i:int = points;
 			while (i--) {
 				x = randomize ? Math.random() : (1 / points) * i;
 				y = (templateEase != null) ? templateEase(x, 0, 1, 1) : x;
@@ -129,7 +128,8 @@ package com.greensock.easing {
 		 * @return easing function
 		 */
 		public static function create(strength:Number=1, points:uint=20, restrictMaxAndMin:Boolean=false, templateEase:Function=null, taper:String="none", randomize:Boolean=true, name:String=""):Function {
-			return new RoughEase(strength, points, restrictMaxAndMin, templateEase, taper, randomize, name).ease;
+			var re:RoughEase = new RoughEase(strength, points, restrictMaxAndMin, templateEase, taper, randomize, name);
+			return re.ease;
 		}
 		
 		/**
@@ -139,7 +139,7 @@ package com.greensock.easing {
 		 * @return easing function from the RoughEase associated with the name
 		 */
 		public static function byName(name:String):Function {
-			return _all[name].ease;
+			return _lookup[name].ease;
 		}
 		
 		/**
@@ -169,15 +169,20 @@ package com.greensock.easing {
 			return b + (p.value + ((time - p.time) / p.gap) * p.change) * c;
 		}
 		
+		/** Disposes the RoughEase so that it is no longer stored for easy lookups by name with <code>byName()</code>, releasing it for garbage collection. **/
+		public function dispose():void {
+			delete _lookup[_name];
+		}
+		
 		/** name of the RoughEase instance **/
 		public function get name():String {
 			return _name;
 		}
 		
-		public function set name(s:String):void {
-			delete _all[_name];
-			_name = s;
-			_all[s] = this;
+		public function set name(value:String):void {
+			delete _lookup[_name];
+			_name = value;
+			_lookup[_name] = this;
 		}
 
 	}
