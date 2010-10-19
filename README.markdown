@@ -40,8 +40,14 @@ that you have created using Structure Creator, we would love to see it.
 
 **Please only download the latest release**
 
-Example Schema
---------------
+Schema
+------
+
+### SchemaCreator
+Creating a schema file is as easy as a couple of clicks with [SchemaCreator](http://github.com/nichmekof/SchemaCreator).
+The handy little AIR app will help you create your own schema file from a folder of template files in no time at all.
+
+### Example Schema
 	<folder name='%BASE%'>
 		<folder name='assets' />
 		<folder name='docs' />
