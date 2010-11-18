@@ -7,7 +7,7 @@ customize from previous projects.
 This extension does not serve as a framework. It's purpose is to easily create the structure of files and folders that are used when you start a project. We would also 
 like to thank [Steven Sacks](http://www.stevensacks.net/) for his excellent JSFL.
 
-Structure Creator works with Flash CS3, CS4 and now on **CS5**</b> (version 1.3+) on Windows and Mac.
+Structure Creator works with Flash CS3, CS4 and now on **CS5** (version 1.3+) on Windows and Mac.
 It allows for a custom export path for fla files in the xml schema.
 **Default template HTML and CSS files pass the W3C XHTML Strict 1.0 and CSS 2.1 tests.**
 
