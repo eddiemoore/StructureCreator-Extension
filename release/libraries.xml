@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <libraries>
-	<library name="TweenMax 11.391" id="tweenmax">
+	<library name="TweenMax 11.4" id="tweenmax">
 		<folder name='com'>
 			<folder name='greensock'>
 				<file name="changelog.txt" url="templates/com/greensock/changelog.txt" />
@@ -1317,7 +1317,7 @@
 			</folder>
 		</folder>
 	</library>
-	<library name="Facebook 3.4" id="facebook">
+	<library name="Facebook GraphAPI 1.0" id="facebook">
 		<folder name="com">
 			<folder name="adobe">
 				<folder name="crypto">
