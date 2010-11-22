@@ -1,6 +1,6 @@
 /**
- * VERSION: 1.62
- * DATE: 2010-10-07
+ * VERSION: 1.74
+ * DATE: 2010-11-21
  * AS3
  * UPDATES AND DOCS AT: http://www.greensock.com/loadermax/
  **/
@@ -42,6 +42,8 @@ package com.greensock.loading.core {
 		protected var _preferEstimatedBytesInAudit:Boolean;
 		/** @private **/
 		protected var _httpStatus:int;
+		/** @private used to prevent problems that could occur if an audit is in process and load() is called on a bad URL - the audit could fail first and swap the URL and then when the real load fails just after that, we couldn't just do if (_url != this.vars.alternateURL) because the audit would have already changed it.  **/
+		protected var _skipAlternateURL:Boolean;
 		
 		/**
 		 * Constructor
@@ -53,6 +55,7 @@ package com.greensock.loading.core {
 			super(vars);
 			_request = (urlOrRequest is URLRequest) ? urlOrRequest as URLRequest : new URLRequest(urlOrRequest);
 			_url = _request.url;
+			_setRequestURL(_request, _url);
 		}
 		
 		/** @private **/
@@ -61,10 +64,35 @@ package com.greensock.loading.core {
 			_httpStatus = 0;
 			_closeStream();
 			if (this.vars.noCache && (!_isLocal || _url.substr(0, 4) == "http")) {
-				if (_request.data == null) {
-					_request.data = new URLVariables();
+				_setRequestURL(_request, _url, "gsCacheBusterID=" + (_cacheID++));
+			}
+		}
+		
+		/** @private Flash doesn't properly apply extra GET url parameters when the URL contains them already (like "http://www.greensock.com?id=2") - it ends up missing an "&" delimiter so this method splits any that exist out into a URLVariables object and optionally adds extra parameters like gsCacheBusterID, etc. **/
+		protected function _setRequestURL(request:URLRequest, url:String, extraParams:String=""):void {
+			var a:Array = url.split("?");
+			
+			//in order to avoid a VERY strange bug in certain versions of the Flash Player (like 10.0.12.36), we must loop through each character and rebuild a separate String variable instead of just using a[0], otherwise the "?" delimiter will be omitted when GET parameters are appended to the URL by Flash! Performing any String manipulations on the url will cause the issue as long as there is a "?" in the url. Like url.split("?") or url.substr(0, url.indexOf("?"), etc. Absolutely baffling. Definitely a bug in the Player - it was fixed in 10.1.
+			var s:String = a[0];
+			var parsedURL:String = "";
+			for (var i:int = 0; i < s.length; i++) {
+				parsedURL += s.charAt(i);
+			}
+			
+			request.url = parsedURL;
+			if (a.length == 2) {
+				extraParams += (extraParams == "") ? a[1] : "&" + a[1];
+			}
+			if (extraParams != "") {
+				var data:URLVariables = (request.data == null) ? new URLVariables() : request.data as URLVariables;
+				a = extraParams.split("&");
+				i = a.length;
+				var pair:Array;
+				while (--i > -1) {
+					pair = a[i].split("=");
+					data[pair[0]] = pair[1];
 				}
-				_request.data.cacheBusterID = _cacheID++;
+				request.data = data;
 			}
 		}
 		
@@ -82,10 +110,9 @@ package com.greensock.loading.core {
 				_auditStream.addEventListener(Event.COMPLETE, _auditStreamHandler, false, 0, true);
 				_auditStream.addEventListener("ioError", _auditStreamHandler, false, 0, true);
 				_auditStream.addEventListener("securityError", _auditStreamHandler, false, 0, true);
-				var request:URLRequest = new URLRequest(_url);
-				if (!_isLocal || _url.substr(0, 4) == "http") {
-					request.data = new URLVariables("cacheBusterID=" + (_cacheID++) + "&purpose=audit"); //to work around bugs in Chrome and Firefox that can cause them to use the partially-loaded audit file in the cache instead of loading the full file normally.
-				}
+				var request:URLRequest = new URLRequest();
+				request.data = _request.data;
+				_setRequestURL(request, _url, (!_isLocal || _url.substr(0, 4) == "http") ? "gsCacheBusterID=" + (_cacheID++) + "&purpose=audit" : "");
 				_auditStream.load(request);  
 			}
 		}
@@ -116,9 +143,13 @@ package com.greensock.loading.core {
 					_cachedBytesTotal = uint(this.vars.estimatedBytes);
 				}
 			} else if (event.type == "ioError" || event.type == "securityError") {
-				if (this.vars.alternateURL != undefined && this.vars.alternateURL != "" && _url != this.vars.alternateURL) {
-					_url = _request.url = this.vars.alternateURL;
-					_auditStream.load(_request);
+				if (this.vars.alternateURL != undefined && this.vars.alternateURL != "" && this.vars.alternateURL != _url) {
+					_url = this.vars.alternateURL;
+					_setRequestURL(_request, _url);
+					var request:URLRequest = new URLRequest();
+					request.data = _request.data;
+					_setRequestURL(request, _url, (!_isLocal || _url.substr(0, 4) == "http") ? "gsCacheBusterID=" + (_cacheID++) + "&purpose=audit" : "");
+					_auditStream.load(request);
 					_errorHandler(event);
 					return;
 				} else {	
@@ -133,7 +164,9 @@ package com.greensock.loading.core {
 		
 		/** @private **/
 		override protected function _failHandler(event:Event):void {
-			if (this.vars.alternateURL != undefined && this.vars.alternateURL != "" && _url != this.vars.alternateURL) {
+			if (this.vars.alternateURL != undefined && this.vars.alternateURL != "" && !_skipAlternateURL) { //don't do (_url != vars.alternateURL) because the audit could have changed it already - that's the whole purpose of _skipAlternateURL.
+				_skipAlternateURL = true;
+				_url = "temp" + Math.random(); //in case the audit already changed the _url to vars.alternateURL, we temporarily make it something different in order to force the refresh in the url setter which skips running the code if the url is set to the same value as it previously was. 
 				this.url = this.vars.alternateURL; //also calls _load()
 				_errorHandler(event);
 			} else {
@@ -157,7 +190,8 @@ package com.greensock.loading.core {
 		}
 		public function set url(value:String):void {
 			if (_url != value) {
-				_url = _request.url = value;
+				_url = value;
+				_setRequestURL(_request, _url);
 				var isLoading:Boolean = Boolean(_status == LoaderStatus.LOADING);
 				_dump(0, LoaderStatus.READY, true);
 				if (isLoading) {

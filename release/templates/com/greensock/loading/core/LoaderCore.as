@@ -1,6 +1,6 @@
 /**
- * VERSION: 1.62
- * DATE: 2010-10-07
+ * VERSION: 1.7
+ * DATE: 2010-11-13
  * AS3
  * UPDATES AND DOCS AT: http://www.greensock.com/loadermax/
  **/
@@ -41,7 +41,7 @@ package com.greensock.loading.core {
  */	
 	public class LoaderCore extends EventDispatcher {
 		/** @private **/
-		public static const version:Number = 1.62;
+		public static const version:Number = 1.7;
 		
 		/** @private **/
 		protected static var _loaderCount:uint = 0;
@@ -112,6 +112,9 @@ package com.greensock.loading.core {
 		 */
 		public function LoaderCore(vars:Object=null) {
 			this.vars = (vars != null) ? vars : {};
+			if (this.vars.isGSVars) {
+				this.vars = this.vars.vars;
+			}
 			this.name = (this.vars.name != undefined && String(this.vars.name) != "") ? this.vars.name : "loader" + (_loaderCount++);
 			_cachedBytesLoaded = 0;
 			_cachedBytesTotal = (uint(this.vars.estimatedBytes) != 0) ? uint(this.vars.estimatedBytes) : LoaderMax.defaultEstimatedBytes;
@@ -220,7 +223,7 @@ package com.greensock.loading.core {
 		protected function _dump(scrubLevel:int=0, newStatus:int=0, suppressEvents:Boolean=false):void {
 			_content = null;
 			var isLoading:Boolean = Boolean(_status == LoaderStatus.LOADING);
-			if (_status == LoaderStatus.PAUSED && newStatus != LoaderStatus.PAUSED) {
+			if (_status == LoaderStatus.PAUSED && newStatus != LoaderStatus.PAUSED && newStatus != LoaderStatus.FAILED) {
 				_prePauseStatus = newStatus;
 			} else if (_status != LoaderStatus.DISPOSED) {
 				_status = newStatus;

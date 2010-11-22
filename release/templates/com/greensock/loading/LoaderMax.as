@@ -1,6 +1,6 @@
 /**
- * VERSION: 1.631
- * DATE: 2010-10-13
+ * VERSION: 1.74
+ * DATE: 2010-11-21
  * AS3
  * UPDATES AND DOCS AT: http://www.greensock.com/loadermax/
  **/
@@ -14,6 +14,7 @@ package com.greensock.loading {
 	import flash.events.Event;
 	import flash.events.ProgressEvent;
 	import flash.net.URLRequest;
+	import flash.system.LoaderContext;
 	import flash.utils.Dictionary;
 	
 	/** Dispatched when any child of the LoaderMax instance starts loading. So if a LoaderMax contains 5 loaders, the CHILD_OPEN event will be dispatched 5 times during the course of the LoaderMax's load. This can occur even if the LoaderMax itself isn't in the process of loading (because load() or prioritize() could have been called directly on a child loader) **/
@@ -143,11 +144,13 @@ function errorHandler(event:LoaderEvent):void {
  */	
 	public class LoaderMax extends LoaderCore {		
 		/** @private **/
-		public static const version:Number = 1.631;
+		public static const version:Number = 1.74;
 		/** The default value that will be used for the <code>estimatedBytes</code> on loaders that don't declare one in the <code>vars</code> parameter of the constructor. **/
 		public static var defaultEstimatedBytes:uint = 20000;
 		/** Controls the default value of <code>auditSize</code> in LoaderMax instances (normally <code>true</code>). For most situations, the auditSize feature is very convenient for ensuring that the overall progress of LoaderMax instances is reported accurately, but when working with very large quantities of files that have no <code>estimatedBytes</code> defined, some developers prefer to turn auditSize off by default. Of course you can always override the default for individual LoaderMax instances by defining an <code>auditSize</code> value in the <code>vars</code> parameter of the constructor. **/
 		public static var defaultAuditSize:Boolean = true;
+		/** Optionally define a default <code>LoaderContext</code> to use with SWFLoaders and ImageLoaders. This can be useful if you're loading a lot of swfs, for example, and don't want to pass a custom "context" in to each one. LoaderContexts are typically used to tell Flash which ApplicationDomain to load the code into and which SecurityDomain to use. See Adobe's docs for details. **/
+		public static var defaultContext:LoaderContext;
 		/** The class used by ImageLoaders, SWFLoaders, and VideoLoaders to create the containers into which they'll dump their rawContent - by default it is the <code>com.greensock.loading.display.ContentDisplay</code> class but if you're using Flex, it is typically best to change this to <code>com.greensock.loading.display.FlexContentDisplay</code>. You only need to do this once, like <br /><code>import com.greensock.loading.LoaderMax;<br />import com.greensock.loading.display.FlexContentDisplay;<br />LoaderMax.contentDisplayClass = FlexContentDisplay;</code> **/
 		public static var contentDisplayClass:Class;
 		

@@ -1,6 +1,6 @@
 /**
- * VERSION: 1.6
- * DATE: 2010-10-02
+ * VERSION: 1.7
+ * DATE: 2010-11-13
  * AS3
  * UPDATES AND DOCS AT: http://www.greensock.com/loadermax/
  **/
@@ -78,7 +78,7 @@ package com.greensock.loading.core {
 			if (this.vars.context is LoaderContext) {
 				_context = this.vars.context;
 			} else if (_context == null && !_isLocal) {
-				_context = new LoaderContext(true, new ApplicationDomain(ApplicationDomain.currentDomain), SecurityDomain.currentDomain); //avoids some security sandbox headaches that plague many users.
+				_context = (LoaderMax.defaultContext != null) ? LoaderMax.defaultContext : new LoaderContext(true, new ApplicationDomain(ApplicationDomain.currentDomain), SecurityDomain.currentDomain); //avoids some security sandbox headaches that plague many users.
 			}
 			if (Capabilities.playerType != "Desktop") { //AIR apps will choke on Security.allowDomain()
 				Security.allowDomain(_url); 

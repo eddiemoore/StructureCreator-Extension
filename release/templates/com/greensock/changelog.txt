@@ -1,6 +1,17 @@
 CHANGE LOG : GREENSOCK TWEENING PLATFORM
 ----------------------------------------
 
+2010-11-13
+---------------------------------------------
+TweenLite			11.4
+TweenMax			11.4
+TweenCore			11.4
+TweenLiteVars		5.0
+TweenMaxVars		5.0
+	- Rewrote TweenLiteVars and TweenMaxVars to facilitate method chaining like new TweenLiteVars().prop("x", 100).onComplete(myFunction).delay(1).autoAlpha(0). This makes it possible to do things inline, greatly reducing the code necessary to accomplish the same task. 
+	- Made TweenLite and TweenMax compatible with the new TweenLiteVars and TweenMaxVars classes. 
+	- Updated ASDocs
+
 2010-10-13
 ---------------------------------------------
 TimelineLite		1.392

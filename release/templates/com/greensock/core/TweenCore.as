@@ -1,6 +1,6 @@
 /**
- * VERSION: 1.392
- * DATE: 2010-10-13
+ * VERSION: 1.4
+ * DATE: 2010-11-12
  * AS3 (AS2 version is also available)
  * UPDATES AND DOCS AT: http://www.greensock.com
  **/
@@ -17,7 +17,7 @@ package com.greensock.core {
  */
 	public class TweenCore {
 		/** @private **/
-		public static const version:Number = 1.392;
+		public static const version:Number = 1.4;
 		
 		/** @private **/
 		protected static var _classInitted:Boolean;
@@ -70,6 +70,9 @@ package com.greensock.core {
 		
 		public function TweenCore(duration:Number=0, vars:Object=null) {
 			this.vars = (vars != null) ? vars : {};
+			if (this.vars.isGSVars) {
+				this.vars = this.vars.vars;
+			}
 			this.cachedDuration = this.cachedTotalDuration = duration;
 			_delay = (this.vars.delay) ? Number(this.vars.delay) : 0;
 			this.cachedTimeScale = (this.vars.timeScale) ? Number(this.vars.timeScale) : 1;
