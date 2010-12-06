@@ -1,6 +1,36 @@
 CHANGE LOG : GREENSOCK TWEENING PLATFORM
 ----------------------------------------
 
+2010-11-30
+---------------------------------------------
+TweenLite			11.42
+SteppedEase			0.5
+	- Added SteppedEase
+	- Fixed a minor issue with TweenLite's killVars() method that could (in very rare situations) cause a property of a later tween to overwrite the same property in an earlier one after it had already been overwritten.
+
+2010-11-28
+---------------------------------------------
+TweenLite			11.411
+TweenMax			11.411
+	- Fixed issue that could cause a tween's onComplete to be called even after the tween was killed in its final onUpdate (extremely rare scenario)
+	- Fixed issue that could cause a motionBlur not to render if the target's parent was masked.
+
+2010-11-23
+---------------------------------------------
+TweenMax			11.41
+	- Fixed an issue that could cause a TweenMax motionBlur tween to stop when updateTo() is called
+
+2010-11-13
+---------------------------------------------
+TweenLite			11.4
+TweenMax			11.4
+TweenCore			11.4
+TweenLiteVars		5.0
+TweenMaxVars		5.0
+	- Rewrote TweenLiteVars and TweenMaxVars to facilitate method chaining like new TweenLiteVars().prop("x", 100).onComplete(myFunction).delay(1).autoAlpha(0). This makes it possible to do things inline, greatly reducing the code necessary to accomplish the same task. 
+	- Made TweenLite and TweenMax compatible with the new TweenLiteVars and TweenMaxVars classes. 
+	- Updated ASDocs
+
 2010-10-13
 ---------------------------------------------
 TimelineLite		1.392

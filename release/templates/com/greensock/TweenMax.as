@@ -1,6 +1,6 @@
 ﻿/**
- * VERSION: 11.391
- * DATE: 2010-09-28
+ * VERSION: 11.411
+ * DATE: 2010-11-28
  * AS3 (AS2 version is also available)
  * UPDATES AND DOCUMENTATION AT: http://www.TweenMax.com 
  **/
@@ -48,9 +48,9 @@ package com.greensock {
  * 		<li><b> AS2 and AS3 </b>- Most other engines are only developed for AS2 or AS3 but not both.</li>
  * 	</ul>
  * 	         			
- * <b>SPECIAL PROPERTIES (no plugins required):</b><br /><br />
- * 	
- * 	Any of the following special properties can optionally be passed in through the vars object (the third parameter):
+ * <b>SPECIAL PROPERTIES:</b><br /><br />
+ * The following special properties can be defined in the <code>vars</code> parameter which can 
+ * be either a generic Object or a <code><a href="data/TweenMaxVars.html">TweenMaxVars</a></code> instance:
  *  <ul>
  * 	 <li><b> delay : Number</b>				Amount of delay in seconds (or frames for frames-based tweens) before the tween should begin.</li>
  * 	
@@ -165,6 +165,10 @@ package com.greensock {
  * 												to set just before the tween begins. For example, if mc.x is currently 100, and you'd like to 
  * 												tween it from 0 to 500, do <code>TweenMax.to(mc, 2, {x:500, startAt:{x:0}});</code> </li>
  * </ul>
+ * 
+ * <b>Note:</b> Using a <code><a href="data/TweenMaxVars.html">TweenMaxVars</a></code> instance 
+ * instead of a generic Object to define your <code>vars</code> is a bit more verbose but provides 
+ * code hinting and improved debugging because it enforces strict data typing. Use whichever one you prefer.<br /><br />
  * 
  * <b>PLUGINS: </b><br /><br />
  * 
@@ -292,7 +296,7 @@ package com.greensock {
  */
 	public class TweenMax extends TweenLite implements IEventDispatcher {
 		/** @private **/
-		public static const version:Number = 11.391;
+		public static const version:Number = 11.411;
 		
 		TweenPlugin.activate([
 			
@@ -564,6 +568,9 @@ package com.greensock {
 			if (this.initted) {
 				this.initted = false;
 				if (!resetDuration) {
+					if (_notifyPluginsOfEnabled && this.cachedPT1) {
+						onPluginEvent("onDisable", this); //in case a plugin like MotionBlur must perform some cleanup tasks
+					}
 					init();
 					if (!resetDuration && this.cachedTime > 0 && this.cachedTime < this.cachedDuration) {
 						var inv:Number = 1 / (1 - curRatio);
@@ -575,6 +582,7 @@ package com.greensock {
 							pt = pt.nextNode;
 						}
 					}
+					
 				}
 			}
 		}
@@ -754,12 +762,12 @@ package com.greensock {
 			if (_hasUpdateListener && !suppressEvents) {
 				_dispatcher.dispatchEvent(new TweenEvent(TweenEvent.UPDATE));
 			}
-			if (isComplete) {
+			if (isComplete && !this.gc) { //check gc because there's a chance that kill() could be called in an onUpdate
 				if (_hasPlugins && this.cachedPT1) {
 					onPluginEvent("onComplete", this);
 				}
 				complete(true, suppressEvents);
-			} else if (repeated && !suppressEvents) {
+			} else if (repeated && !suppressEvents && !this.gc) { 
 				if (this.vars.onRepeat) {
 					this.vars.onRepeat.apply(null, this.vars.onRepeatParams);
 				}

@@ -3,8 +3,9 @@ package away3d.core.clip
 	import away3d.arcane;
 	import away3d.containers.*;
 	import away3d.core.base.*;
-	import away3d.core.draw.*;
+	import away3d.core.render.*;
 	import away3d.core.utils.*;
+	import away3d.core.vos.*;
 	import away3d.events.*;
 	
 	import flash.display.*;
@@ -254,12 +255,13 @@ package away3d.core.clip
 		 * @param	pri	The drawing primitive being checked.
 		 * @return		The clipping result - false for clipped, true for non-clipped.
 		 */
-        public function checkPrimitive(pri:DrawPrimitive):Boolean
+        public function checkPrimitive(renderer:Renderer, priIndex:uint):Boolean
         {
+        	renderer; priIndex;
             return true;
         }
 		
-		public function checkElements(mesh:Mesh, clippedFaceVOs:Array, clippedSegmentVOs:Array, clippedBillboards:Array, clippedVertices:Array, clippedCommands:Array, clippedIndices:Array, startIndices:Array):void
+		public function checkElements(mesh:Mesh, clippedFaceVOs:Vector.<FaceVO>, clippedSegmentVOs:Vector.<SegmentVO>, clippedSpriteVOs:Vector.<SpriteVO>, clippedVertices:Vector.<Vertex>, clippedVerts:Vector.<Number>, clippedIndices:Vector.<int>, startIndices:Vector.<int>):void
 		{
 			throw new Error("Not implemented");
 		}

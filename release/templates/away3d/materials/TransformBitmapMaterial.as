@@ -1,12 +1,12 @@
 package away3d.materials
 {
     import away3d.arcane;
-    import away3d.cameras.lenses.ZoomFocusLens;
+    import away3d.cameras.lenses.*;
     import away3d.containers.*;
     import away3d.core.base.*;
-    import away3d.core.draw.*;
-    import away3d.core.math.*;
+	import away3d.core.render.*;
     import away3d.core.utils.*;
+    import away3d.core.vos.*;
     
     import flash.display.*;
     import flash.geom.*;
@@ -21,6 +21,8 @@ package away3d.materials
         /** @private */
 		arcane override function updateMaterial(source:Object3D, view:View3D):void
         {
+        	source; view;
+        	
         	_graphics = null;
         	
         	if (_colorTransformDirty)
@@ -36,28 +38,29 @@ package away3d.materials
         		updateTransform();
         	
         	if (_materialDirty || _blendModeDirty)
-        		updateFaces();
+        		updateFaces(source, view);
         	
         	_projectionDirty = false;
         	_blendModeDirty = false;
         }
         /** @private */
-		arcane override function renderTriangle(tri:DrawTriangle):void
+		arcane override function renderTriangle(priIndex:uint, viewSourceObject:ViewSourceObject, renderer:Renderer):void
         {
         	if (_projectionVector && !throughProjection) {
-        		
+        		_faceVO = renderer.primitiveElements[priIndex] as FaceVO;
+        		_source = viewSourceObject.source;
         		if (globalProjection) {
-        			normalR.rotate(tri.faceVO.face.normal, tri.source.sceneTransform);
-        			if (normalR.dot(_projectionVector) < 0)
+        			normalR = _source.sceneTransform.deltaTransformVector(_faceVO.face.parent.getFaceNormal(_faceVO.face));
+        			if (normalR.dotProduct(_projectionVector) < 0)
         				return;
-        		} else if (tri.faceVO.face.normal.dot(_projectionVector) < 0)
+        		} else if (_faceVO.face.parent.getFaceNormal(_faceVO.face).dotProduct(_projectionVector) < 0)
         			return;
         	}
         	
-			super.renderTriangle(tri);
+			super.renderTriangle(priIndex, viewSourceObject, renderer);
         }
         /** @private */
-		arcane override function renderBitmapLayer(tri:DrawTriangle, containerRect:Rectangle, parentFaceMaterialVO:FaceMaterialVO):FaceMaterialVO
+		arcane override function renderBitmapLayer(priIndex:uint, viewSourceObject:ViewSourceObject, renderer:Renderer, containerRect:Rectangle, parentFaceMaterialVO:FaceMaterialVO):FaceMaterialVO
 		{	
 			//retrieve the transform
 			if (_transform)
@@ -65,12 +68,15 @@ package away3d.materials
 			else
 				_mapping = new Matrix();
 			
+			_faceVO = renderer.primitiveElements[priIndex] as FaceVO;
+			_source = viewSourceObject.source;
+			
 			//if not projected, draw the source bitmap once
 			if (!_projectionVector)
-				renderSource(tri.source, containerRect, _mapping);
+				renderSource(_source, containerRect, _mapping);
 			
 			//get the correct faceMaterialVO
-			_faceMaterialVO = getFaceMaterialVO(tri.faceVO.face.faceVO);
+			_faceMaterialVO = getFaceMaterialVO(_faceVO.face.faceVO);
 			
 			//pass on resize value
 			if (parentFaceMaterialVO.resized) {
@@ -86,7 +92,7 @@ package away3d.materials
 				parentFaceMaterialVO.updated = false;
 				
 				//retrieve the bitmapRect
-				_bitmapRect = tri.faceVO.face.bitmapRect;
+				_bitmapRect = _faceVO.face.bitmapRect;
 				
 				//reset booleans
 				if (_faceMaterialVO.invalidated)
@@ -102,16 +108,14 @@ package away3d.materials
 					
 					//calulate mapping
 					_invtexturemapping = _faceMaterialVO.invtexturemapping;
-					_mapping.concat(projectMapping(tri));
+					_mapping.concat(projectMapping());
 					_mapping.concat(_invtexturemapping);
 					
-					normalR.clone(tri.faceVO.face.normal);
-					
 					if (_globalProjection)
-						normalR.rotate(normalR, tri.source.sceneTransform);
+						normalR = _source.sceneTransform.deltaTransformVector(_faceVO.face.parent.getFaceNormal(_faceVO.face));
 					
 					//check to see if the bitmap (non repeating) lies inside the drawtriangle area
-					if ((throughProjection || normalR.dot(_projectionVector) >= 0) && (repeat || !findSeparatingAxis(getFacePoints(_invtexturemapping), getMappingPoints(_mapping)))) {
+					if ((throughProjection || normalR.dotProduct(_projectionVector) >= 0) && (repeat || !findSeparatingAxis(getFacePoints(_invtexturemapping), getMappingPoints(_mapping)))) {
 						
 						//store a clone
 						if (_faceMaterialVO.cleared)
@@ -150,21 +154,20 @@ package away3d.materials
         private var _offsetX:Number = 0;
         private var _offsetY:Number = 0;
         private var _rotation:Number = 0;
-        private var _projectionVector:Number3D;
+        private var _projectionVector:Vector3D;
         private var _projectionDirty:Boolean;
-        private var _N:Number3D = new Number3D();
-        private var _M:Number3D = new Number3D();
-        private var DOWN:Number3D = new Number3D(0, -1, 0);
-        private var RIGHT:Number3D = new Number3D(1, 0, 0);
+        private var _N:Vector3D = new Vector3D();
+        private var _M:Vector3D = new Vector3D();
+        private var DOWN:Vector3D = new Vector3D(0, -1, 0);
+        private var RIGHT:Vector3D = new Vector3D(1, 0, 0);
         private var _transformDirty:Boolean;
         private var _throughProjection:Boolean;
         private var _globalProjection:Boolean;
-        private var faceVO:FaceVO;
         private var x:Number;
 		private var y:Number;
 		private var px:Number;
 		private var py:Number;
-        private var normalR:Number3D = new Number3D();
+        private var normalR:Vector3D = new Vector3D();
         private var _u0:Number;
         private var _u1:Number;
         private var _u2:Number;
@@ -182,9 +185,9 @@ package away3d.materials
         private var v2x:Number;
         private var v2y:Number;
         private var v2z:Number;
-        private var v0:Number3D = new Number3D();
-        private var v1:Number3D = new Number3D();
-        private var v2:Number3D = new Number3D();
+        private var v0:Vector3D = new Vector3D();
+        private var v1:Vector3D = new Vector3D();
+        private var v2:Vector3D = new Vector3D();
         private var t:Matrix;
 		private var _invtexturemapping:Matrix;
 		private var fPoint1:Point = new Point();
@@ -226,18 +229,16 @@ package away3d.materials
 	        _materialDirty = true;
         }
         
-		private function projectUV(tri:DrawTriangle):Vector.<Number>
+		private function projectUV():Vector.<Number>
         {
-        	faceVO = tri.faceVO;
-        	
         	if (globalProjection) {
-	    		v0.transform(faceVO.v0.position, tri.source.sceneTransform);
-	    		v1.transform(faceVO.v1.position, tri.source.sceneTransform);
-	    		v2.transform(faceVO.v2.position, tri.source.sceneTransform);
+	    		v0 = _source.sceneTransform.transformVector(_faceVO.vertices[0].position);
+	    		v1 = _source.sceneTransform.transformVector(_faceVO.vertices[1].position);
+	    		v2 = _source.sceneTransform.transformVector(_faceVO.vertices[2].position);
         	} else {
-	    		v0 = faceVO.v0.position;
-	    		v1 = faceVO.v1.position;
-	    		v2 = faceVO.v2.position;
+	    		v0 = _faceVO.vertices[0].position;
+	    		v1 = _faceVO.vertices[1].position;
+	    		v2 = _faceVO.vertices[2].position;
         	}
         	
         	v0x = v0.x;
@@ -260,18 +261,16 @@ package away3d.materials
             return _uvt;
         }
         
-		private function projectMapping(tri:DrawTriangle):Matrix
+		private function projectMapping():Matrix
         {
-        	faceVO = tri.faceVO.face.faceVO;
-        	
         	if (globalProjection) {
-	    		v0.transform(faceVO.v0.position, tri.source.sceneTransform);
-	    		v1.transform(faceVO.v1.position, tri.source.sceneTransform);
-	    		v2.transform(faceVO.v2.position, tri.source.sceneTransform);
+	    		v0 = _source.sceneTransform.transformVector(_faceVO.vertices[0].position);
+	    		v1 = _source.sceneTransform.transformVector(_faceVO.vertices[1].position);
+	    		v2 = _source.sceneTransform.transformVector(_faceVO.vertices[2].position);
         	} else {
-	    		v0 = faceVO.v0.position;
-	    		v1 = faceVO.v1.position;
-	    		v2 = faceVO.v2.position;
+	    		v0 = _faceVO.vertices[0].position;
+	    		v1 = _faceVO.vertices[1].position;
+	    		v2 = _faceVO.vertices[2].position;
         	}
         	
         	v0x = v0.x;
@@ -410,59 +409,61 @@ package away3d.materials
 			return false;
 		}
 		
-		protected override function getUVData(tri:DrawTriangle):Vector.<Number>
+		protected override function getUVData(priIndex:uint, viewSourceObject:ViewSourceObject, renderer:Renderer):Vector.<Number>
 		{
-			if (tri.view.camera.lens is ZoomFocusLens)
-        		_focus = tri.view.camera.focus;
+			priIndex; viewSourceObject; renderer;
+			
+			if (_view.camera.lens is ZoomFocusLens)
+        		_focus = _view.camera.focus;
         	else
         		_focus = 0;
 			
-			if (tri.generated) {
-				_uvt[2] = 1/(_focus + tri.v0z);
-				_uvt[5] = 1/(_focus + tri.v1z);
-				_uvt[8] = 1/(_focus + tri.v2z);
+			if (_generated) {
+				_uvt[uint(2)] = _screenUVTs[uint(_screenIndices[_startIndex]*3 + 2)];
+				_uvt[uint(5)] = _screenUVTs[uint(_screenIndices[uint(_startIndex + 1)]*3 + 2)];
+				_uvt[uint(8)] = _screenUVTs[uint(_screenIndices[uint(_startIndex + 2)]*3 + 2)];
 				
 				if (projectionVector) {
-		    		_uvt = projectUV(tri);
-		        	_u0 = (_uvt[0] - _offsetX)/width;
-		        	_u1 = (_uvt[3] - _offsetX)/width;
-		        	_u2 = (_uvt[6] - _offsetX)/width;
-		        	_v0 = (_uvt[1] - _offsetY)/height;
-		        	_v1 = (_uvt[4] - _offsetY)/height;
-		        	_v2 = (_uvt[7] - _offsetY)/height;
+		    		_uvt = projectUV();
+		        	_u0 = (_uvt[uint(0)] - _offsetX)/width;
+		        	_u1 = (_uvt[uint(3)] - _offsetX)/width;
+		        	_u2 = (_uvt[uint(6)] - _offsetX)/width;
+		        	_v0 = (_uvt[uint(1)] - _offsetY)/height;
+		        	_v1 = (_uvt[uint(4)] - _offsetY)/height;
+		        	_v2 = (_uvt[uint(7)] - _offsetY)/height;
 		   		} else {
-		   			_u0 = tri.uv0.u - _offsetX/width;
-		        	_u1 = tri.uv1.u - _offsetX/width;
-		        	_u2 = tri.uv2.u - _offsetX/width;
-		        	_v0 = 1 - tri.uv0.v - _offsetY/height;
-		        	_v1 = 1 - tri.uv1.v - _offsetY/height;
-		        	_v2 = 1 - tri.uv2.v - _offsetY/height;
+		   			_u0 = _uvs[0].u - _offsetX/width;
+		        	_u1 = _uvs[1].u - _offsetX/width;
+		        	_u2 = _uvs[2].u - _offsetX/width;
+		        	_v0 = 1 - _uvs[0].v - _offsetY/height;
+		        	_v1 = 1 - _uvs[1].v - _offsetY/height;
+		        	_v2 = 1 - _uvs[2].v - _offsetY/height;
 		   		}
 	        	
 	        	if (_rotation) {
-	        		_uvt[0] = (_u0*_cos - _v0*_sin)/_scaleX;
-	        		_uvt[1] = (_u0*_sin + _v0*_cos)/_scaleY;
-	        		_uvt[3] = (_u1*_cos - _v1*_sin)/_scaleX;
-	        		_uvt[4] = (_u1*_sin + _v1*_cos)/_scaleY;
-	        		_uvt[6] = (_u2*_cos - _v2*_sin)/_scaleX;
-	        		_uvt[7] = (_u2*_sin + _v2*_cos)/_scaleY;
+	        		_uvt[uint(0)] = (_u0*_cos - _v0*_sin)/_scaleX;
+	        		_uvt[uint(1)] = (_u0*_sin + _v0*_cos)/_scaleY;
+	        		_uvt[uint(3)] = (_u1*_cos - _v1*_sin)/_scaleX;
+	        		_uvt[uint(4)] = (_u1*_sin + _v1*_cos)/_scaleY;
+	        		_uvt[uint(6)] = (_u2*_cos - _v2*_sin)/_scaleX;
+	        		_uvt[uint(7)] = (_u2*_sin + _v2*_cos)/_scaleY;
 	        	} else {
-	        		_uvt[0] = _u0/_scaleX;
-	        		_uvt[1] = _v0/_scaleY;
-	        		_uvt[3] = _u1/_scaleX;
-	        		_uvt[4] = _v1/_scaleY;
-	        		_uvt[6] = _u2/_scaleX;
-	        		_uvt[7] = _v2/_scaleY;
+	        		_uvt[uint(0)] = _u0/_scaleX;
+	        		_uvt[uint(1)] = _v0/_scaleY;
+	        		_uvt[uint(3)] = _u1/_scaleX;
+	        		_uvt[uint(4)] = _v1/_scaleY;
+	        		_uvt[uint(6)] = _u2/_scaleX;
+	        		_uvt[uint(7)] = _v2/_scaleY;
 	        	}
 	        	
 	    		return _uvt;
 			}
 			
-			_faceMaterialVO = getFaceMaterialVO(tri.faceVO, tri.source, tri.view);
+			_faceMaterialVO = getFaceMaterialVO(_faceVO, _source, _view);
 			
-			_faceMaterialVO.uvtData[2] = 1/(_focus + tri.v0z);
-			_faceMaterialVO.uvtData[5] = 1/(_focus + tri.v1z);
-			_faceMaterialVO.uvtData[8] = 1/(_focus + tri.v2z);
+			_faceMaterialVO.uvtData[uint(2)] = _screenUVTs[uint(_screenIndices[_startIndex]*3 + 2)];
+			_faceMaterialVO.uvtData[uint(5)] = _screenUVTs[uint(_screenIndices[uint(_startIndex + 1)]*3 + 2)];
+			_faceMaterialVO.uvtData[uint(8)] = _screenUVTs[uint(_screenIndices[uint(_startIndex + 2)]*3 + 2)];
 			
 			if (!_faceMaterialVO.invalidated)
 				return _faceMaterialVO.uvtData;
@@ -470,36 +471,36 @@ package away3d.materials
 			_faceMaterialVO.invalidated = false;
         	
         	if (projectionVector) {
-	    		_uvt = projectUV(tri);
-	        	_u0 = (_uvt[0] - _offsetX)/width;
-	        	_u1 = (_uvt[3] - _offsetX)/width;
-	        	_u2 = (_uvt[6] - _offsetX)/width;
-	        	_v0 = (_uvt[1] - _offsetY)/height;
-	        	_v1 = (_uvt[4] - _offsetY)/height;
-	        	_v2 = (_uvt[7] - _offsetY)/height;
+	    		_uvt = projectUV();
+	        	_u0 = (_uvt[uint(0)] - _offsetX)/width;
+	        	_u1 = (_uvt[uint(3)] - _offsetX)/width;
+	        	_u2 = (_uvt[uint(6)] - _offsetX)/width;
+	        	_v0 = (_uvt[uint(1)] - _offsetY)/height;
+	        	_v1 = (_uvt[uint(4)] - _offsetY)/height;
+	        	_v2 = (_uvt[uint(7)] - _offsetY)/height;
 	   		} else {
-	   			_u0 = tri.uv0.u - _offsetX/width;
-	        	_u1 = tri.uv1.u - _offsetX/width;
-	        	_u2 = tri.uv2.u - _offsetX/width;
-	        	_v0 = 1 - tri.uv0.v - _offsetY/height;
-	        	_v1 = 1 - tri.uv1.v - _offsetY/height;
-	        	_v2 = 1 - tri.uv2.v - _offsetY/height;
+	   			_u0 = _uvs[0].u - _offsetX/width;
+	        	_u1 = _uvs[1].u - _offsetX/width;
+	        	_u2 = _uvs[2].u - _offsetX/width;
+	        	_v0 = 1 - _uvs[0].v - _offsetY/height;
+	        	_v1 = 1 - _uvs[1].v - _offsetY/height;
+	        	_v2 = 1 - _uvs[2].v - _offsetY/height;
 	   		}
         	
         	if (_rotation) {
-        		_faceMaterialVO.uvtData[0] = (_u0*_cos - _v0*_sin)/_scaleX;
-	        	_faceMaterialVO.uvtData[1] = (_u0*_sin + _v0*_cos)/_scaleY;
-	        	_faceMaterialVO.uvtData[3] = (_u1*_cos - _v1*_sin)/_scaleX;
-	        	_faceMaterialVO.uvtData[4] = (_u1*_sin + _v1*_cos)/_scaleY;
-	        	_faceMaterialVO.uvtData[6] = (_u2*_cos - _v2*_sin)/_scaleX;
-	        	_faceMaterialVO.uvtData[7] = (_u2*_sin + _v2*_cos)/_scaleY;
+        		_faceMaterialVO.uvtData[uint(0)] = (_u0*_cos - _v0*_sin)/_scaleX;
+	        	_faceMaterialVO.uvtData[uint(1)] = (_u0*_sin + _v0*_cos)/_scaleY;
+	        	_faceMaterialVO.uvtData[uint(3)] = (_u1*_cos - _v1*_sin)/_scaleX;
+	        	_faceMaterialVO.uvtData[uint(4)] = (_u1*_sin + _v1*_cos)/_scaleY;
+	        	_faceMaterialVO.uvtData[uint(6)] = (_u2*_cos - _v2*_sin)/_scaleX;
+	        	_faceMaterialVO.uvtData[uint(7)] = (_u2*_sin + _v2*_cos)/_scaleY;
         	} else {
-        		_faceMaterialVO.uvtData[0] = _u0/_scaleX;
-        		_faceMaterialVO.uvtData[1] = _v0/_scaleY;
-        		_faceMaterialVO.uvtData[3] = _u1/_scaleX;
-        		_faceMaterialVO.uvtData[4] = _v1/_scaleY;
-        		_faceMaterialVO.uvtData[6] = _u2/_scaleX;
-        		_faceMaterialVO.uvtData[7] = _v2/_scaleY;
+        		_faceMaterialVO.uvtData[uint(0)] = _u0/_scaleX;
+        		_faceMaterialVO.uvtData[uint(1)] = _v0/_scaleY;
+        		_faceMaterialVO.uvtData[uint(3)] = _u1/_scaleX;
+        		_faceMaterialVO.uvtData[uint(4)] = _v1/_scaleY;
+        		_faceMaterialVO.uvtData[uint(6)] = _u2/_scaleX;
+        		_faceMaterialVO.uvtData[uint(7)] = _v2/_scaleY;
         	}
         	 	
 			return _faceMaterialVO.uvtData;
@@ -706,19 +707,19 @@ package away3d.materials
         * Projects the texture in object space, ignoring the uv coordinates of the vertex objects.
         * Texture renders normally when set to <code>null</code>.
         */
-        public function get projectionVector():Number3D
+        public function get projectionVector():Vector3D
         {
         	return _projectionVector;
         }
         
-        public function set projectionVector(val:Number3D):void
+        public function set projectionVector(val:Vector3D):void
         {
         	_projectionVector = val;
         	if (_projectionVector) {
-        		_N.cross(_projectionVector, DOWN);
-	            if (!_N.modulo) _N = RIGHT;
-	            _M.cross(_N, _projectionVector);
-	            _N.cross(_M, _projectionVector);
+        		_N = DOWN.crossProduct(_projectionVector);
+	            if (!_N.length) _N = RIGHT;
+	            _M = _projectionVector.crossProduct(_N);
+	            _N = _projectionVector.crossProduct(_M);
 	            _N.normalize();
 	            _M.normalize();
         	}
@@ -766,7 +767,7 @@ package away3d.materials
             offsetX = ini.getNumber("offsetX", _offsetX);
             offsetY = ini.getNumber("offsetY", _offsetY);
             rotation = ini.getNumber("rotation", _rotation);
-            projectionVector = ini.getObject("projectionVector", Number3D) as Number3D;
+            projectionVector = ini.getObject("projectionVector", Vector3D) as Vector3D;
             throughProjection = ini.getBoolean("throughProjection", true);
             globalProjection = ini.getBoolean("globalProjection", false);
         }

@@ -1,6 +1,6 @@
 ﻿/**
- * VERSION: 11.39
- * DATE: 2010-09-27
+ * VERSION: 11.42
+ * DATE: 2010-11-30
  * AS3 (AS2 version is also available)
  * UPDATES AND DOCUMENTATION AT: http://www.TweenLite.com
  **/
@@ -48,9 +48,9 @@ package com.greensock {
  * 
  * <hr />	
  * <b>SPECIAL PROPERTIES (no plugins required):</b>
- * <br /><br />
- * 
- * Any of the following special properties can optionally be passed in through the vars object (the third parameter):
+ * The following special properties can be defined in the <code>vars</code> parameter which can 
+ * be either a generic Object or a <code><a href="data/TweenLiteVars.html">TweenLiteVars</a></code> instance:
+ * <br />
  * 
  * <ul>
  * 	<li><b> delay : Number</b>			Amount of delay in seconds (or frames for frames-based tweens) before the tween should begin.</li>
@@ -122,7 +122,11 @@ package com.greensock {
  * 											<li>PREEXISTING (5) (requires OverwriteManager)</li>
  * 
  * 										</ul></li>
- * 	</ul>		
+ * 	</ul>
+ * 
+ * <b>Note:</b> Using a <code><a href="data/TweenLiteVars.html">TweenLiteVars</a></code> instance 
+ * instead of a generic object to define your <code>vars</code> is a bit more verbose but provides 
+ * code hinting and improved debugging because it enforces strict data typing. Use whichever one you prefer.<br /><br />
  * 
  * <b>PLUGINS:</b><br /><br />
  * 
@@ -231,7 +235,7 @@ package com.greensock {
 		}
 		
 		/** @private **/
-		public static const version:Number = 11.39;
+		public static const version:Number = 11.42;
 		/** @private When plugins are activated, the class is added (named based on the special property) to this object so that we can quickly look it up in the initTweenVals() method.**/
 		public static var plugins:Object = {}; 
 		/** @private **/
@@ -288,6 +292,9 @@ package com.greensock {
 		 */
 		public function TweenLite(target:Object, duration:Number, vars:Object) {
 			super(duration, vars);
+			if (target == null) {
+				throw new Error("Cannot tween a null object.");
+			}
 			this.target = target;
 			if (this.target is TweenCore && this.vars.timeScale) { //if timeScale is in the vars object and the target is a TweenCore, this tween's timeScale must be adjusted (in TweenCore's constructor, it was set to whatever the vars.timeScale was)
 				this.cachedTimeScale = 1;
@@ -463,7 +470,7 @@ package com.greensock {
 			if (_hasUpdate && !suppressEvents) {
 				this.vars.onUpdate.apply(null, this.vars.onUpdateParams);
 			}
-			if (isComplete) {
+			if (isComplete && !this.gc) { //check gc because there's a chance that kill() could be called in an onUpdate
 				if (_hasPlugins && this.cachedPT1) {
 					onPluginEvent("onComplete", this);
 				}
@@ -492,6 +499,9 @@ package com.greensock {
 						pt.target.killProps(vars);
 						if (pt.target.overwriteProps.length == 0) {
 							pt.name = "";
+						}
+						if (p != pt.target.propName || pt.name == "") {
+							delete propTweenLookup[p];
 						}
 					}
 					if (pt.name != "_MULTIPLE_") {

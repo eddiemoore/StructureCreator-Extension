@@ -1,6 +1,120 @@
 CHANGE LOG : GREENSOCK LOADERMAX SYSTEM
 ----------------------------------------
 
+2010-12-03
+---------------------------------------------
+LoaderMax			1.76
+VideoLoader			1.76
+	- Worked around Flash bug that could cause VideoLoaders not to dispatch a COMPLETE event when the swf is compiled with CS3 or CS4 (very odd, I know). Apparently when you publish with CS3 or CS4, NetStreams don't consistently dispatch a NetStreamEvent for code "NetStream.Buffer.Full" and if you seek() a NetStream before about 50 millseconds after it finishes buffering (even if it has COMPLETELY loaded!) it can lose its audio, so VideoLoader works around that as well now. 
+
+2010-12-02
+---------------------------------------------
+LoaderMax			1.75
+XMLLoader			1.75
+LoaderCore			1.75
+XMLLoaderVars		1.02
+	- Added a new event to XMLLoader (RAW_LOAD) that gets dispatched when the XML has finished loading but has NOT been parsed yet so that you can alter the XML if necessary before it gets parsed for LoaderMax-related data. There is also a new onRawLoad event listener shortcut. 
+
+2010-11-29
+---------------------------------------------
+VideoLoader			1.742
+LoaderMax			1.742
+	- Very minor adjustment to VideoLoader that could help avoid a very rare scenario where it wouldn't dispatch its COMPLETE event 
+
+2010-11-22
+---------------------------------------------
+VideoLoader			1.741
+LoaderMax			1.741
+	- Fixed issue that was introduced in version 1.73 that could cause a VideoLoader to not properly dispatch PLAY_PROGRESS events after gotoVideoTime() was called or the videoTime was set to a particular value.
+
+2010-11-21
+---------------------------------------------
+VideoLoader			1.74
+LoaderMax			1.74
+	- Fixed issue with VideoLoader not dispatching its COMPLETE event in a file that was published for Flash Player 9. This issue was introduced in version 1.73.
+	- Changed "cacheBusterID" URL variable to "gsCacheBusterID" in order to make it more unique and avoid a potential conflict with a particular CDN.
+
+2010-11-19
+---------------------------------------------
+VideoLoader			1.731
+LoaderMax			1.731
+	- Fixed a minor cleanup issue in VideoLoader related to removing an event listener internally
+
+2010-11-18
+---------------------------------------------
+VideoLoader			1.73
+LoaderMax			1.73
+	- Worked around a bug in the NetStream class that could cause a video to lose its audio if it was loaded/buffered even before the NetStream rendered a single frame. 
+	- Streamlined a few things internally in the VideoLoader class
+
+2010-11-17
+---------------------------------------------
+LoaderMax			1.72
+VideoLoader			1.72
+ContentDisplay		1.72
+FlexContentDisplay	1.72
+(all vars classes) 	1.01
+	- Added "data" property to ContentDisplay and FlexContentDisplay to store arbitrary data (optional of course)
+	- Added prop() method to all vars data classes so that you can add arbitrary properties to the vars object.
+	- Fixed issue with VideoLoader that could cause PLAY_PROGRESS events to be dispatched even when there wasn't a change in the video time. 
+
+2010-11-16
+---------------------------------------------
+VideoLoader			1.71
+LoaderMax			1.71
+	- Fixed issue with VideoLoader that could cause cue points that were added with addASCuePoint() to be triggered when goToVideoTime() is called even if its skipCuePoints parameter was true.
+
+2010-11-13
+---------------------------------------------
+(all LoaderMax classes)	1.7
+	- Rewrote all the vars classes (CSSLoaderVars, DataLoaderVars, ImageLoaderVars, SWFLoaderVars, LoaderMaxVars, MP3LoaderVars, VideoLoaderVars, XMLLoaderVars) to facilitate method chaining like new ImageLoaderVars().name("image1").estimatedBytes(12420).width(200).height(100). This makes it possible to do things inline, greatly reducing the number of lines necessary to accomplish the same task. 
+	- Consolidated virtually all of the old vars-related classes like BlurFilterVars, ColorMatrixFilterVars, etc. into the TweenLiteVars and TweenMaxVars classes (so the old ones were deleted).
+	- Fixed an issue that could cause a subloaded swf that uses TLF to not properly recognize LoaderMax-related loaders with their requireWithRoot set to that swf's root. This was caused by the bug in Adobe's Loader.
+	- Updated ASDocs
+
+2010-11-03
+---------------------------------------------
+LoaderMax			1.652
+XMLLoader			1.652
+	- Fixed issue that would cause an error to be thrown if an SWFLoader was created through XML that was loaded with XMLLoader and its "context" property was defined in the XML and the swf was running locally.
+
+2010-11-01
+---------------------------------------------
+LoaderMax			1.651
+VideoLoader			1.651
+ContentDisplay		1.651
+FlexContentDisplay	1.651
+	- Fixed issue that could cause a video to briefly display at 320x160 before being resized to the width/height defined in the vars parameter of the constructor.
+
+2010-10-29
+---------------------------------------------
+LoaderMax			1.65
+LoaderCore			1.65
+LoaderItem			1.65
+DisplayObjectLoader	1.65
+	- Added a static defaultContext property to LoaderMax for defining a default LoaderContext.
+	- Worked around a VERY strange bug in certain older versions of the Flash Player (like 10.0.12.36 in Firefox) that omitted the "?" when GET parameters are appended to the URL of a loader. This only happened when the URL contained a "?" character already to begin with.
+
+2010-10-23
+---------------------------------------------
+LoaderMax			1.642
+LoaderItem			1.642
+	- Fixed issue that could cause alternateURL not to function properly on children of a LoaderMax that had auditSize set to true
+
+2010-10-21
+---------------------------------------------
+LoaderMax			1.641
+LoaderItem			1.641
+	- Worked around an issue with Flash's URLRequest not correctly appending URLVariables to the end of a URL that already contained GET variables (it would neglect to add the "&" separator). (The fix that was applied in version 1.62 didn't fully resolve the issue)
+	
+2010-10-20
+---------------------------------------------
+LoaderMax			1.64
+ContentDisplay		1.64
+FlexContentDisplay	1.64
+	- Worked around bug in Flash that incorrectly reports getBounds() on objects with a scrollRect which caused ContentDisplay/FlexContentDisplay objects not to properly crop the rawContent when crop was true and any of the custom properties like fitWidth/fitHeight/crop/bgAlpha/bgColor/etc. was altered more than once.
+	- Fixed an issue that could cause a SWFLoader's content not to be cropped properly if crop was set to true and one of the special properties was changed more then once. 
+
 2010-10-13
 ---------------------------------------------
 LoaderMax			1.631

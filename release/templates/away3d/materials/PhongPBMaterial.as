@@ -3,10 +3,10 @@ package away3d.materials
 	import away3d.arcane;
 	import away3d.containers.*;
 	import away3d.core.base.*;
-	import away3d.core.light.*;
-	import away3d.core.math.*;
+	import away3d.lights.*;
 	
 	import flash.display.*;
+	import flash.geom.*;
 
 	use namespace arcane;
 	
@@ -21,8 +21,8 @@ package away3d.materials
 		[Embed(source="../pbks/PhongNormalSpecularShader.pbj", mimeType="application/octet-stream")]
 		private var SpecularKernel : Class;
 		
-		private var _objectLightPos : Number3D = new Number3D();
-		private var _objectViewPos : Number3D = new Number3D();
+		private var _objectLightPos : Vector3D = new Vector3D();
+		private var _objectViewPos : Vector3D = new Vector3D();
 		
 		private var _specular : Number;
 		
@@ -122,22 +122,22 @@ package away3d.materials
 		 */
 		override protected function updatePixelShader(source:Object3D, view:View3D):void
 		{
-			var invSceneTransform : MatrixAway3D = _mesh.inverseSceneTransform;
-			var point : PointLight;
-			var ambient : AmbientLight;
+			var invSceneTransform : Matrix3D = _mesh.inverseSceneTransform;
+			var point : PointLight3D;
+			var ambient : AmbientLight3D;
 			var diffuseStr : Number;
 			var ar : Number = 0,
 				ag : Number = 0,
 				ab : Number = 0;
 
-			_objectViewPos.transform(view.camera.position, invSceneTransform);
+			_objectViewPos = invSceneTransform.transformVector(view.camera.position);
 			_pointLightShader.data.viewPos.value = [ _objectViewPos.x, _objectViewPos.y, _objectViewPos.z ];
 			
 			// calculate ambient colour
-			for each (ambient in source.lightarray.ambients) {
-				ar += ambient.red;
-				ag += ambient.green;
-				ab += ambient.blue;
+			for each (ambient in source.scene.ambientLights) {
+				ar += ambient._red;
+				ag += ambient._green;
+				ab += ambient._blue;
 			}
 			
 			if (ar >= 0xff) ar = 1;
@@ -150,10 +150,10 @@ package away3d.materials
 			_pointLightShader.data.ambientColor.value = [ar, ag, ab];
 			
 			// use first point light
-			if (source.lightarray.points.length > 0) {
-				point = source.lightarray.points[0];
-				diffuseStr = point.diffuse;
-				_objectLightPos.transform(point.position, invSceneTransform);
+			if (source.scene.pointLights.length > 0) {
+				point = source.scene.pointLights[0];
+				diffuseStr = point.diffuse * point.brightness;
+				_objectLightPos = invSceneTransform.transformVector(point.position);
 				_pointLightShader.data.lightPosition.value = [ _objectLightPos.x, _objectLightPos.y, _objectLightPos.z ];
 				_pointLightShader.data.lightRadiusFalloff.value[0] = point.radius;
 				
@@ -163,9 +163,9 @@ package away3d.materials
 					_pointLightShader.data.lightRadiusFalloff.value[1] = point.fallOff - point.radius;
 
 				_pointLightShader.data.objectScale.value = [ _mesh.scaleX, _mesh.scaleY, _mesh.scaleZ ];
-				_pointLightShader.data.specularColor.value = [ point.red, point.green, point.blue ];
-				_pointLightShader.data.phongComponents.value[0] = _specular * point.specular;
-				_pointLightShader.data.diffuseColor.value = [ point.red*diffuseStr, point.green*diffuseStr, point.blue*diffuseStr ];
+				_pointLightShader.data.specularColor.value = [point._red, point._green, point._blue];
+				_pointLightShader.data.phongComponents.value[0] = _specular * point.specular * point.brightness;
+				_pointLightShader.data.diffuseColor.value = [ point._red*diffuseStr, point._green*diffuseStr, point._blue*diffuseStr ];
         	}
         	else {
         		_pointLightShader.data.diffuseColor.value = [ 0, 0, 0 ];

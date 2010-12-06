@@ -1,17 +1,14 @@
 ﻿package away3d.containers
 {
-    
     import away3d.arcane;
-	import away3d.animators.data.SkinController;
     import away3d.core.base.*;
-    import away3d.core.math.*;
-    import away3d.core.project.*;
     import away3d.core.traverse.*;
-    import away3d.core.utils.Debug;
     import away3d.events.*;
 	import away3d.lights.*;
     import away3d.loaders.data.*;
     import away3d.loaders.utils.*;
+    
+    import flash.geom.*;
     
     use namespace arcane;
     
@@ -25,15 +22,16 @@
         {
             _children.push(child);
 			
-            child.addOnTransformChange(onChildChange);
-            child.addOnDimensionsChange(onChildChange);
+			child.addOnVisibilityUpdate(onSessionUpdate);
+			child.addOnSceneTransformChange(onSessionUpdate);
+            child.addOnPositionChange(onDimensionsChange);
+            child.addOnScaleChange(onDimensionsChange);
+            child.addOnDimensionsChange(onDimensionsChange);
 
             notifyDimensionsChange();
             
-            if (_session && !child.ownCanvas)
-            	session.internalAddOwnSession(child);
-            
-            _sessionDirty = true;
+            if (_session)	
+        		session.updateSession();
         }
 		/** @private */
         arcane function internalRemoveChild(child:Object3D):void
@@ -42,17 +40,18 @@
             if (index == -1)
                 return;
 			
-            child.removeOnTransformChange(onChildChange);
-            child.removeOnDimensionsChange(onChildChange);
+			child.removeOnVisibilityUpdate(onSessionUpdate);
+			child.removeOnSceneTransformChange(onSessionUpdate);
+            child.removeOnPositionChange(onDimensionsChange);
+            child.removeOnScaleChange(onDimensionsChange);
+            child.removeOnDimensionsChange(onDimensionsChange);
 			
             _children.splice(index, 1);
 
             notifyDimensionsChange();
             
-            if (session && !child.ownCanvas)
-            	session.internalRemoveOwnSession(child);
-            
-            _sessionDirty = true;
+            if (_session)	
+        		_session.updateSession();
         }
 		/** @private */
         arcane function incrementPolyCount(delta:int):void
@@ -63,11 +62,38 @@
         		parent.incrementPolyCount(delta);
         }
         
-        private var _children:Array = [];
-        private var _lights:Array = [];
+        private var _children:Vector.<Object3D> = new Vector.<Object3D>();
         private var _polyCount:int;
         
-        private function onChildChange(event:Object3DEvent):void
+        private function getMaxChild(prop:String):Number
+		{
+			var child:Object3D;
+			var maxVal:Number = -Infinity;
+			for each (child in _children)
+				if (maxVal < child[prop])
+					maxVal = child[prop];
+			
+			return maxVal;
+		}
+		
+		private function getMinChild(prop:String):Number
+		{
+			var child:Object3D;
+			var minVal:Number = Infinity;
+			for each (child in _children)
+				if (minVal > child[prop])
+					minVal = child[prop];
+			
+			return minVal;
+		}
+		
+        private function onSessionUpdate(event:Object3DEvent):void
+        {
+			if (event.object.ownCanvas && _session)
+        		_session.updateSession();
+        }
+        
+        private function onDimensionsChange(event:Object3DEvent):void
         {
             notifyDimensionsChange();
         }
@@ -88,7 +114,7 @@
         protected override function updateDimensions():void
         {
         	//update bounding radius
-        	var children:Array = _children.concat();
+        	var children:Vector.<Object3D> = _children.concat();
         	
         	if (children.length) {
 	        	
@@ -109,11 +135,11 @@
             	
 	        	var mradius:Number = 0;
 	        	var cradius:Number;
-	            var num:Number3D = new Number3D();
+	            var num:Vector3D;
 	            for each (var child:Object3D in children) {
-	            	num.sub(child.position, _pivotPoint);
+	            	num = child.position.subtract(_pivotPoint);
 	            	
-	                cradius = num.modulo + child.parentBoundingRadius;
+	                cradius = num.length + child.parentBoundingRadius;
 	                if (mradius < cradius)
 	                    mradius = cradius;
 	            }
@@ -121,22 +147,16 @@
 	            _boundingRadius = mradius;
 	            
 	            //update max/min X
-	            children.sortOn("parentmaxX", Array.DESCENDING | Array.NUMERIC);
-	            _maxX = children[0].parentmaxX;
-	            children.sortOn("parentminX", Array.NUMERIC);
-	            _minX = children[0].parentminX;
+	            _maxX = getMaxChild("parentMaxX");
+	            _minX = getMinChild("parentMinX");
 	            
 	            //update max/min Y
-	            children.sortOn("parentmaxY", Array.DESCENDING | Array.NUMERIC);
-	            _maxY = children[0].parentmaxY;
-	            children.sortOn("parentminY", Array.NUMERIC);
-	            _minY = children[0].parentminY;
+	            _maxY = getMaxChild("parentMaxY");
+	            _minY = getMinChild("parentMinY");
 	            
 	            //update max/min Z
-	            children.sortOn("parentmaxZ", Array.DESCENDING | Array.NUMERIC);
-	            _maxZ = children[0].parentmaxZ;
-	            children.sortOn("parentminZ", Array.NUMERIC);
-	            _minZ = children[0].parentminZ;
+	            _maxZ = getMaxChild("parentMaxZ");
+	            _minZ = getMinChild("parentMinZ");
          	}
          	
             super.updateDimensions();
@@ -145,19 +165,11 @@
         /**
         * Returns the children of the container as an array of 3d objects
         */
-        public function get children():Array
+        public function get children():Vector.<Object3D>
         {
             return _children;
         }
-        
-        /**
-        * Returns the lights of the container as an array of light objects
-        */
-        public function get lights():Array
-        {
-            return _lights;
-        }
-                
+                        
         /**
          * Returns the number of elements in the container,
          * including elements in child nodes.
@@ -178,17 +190,15 @@
         public function ObjectContainer3D(...initarray:Array)
         {
         	var init:Object;
-        	var childarray:Array = [];
+        	var childarray:Vector.<Object3D> = new Vector.<Object3D>();
         	
             for each (var object:Object in initarray)
             	if (object is Object3D)
-            		childarray.push(object);
+            		childarray.push(object as Object3D);
             	else
             		init = object;
             
             super(init);
-            
-            projectorType = ProjectorType.OBJECT_CONTAINER;
             
             for each (var child:Object3D in childarray)
                 addChild(child);
@@ -248,8 +258,6 @@
             if (light == null)
                 throw new Error("ObjectContainer3D.addLight(null)");
             
-            _lights.push(light);
-            
             light.parent = this;
         }
         
@@ -263,14 +271,9 @@
         {
             if (light == null)
                 throw new Error("ObjectContainer3D.removeLight(null)");
+            
             if (light.parent != this)
                 return;
-            
-            var index:int = _lights.indexOf(light);
-            if (index == -1)
-                return;
-            
-            _lights.splice(index, 1);
             
             light.parent = null;
         }
@@ -440,9 +443,9 @@
 				child.moveTo(x - dx, y - dy, z - dz);
 			}
 			
-			var dV:Number3D = new Number3D(dx, dy, dz);
-            dV.rotate(dV, _transform);
-            dV.add(dV, position);
+			var dV:Vector3D = new Vector3D(dx, dy, dz);
+            dV = _transform.deltaTransformVector(dV);
+            dV = dV.add(position);
             moveTo(dV.x, dV.y, dV.z);  
 		}
 		
@@ -522,11 +525,12 @@
         private function cloneBones(container:ObjectContainer3D, root:ObjectContainer3D):void
         {
         	//wire up new bones to new skincontrollers if available
-        	var _container_children:Array = container.children;
+        	var _container_children:Vector.<Object3D> = container.children;
             for each (var child:Object3D in _container_children) {
             	if (child is ObjectContainer3D) {
             		(child as ObjectContainer3D).cloneBones(child as ObjectContainer3D, root);
              	} else if (child is Mesh) {
+             		/*
                 	var geometry:Geometry = (child as Mesh).geometry;
                 	var skinControllers:Array = geometry.skinControllers;
                 	var rootBone:Bone;
@@ -542,13 +546,13 @@
 		                } else
 		                	Debug.warning("no joint found for " + skinController.name);
 		            }
-		            
 		            //geometry.rootBone = rootBone;
 		            
 		            for each (skinController in skinControllers) {
-		            	//skinController.inverseTransform = new MatrixAway3D();
+		            	//skinController.inverseTransform = new Matrix3D();
 		            	skinController.inverseTransform = child.parent.inverseSceneTransform;
 		            }
+		            */
 				}
             }
 		}	

@@ -1,9 +1,9 @@
 package away3d.events
 {
 	import away3d.containers.*;
-    import away3d.core.draw.*;
     import away3d.materials.*;
     import away3d.core.base.*;
+	import away3d.core.vos.*;
     
     import flash.events.Event;
     
@@ -90,12 +90,7 @@ package away3d.events
 		/**
 		 * The 3d element inside which the event took place.
 		 */
-        public var element:Element;
-        	
-		/**
-		 * The draw primitive inside which the event took place.
-		 */
-        public var drawpri:DrawPrimitive;
+        public var elementVO:ElementVO;
         	
 		/**
 		 * The material of the 3d element inside which the event took place.
@@ -147,8 +142,7 @@ package away3d.events
                                      
             result.view = view;
             result.object = object;
-            result.element = element;
-            result.drawpri = drawpri;
+            result.elementVO = elementVO;
             result.material = material;
             result.uv = uv;
                                      

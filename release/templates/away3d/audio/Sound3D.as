@@ -1,14 +1,12 @@
 package away3d.audio
 {
 	import away3d.arcane;
-	import away3d.audio.drivers.ISound3DDriver;
-	import away3d.audio.drivers.SimplePanVolumeDriver;
-	import away3d.core.base.Object3D;
-	import away3d.core.math.MatrixAway3D;
-	import away3d.core.math.Number3D;
-	import away3d.events.Object3DEvent;
+	import away3d.audio.drivers.*;
+	import away3d.core.base.*;
+	import away3d.events.*;
 	
-	import flash.media.Sound;
+	import flash.media.*;
+	import flash.geom.*;
 
 	/**
 	 * <p>A sound source/emitter object that can be positioned in 3D space, and from which all audio
@@ -25,8 +23,8 @@ package away3d.audio
 	*/
 	public class Sound3D extends Object3D
 	{
-		private var _refv : Number3D;
-		private var _inv_ref_mtx : MatrixAway3D;
+		private var _refv : Vector3D;
+		private var _inv_ref_mtx : Matrix3D;
 		private var _driver : ISound3DDriver;
 		private var _reference : Object3D;
 		private var _sound : Sound;
@@ -58,10 +56,12 @@ package away3d.audio
 			
 			trace(_driver);
 			
-			_refv = new Number3D;
-			_inv_ref_mtx = new MatrixAway3D;
+			_refv = new Vector3D;
+			_inv_ref_mtx = new Matrix3D;
 			
 			this.addEventListener(Object3DEvent.SCENE_CHANGED, _onSceneChanged);
+			
+			this.addEventListener(Object3DEvent.SCENETRANSFORM_CHANGED, _onSceneTransformChanged);
 		}
 		
 		
@@ -177,27 +177,6 @@ package away3d.audio
 		
 		/**
 		 * @internal
-		 * Calculates the relative vector between the listener/reference object
-		 * and the position of this sound source, and updates the driver to use
-		 * this as the reference vector.
-		*/
-		public override function updateObject():void
-		{
-			// Update only if object has been modified since last
-			// time, i.e. if Object3D._objectDirty == true
-			if (super.arcane::_objectDirty) {
-				_inv_ref_mtx.inverse(_reference.sceneTransform);
-				_refv.rotate(_reference.position, _inv_ref_mtx);
-				_refv.sub(this.scenePosition, _refv);
-				_driver.updateReferenceVector(_refv);
-			}
-			
-			super.updateObject();
-		}
-		
-		
-		/**
-		 * @internal
 		 * When scene changes, mute if object was removed from scene. 
 		*/
 		private function _onSceneChanged(ev : Object3DEvent) : void
@@ -207,6 +186,22 @@ package away3d.audio
 			_driver.mute = (this.arcane::_scene == null);
 			
 			// Re-update reference vector to force changes to take effect
+			_driver.updateReferenceVector(_refv);
+		}
+		
+		
+		/**
+		 * @internal
+		 * When scene transform changes, calculate the relative vector between the listener/reference object
+		 * and the position of this sound source, and update the driver to use
+		 * this as the reference vector.
+		 */
+		private function _onSceneTransformChanged(ev : Object3DEvent) : void
+		{
+			_inv_ref_mtx.rawData = _reference.sceneTransform.rawData;
+			_inv_ref_mtx.invert();
+			_refv = _inv_ref_mtx.deltaTransformVector(_reference.position);
+			_refv = this.scenePosition.subtract(_refv);
 			_driver.updateReferenceVector(_refv);
 		}
 	}

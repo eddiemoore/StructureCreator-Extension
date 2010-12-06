@@ -1,6 +1,6 @@
 /**
- * VERSION: 1.5
- * DATE: 2010-09-27
+ * VERSION: 1.72
+ * DATE: 2010-11-17
  * AS3
  * UPDATES AND DOCS AT: http://www.greensock.com/loadermax/
  **/
@@ -10,7 +10,9 @@ package com.greensock.loading.display {
 	import flash.display.DisplayObject;
 	import flash.display.DisplayObjectContainer;
 	import flash.display.Sprite;
+	import flash.geom.Matrix;
 	import flash.geom.Rectangle;
+
 /**
  * A container for visual content that is loaded by any of the following: ImageLoaders, SWFLoaders, 
  * or VideoLoaders. It is essentially a Sprite that has a <code>loader</code> property for easily referencing
@@ -62,9 +64,13 @@ LoaderMax.contentDisplayClass = FlexContentDisplay;
 		protected var _fitWidth:Number;
 		/** @private **/
 		protected var _fitHeight:Number;
+		/** @private only used when crop is true - works around bugs in Flash with the way it reports getBounds() on objects with a scrollRect. **/
+		protected var _cropContainer:Sprite;
 		
 		/** @private A place to reference an object that should be protected from gc - this is used in VideoLoader in order to protect the NetStream object when the loader is disposed. **/
 		public var gcProtect:*;
+		/** Arbitrary data that you can associate with the ContentDisplay instance. For example, you could set <code>data</code> to be an object containing various other properties or set it to an index number related to an array in your application. It is completely optional and arbitrary. **/
+		public var data:*;
 		
 		/**
 		 * Constructor
@@ -115,12 +121,15 @@ LoaderMax.contentDisplayClass = FlexContentDisplay;
 			if (_rawContent == null) {
 				return;
 			}
+			
 			var mc:DisplayObject = _rawContent;
 			var contentWidth:Number =  mc.width;
 			var contentHeight:Number = mc.height;
+			
 			if (_loader.hasOwnProperty("getClass") && !_loader.scriptAccessDenied) { //for SWFLoaders, use loaderInfo.width/height so that everything is based on the stage size, not the bounding box of the DisplayObjects that happen to be on the stage (which could be much larger or smaller than the swf's stage)
-				contentWidth = mc.loaderInfo.width;
-				contentHeight = mc.loaderInfo.height;
+				var m:Matrix = mc.transform.matrix;
+				contentWidth = mc.loaderInfo.width * Math.abs(m.a) + mc.loaderInfo.height * Math.abs(m.b);
+				contentHeight = mc.loaderInfo.width * Math.abs(m.c) + mc.loaderInfo.height * Math.abs(m.d);
 			}
 			
 			if (_fitWidth > 0 && _fitHeight > 0) {
@@ -153,26 +162,38 @@ LoaderMax.contentDisplayClass = FlexContentDisplay;
 				if (_hAlign == "left") {
 					wGap = 0;
 				} else if (_hAlign != "right") {
-					wGap *= 0.5;
+					wGap /= 2;
 				}
 				if (_vAlign == "top") {
 					hGap = 0;
 				} else if (_vAlign != "bottom") {
-					hGap *= 0.5;
+					hGap /= 2;
 				}
-				
-				mc.x = left;
-				mc.y = top;
 				
 				if (_crop) {
-					mc.scrollRect = new Rectangle(-wGap / mc.scaleX, -hGap / mc.scaleY, _fitWidth / mc.scaleX, _fitHeight / mc.scaleY);
+					//due to bugs in the way Flash reports getBounds() on objects with a scrollRect, we need to just wrap the rawContent in a container and apply the scrollRect to the container. 
+					if (_cropContainer == null || mc.parent != _cropContainer) {
+						_cropContainer = new Sprite();
+						this.addChildAt(_cropContainer, this.getChildIndex(mc));
+						_cropContainer.addChild(mc);
+					}
+					_cropContainer.x = left;
+					_cropContainer.y = top;
+					_cropContainer.scrollRect = new Rectangle(0, 0, _fitWidth, _fitHeight);
+					mc.x = wGap;
+					mc.y = hGap;
 				} else {
-					mc.x += wGap;
-					mc.y += hGap;
+					if (_cropContainer != null) {
+						this.addChildAt(mc, this.getChildIndex(_cropContainer));
+						_cropContainer = null;
+					}
+					mc.x = left + wGap;
+					mc.y = top + hGap;
 				}
+				
 			} else {
-				mc.x = (_centerRegistration) ? -contentWidth / 2 : 0;
-				mc.y = (_centerRegistration) ? -contentHeight / 2 : 0;
+				mc.x = (_centerRegistration) ? contentWidth / -2 : 0;
+				mc.y = (_centerRegistration) ? contentHeight / -2 : 0;
 			}
 		}
 		
@@ -355,8 +376,14 @@ LoaderMax.contentDisplayClass = FlexContentDisplay;
 		}
 		
 		public function set rawContent(value:*):void {
-			if (_rawContent != null && _rawContent != value && _rawContent.parent == this) {
-				removeChild(_rawContent);
+			if (_rawContent != null && _rawContent != value) {
+				if (_rawContent.parent == this) {
+					removeChild(_rawContent);
+				} else if (_rawContent.parent == _cropContainer) {
+					_cropContainer.removeChild(_rawContent);
+					removeChild(_cropContainer);
+					_cropContainer = null;
+				}
 			}
 			_rawContent = value as DisplayObject;
 			if (_rawContent == null) {

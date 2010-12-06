@@ -11,6 +11,12 @@ Structure Creator works with Flash CS3, CS4 and now on **CS5** (version 1.3+) on
 It allows for a custom export path for fla files in the xml schema.
 **Default template HTML and CSS files pass the W3C XHTML Strict 1.0 and CSS 2.1 tests.**
 
+New in Version 2.0.2
+--------------------
+  - Updated Facebook API to Graph API 1.0
+  - Updated TweenMax to version 11.411
+  - Updated Away3D to version 3.6.0 FP10
+
 New in Version 2.0.1
 --------------------
   - Added [TweenMax](http://www.greensock.com/tweenmax/) to package selector. (See [http://www.greensock.com/licensing/](http://www.greensock.com/licensing/) for licensing details)
