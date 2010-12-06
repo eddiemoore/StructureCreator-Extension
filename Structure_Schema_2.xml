@@ -24,6 +24,6 @@
 				</folder>
 			</folder>
 		</folder>
-		<file name='main.fla' exportpath="../release/" />
+		<file name='main.fla' exportpath="../release/" classpath="" />
 	</folder>
 </folder>
