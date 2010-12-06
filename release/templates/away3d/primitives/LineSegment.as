@@ -1,7 +1,8 @@
 ﻿package away3d.primitives
 {
     import away3d.core.base.*;
-	import away3d.core.math.Number3D;
+    
+    import flash.geom.*;
     
     /**
     * Creates a 3d line segment.
@@ -40,8 +41,8 @@
 		
 		private var i:int;
 		private var lsegments:Number;
-		public var p1:Number3D;
-		public var p2:Number3D;
+		public var p1:Vector3D;
+		public var p2:Vector3D;
 		private var newsegmentstart:Vertex;
 		private var newsegmentend:Vertex;
 		
@@ -50,8 +51,8 @@
 		 */
 		private function recalc(vp1:*,vp2:*):void
         {
-			p1=new Number3D(vp1["x"],vp1["y"],vp1["z"]);
-			p2=new Number3D(vp2["x"],vp2["y"],vp2["z"]);
+			p1=new Vector3D(vp1["x"],vp1["y"],vp1["z"]);
+			p2=new Vector3D(vp2["x"],vp2["y"],vp2["z"]);
 
             if(lsegments>1){
 				var _index:int = segments.length;
@@ -74,8 +75,8 @@
              			addSegment(_segment);
 					}
 			}else{
-				_segment.v0=new Vertex(p1.x, p1.y, p1.z);
-				_segment.v1=new Vertex(p2.x, p2.y, p2.z);
+				_segment.v0.setValue(p1.x, p1.y, p1.z);
+				_segment.v1.setValue(p2.x, p2.y, p2.z);
 			}
         }
 		
@@ -89,8 +90,8 @@
             super(init);
 			var edge:Number = ini.getNumber("edge", 100, {min:0}) / 2;
 			lsegments = ini.getNumber("segments", 1, {min:1});
-			p1 = ini.getPosition("start") || new Number3D(-edge, 0, 0);
-			p2 = ini.getPosition("end") || new Number3D(edge, 0, 0);
+			p1 = ini.getPosition("start") || new Vector3D(-edge, 0, 0);
+			p2 = ini.getPosition("end") || new Vector3D(edge, 0, 0);
 			
 			if(lsegments>1){
 				recalc(p1,p2);

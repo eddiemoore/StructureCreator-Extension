@@ -2,13 +2,14 @@
 {
 	import away3d.arcane;
 	import away3d.containers.*;
-	import away3d.core.math.*;
+	
+	import flash.geom.*;
 	
 	use namespace arcane;
 	
     public class SkinController
     {
-    	private var _sceneTransform:MatrixAway3D = new MatrixAway3D();
+    	private var _sceneTransform:Matrix3D = new Matrix3D();
     	private var _sceneTransformDirty:Boolean;
     	
         /**
@@ -24,25 +25,26 @@
 		/**
 		 * Defines the 3d matrix that transforms the position of the <code>Bone</code> to the position of the <code>SkinVertices</code>.
 		 */
-        public var bindMatrix:MatrixAway3D;
+        public var bindMatrix:Matrix3D;
                 
         /**
          * Store of all <code>SkinVertex</code> objects being controlled
          */
-        public var skinVertices:Array =  new Array();
+        public var skinVertices:Vector.<SkinVertex> =  new Vector.<SkinVertex>();
         
-        public function get sceneTransform():MatrixAway3D
+        public function get sceneTransform():Matrix3D
 		{
 			if (_sceneTransformDirty) {
 				_sceneTransformDirty = false;
-	        	sceneTransform.multiply(joint.sceneTransform, bindMatrix);
-	        	sceneTransform.multiply(inverseTransform, sceneTransform);
+				sceneTransform.rawData = joint.sceneTransform.rawData;
+	        	sceneTransform.prepend(bindMatrix);
+	        	sceneTransform.append(inverseTransform);
 			}
 			
 			return _sceneTransform;
 		}
 		
-        public var inverseTransform:MatrixAway3D;
+        public var inverseTransform:Matrix3D;
         
         public function update():void
         {
@@ -57,8 +59,11 @@
         			child.controller.update();
         	
 			var skinVertex:SkinVertex;
-        	for each (skinVertex in skinVertices)
+        	for each (skinVertex in skinVertices) {
         		skinVertex.skinnedVertex._positionDirty = true;
+        		if (skinVertex.skinnedVertex.geometry)
+        			skinVertex.skinnedVertex.geometry.notifyDimensionsUpdate();
+			}
         }
         
     }

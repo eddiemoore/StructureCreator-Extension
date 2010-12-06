@@ -1,6 +1,32 @@
 CHANGE LOG : GREENSOCK LOADERMAX SYSTEM
 ----------------------------------------
 
+2010-12-03
+---------------------------------------------
+LoaderMax			1.76
+VideoLoader			1.76
+	- Worked around Flash bug that could cause VideoLoaders not to dispatch a COMPLETE event when the swf is compiled with CS3 or CS4 (very odd, I know). Apparently when you publish with CS3 or CS4, NetStreams don't consistently dispatch a NetStreamEvent for code "NetStream.Buffer.Full" and if you seek() a NetStream before about 50 millseconds after it finishes buffering (even if it has COMPLETELY loaded!) it can lose its audio, so VideoLoader works around that as well now. 
+
+2010-12-02
+---------------------------------------------
+LoaderMax			1.75
+XMLLoader			1.75
+LoaderCore			1.75
+XMLLoaderVars		1.02
+	- Added a new event to XMLLoader (RAW_LOAD) that gets dispatched when the XML has finished loading but has NOT been parsed yet so that you can alter the XML if necessary before it gets parsed for LoaderMax-related data. There is also a new onRawLoad event listener shortcut. 
+
+2010-11-29
+---------------------------------------------
+VideoLoader			1.742
+LoaderMax			1.742
+	- Very minor adjustment to VideoLoader that could help avoid a very rare scenario where it wouldn't dispatch its COMPLETE event 
+
+2010-11-22
+---------------------------------------------
+VideoLoader			1.741
+LoaderMax			1.741
+	- Fixed issue that was introduced in version 1.73 that could cause a VideoLoader to not properly dispatch PLAY_PROGRESS events after gotoVideoTime() was called or the videoTime was set to a particular value.
+
 2010-11-21
 ---------------------------------------------
 VideoLoader			1.74

@@ -1,16 +1,16 @@
 ﻿package away3d.loaders
 {
-	import away3d.animators.data.*;
 	
 	import away3d.arcane;
 	import away3d.animators.*;
+	import away3d.animators.data.*;
 	import away3d.containers.*;
 	import away3d.core.base.*;
-	import away3d.core.math.*;
 	import away3d.core.utils.*;
 	import away3d.loaders.data.*;
 	import away3d.loaders.utils.*;
 	
+	import flash.geom.*;
 	import flash.utils.*;
 	
 	use namespace arcane;
@@ -25,10 +25,9 @@
         private var animationLibrary:AnimationLibrary;
         private var channelLibrary:ChannelLibrary;
         private var yUp:Boolean;
-        private var toRADIANS:Number = Math.PI / 180;
-		private var rotationMatrix:MatrixAway3D = new MatrixAway3D();
-    	private var scalingMatrix:MatrixAway3D = new MatrixAway3D();
-    	private var translationMatrix:MatrixAway3D = new MatrixAway3D();
+		private var rotationMatrix:Matrix3D = new Matrix3D();
+    	private var scalingMatrix:Matrix3D = new Matrix3D();
+    	private var translationMatrix:Matrix3D = new Matrix3D();
         private var VALUE_X:String;
         private var VALUE_Y:String;
         private var VALUE_Z:String;
@@ -81,7 +80,7 @@
 							//channel.target = _containers[channel.name];
 							animator.addChannel(channel);
 							
-							var times:Array = channel.times;
+							var times:Vector.<Number> = channel.times;
 							
 							if (_animationData.start > times[0])
 								_animationData.start = times[0];
@@ -110,7 +109,7 @@
 				                case "translateX":
 				                case "translationX":
 								case "transform(3)(0)":
-				                	channel.type = ["x"];
+				                	channel.type = Vector.<String>(["x"]);
 									if (yUp)
 										for each (param in channel.param)
 											param[0] *= -1*scaling;
@@ -119,9 +118,9 @@
 								case "translationY":
 								case "transform(3)(1)":
 									if (yUp)
-										channel.type = ["y"];
+										channel.type = Vector.<String>(["y"]);
 									else
-										channel.type = ["z"];
+										channel.type = Vector.<String>(["z"]);
 									for each (param in channel.param)
 										param[0] *= scaling;
 				     				break;
@@ -129,14 +128,14 @@
 								case "translationZ":
 								case "transform(3)(2)":
 									if (yUp)
-										channel.type = ["z"];
+										channel.type = Vector.<String>(["z"]);
 									else
-										channel.type = ["y"];
+										channel.type = Vector.<String>(["y"]);
 									for each (param in channel.param)
 										param[0] *= scaling;
 				     				break;
 				     			case "jointOrientX":
-				     				channel.type = ["rotationX"];
+				     				channel.type = Vector.<String>(["rotationX"]);
 				     				if (yUp)
 										for each (param in channel.param)
 											param[0] *= -1;
@@ -144,13 +143,13 @@
 								case "rotateXANGLE":
 								case "rotateX":
 								case "RotX":
-				     				channel.type = [rX];
+				     				channel.type = Vector.<String>([rX]);
 				     				if (yUp)
 										for each (param in channel.param)
 											param[0] *= -1;
 				     				break;
 				     			case "jointOrientY":
-				     				channel.type = ["rotationY"];
+				     				channel.type = Vector.<String>(["rotationY"]);
 				     				//if (yUp)
 										for each (param in channel.param)
 											param[0] *= -1;
@@ -159,15 +158,15 @@
 								case "rotateY":
 								case "RotY":
 									if (yUp)
-										channel.type = [rY];
+										channel.type = Vector.<String>([rY]);
 									else
-										channel.type = [rZ];
+										channel.type = Vector.<String>([rZ]);
 									//if (yUp)
 										for each (param in channel.param)
 											param[0] *= -1;
 				     				break;
 				     			case "jointOrientZ":
-				     				channel.type = ["rotationZ"];
+				     				channel.type = Vector.<String>(["rotationZ"]);
 				     				//if (yUp)
 										for each (param in channel.param)
 											param[0] *= -1;
@@ -176,16 +175,16 @@
 								case "rotateZ":
 								case "RotZ":
 									if (yUp)
-										channel.type = [rZ];
+										channel.type = Vector.<String>([rZ]);
 									else
-										channel.type = [rY];
+										channel.type = Vector.<String>([rY]);
 									//if (yUp)
 										for each (param in channel.param)
 											param[0] *= -1;
 				            		break;
 								case "scaleX":
 								case "transform(0)(0)":
-									channel.type = [sX];
+									channel.type = Vector.<String>([sX]);
 									//if (yUp)
 									//	for each (param in channel.param)
 									//		param[0] *= -1;
@@ -193,25 +192,25 @@
 								case "scaleY":
 								case "transform(1)(1)":
 									if (yUp)
-										channel.type = [sY];
+										channel.type = Vector.<String>([sY]);
 									else
-										channel.type = [sZ];
+										channel.type = Vector.<String>([sZ]);
 				     				break;
 								case "scaleZ":
 								case "transform(2)(2)":
 									if (yUp)
-										channel.type = [sZ];
+										channel.type = Vector.<String>([sZ]);
 									else
-										channel.type = [sY];
+										channel.type = Vector.<String>([sY]);
 				     				break;
 								case "translate":
 								case "translation":
 									if (yUp) {
-										channel.type = ["x", "y", "z"];
+										channel.type = Vector.<String>(["x", "y", "z"]);
 										for each (param in channel.param)
 											param[0] *= -1;
 				     				} else {
-				     					channel.type = ["x", "z", "y"];
+				     					channel.type = Vector.<String>(["x", "z", "y"]);
 				     				}
 				     				for each (param in channel.param) {
 										param[0] *= scaling;
@@ -221,32 +220,33 @@
 									break;
 								case "scale":
 									if (yUp)
-										channel.type = [sX, sY, sZ];
+										channel.type = Vector.<String>([sX, sY, sZ]);
 									else
-										channel.type = [sX, sZ, sY];
+										channel.type = Vector.<String>([sX, sZ, sY]);
 				     				break;
 								case "rotate":
 									if (yUp) {
-										channel.type = [rX, rY, rZ];
+										channel.type = Vector.<String>([rX, rY, rZ]);
 										for each (param in channel.param) {
 											param[0] *= -1;
 											param[1] *= -1;
 											param[2] *= -1;
 										}
 				     				} else {
-										channel.type = [rX, rZ, rY];
+										channel.type = Vector.<String>([rX, rZ, rY]);
 										for each (param in channel.param) {
 											param[1] *= -1;
 											param[2] *= -1;
 										}
 				     				}
 									break;
+								case "matrix":
 								case "transform":
-									channel.type = ["transform"];
+									channel.type = Vector.<String>(["transform"]);
 									break;
 								
 								case "visibility":
-									channel.type = ["visibility"];
+									channel.type = Vector.<String>(["visibility"]);
 									break;
 				            }
 						}
@@ -262,12 +262,27 @@
 			}
 		}
 		
-        private function getArray(spaced:String):Array
+        private function getIntArray(spaced:String):Array
         {
         	spaced = spaced.split("\r\n").join(" ");
+        	spaced = spaced.split("\n").join(" ");
+            var strings:Array = spaced.split(" ");
+            var ints:Array = [];
+            var totalStrings:Number = strings.length;
+			
+            for (var i:Number = 0; i < totalStrings; ++i)
+            	if (strings[i] != "")
+                	ints.push(int(strings[i]));
+
+            return ints;
+        }
+        
+        private function getNumberArray(spaced:String):Array
+        {
+        	spaced = spaced.split("\r\n").join(" ");
+        	spaced = spaced.split("\n").join(" ");
             var strings:Array = spaced.split(" ");
             var numbers:Array = [];
-			
             var totalStrings:Number = strings.length;
 			
             for (var i:Number = 0; i < totalStrings; ++i)
@@ -277,33 +292,47 @@
             return numbers;
         }
 		
-        private function rotateMatrix(vector:Array):MatrixAway3D
+        private function getStringArray(spaced:String):Array
         {
-            if (yUp) {
-                	rotationMatrix.rotationMatrix(vector[0], -vector[1], -vector[2], vector[3]*toRADIANS);
-            } else {
-                	rotationMatrix.rotationMatrix(vector[0], vector[2], vector[1], -vector[3]*toRADIANS);
-            }
+        	spaced = spaced.split("\r\n").join(" ");
+        	spaced = spaced.split("\n").join(" ");
+            var strings:Array = spaced.split(" ");
+           	
+           	return strings;
+        }
+        
+        private function rotateMatrix(vector:Array):Matrix3D
+        {
+        	rotationMatrix.identity();
+        	
+            if (yUp)
+                rotationMatrix.appendRotation(vector[3], new Vector3D(vector[0], -vector[1], -vector[2]));
+            else
+                rotationMatrix.appendRotation(-vector[3], new Vector3D(vector[0], vector[2], vector[1]));
             
             return rotationMatrix;
         }
 
-        private function translateMatrix(vector:Array):MatrixAway3D
+        private function translateMatrix(vector:Array):Matrix3D
         {
+        	translationMatrix.identity();
+        	
             if (yUp)
-                translationMatrix.translationMatrix(-vector[0]*scaling, vector[1]*scaling, vector[2]*scaling);
+                translationMatrix.appendTranslation(-vector[0]*scaling, vector[1]*scaling, vector[2]*scaling);
             else
-                translationMatrix.translationMatrix(vector[0]*scaling, vector[2]*scaling, vector[1]*scaling);
+                translationMatrix.appendTranslation(vector[0]*scaling, vector[2]*scaling, vector[1]*scaling);
 			
             return translationMatrix;
         }
 		
-        private function scaleMatrix(vector:Array):MatrixAway3D
+        private function scaleMatrix(vector:Array):Matrix3D
         {
+        	scalingMatrix.identity();
+        	
             if (yUp)
-                scalingMatrix.scaleMatrix(vector[0], vector[1], vector[2]);
+                scalingMatrix.appendScale(vector[0], vector[1], vector[2]);
             else
-                scalingMatrix.scaleMatrix(vector[0], vector[2], vector[1]);
+                scalingMatrix.appendScale(vector[0], vector[2], vector[1]);
 			
             return scalingMatrix;
         }
@@ -470,7 +499,7 @@
 		 */
         private function parseNode(node:XML, parent:ContainerData):void
         {	
-			var _transform:MatrixAway3D;
+			var _transform:Matrix3D;
 	    	var _objectData:ObjectData;
 	    	
         	if (String(node["instance_light"].@url) != "" || String(node["instance_camera"].@url) != "")
@@ -515,37 +544,36 @@
 			
             for each (var childNode:XML in node.children())
             {
-                arrayChild = getArray(childNode);
+                arrayChild = getNumberArray(childNode);
                 nodeName = String(childNode.name()["localName"]);
 				switch(nodeName)
                 {
 					case "translate":
-                        _transform.multiply(_transform, translateMatrix(arrayChild));
+                        _transform.prepend(translateMatrix(arrayChild));
                         
                         break;
 
                     case "rotate":
                     	sid = childNode.@sid;
                         if (_objectData is BoneData && (sid == "rotateX" || sid == "rotateY" || sid == "rotateZ" || sid == "rotX" || sid == "rotY" || sid == "rotZ"))
-							boneData.jointTransform.multiply(boneData.jointTransform, rotateMatrix(arrayChild));
+							boneData.jointTransform.prepend(rotateMatrix(arrayChild));
                         else
-	                        _transform.multiply(_transform, rotateMatrix(arrayChild));
+	                        _transform.prepend(rotateMatrix(arrayChild));
 	                    
                         break;
 						
                     case "scale":
                         if (_objectData is BoneData)
-							boneData.jointTransform.multiply(boneData.jointTransform, scaleMatrix(arrayChild));
+							boneData.jointTransform.prepend(scaleMatrix(arrayChild));
                         else
-	                        _transform.multiply(_transform, scaleMatrix(arrayChild));
+	                        _transform.prepend(scaleMatrix(arrayChild));
 						
                         break;
 						
                     // Baked transform matrix
                     case "matrix":
-                    	var m:MatrixAway3D = new MatrixAway3D();
-                    	m.array2matrix(arrayChild, yUp, scaling);
-                        _transform.multiply(_transform, m);
+                    	var m:Matrix3D = array2matrix(arrayChild, yUp, scaling);
+                        _transform.prepend(m);
 						break;
 						
                     case "node":
@@ -637,9 +665,14 @@
             var trianglesXMLList:XMLList = geometryData.geoXML["mesh"].triangles;
             
             // C4D
-            var isC4D:Boolean = (trianglesXMLList.length()==0 && geometryData.geoXML["mesh"].polylist.length()>0);
-            if(isC4D)
-            	trianglesXMLList = geometryData.geoXML["mesh"].polylist;
+            //var isC4D:Boolean = (trianglesXMLList.length()==0 && geometryData.geoXML["mesh"].polylist.length()>0);
+            if(!trianglesXMLList.length()) {
+            	if (geometryData.geoXML["mesh"].polylist.length()) {
+            		trianglesXMLList = geometryData.geoXML["mesh"].polylist;
+            	} else if (geometryData.geoXML["mesh"].polygons.length()) {
+            		trianglesXMLList = geometryData.geoXML["mesh"].polygons;
+            	}
+            }
             
             for each (var triangles:XML in trianglesXMLList)
             {
@@ -652,18 +685,27 @@
                 	switch(semantic)
                 	{
                 		case "VERTEX":
-                			deserialize(input, geometryData.geoXML, Vertex, geometryData.vertices);
+                			deserializeVertices(input, geometryData.geoXML, geometryData.vertices);
                 			break;
                 		case "TEXCOORD":
-                			deserialize(input, geometryData.geoXML, UV, geometryData.uvs);
+                			deserializeUVs(input, geometryData.geoXML, geometryData.uvs);
                 			break;
                 		default:
                 	}
                     field.push(input.@semantic);
                 }
-
-                var data     :Array  = triangles["p"].split(' ');
-                var len      :Number = triangles.@count;
+                
+                var data:Array  = [];
+                var s:String;
+                var arr:Array;
+                var t:int;
+                
+                for each (s in triangles["p"]) {
+                	arr = getNumberArray(s);
+                	for each (t in arr)
+                	data.push(t);
+                }
+                var len:Number = triangles.@count;
                 var symbol :String = triangles.@material;
                 
 				Debug.trace(" + Parse MeshMaterialData");
@@ -673,7 +715,7 @@
 				
 				//if (!materialLibrary[material])
 				//	parseMaterial(material, material);
-					
+				
                 for (var j:Number = 0; j < len; ++j)
                 {
                     var _faceData:FaceData = new FaceData();
@@ -746,16 +788,15 @@
 			//Blender?
 			if (!tmp) tmp = skin["source"].(@id == jointId)["IDREF_array"].toString();
             tmp = tmp.replace(/\n/g, " ");
-            var nameArray:Array = tmp.split(" ");
+            var nameArray:Array = getStringArray(tmp);
             
-			var bind_shape:MatrixAway3D = new MatrixAway3D();
-			bind_shape.array2matrix(getArray(skin["bind_shape_matrix"][0].toString()), yUp, scaling);
+			var bind_shape:Matrix3D = array2matrix(getNumberArray(skin["bind_shape_matrix"][0].toString()), yUp, scaling);
 			
 			var bindMatrixId:String = getId(skin["joints"].input.(@semantic == "INV_BIND_MATRIX").@source);
-            var float_array:Array = getArray(skin["source"].(@id == bindMatrixId)[0].float_array.toString());
+            var float_array:Array = getNumberArray(skin["source"].(@id == bindMatrixId)[0].float_array.toString());
             
             var v:Array;
-            var matrix:MatrixAway3D;
+            var matrix:Matrix3D;
             var name:String;
 			var skinController:SkinController;
             var i:int = 0;
@@ -763,9 +804,8 @@
             while (i < float_array.length)
             {
             	name = nameArray[i / 16];
-				matrix = new MatrixAway3D();
-				matrix.array2matrix(float_array.slice(i, i+16), yUp, scaling);
-				matrix.multiply(matrix, bind_shape);
+				matrix = array2matrix(float_array.slice(i, i+16), yUp, scaling);
+				matrix.prepend(bind_shape);
 				
                 geometryData.skinControllers.push(skinController = new SkinController());
                 skinController.name = name;
@@ -780,13 +820,13 @@
 			var weightsId:String = getId(skin["vertex_weights"].input.(@semantic == "WEIGHT")[0].@source);
 			
             tmp = skin["source"].(@id == weightsId)["float_array"].toString();
-            var weights:Array = tmp.split(" ");
+            var weights:Array = getNumberArray(tmp);
 			
             tmp = skin["vertex_weights"].vcount.toString();
-            var vcount:Array = tmp.split(" ");
+            var vcount:Array = getIntArray(tmp);
 			
             tmp = skin["vertex_weights"].v.toString();
-            v = tmp.split(" ");
+            v = getIntArray(tmp);
 			
 			var skinVertex	:SkinVertex;
             var c			:int;
@@ -795,7 +835,7 @@
             i=0;
             while (i < geometryData.vertices.length)
             {
-                c = int(vcount[i]);
+                c = vcount[i];
                 skinVertex = new SkinVertex(geometryData.vertices[i]);
                 geometryData.vertices[i].skinVertex = skinVertex;
                 geometryData.skinVertices.push(skinVertex);
@@ -806,9 +846,9 @@
                 j=0;
                 while (j < c)
                 {
-                    skinVertex.controllers.push(geometryData.skinControllers[int(v[count])]);
+                    skinVertex.controllers.push(geometryData.skinControllers[v[count]]);
                     count++;
-                    skinVertex.weights.push(Number(weights[int(v[count])]));
+                    skinVertex.weights.push(weights[v[count]]);
                     count++;
                     ++j;
                 }
@@ -921,6 +961,8 @@
 					return;
             	}
             	
+            } else if (type.split(".")[1] == "ANGLE") {
+            	type = type.split(".")[0];
             } else {
             	type = type.split(".").join("");
             }
@@ -939,7 +981,7 @@
             for each (var input:XML in sampler["input"])
             {
 				var src:XML = node["source"].(@id == getId(input.@source))[0];
-                var list:Array = String(src["float_array"]).split(" ");
+                var list:Array = getNumberArray(String(src["float_array"]));
                 var len:int = int(src["technique_common"].accessor.@count);
                 var stride:int = int(src["technique_common"].accessor.@stride);
                 var semantic:String = input.@semantic;
@@ -953,7 +995,7 @@
                 switch(semantic) {
                     case "INPUT":
                         for each (p in list)
-                            channel.times.push(Number(p));
+                            channel.times.push(p);
                         
                         if (_defaultAnimationClip.start > channel.times[0])
                             _defaultAnimationClip.start = channel.times[0];
@@ -965,16 +1007,14 @@
                     case "OUTPUT":
                         i=0;
                         while (i < len) {
-                           channel.param[i] = [];
+                           channel.param[i] = new Array();
                             
                             if (stride == 16) {
-		                    	var m:MatrixAway3D = new MatrixAway3D();
-		                    	m.array2matrix(list.slice(i*stride, i*stride + 16), yUp, scaling);
-		                    	channel.param[i].push(m);
+		                    	channel.param[i].push(array2matrix(list.slice(i*stride, i*stride + 16), yUp, scaling));
                             } else {
 	                            j = 0;
 	                            while (j < stride) {
-	                            	channel.param[i].push(Number(list[i*stride + j]));
+	                            	channel.param[i].push(list[i*stride + j]);
 	                            	++j;
 	                            }
                             }
@@ -992,10 +1032,10 @@
                         i=0;
                         while (i < len)
                         {
-                        	channel.inTangent[i] = [];
+                        	channel.inTangent[i] = new Vector.<Point>();
                         	j = 0;
                             while (j < stride) {
-                                channel.inTangent[i].push(new Number2D(Number(list[stride * i + j]), Number(list[stride * i + j + 1])));
+                                channel.inTangent[i].push(new Point(list[stride * i + j], list[stride * i + j + 1]));
                             	++j;
                             }
                             ++i;
@@ -1005,10 +1045,10 @@
                         i=0;
                         while (i < len)
                         {
-                        	channel.outTangent[i] = [];
+                        	channel.outTangent[i] = new Vector.<Point>();
                         	j = 0;
                             while (j < stride) {
-                                channel.outTangent[i].push(new Number2D(Number(list[stride * i + j]), Number(list[stride * i + j + 1])));
+                                channel.outTangent[i].push(new Point(list[stride * i + j], list[stride * i + j + 1]));
                             	++j;
                             }
                             ++i;
@@ -1100,10 +1140,62 @@
 			return int(colorArray[0]*255 << 16) | int(colorArray[1]*255 << 8) | int(colorArray[2]*255);
 		}
 		
+		private function array2matrix(ar:Array, yUp:Boolean, scaling:Number):Matrix3D
+        {
+        	var m:Matrix3D = new Matrix3D();
+        	var rawData:Vector.<Number> = new Vector.<Number>(16, true);
+        	
+            if (ar.length >= 12) {
+            	if (yUp) {
+            		
+	                rawData[0] = ar[0];
+	                rawData[4] = -ar[1];
+	                rawData[8] = -ar[2];
+	                rawData[12] = -ar[3]*scaling;
+	                rawData[1] = -ar[4];
+	                rawData[5] = ar[5];
+	                rawData[9] = ar[6];
+	                rawData[13] = ar[7]*scaling;
+	                rawData[2] = -ar[8];
+	                rawData[6] = ar[9];
+	                rawData[10] = ar[10];
+	                rawData[14] = ar[11]*scaling;
+            	} else {
+            		rawData[0] = ar[0];
+	                rawData[8] = ar[1];
+	                rawData[4] = ar[2];
+	                rawData[12] = ar[3]*scaling;
+	                rawData[2] = ar[4];
+	                rawData[10] = ar[5];
+	                rawData[6] = ar[6];
+	                rawData[14] = ar[7]*scaling;
+	                rawData[1] = ar[8];
+	                rawData[9] = ar[9];
+	                rawData[5] = ar[10];
+	                rawData[13] = ar[11]*scaling;
+            	}
+            }
+            if(ar.length >= 16) {               
+            	rawData[3] = ar[12];
+                rawData[7] = ar[13];
+                rawData[11] = ar[14];
+                rawData[15] =  ar[15];
+            } else {
+            	rawData[3] = 0;
+            	rawData[7] = 0;
+            	rawData[11] = 0;
+            	rawData[15] = 1;
+            }
+
+			m.rawData = rawData;
+			
+			return m;
+        }
+            
 		/**
 		 * Converts a data string to an array of objects. Handles vertex and uv objects
 		 */
-        private function deserialize(input:XML, geo:XML, VObject:Class, output:Array):Array
+        private function deserializeVertices(input:XML, geo:XML, output:Vector.<Vertex>):Vector.<Vertex>
         {
             var id:String = input.@source.split("#")[1];
 
@@ -1116,7 +1208,7 @@
                 var floId:String  = acc.@source.split("#")[1];
                 var floXML:XMLList = collada..float_array.(@id == floId);
                 var floStr:String  = floXML.toString();
-                var floats:Array   = getArray(floStr);
+                var floats:Array   = getNumberArray(floStr);
     			var float:Number;
                 // Build params array
                 var params:Array = [];
@@ -1130,47 +1222,29 @@
     			var i:int = 0;
                 while (i < len)
                 {
-    				var element:ValueObject = new VObject();
-	            	if (element is Vertex) {
-	            		var vertex:Vertex = element as Vertex;
-	                    for each (param in params) {
-	                    	float = floats[i];
-	                    	switch (param) {
-	                    		case VALUE_X:
-	                    			if (yUp)
-	                    				vertex._x = -float*scaling;
-	                    			else
-	                    				vertex._x = float*scaling;
-	                    			break;
-	                    		case VALUE_Y:
-	                    				vertex._y = float*scaling;
-	                    			break;
-	                    			break;
-	                    		case VALUE_Z:
-	                    				vertex._z = float*scaling;
-	                    			break;
-	                    			break;
-	                    		default:
-	                    	}
-	                    	++i;
-	                    }
-		            } else if (element is UV) {
-		            	var uv:UV = element as UV;
-	                    for each (param in params) {
-	                    	float = floats[i];
-	                    	switch (param) {
-	                    		case VALUE_U:
-	                    			uv._u = float;
-	                    			break;
-	                    		case VALUE_V:
-	                    			uv._v = float;
-	                    			break;
-	                    		default:
-	                    	}
-	                    	++i;
-	                    }
-		            }
-	                output.push(element);
+            		var vertex:Vertex = new Vertex();
+                    for each (param in params) {
+                    	float = floats[i];
+                    	switch (param) {
+                    		case VALUE_X:
+                    			if (yUp)
+                    				vertex._x = -float*scaling;
+                    			else
+                    				vertex._x = float*scaling;
+                    			break;
+                    		case VALUE_Y:
+                    				vertex._y = float*scaling;
+                    			break;
+                    			break;
+                    		case VALUE_Z:
+                    				vertex._z = float*scaling;
+                    			break;
+                    			break;
+                    		default:
+                    	}
+                    	++i;
+                    }
+	                output.push(vertex);
 	            }
             }
             else
@@ -1178,7 +1252,62 @@
                 // Store indexes if no source
                 var recursive :XMLList = geo..vertices.(@id == id)["input"];
 
-                output = deserialize(recursive[0], geo, VObject, output);
+                output = deserializeVertices(recursive[0], geo, output);
+            }
+
+            return output;
+        }
+        
+        private function deserializeUVs(input:XML, geo:XML, output:Vector.<UV>):Vector.<UV>
+        {
+            var id:String = input.@source.split("#")[1];
+
+            // Source?
+            var acc:XMLList = geo..source.(@id == id)["technique_common"].accessor;
+
+            if (acc != new XMLList())
+            {
+                // Build source floats array
+                var floId:String  = acc.@source.split("#")[1];
+                var floXML:XMLList = collada..float_array.(@id == floId);
+                var floStr:String  = floXML.toString();
+                var floats:Array   = getNumberArray(floStr);
+    			var float:Number;
+                // Build params array
+                var params:Array = [];
+				var param:String;
+				
+                for each (var par:XML in acc["param"])
+                    params.push(par.@name);
+
+                // Build output array
+    			var len:int = floats.length;
+    			var i:int = 0;
+                while (i < len)
+                {
+	            	var uv:UV = new UV();
+                    for each (param in params) {
+                    	float = floats[i];
+                    	switch (param) {
+                    		case VALUE_U:
+                    			uv._u = float;
+                    			break;
+                    		case VALUE_V:
+                    			uv._v = float;
+                    			break;
+                    		default:
+                    	}
+                    	++i;
+                    }
+	                output.push(uv);
+	            }
+            }
+            else
+            {
+                // Store indexes if no source
+                var recursive :XMLList = geo..vertices.(@id == id)["input"];
+
+                output = deserializeUVs(recursive[0], geo, output);
             }
 
             return output;

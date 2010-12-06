@@ -1,6 +1,6 @@
 /**
- * VERSION: 1.7
- * DATE: 2010-11-13
+ * VERSION: 1.742
+ * DATE: 2010-11-22
  * AS3
  * UPDATES AND DOCS AT: http://www.greensock.com/loadermax/
  **/
@@ -366,13 +366,10 @@ package com.greensock.loading {
 				if (_loader.content in _rootLookup) {
 					_queue = LoaderMax(_rootLookup[_loader.content]);
 					_changeQueueListeners(false);
-					if (scrubLevel == 1) {
+					if (scrubLevel == 0) {
 						_queue.cancel();
 					} else {
-						if (scrubLevel == 1) {
-							_queue.unload();
-						}
-						_queue.dispose();
+						_queue.dispose( Boolean(scrubLevel == 1 || scrubLevel == 3) );
 					}
 				}
 			}

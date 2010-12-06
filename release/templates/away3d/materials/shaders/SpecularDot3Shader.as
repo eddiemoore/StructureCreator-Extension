@@ -3,11 +3,9 @@
 	import away3d.arcane;
 	import away3d.containers.*;
 	import away3d.core.base.*;
-	import away3d.core.draw.*;
-	import away3d.core.light.*;
-	import away3d.core.math.*;
+	import away3d.core.render.*;
 	import away3d.core.utils.*;
-	import away3d.materials.*;
+	import away3d.lights.*;
 	
 	import flash.display.*;
 	import flash.geom.*;
@@ -28,13 +26,10 @@
         	if (_bitmapDirty)
         		invalidateFaces();
         	
-        	var _source_lightarray_directionals:Array = source.lightarray.directionals;
-			var directional:DirectionalLight;
-        	for each (directional in _source_lightarray_directionals) {
-        		if (!directional.specularTransform[source])
-        			directional.specularTransform[source] = new Dictionary(true);
-        		
-        		if (!directional.specularTransform[source][view] || view.scene.updatedObjects[source] || view.updated) {
+        	var _source_scene_directionalLights:Vector.<DirectionalLight3D> = source.scene.directionalLights;
+			var directional:DirectionalLight3D;
+        	for each (directional in _source_scene_directionalLights) {
+        		if (!directional.specularTransform[source] || !directional.specularTransform[source][view] || !directional.normalMatrixSpecularTransform[source] || !directional.normalMatrixSpecularTransform[source][view] || view._updatedObjects[source] || view.updated) {
         			directional.setSpecularTransform(source, view);
         			directional.setNormalMatrixSpecularTransform(source, view, _specular, _shininess);
         			updateFaces(source, view);
@@ -42,37 +37,35 @@
         	}
         }
 		/** @private */
-		arcane override function renderLayer(tri:DrawTriangle, layer:Sprite, level:int):int
+		arcane override function renderLayer(priIndex:uint, viewSourceObject:ViewSourceObject, renderer:Renderer, layer:Sprite, level:int):int
         {
-        	super.renderLayer(tri, layer, level);
+        	super.renderLayer(priIndex, viewSourceObject, renderer, layer, level);
         	
-        	var _lights_directionals:Array = _lights.directionals;
-			var directional:DirectionalLight;
-        	for each (directional in _lights_directionals)
+        	var _source_scene_directionalLights:Vector.<DirectionalLight3D> = _source.scene.directionalLights;
+			var directional:DirectionalLight3D;
+        	for each (directional in _source_scene_directionalLights)
         	{
 				_shape = _session.getLightShape(this, level++, layer, directional);
         		_shape.filters = [directional.normalMatrixSpecularTransform[_source][_view]];
         		_shape.blendMode = blendMode;
         		_graphics = _shape.graphics;
         		
-				_source.session.renderTriangleBitmap(_bitmap, getUVData(tri), tri.screenVertices, tri.screenIndices, tri.startIndex, tri.endIndex, smooth, false, _graphics);
+				_source.session.renderTriangleBitmap(_bitmap, getUVData(priIndex), _screenVertices, _screenIndices, _startIndex, _endIndex, smooth, false, _graphics);
         	}
 			
 			if (debug)
-                _source.session.renderTriangleLine(0, 0x0000FF, 1, tri.screenVertices, tri.screenCommands, tri.screenIndices, tri.startIndex, tri.endIndex);
+                _source.session.renderTriangleLine(0, 0x0000FF, 1, _screenVertices, renderer.primitiveCommands[priIndex], _screenIndices, _startIndex, _endIndex);
             
             return level;
         }
         
         private var _zeroPoint:Point = new Point(0, 0);
         private var _bitmap:BitmapData;
-        private var _sourceDictionary:Dictionary = new Dictionary(true);
-        private var _sourceBitmap:BitmapData;
         private var _normalDictionary:Dictionary = new Dictionary(true);
         private var _normalBitmap:BitmapData;
         private var _shininess:Number;
 		private var _specular:uint;
-		private var _specularTransform:MatrixAway3D;
+		private var _specularTransform:Matrix3D;
 		private var _szx:Number;
 		private var _szy:Number;
 		private var _szz:Number;
@@ -81,17 +74,16 @@
 		private var _normal2z:Number;
 		private var _bitmapDirty:Boolean;
 		
-		protected override function calcUVT(tri:DrawTriangle, uvt:Vector.<Number>):Vector.<Number>
+		protected override function calcUVT(priIndex:uint, uvt:Vector.<Number>):Vector.<Number>
 		{
-			uvt[2] = 1/(_focus + tri.v0z);
-			uvt[5] = 1/(_focus + tri.v1z);
-			uvt[8] = 1/(_focus + tri.v2z);
-			uvt[0] = tri.uv0.u;
-    		uvt[1] = 1 - tri.uv0.v;
-    		uvt[3] = tri.uv1.u;
-    		uvt[4] = 1 - tri.uv1.v;
-    		uvt[6] = tri.uv2.u;
-    		uvt[7] = 1 - tri.uv2.v;
+			priIndex;
+			
+			uvt[uint(0)] = _uvs[uint(0)].u;
+    		uvt[uint(1)] = 1 - _uvs[uint(0)].v;
+    		uvt[uint(3)] = _uvs[uint(1)].u;
+    		uvt[uint(4)] = 1 - _uvs[uint(1)].v;
+    		uvt[uint(6)] = _uvs[uint(2)].u;
+    		uvt[uint(7)] = 1 - _uvs[uint(2)].v;
     		
     		return uvt;
 		}
@@ -125,37 +117,32 @@
 		/**
 		 * @inheritDoc
 		 */
-        protected override function renderShader(tri:DrawTriangle):void
+        protected override function renderShader(priIndex:uint):void
         {
-			//check to see if sourceDictionary exists
-			_sourceBitmap = _sourceDictionary[tri];
-			if (!_sourceBitmap || _faceMaterialVO.resized) {
-				_sourceBitmap = _sourceDictionary[tri] = _parentFaceMaterialVO.bitmap.clone();
-				_sourceBitmap.lock();
-			}
-			
+        	priIndex;
+        	
 			//check to see if normalDictionary exists
-			_normalBitmap = _normalDictionary[tri];
+			_normalBitmap = _normalDictionary[_faceVO];
 			if (!_normalBitmap || _faceMaterialVO.resized) {
-				_normalBitmap = _normalDictionary[tri] = _parentFaceMaterialVO.bitmap.clone();
+				_normalBitmap = _normalDictionary[_faceVO] = _parentFaceMaterialVO.bitmap.clone();
 				_normalBitmap.lock();
 			}
 			
-			_n0 = _source.geometry.getVertexNormal(_face.v0);
-			_n1 = _source.geometry.getVertexNormal(_face.v1);
-			_n2 = _source.geometry.getVertexNormal(_face.v2);
+			_n0 = _source.geometry.getVertexNormal(_face.vertices[0]);
+			_n1 = _source.geometry.getVertexNormal(_face.vertices[1]);
+			_n2 = _source.geometry.getVertexNormal(_face.vertices[2]);
 			
-			var _source_lightarray_directionals:Array = _source.lightarray.directionals;
+			var _source_scene_directionalLights:Vector.<DirectionalLight3D> = _source.scene.directionalLights;
 			
-			var directional:DirectionalLight;
+			var directional:DirectionalLight3D;
 			
-			for each (directional in _source_lightarray_directionals)
+			for each (directional in _source_scene_directionalLights)
 	    	{
 				_specularTransform = directional.specularTransform[_source];
 				 
-				_szx = _specularTransform.szx;
-				_szy = _specularTransform.szy;
-				_szz = _specularTransform.szz;
+				_szx = _specularTransform.rawData[2];
+				_szy = _specularTransform.rawData[6];
+				_szz = _specularTransform.rawData[10];
 				
 				_normal0z = _n0.x * _szx + _n0.y * _szy + _n0.z * _szz;
 				_normal1z = _n1.x * _szx + _n1.y * _szy + _n1.z * _szz;

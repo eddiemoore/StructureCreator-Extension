@@ -1,11 +1,10 @@
 package away3d.graphs.bsp.builder
 {
 	import away3d.graphs.bsp.*;
-	import away3d.core.base.Face;
-	import away3d.events.BSPBuildEvent;
+	import away3d.events.*;
 
-	import flash.events.EventDispatcher;
-	import flash.utils.setTimeout;
+	import flash.events.*;
+	import flash.utils.*;
 
 	internal class AbstractBuilderDecorator extends EventDispatcher implements IBSPBuilder
 	{

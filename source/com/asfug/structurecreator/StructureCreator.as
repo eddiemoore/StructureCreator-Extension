@@ -21,7 +21,7 @@ package com.asfug.structurecreator
 	 */
 	public class StructureCreator extends MovieClip
 	{
-		private static const CURRENT_VERSION:String = "2.0.1";
+		private static const CURRENT_VERSION:String = "2.0.2";
 		//private static const VERSION_CHECK:String = "http://flashstructurecreator.googlecode.com/svn/trunk/latestversion.txt";
 		private static const VERSION_CHECK:String = "http://structurecreator.com/versions/extension/latestversion.txt";
 		private static const DEFAULT_SCHEMA_URL:String = "http://flashstructurecreator.googlecode.com/svn/trunk/Structure_Schema_2.xml";

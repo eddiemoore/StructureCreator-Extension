@@ -2,11 +2,11 @@ package away3d.core.utils
 {
     import away3d.arcane;
     import away3d.core.base.*;
-    import away3d.core.math.*;
     import away3d.materials.*;
     import away3d.primitives.data.*;
     
-    import flash.display.BitmapData;
+    import flash.display.*;
+    import flash.geom.*;
 
 	use namespace arcane;
 	
@@ -14,11 +14,11 @@ package away3d.core.utils
     public class Init
     {
 		/** @private */
-        arcane var init:Object;
+        arcane var _init:Object;
 
         public function Init(init:Object)
         {
-            this.init = init;
+            this._init = init;
         }
 
         public static function parse(init:Object):Init
@@ -34,13 +34,13 @@ package away3d.core.utils
 
         public function getInt(name:String, def:int, bounds:Object = null):int
         {
-            if (init == null)
+            if (_init == null)
                 return def;
         
-            if (!init.hasOwnProperty(name))
+            if (!_init.hasOwnProperty(name))
                 return def;
         
-            var result:int = init[name];
+            var result:int = _init[name];
 
             if (bounds != null)
             {
@@ -58,20 +58,20 @@ package away3d.core.utils
                 }
             }
         
-            delete init[name];
+            delete _init[name];
         
             return result;
         }
 
         public function getNumber(name:String, def:Number, bounds:Object = null):Number
         {
-            if (init == null)
+            if (_init == null)
                 return def;
         
-            if (!init.hasOwnProperty(name))
+            if (!_init.hasOwnProperty(name))
                 return def;
         
-            var result:Number = init[name];
+            var result:Number = _init[name];
                                         
             if (bounds != null)
             {
@@ -89,52 +89,52 @@ package away3d.core.utils
                 }
             }
         
-            delete init[name];
+            delete _init[name];
         
             return result;
         }
 
         public function getString(name:String, def:String):String
         {
-            if (init == null)
+            if (_init == null)
                 return def;
         
-            if (!init.hasOwnProperty(name))
+            if (!_init.hasOwnProperty(name))
                 return def;
         
-            var result:String = init[name];
+            var result:String = _init[name];
 
-            delete init[name];
+            delete _init[name];
         
             return result;
         }
 
         public function getBoolean(name:String, def:Boolean):Boolean
         {
-            if (init == null)
+            if (_init == null)
                 return def;
         
-            if (!init.hasOwnProperty(name))
+            if (!_init.hasOwnProperty(name))
                 return def;
         
-            var result:Boolean = init[name];
+            var result:Boolean = _init[name];
 
-            delete init[name];
+            delete _init[name];
         
             return result;
         }
 
         public function getObject(name:String, type:Class = null):Object
         {
-            if (init == null)
+            if (_init == null)
                 return null;
         
-            if (!init.hasOwnProperty(name))
+            if (!_init.hasOwnProperty(name))
                 return null;
         
-            var result:Object = init[name];
+            var result:Object = _init[name];
 
-            delete init[name];
+            delete _init[name];
 
             if (result == null)
                 return null;
@@ -148,15 +148,15 @@ package away3d.core.utils
 
         public function getObjectOrInit(name:String, type:Class = null):Object
         {
-            if (init == null)
+            if (_init == null)
                 return null;
         
-            if (!init.hasOwnProperty(name))
+            if (!_init.hasOwnProperty(name))
                 return null;
         
-            var result:Object = init[name];
+            var result:Object = _init[name];
 
-            delete init[name];
+            delete _init[name];
 
             if (result == null)
                 return null;
@@ -173,20 +173,20 @@ package away3d.core.utils
             return getObject(name, Object3D) as Object3D;
         }
 
-        public function getNumber3D(name:String):Number3D
+        public function getVector3D(name:String):Vector3D
         {
-            return getObject(name, Number3D) as Number3D;
+            return getObject(name, Vector3D) as Vector3D;
         }
 
-        public function getPosition(name:String):Number3D
+        public function getPosition(name:String):Vector3D
         {
             var value:Object = getObject(name);
 
             if (value == null)
                 return null;
 
-            if (value is Number3D)
-                return value as Number3D;
+            if (value is Vector3D)
+                return value as Vector3D;
 
             if (value is Object3D)
             {
@@ -196,102 +196,102 @@ package away3d.core.utils
 
             if (value is String)
                 if (value == "center")
-                    return new Number3D();
+                    return new Vector3D();
 
             throw new CastError("Cast get position of "+value);
         }
 
         public function getArray(name:String):Array
         {
-            if (init == null)
+            if (_init == null)
                 return [];
         
-            if (!init.hasOwnProperty(name))
+            if (!_init.hasOwnProperty(name))
                 return [];
         
-            var result:Array = init[name];
+            var result:Array = _init[name];
 
-            delete init[name];
+            delete _init[name];
         
             return result;
         }
 
         public function getInit(name:String):Init
         {
-            if (init == null)
+            if (_init == null)
                 return new Init(null);
         
-            if (!init.hasOwnProperty(name))
+            if (!_init.hasOwnProperty(name))
                 return new Init(null);
         
-            var result:Init = Init.parse(init[name]);
+            var result:Init = Init.parse(_init[name]);
 
-            delete init[name];
+            delete _init[name];
         
             return result;
         }
 		
         public function getCubeMaterials(name:String):CubeMaterialsData
         {
-            if (init == null)
+            if (_init == null)
                 return null;
         
-            if (!init.hasOwnProperty(name))
+            if (!_init.hasOwnProperty(name))
                 return null;
         	
         	var result:CubeMaterialsData;
         	
-        	if (init[name] is CubeMaterialsData)
-        		result = init[name] as CubeMaterialsData;
-        	else if (init[name] is Object)
-        		result = new CubeMaterialsData(init[name]);
+        	if (_init[name] is CubeMaterialsData)
+        		result = _init[name] as CubeMaterialsData;
+        	else if (_init[name] is Object)
+        		result = new CubeMaterialsData(_init[name]);
 
-            delete init[name];
+            delete _init[name];
         
             return result;
         }
         
         public function getColor(name:String, def:uint):uint
         {
-            if (init == null)
+            if (_init == null)
                 return def;
         
-            if (!init.hasOwnProperty(name))
+            if (!_init.hasOwnProperty(name))
                 return def;
         
-            var result:uint = Cast.color(init[name]);
+            var result:uint = Cast.color(_init[name]);
 
-            delete init[name];
+            delete _init[name];
         
             return result;
         }
 
         public function getBitmap(name:String):BitmapData
         {
-            if (init == null)
+            if (_init == null)
                 return null;
         
-            if (!init.hasOwnProperty(name))
+            if (!_init.hasOwnProperty(name))
                 return null;
         
-            var result:BitmapData = Cast.bitmap(init[name]);
+            var result:BitmapData = Cast.bitmap(_init[name]);
 
-            delete init[name];
+            delete _init[name];
         
             return result;
         }
 
         public function getMaterial(name:String):Material
         {
-            if (init == null)
+            if (_init == null)
                 return null;
         
-            if (!init.hasOwnProperty(name))
+            if (!_init.hasOwnProperty(name))
                 return null;
         
-            var result:Material = Cast.material(init[name]);
+            var result:Material = Cast.material(_init[name]);
 
-            delete init[name];
+            delete _init[name];
         
             return result;
         }
@@ -300,19 +300,19 @@ package away3d.core.utils
 
         arcane function removeFromCheck():void
         {
-            if (init == null)
+            if (_init == null)
                 return;
 
-            init["dontCheckUnused"] = true;
+            _init["dontCheckUnused"] = true;
         }
 
         arcane function addForCheck():void
         {
-            if (init == null)
+            if (_init == null)
                 return;
 
-            init["dontCheckUnused"] = false;
-            inits.push(init);
+            _init["dontCheckUnused"] = false;
+            inits.push(_init);
         }
 
         arcane static function checkUnusedArguments():void

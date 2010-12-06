@@ -1,6 +1,6 @@
 /**
- * VERSION: 1.7
- * DATE: 2010-11-13
+ * VERSION: 1.75
+ * DATE: 2010-12-01
  * AS3
  * UPDATES AND DOCS AT: http://www.greensock.com/loadermax/
  **/
@@ -41,7 +41,7 @@ package com.greensock.loading.core {
  */	
 	public class LoaderCore extends EventDispatcher {
 		/** @private **/
-		public static const version:Number = 1.7;
+		public static const version:Number = 1.75;
 		
 		/** @private **/
 		protected static var _loaderCount:uint = 0;
@@ -67,7 +67,8 @@ package com.greensock.loading.core {
 													  onChildCancel:"childCancel",
 													  onChildComplete:"childComplete", 
 													  onChildProgress:"childProgress",
-													  onChildFail:"childFail"};
+													  onChildFail:"childFail",
+													  onRawLoad:"rawLoad"};
 		/** @private **/
 		protected static var _types:Object = {};
 		/** @private **/

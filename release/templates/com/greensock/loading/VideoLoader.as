@@ -1,6 +1,6 @@
 /**
- * VERSION: 1.74
- * DATE: 2010-11-21
+ * VERSION: 1.76
+ * DATE: 2010-12-03
  * AS3
  * UPDATES AND DOCS AT: http://www.greensock.com/loadermax/
  **/
@@ -13,10 +13,12 @@ package com.greensock.loading {
 	import flash.events.Event;
 	import flash.events.NetStatusEvent;
 	import flash.events.ProgressEvent;
+	import flash.events.TimerEvent;
 	import flash.media.SoundTransform;
 	import flash.media.Video;
 	import flash.net.NetConnection;
 	import flash.net.NetStream;
+	import flash.utils.Timer;
 	import flash.utils.getTimer;
 	
 	/** Dispatched when the loader's <code>httpStatus</code> value changes. **/
@@ -230,6 +232,8 @@ function errorHandler(event:LoaderEvent):void {
 		protected var _firstCuePoint:CuePoint;
 		/** @private due to a bug in the NetStream class, we cannot seek() or pause() before the NetStream has dispatched a RENDER Event (or the NetStream.Buffer.Full status event is received for Flash Player 9). **/
 		protected var _renderedOnce:Boolean;
+		/** @private primarily used for FP9 to work around a Flash bug with seek() and pause() (see the _onBufferFull() method for note). **/
+		protected var _timer:Timer =  new Timer(50, 1);
 		
 		/** The metaData that was received from the video (contains information about its width, height, frame rate, etc.). See Adobe's docs for information about a NetStream's onMetaData callback. **/
 		public var metaData:Object;
@@ -352,12 +356,12 @@ function errorHandler(event:LoaderEvent):void {
 					
 				}
 				_sprite.removeEventListener(Event.ENTER_FRAME, _playProgressHandler);
+				_sprite.removeEventListener(Event.ENTER_FRAME, _forceTimeHandler);
 				_ns.client = {};
 				_ns.removeEventListener(NetStatusEvent.NET_STATUS, _statusHandler);
 				_ns.removeEventListener("ioError", _failHandler);
 				_ns.removeEventListener("asyncError", _failHandler);
 				_ns.removeEventListener(Event.RENDER, _renderHandler);
-				_ns.removeEventListener(Event.RENDER, _forceTimeHandler);
 			}
 			_prevTime = 0;
 			
@@ -382,6 +386,7 @@ function errorHandler(event:LoaderEvent):void {
 			_prevTime = 0;
 			_bufferFull = false;
 			_renderedOnce = false;
+			_timer.reset();
 			this.metaData = null;
 			_pausePending = _videoPaused;
 			if (_videoPaused) {
@@ -401,7 +406,8 @@ function errorHandler(event:LoaderEvent):void {
 		override protected function _dump(scrubLevel:int=0, newStatus:int=0, suppressEvents:Boolean=false):void {
 			_sprite.removeEventListener(Event.ENTER_FRAME, _enterFrameHandler);
 			_ns.removeEventListener(Event.RENDER, _renderHandler);
-			_ns.removeEventListener(Event.RENDER, _forceTimeHandler);
+			_sprite.removeEventListener(Event.ENTER_FRAME, _forceTimeHandler);
+			_timer.removeEventListener(TimerEvent.TIMER, _renderHandler);
 			_forceTime = NaN;
 			_prevTime = 0;
 			_initted = false;
@@ -620,13 +626,18 @@ function errorHandler(event:LoaderEvent):void {
 		/** @private **/
 		protected function _setForceTime(time:Number):void {
 			if (!(_forceTime || _forceTime == 0)) { //if _forceTime is already set, the listener was already added (we remove it after 1 frame or after the buffer fills for the first time and metaData is received (whichever takes longer)
-				_ns.addEventListener(Event.RENDER, _forceTimeHandler, false, 0, true); //if, for example, after a video has finished playing, we seek(0) the video and immediately check the playProgress, it returns 1 instead of 0 because it takes a short time to render the first frame and accurately reflect the _ns.time variable. So we use a single ENTER_FRAME to help us override the _ns.time value briefly.
+				_sprite.addEventListener(Event.ENTER_FRAME, _forceTimeHandler, false, 0, true); //if, for example, after a video has finished playing, we seek(0) the video and immediately check the playProgress, it returns 1 instead of 0 because it takes a short time to render the first frame and accurately reflect the _ns.time variable. So we use a single ENTER_FRAME to help us override the _ns.time value briefly.
 			}
 			_forceTime = time;
 		}
 		
 		/** @private **/
 		protected function _onBufferFull():void {
+			if (!_renderedOnce && !_timer.running) { //in Flash Player 9, NetStream doesn't dispatch the RENDER event and the only reliable way I could find to sense when a render truly must have occured is to wait about 50 milliseconds after the buffer fills. Even waiting for an ENTER_FRAME event wouldn't work consistently (depending on the frame rate). Also, depending on the version of Flash that published the swf, the NetStream's NetStream.Buffer.Full status event may not fire (CS3 and CS4)!
+				_timer.addEventListener(TimerEvent.TIMER, _renderHandler, false, 0, true);
+				_timer.start();
+				return;
+			}
 			if (_pausePending) {
 				if (!_initted && getTimer() - _time < 10000) {
 					_video.attachNetStream(null); //in some rare circumstances, the NetStream will finish buffering even before the metaData has been received. If we pause() the NetStream before the metaData arrives, it can prevent the metaData from ever arriving (bug in Flash) even after you resume(). So in this case, we allow the NetStream to continue playing so that metaData can be received, but we detach it from the Video object so that the user doesn't see the video playing. The volume is also muted, so to the user things look paused even though the NetStream is continuing to play/load. We'll re-attach the NetStream to the Video after either the metaData arrives or 10 seconds elapse.
@@ -734,9 +745,6 @@ function errorHandler(event:LoaderEvent):void {
 					dispatchEvent(new LoaderEvent(VIDEO_COMPLETE, this));
 				}
 			} else if (code == "NetStream.Buffer.Full") {
-				if (!_renderedOnce) { //in Flash Player 9, NetStream doesn't dispatch the RENDER event and the only reliable way I could find to sense when a render truly must have occured is to wait for the NetStream.Buffer.Full status. We don't just put this code in the _onBufferFull() method because there's a chance it can be called from elsewhere before the NetStream.Buffer.Full status event occurs.
-					_renderHandler(null);
-				}
 				_onBufferFull();
 			} else if (code == "NetStream.Buffer.Empty") {
 				_bufferFull = false;
@@ -763,7 +771,7 @@ function errorHandler(event:LoaderEvent):void {
 			if (!_bufferFull && _ns.bufferLength >= _ns.bufferTime) {
 				_onBufferFull();
 			}
-			if (_cachedBytesLoaded == _cachedBytesTotal && _renderedOnce && _ns.bytesTotal > 5 && (_initted || getTimer() - _time >= 10000)) { //make sure the metaData has been received because if the NetStream file is cached locally sometimes the bytesLoaded == bytesTotal BEFORE the metaData arrives. Or timeout after 10 seconds.
+			if (_cachedBytesLoaded == _cachedBytesTotal && _ns.bytesTotal > 5 && ((_initted && _renderedOnce) || getTimer() - _time >= 10000)) { //make sure the metaData has been received because if the NetStream file is cached locally sometimes the bytesLoaded == bytesTotal BEFORE the metaData arrives. Or timeout after 10 seconds.
 				_sprite.removeEventListener(Event.ENTER_FRAME, _enterFrameHandler);
 				if (!_bufferFull) {
 					_onBufferFull();
@@ -788,8 +796,8 @@ function errorHandler(event:LoaderEvent):void {
 		
 		/** @private **/
 		protected function _renderHandler(event:Event):void {
+			event.target.removeEventListener(event.type, _renderHandler);
 			_renderedOnce = true;
-			_ns.removeEventListener(Event.RENDER, _renderHandler);
 			if (_pausePending) {
 				if (_bufferFull) {
 					_applyPendingPause();
@@ -804,7 +812,7 @@ function errorHandler(event:LoaderEvent):void {
 		/** @private see notes in _renderHandler() **/
 		private function _detachNS(event:Event):void {
 			_sprite.removeEventListener(Event.ENTER_FRAME, _detachNS);
-			if (!_bufferFull) {
+			if (!_bufferFull && _pausePending) {
 				_video.attachNetStream(null); //if the NetStream is still buffering, there's a good chance that the video will appear to play briefly right before we pause it, so we detach the NetStream from the Video briefly to avoid that funky visual behavior (we attach it again as soon as it buffers).
 			}
 		}
@@ -813,7 +821,7 @@ function errorHandler(event:LoaderEvent):void {
 		protected function _forceTimeHandler(event:Event):void {
 			if (!_videoPaused || (_initted && _renderedOnce)) {
 				_forceTime = NaN;
-				event.target.removeEventListener(Event.RENDER, _forceTimeHandler);
+				event.target.removeEventListener(Event.ENTER_FRAME, _forceTimeHandler);
 			}
 		}
 		

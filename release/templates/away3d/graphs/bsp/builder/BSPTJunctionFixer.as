@@ -1,10 +1,9 @@
 package away3d.graphs.bsp.builder
 {
 	import away3d.arcane;
-	import away3d.core.base.Face;
-	import away3d.core.base.UV;
-	import away3d.core.base.Vertex;
-	import away3d.core.geom.Plane3D;
+	import away3d.core.base.*;
+	import away3d.core.geom.*;
+	import away3d.core.utils.*;
 	import away3d.events.IteratorEvent;
 	import away3d.graphs.VectorIterator;
 	import away3d.graphs.bsp.BSPNode;
@@ -72,7 +71,7 @@ package away3d.graphs.bsp.builder
 		// details of the implementation
 		private function removeTJunctions(sourceNode : BSPNode, targetNode : BSPNode, portal : BSPPortal) : void
 		{
-			var faces : Array = sourceNode.faces;
+			var faces : Vector.<Face> = sourceNode.faces;
 			var face : Face;
 			var i : int = -1;
 			var len : int = faces.length;
@@ -80,7 +79,7 @@ package away3d.graphs.bsp.builder
 
 			while (++i < len) {
 				face = Face(faces[i]);
-				if (face.hasEdgeOnPlane(plane, BSPTree.EPSILON) && testTJunctions(sourceNode, face, targetNode.faces, plane)) {
+				if (FaceUtils.hasEdgeOnPlane(face, plane, BSPTree.EPSILON) && testTJunctions(sourceNode, face, targetNode.faces, plane)) {
 					// one face removed, two created and placed at the end of the list
 					--i;
 					++len;
@@ -88,14 +87,14 @@ package away3d.graphs.bsp.builder
 			}
 		}
 
-		private function testTJunctions(sourceNode : BSPNode, face : Face, targetFaces : Array, plane : Plane3D) : Boolean
+		private function testTJunctions(sourceNode : BSPNode, face : Face, targetFaces : Vector.<Face>, plane : Plane3D) : Boolean
 		{
 			var targetFace : Face;
 			var i : int = targetFaces.length;
 
 			while (--i >= 0) {
-				targetFace = Face(targetFaces[i]);
-				if (face.hasEdgeOnPlane(plane, BSPTree.EPSILON) && fixTJunctions(sourceNode, face, targetFace))
+				targetFace = targetFaces[i];
+				if (FaceUtils.hasEdgeOnPlane(face, plane, BSPTree.EPSILON) && fixTJunctions(sourceNode, face, targetFace))
 					return true;
 			}
 			return false;
@@ -104,14 +103,14 @@ package away3d.graphs.bsp.builder
 		private function fixTJunctions(sourceNode : BSPNode, face : Face, targetFace : Face) : Boolean
 		{
 			var i : int = 3;
-			var v0 : Vertex = face._v0,
-				v1 : Vertex = face._v1,
-				v2 : Vertex = face._v2;
+			var v0 : Vertex = face.vertices[0],
+				v1 : Vertex = face.vertices[1],
+				v2 : Vertex = face.vertices[2];
 			var v : Vertex;
 			var t : Number;
 
 			while (--i >= 0) {
-				v = Vertex(targetFace.vertices[i]);
+				v = targetFace.vertices[i];
 				t = getTFraction(v0, v1, v);
 				if (t > 0) {
 					splitFace(sourceNode, face, 0, v, t);
@@ -182,12 +181,12 @@ package away3d.graphs.bsp.builder
 		{
 			var face1 : Face;
 			var face2 : Face;
-			var v0 : Vertex = face._v0;
-			var v1 : Vertex = face._v1;
-			var v2 : Vertex = face._v2;
-			var uv0 : UV = face._uv0;
-			var uv1 : UV = face._uv1;
-			var uv2 : UV = face._uv2;
+			var v0 : Vertex = face.vertices[0];
+			var v1 : Vertex = face.vertices[1];
+			var v2 : Vertex = face.vertices[2];
+			var uv0 : UV = face.uvs[0];
+			var uv1 : UV = face.uvs[1];
+			var uv2 : UV = face.uvs[2];
 			var uv : UV;
 			var material : Material = face.material;
 

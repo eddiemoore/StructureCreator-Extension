@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <macromedia-extension
 	 name="Structure Creator"
-	 version="2.0.1"
+	 version="2.0.2"
 	 type="flashpanel"
 	 requires-restart="true">
 
@@ -39,9 +39,9 @@
 		<file source="libraries.xml" destination="$flash/StructureCreator" />
 		<file source="templates/Project.as3proj" destination="$flash/StructureCreator" />
 		<file source="templates/Class.as" destination="$flash/StructureCreator" />
-		<file source="templates/.actionScriptProperties" destination="$flash/StructureCreator/fb" />
-		<file source="templates/.project" destination="$flash/StructureCreator/fb" />
-		<file source="templates/org.eclipse.core.resources.prefs" destination="$flash/StructureCreator/fb" />
+		<file source="templates/fb/.actionScriptProperties" destination="$flash/StructureCreator/fb" />
+		<file source="templates/fb/.project" destination="$flash/StructureCreator/fb" />
+		<file source="templates/fb/org.eclipse.core.resources.prefs" destination="$flash/StructureCreator/fb" />
 		
 		<!--LIBRARIES-->
 		<file source="templates/away3d/animators/Animator.as" destination="$flash/StructureCreator/templates/away3d/animators" />
@@ -60,7 +60,6 @@
 		<file source="templates/away3d/audio/drivers/SimplePanVolumeDriver.as" destination="$flash/StructureCreator/templates/away3d/audio/drivers" />
 		<file source="templates/away3d/audio/Sound3D.as" destination="$flash/StructureCreator/templates/away3d/audio" />
 		<file source="templates/away3d/away3d-license.txt" destination="$flash/StructureCreator/templates/away3d" />
-		<file source="templates/away3d/blockers/ConvexBlock.as" destination="$flash/StructureCreator/templates/away3d/blockers" />
 		<file source="templates/away3d/cameras/Camera3D.as" destination="$flash/StructureCreator/templates/away3d/cameras" />
 		<file source="templates/away3d/cameras/HoverCamera3D.as" destination="$flash/StructureCreator/templates/away3d/cameras" />
 		<file source="templates/away3d/cameras/lenses/AbstractLens.as" destination="$flash/StructureCreator/templates/away3d/cameras/lenses" />
@@ -88,34 +87,14 @@
 		<file source="templates/away3d/core/base/UV.as" destination="$flash/StructureCreator/templates/away3d/core/base" />
 		<file source="templates/away3d/core/base/Vertex.as" destination="$flash/StructureCreator/templates/away3d/core/base" />
 		<file source="templates/away3d/core/base/VertexClassification.as" destination="$flash/StructureCreator/templates/away3d/core/base" />
-		<file source="templates/away3d/core/block/Blocker.as" destination="$flash/StructureCreator/templates/away3d/core/block" />
-		<file source="templates/away3d/core/block/BlockerArray.as" destination="$flash/StructureCreator/templates/away3d/core/block" />
-		<file source="templates/away3d/core/block/ConvexBlocker.as" destination="$flash/StructureCreator/templates/away3d/core/block" />
-		<file source="templates/away3d/core/block/IBlockerConsumer.as" destination="$flash/StructureCreator/templates/away3d/core/block" />
-		<file source="templates/away3d/core/block/IBlockerProvider.as" destination="$flash/StructureCreator/templates/away3d/core/block" />
 		<file source="templates/away3d/core/clip/Clipping.as" destination="$flash/StructureCreator/templates/away3d/core/clip" />
 		<file source="templates/away3d/core/clip/FrustumClipping.as" destination="$flash/StructureCreator/templates/away3d/core/clip" />
 		<file source="templates/away3d/core/clip/NearfieldClipping.as" destination="$flash/StructureCreator/templates/away3d/core/clip" />
 		<file source="templates/away3d/core/clip/RectangleClipping.as" destination="$flash/StructureCreator/templates/away3d/core/clip" />
-		<file source="templates/away3d/core/draw/DrawBitmap.as" destination="$flash/StructureCreator/templates/away3d/core/draw" />
-		<file source="templates/away3d/core/draw/DrawDisplayObject.as" destination="$flash/StructureCreator/templates/away3d/core/draw" />
-		<file source="templates/away3d/core/draw/DrawFog.as" destination="$flash/StructureCreator/templates/away3d/core/draw" />
-		<file source="templates/away3d/core/draw/DrawPrimitive.as" destination="$flash/StructureCreator/templates/away3d/core/draw" />
-		<file source="templates/away3d/core/draw/DrawScaledBitmap.as" destination="$flash/StructureCreator/templates/away3d/core/draw" />
-		<file source="templates/away3d/core/draw/DrawSegment.as" destination="$flash/StructureCreator/templates/away3d/core/draw" />
-		<file source="templates/away3d/core/draw/DrawSprite.as" destination="$flash/StructureCreator/templates/away3d/core/draw" />
-		<file source="templates/away3d/core/draw/DrawTriangle.as" destination="$flash/StructureCreator/templates/away3d/core/draw" />
-		<file source="templates/away3d/core/draw/IPrimitiveConsumer.as" destination="$flash/StructureCreator/templates/away3d/core/draw" />
-		<file source="templates/away3d/core/draw/IPrimitiveProvider.as" destination="$flash/StructureCreator/templates/away3d/core/draw" />
-		<file source="templates/away3d/core/draw/PrimitiveQuadrantTreeNode.as" destination="$flash/StructureCreator/templates/away3d/core/draw" />
-		<file source="templates/away3d/core/draw/PrimitiveVolumeBlock.as" destination="$flash/StructureCreator/templates/away3d/core/draw" />
-		<file source="templates/away3d/core/draw/PrimitiveVolumeBlockNode.as" destination="$flash/StructureCreator/templates/away3d/core/draw" />
-		<file source="templates/away3d/core/draw/ScreenVertex.as" destination="$flash/StructureCreator/templates/away3d/core/draw" />
 		<file source="templates/away3d/core/filter/AnotherRivalFilter.as" destination="$flash/StructureCreator/templates/away3d/core/filter" />
 		<file source="templates/away3d/core/filter/FogFilter.as" destination="$flash/StructureCreator/templates/away3d/core/filter" />
 		<file source="templates/away3d/core/filter/IPrimitiveFilter.as" destination="$flash/StructureCreator/templates/away3d/core/filter" />
 		<file source="templates/away3d/core/filter/IPrimitiveQuadrantFilter.as" destination="$flash/StructureCreator/templates/away3d/core/filter" />
-		<file source="templates/away3d/core/filter/IPrimitiveVolumeBlockFilter.as" destination="$flash/StructureCreator/templates/away3d/core/filter" />
 		<file source="templates/away3d/core/filter/MaxPolyFilter.as" destination="$flash/StructureCreator/templates/away3d/core/filter" />
 		<file source="templates/away3d/core/filter/QuadrantRiddleFilter.as" destination="$flash/StructureCreator/templates/away3d/core/filter" />
 		<file source="templates/away3d/core/filter/ZDepthFilter.as" destination="$flash/StructureCreator/templates/away3d/core/filter" />
@@ -127,41 +106,25 @@
 		<file source="templates/away3d/core/geom/PathCommand.as" destination="$flash/StructureCreator/templates/away3d/core/geom" />
 		<file source="templates/away3d/core/geom/PathDebug.as" destination="$flash/StructureCreator/templates/away3d/core/geom" />
 		<file source="templates/away3d/core/geom/Plane3D.as" destination="$flash/StructureCreator/templates/away3d/core/geom" />
-		<file source="templates/away3d/core/light/AmbientLight.as" destination="$flash/StructureCreator/templates/away3d/core/light" />
-		<file source="templates/away3d/core/light/DirectionalLight.as" destination="$flash/StructureCreator/templates/away3d/core/light" />
-		<file source="templates/away3d/core/light/ILightConsumer.as" destination="$flash/StructureCreator/templates/away3d/core/light" />
-		<file source="templates/away3d/core/light/ILightProvider.as" destination="$flash/StructureCreator/templates/away3d/core/light" />
-		<file source="templates/away3d/core/light/LightArray.as" destination="$flash/StructureCreator/templates/away3d/core/light" />
-		<file source="templates/away3d/core/light/LightPrimitive.as" destination="$flash/StructureCreator/templates/away3d/core/light" />
-		<file source="templates/away3d/core/light/PointLight.as" destination="$flash/StructureCreator/templates/away3d/core/light" />
-		<file source="templates/away3d/core/math/MatrixAway3D.as" destination="$flash/StructureCreator/templates/away3d/core/math" />
-		<file source="templates/away3d/core/math/Number2D.as" destination="$flash/StructureCreator/templates/away3d/core/math" />
-		<file source="templates/away3d/core/math/Number3D.as" destination="$flash/StructureCreator/templates/away3d/core/math" />
+		<file source="templates/away3d/core/math/Matrix3DUtils.as" destination="$flash/StructureCreator/templates/away3d/core/math" />
 		<file source="templates/away3d/core/math/Quaternion.as" destination="$flash/StructureCreator/templates/away3d/core/math" />
-		<file source="templates/away3d/core/project/ConvexBlockProjector.as" destination="$flash/StructureCreator/templates/away3d/core/project" />
-		<file source="templates/away3d/core/project/DirSpriteProjector.as" destination="$flash/StructureCreator/templates/away3d/core/project" />
-		<file source="templates/away3d/core/project/DofSpriteProjector.as" destination="$flash/StructureCreator/templates/away3d/core/project" />
-		<file source="templates/away3d/core/project/MeshProjector.as" destination="$flash/StructureCreator/templates/away3d/core/project" />
-		<file source="templates/away3d/core/project/MovieClipSpriteProjector.as" destination="$flash/StructureCreator/templates/away3d/core/project" />
-		<file source="templates/away3d/core/project/ObjectContainerProjector.as" destination="$flash/StructureCreator/templates/away3d/core/project" />
-		<file source="templates/away3d/core/project/ProjectorType.as" destination="$flash/StructureCreator/templates/away3d/core/project" />
-		<file source="templates/away3d/core/project/SpriteProjector.as" destination="$flash/StructureCreator/templates/away3d/core/project" />
-		<file source="templates/away3d/core/render/AbstractRenderSession.as" destination="$flash/StructureCreator/templates/away3d/core/render" />
+		<file source="templates/away3d/core/math/Vector3DUtils.as" destination="$flash/StructureCreator/templates/away3d/core/math" />
+		<file source="templates/away3d/core/project/PrimitiveProjector.as" destination="$flash/StructureCreator/templates/away3d/core/project" />
+		<file source="templates/away3d/core/project/PrimitiveType.as" destination="$flash/StructureCreator/templates/away3d/core/project" />
 		<file source="templates/away3d/core/render/BasicRenderer.as" destination="$flash/StructureCreator/templates/away3d/core/render" />
-		<file source="templates/away3d/core/render/BitmapRenderSession.as" destination="$flash/StructureCreator/templates/away3d/core/render" />
 		<file source="templates/away3d/core/render/BSPRenderer.as" destination="$flash/StructureCreator/templates/away3d/core/render" />
-		<file source="templates/away3d/core/render/IRenderer.as" destination="$flash/StructureCreator/templates/away3d/core/render" />
 		<file source="templates/away3d/core/render/QuadrantRenderer.as" destination="$flash/StructureCreator/templates/away3d/core/render" />
+		<file source="templates/away3d/core/render/QuadrantTreeNode.as" destination="$flash/StructureCreator/templates/away3d/core/render" />
 		<file source="templates/away3d/core/render/Renderer.as" destination="$flash/StructureCreator/templates/away3d/core/render" />
-		<file source="templates/away3d/core/render/SpriteRenderSession.as" destination="$flash/StructureCreator/templates/away3d/core/render" />
+		<file source="templates/away3d/core/session/AbstractSession.as" destination="$flash/StructureCreator/templates/away3d/core/session" />
+		<file source="templates/away3d/core/session/BitmapSession.as" destination="$flash/StructureCreator/templates/away3d/core/session" />
+		<file source="templates/away3d/core/session/SpriteSession.as" destination="$flash/StructureCreator/templates/away3d/core/session" />
 		<file source="templates/away3d/core/stats/Logo.as" destination="$flash/StructureCreator/templates/away3d/core/stats" />
 		<file source="templates/away3d/core/stats/StaticTextField.as" destination="$flash/StructureCreator/templates/away3d/core/stats" />
 		<file source="templates/away3d/core/stats/Stats.as" destination="$flash/StructureCreator/templates/away3d/core/stats" />
 		<file source="templates/away3d/core/stats/Tasks.as" destination="$flash/StructureCreator/templates/away3d/core/stats" />
-		<file source="templates/away3d/core/traverse/LightTraverser.as" destination="$flash/StructureCreator/templates/away3d/core/traverse" />
 		<file source="templates/away3d/core/traverse/PrimitiveTraverser.as" destination="$flash/StructureCreator/templates/away3d/core/traverse" />
 		<file source="templates/away3d/core/traverse/ProjectionTraverser.as" destination="$flash/StructureCreator/templates/away3d/core/traverse" />
-		<file source="templates/away3d/core/traverse/SessionTraverser.as" destination="$flash/StructureCreator/templates/away3d/core/traverse" />
 		<file source="templates/away3d/core/traverse/TickTraverser.as" destination="$flash/StructureCreator/templates/away3d/core/traverse" />
 		<file source="templates/away3d/core/traverse/Traverser.as" destination="$flash/StructureCreator/templates/away3d/core/traverse" />
 		<file source="templates/away3d/core/utils/BezierUtils.as" destination="$flash/StructureCreator/templates/away3d/core/utils" />
@@ -172,17 +135,21 @@
 		<file source="templates/away3d/core/utils/Color.as" destination="$flash/StructureCreator/templates/away3d/core/utils" />
 		<file source="templates/away3d/core/utils/Debug.as" destination="$flash/StructureCreator/templates/away3d/core/utils" />
 		<file source="templates/away3d/core/utils/DofCache.as" destination="$flash/StructureCreator/templates/away3d/core/utils" />
-		<file source="templates/away3d/core/utils/DrawPrimitiveStore.as" destination="$flash/StructureCreator/templates/away3d/core/utils" />
 		<file source="templates/away3d/core/utils/FaceDictionaryVO.as" destination="$flash/StructureCreator/templates/away3d/core/utils" />
 		<file source="templates/away3d/core/utils/FaceMaterialVO.as" destination="$flash/StructureCreator/templates/away3d/core/utils" />
 		<file source="templates/away3d/core/utils/FaceNormalShader.as" destination="$flash/StructureCreator/templates/away3d/core/utils" />
 		<file source="templates/away3d/core/utils/FaceNormalShaderVO.as" destination="$flash/StructureCreator/templates/away3d/core/utils" />
-		<file source="templates/away3d/core/utils/FaceVO.as" destination="$flash/StructureCreator/templates/away3d/core/utils" />
+		<file source="templates/away3d/core/utils/FaceUtils.as" destination="$flash/StructureCreator/templates/away3d/core/utils" />
+		<file source="templates/away3d/core/utils/HitManager.as" destination="$flash/StructureCreator/templates/away3d/core/utils" />
 		<file source="templates/away3d/core/utils/IClonable.as" destination="$flash/StructureCreator/templates/away3d/core/utils" />
 		<file source="templates/away3d/core/utils/Init.as" destination="$flash/StructureCreator/templates/away3d/core/utils" />
-		<file source="templates/away3d/core/utils/SegmentVO.as" destination="$flash/StructureCreator/templates/away3d/core/utils" />
-		<file source="templates/away3d/core/utils/SpriteVO.as" destination="$flash/StructureCreator/templates/away3d/core/utils" />
 		<file source="templates/away3d/core/utils/ValueObject.as" destination="$flash/StructureCreator/templates/away3d/core/utils" />
+		<file source="templates/away3d/core/utils/ViewSourceObject.as" destination="$flash/StructureCreator/templates/away3d/core/utils" />
+		<file source="templates/away3d/core/vos/ElementVO.as" destination="$flash/StructureCreator/templates/away3d/core/vos" />
+		<file source="templates/away3d/core/vos/FaceVO.as" destination="$flash/StructureCreator/templates/away3d/core/vos" />
+		<file source="templates/away3d/core/vos/FogVO.as" destination="$flash/StructureCreator/templates/away3d/core/vos" />
+		<file source="templates/away3d/core/vos/SegmentVO.as" destination="$flash/StructureCreator/templates/away3d/core/vos" />
+		<file source="templates/away3d/core/vos/SpriteVO.as" destination="$flash/StructureCreator/templates/away3d/core/vos" />
 		<file source="templates/away3d/debug/AwayStats.as" destination="$flash/StructureCreator/templates/away3d/debug" />
 		<file source="templates/away3d/events/AnimatorEvent.as" destination="$flash/StructureCreator/templates/away3d/events" />
 		<file source="templates/away3d/events/BSPBuildEvent.as" destination="$flash/StructureCreator/templates/away3d/events" />
@@ -203,6 +170,7 @@
 		<file source="templates/away3d/events/TraceEvent.as" destination="$flash/StructureCreator/templates/away3d/events" />
 		<file source="templates/away3d/events/VideoEvent.as" destination="$flash/StructureCreator/templates/away3d/events" />
 		<file source="templates/away3d/events/ViewEvent.as" destination="$flash/StructureCreator/templates/away3d/events" />
+		<file source="templates/away3d/exporters/AC3DExporter.as" destination="$flash/StructureCreator/templates/away3d/exporters" />
 		<file source="templates/away3d/exporters/AS3Exporter.as" destination="$flash/StructureCreator/templates/away3d/exporters" />
 		<file source="templates/away3d/exporters/AS3LiteExporter.as" destination="$flash/StructureCreator/templates/away3d/exporters" />
 		<file source="templates/away3d/exporters/AWDataExporter.as" destination="$flash/StructureCreator/templates/away3d/exporters" />
@@ -218,6 +186,7 @@
 		<file source="templates/away3d/extrusions/PathExtrusion.as" destination="$flash/StructureCreator/templates/away3d/extrusions" />
 		<file source="templates/away3d/extrusions/SkinExtrude.as" destination="$flash/StructureCreator/templates/away3d/extrusions" />
 		<file source="templates/away3d/extrusions/TextExtrusion.as" destination="$flash/StructureCreator/templates/away3d/extrusions" />
+		<file source="templates/away3d/graphs/bsp/BSPHitTest.as" destination="$flash/StructureCreator/templates/away3d/graphs/bsp" />
 		<file source="templates/away3d/graphs/bsp/BSPMeshManager.as" destination="$flash/StructureCreator/templates/away3d/graphs/bsp" />
 		<file source="templates/away3d/graphs/bsp/BSPNode.as" destination="$flash/StructureCreator/templates/away3d/graphs/bsp" />
 		<file source="templates/away3d/graphs/bsp/BSPPortal.as" destination="$flash/StructureCreator/templates/away3d/graphs/bsp" />
@@ -242,6 +211,7 @@
 		<file source="templates/away3d/lights/DirectionalLight3D.as" destination="$flash/StructureCreator/templates/away3d/lights" />
 		<file source="templates/away3d/lights/PointLight3D.as" destination="$flash/StructureCreator/templates/away3d/lights" />
 		<file source="templates/away3d/loaders/AbstractParser.as" destination="$flash/StructureCreator/templates/away3d/loaders" />
+		<file source="templates/away3d/loaders/AC3D.as" destination="$flash/StructureCreator/templates/away3d/loaders" />
 		<file source="templates/away3d/loaders/Ase.as" destination="$flash/StructureCreator/templates/away3d/loaders" />
 		<file source="templates/away3d/loaders/AWData.as" destination="$flash/StructureCreator/templates/away3d/loaders" />
 		<file source="templates/away3d/loaders/Collada.as" destination="$flash/StructureCreator/templates/away3d/loaders" />
@@ -286,6 +256,7 @@
 		<file source="templates/away3d/materials/EnviroBitmapMaterial.as" destination="$flash/StructureCreator/templates/away3d/materials" />
 		<file source="templates/away3d/materials/EnviroColorMaterial.as" destination="$flash/StructureCreator/templates/away3d/materials" />
 		<file source="templates/away3d/materials/FresnelPBMaterial.as" destination="$flash/StructureCreator/templates/away3d/materials" />
+		<file source="templates/away3d/materials/GlassMaterial.as" destination="$flash/StructureCreator/templates/away3d/materials" />
 		<file source="templates/away3d/materials/LayerMaterial.as" destination="$flash/StructureCreator/templates/away3d/materials" />
 		<file source="templates/away3d/materials/Material.as" destination="$flash/StructureCreator/templates/away3d/materials" />
 		<file source="templates/away3d/materials/MovieMaterial.as" destination="$flash/StructureCreator/templates/away3d/materials" />
@@ -341,6 +312,10 @@
 		<file source="templates/away3d/pbks/CubicEnvReflMapShader.pbk" destination="$flash/StructureCreator/templates/away3d/pbks" />
 		<file source="templates/away3d/pbks/FresnelShader.pbj" destination="$flash/StructureCreator/templates/away3d/pbks" />
 		<file source="templates/away3d/pbks/FresnelShader.pbk" destination="$flash/StructureCreator/templates/away3d/pbks" />
+		<file source="templates/away3d/pbks/GlassShader.pbj" destination="$flash/StructureCreator/templates/away3d/pbks" />
+		<file source="templates/away3d/pbks/GlassShader.pbk" destination="$flash/StructureCreator/templates/away3d/pbks" />
+		<file source="templates/away3d/pbks/GlassShaderChrDisp.pbj" destination="$flash/StructureCreator/templates/away3d/pbks" />
+		<file source="templates/away3d/pbks/GlassShaderChrDisp.pbk" destination="$flash/StructureCreator/templates/away3d/pbks" />
 		<file source="templates/away3d/pbks/LambertMultiPassDirShader.pbj" destination="$flash/StructureCreator/templates/away3d/pbks" />
 		<file source="templates/away3d/pbks/LambertMultiPassDirShader.pbk" destination="$flash/StructureCreator/templates/away3d/pbks" />
 		<file source="templates/away3d/pbks/LambertMultiPassShader.pbj" destination="$flash/StructureCreator/templates/away3d/pbks" />
@@ -385,6 +360,7 @@
 		<file source="templates/away3d/pbks/TangentToObjectSmooth.pbk" destination="$flash/StructureCreator/templates/away3d/pbks" />
 		<file source="templates/away3d/physics/BSPCollider.as" destination="$flash/StructureCreator/templates/away3d/physics" />
 		<file source="templates/away3d/primitives/AbstractPrimitive.as" destination="$flash/StructureCreator/templates/away3d/primitives" />
+		<file source="templates/away3d/primitives/Arrow.as" destination="$flash/StructureCreator/templates/away3d/primitives" />
 		<file source="templates/away3d/primitives/BezierPatch.as" destination="$flash/StructureCreator/templates/away3d/primitives" />
 		<file source="templates/away3d/primitives/Cone.as" destination="$flash/StructureCreator/templates/away3d/primitives" />
 		<file source="templates/away3d/primitives/Cube.as" destination="$flash/StructureCreator/templates/away3d/primitives" />
@@ -393,9 +369,11 @@
 		<file source="templates/away3d/primitives/Cylinder.as" destination="$flash/StructureCreator/templates/away3d/primitives" />
 		<file source="templates/away3d/primitives/data/CubeMaterialsData.as" destination="$flash/StructureCreator/templates/away3d/primitives/data" />
 		<file source="templates/away3d/primitives/data/PatchData.as" destination="$flash/StructureCreator/templates/away3d/primitives/data" />
+		<file source="templates/away3d/primitives/data/WeightedVertex.as" destination="$flash/StructureCreator/templates/away3d/primitives/data" />
 		<file source="templates/away3d/primitives/GeodesicSphere.as" destination="$flash/StructureCreator/templates/away3d/primitives" />
 		<file source="templates/away3d/primitives/GridPlane.as" destination="$flash/StructureCreator/templates/away3d/primitives" />
 		<file source="templates/away3d/primitives/LineSegment.as" destination="$flash/StructureCreator/templates/away3d/primitives" />
+		<file source="templates/away3d/primitives/NURBS.as" destination="$flash/StructureCreator/templates/away3d/primitives" />
 		<file source="templates/away3d/primitives/Plane.as" destination="$flash/StructureCreator/templates/away3d/primitives" />
 		<file source="templates/away3d/primitives/ReflectivePlane.as" destination="$flash/StructureCreator/templates/away3d/primitives" />
 		<file source="templates/away3d/primitives/RegularPolygon.as" destination="$flash/StructureCreator/templates/away3d/primitives" />
@@ -406,6 +384,7 @@
 		<file source="templates/away3d/primitives/Sphere.as" destination="$flash/StructureCreator/templates/away3d/primitives" />
 		<file source="templates/away3d/primitives/TextField3D.as" destination="$flash/StructureCreator/templates/away3d/primitives" />
 		<file source="templates/away3d/primitives/Torus.as" destination="$flash/StructureCreator/templates/away3d/primitives" />
+		<file source="templates/away3d/primitives/TorusKnot.as" destination="$flash/StructureCreator/templates/away3d/primitives" />
 		<file source="templates/away3d/primitives/Triangle.as" destination="$flash/StructureCreator/templates/away3d/primitives" />
 		<file source="templates/away3d/primitives/Trident.as" destination="$flash/StructureCreator/templates/away3d/primitives" />
 		<file source="templates/away3d/primitives/utils/CubeFaces.as" destination="$flash/StructureCreator/templates/away3d/primitives/utils" />
@@ -416,11 +395,11 @@
 		<file source="templates/away3d/primitives/WireRegularPolygon.as" destination="$flash/StructureCreator/templates/away3d/primitives" />
 		<file source="templates/away3d/primitives/WireSphere.as" destination="$flash/StructureCreator/templates/away3d/primitives" />
 		<file source="templates/away3d/primitives/WireTorus.as" destination="$flash/StructureCreator/templates/away3d/primitives" />
-		<file source="templates/away3d/sprites/DirSprite2D.as" destination="$flash/StructureCreator/templates/away3d/sprites" />
-		<file source="templates/away3d/sprites/DofSprite2D.as" destination="$flash/StructureCreator/templates/away3d/sprites" />
+		<file source="templates/away3d/sprites/DepthOfFieldSprite.as" destination="$flash/StructureCreator/templates/away3d/sprites" />
+		<file source="templates/away3d/sprites/DirectionalSprite.as" destination="$flash/StructureCreator/templates/away3d/sprites" />
 		<file source="templates/away3d/sprites/MovieClipSprite.as" destination="$flash/StructureCreator/templates/away3d/sprites" />
-		<file source="templates/away3d/sprites/Sprite2D.as" destination="$flash/StructureCreator/templates/away3d/sprites" />
 		<file source="templates/away3d/sprites/Sprite3D.as" destination="$flash/StructureCreator/templates/away3d/sprites" />
+		<file source="templates/away3d/sprites/SpriteAlign.as" destination="$flash/StructureCreator/templates/away3d/sprites" />
 		<file source="templates/away3d/test/BaseDemo.as" destination="$flash/StructureCreator/templates/away3d/test" />
 		<file source="templates/away3d/test/Button.as" destination="$flash/StructureCreator/templates/away3d/test" />
 		<file source="templates/away3d/test/Panel.as" destination="$flash/StructureCreator/templates/away3d/test" />
@@ -432,7 +411,10 @@
 		<file source="templates/away3d/tools/Merge.as" destination="$flash/StructureCreator/templates/away3d/tools" />
 		<file source="templates/away3d/tools/Mirror.as" destination="$flash/StructureCreator/templates/away3d/tools" />
 		<file source="templates/away3d/tools/Replicate.as" destination="$flash/StructureCreator/templates/away3d/tools" />
+		<file source="templates/away3d/tools/utils/BaryCentricTest.as" destination="$flash/StructureCreator/templates/away3d/tools/utils" />
+		<file source="templates/away3d/tools/utils/Drag3D.as" destination="$flash/StructureCreator/templates/away3d/tools/utils" />
 		<file source="templates/away3d/tools/Weld.as" destination="$flash/StructureCreator/templates/away3d/tools" />
+		
 		<file source="templates/com/adobe/air/crypto/EncryptionKeyGenerator.as" destination="$flash/StructureCreator/templates/com/adobe/air/crypto" />
 		<file source="templates/com/adobe/air/filesystem/events/FileMonitorEvent.as" destination="$flash/StructureCreator/templates/com/adobe/air/filesystem/events" />
 		<file source="templates/com/adobe/air/filesystem/FileMonitor.as" destination="$flash/StructureCreator/templates/com/adobe/air/filesystem" />
@@ -498,365 +480,22 @@
 		<file source="templates/com/adobe/webapis/events/ServiceEvent.as" destination="$flash/StructureCreator/templates/com/adobe/webapis/events" />
 		<file source="templates/com/adobe/webapis/ServiceBase.as" destination="$flash/StructureCreator/templates/com/adobe/webapis" />
 		<file source="templates/com/adobe/webapis/URLLoaderBase.as" destination="$flash/StructureCreator/templates/com/adobe/webapis" />
-		<file source="templates/com/facebook/air/JSONCall.as" destination="$flash/StructureCreator/templates/com/facebook/air" />
-		<file source="templates/com/facebook/air/JSONEvent.as" destination="$flash/StructureCreator/templates/com/facebook/air" />
-		<file source="templates/com/facebook/air/SessionData.as" destination="$flash/StructureCreator/templates/com/facebook/air" />
-		<file source="templates/com/facebook/commands/admin/BanUsers.as" destination="$flash/StructureCreator/templates/com/facebook/commands/admin" />
-		<file source="templates/com/facebook/commands/admin/GetAllocation.as" destination="$flash/StructureCreator/templates/com/facebook/commands/admin" />
-		<file source="templates/com/facebook/commands/admin/GetAppProperties.as" destination="$flash/StructureCreator/templates/com/facebook/commands/admin" />
-		<file source="templates/com/facebook/commands/admin/GetBannedUsers.as" destination="$flash/StructureCreator/templates/com/facebook/commands/admin" />
-		<file source="templates/com/facebook/commands/admin/GetMetrics.as" destination="$flash/StructureCreator/templates/com/facebook/commands/admin" />
-		<file source="templates/com/facebook/commands/admin/GetRestrictionInfo.as" destination="$flash/StructureCreator/templates/com/facebook/commands/admin" />
-		<file source="templates/com/facebook/commands/admin/SetAppProperties.as" destination="$flash/StructureCreator/templates/com/facebook/commands/admin" />
-		<file source="templates/com/facebook/commands/admin/SetRestrictionInfo.as" destination="$flash/StructureCreator/templates/com/facebook/commands/admin" />
-		<file source="templates/com/facebook/commands/admin/UnbanUsers.as" destination="$flash/StructureCreator/templates/com/facebook/commands/admin" />
-		<file source="templates/com/facebook/commands/application/GetPublicInfo.as" destination="$flash/StructureCreator/templates/com/facebook/commands/application" />
-		<file source="templates/com/facebook/commands/auth/CreateToken.as" destination="$flash/StructureCreator/templates/com/facebook/commands/auth" />
-		<file source="templates/com/facebook/commands/auth/ExpireSession.as" destination="$flash/StructureCreator/templates/com/facebook/commands/auth" />
-		<file source="templates/com/facebook/commands/auth/GetSession.as" destination="$flash/StructureCreator/templates/com/facebook/commands/auth" />
-		<file source="templates/com/facebook/commands/auth/PromoteSession.as" destination="$flash/StructureCreator/templates/com/facebook/commands/auth" />
-		<file source="templates/com/facebook/commands/auth/RevokeAuthorization.as" destination="$flash/StructureCreator/templates/com/facebook/commands/auth" />
-		<file source="templates/com/facebook/commands/auth/RevokeExtendedPermission.as" destination="$flash/StructureCreator/templates/com/facebook/commands/auth" />
-		<file source="templates/com/facebook/commands/batch/BatchRun.as" destination="$flash/StructureCreator/templates/com/facebook/commands/batch" />
-		<file source="templates/com/facebook/commands/comments/AddComments.as" destination="$flash/StructureCreator/templates/com/facebook/commands/comments" />
-		<file source="templates/com/facebook/commands/comments/GetComments.as" destination="$flash/StructureCreator/templates/com/facebook/commands/comments" />
-		<file source="templates/com/facebook/commands/comments/RemoveComments.as" destination="$flash/StructureCreator/templates/com/facebook/commands/comments" />
-		<file source="templates/com/facebook/commands/connect/GetUnconnectedFriendsCount.as" destination="$flash/StructureCreator/templates/com/facebook/commands/connect" />
-		<file source="templates/com/facebook/commands/connect/RegisterUsers.as" destination="$flash/StructureCreator/templates/com/facebook/commands/connect" />
-		<file source="templates/com/facebook/commands/connect/UnregisterUsers.as" destination="$flash/StructureCreator/templates/com/facebook/commands/connect" />
-		<file source="templates/com/facebook/commands/data/CreateObject.as" destination="$flash/StructureCreator/templates/com/facebook/commands/data" />
-		<file source="templates/com/facebook/commands/data/CreateObjectType.as" destination="$flash/StructureCreator/templates/com/facebook/commands/data" />
-		<file source="templates/com/facebook/commands/data/DefineAssociation.as" destination="$flash/StructureCreator/templates/com/facebook/commands/data" />
-		<file source="templates/com/facebook/commands/data/DefineObjectProperty.as" destination="$flash/StructureCreator/templates/com/facebook/commands/data" />
-		<file source="templates/com/facebook/commands/data/DeleteObject.as" destination="$flash/StructureCreator/templates/com/facebook/commands/data" />
-		<file source="templates/com/facebook/commands/data/DeleteObjects.as" destination="$flash/StructureCreator/templates/com/facebook/commands/data" />
-		<file source="templates/com/facebook/commands/data/DropObjectType.as" destination="$flash/StructureCreator/templates/com/facebook/commands/data" />
-		<file source="templates/com/facebook/commands/data/GetAssociatedObjectCount.as" destination="$flash/StructureCreator/templates/com/facebook/commands/data" />
-		<file source="templates/com/facebook/commands/data/GetAssociatedObjectCounts.as" destination="$flash/StructureCreator/templates/com/facebook/commands/data" />
-		<file source="templates/com/facebook/commands/data/GetAssociatedObjects.as" destination="$flash/StructureCreator/templates/com/facebook/commands/data" />
-		<file source="templates/com/facebook/commands/data/GetAssociationDefinition.as" destination="$flash/StructureCreator/templates/com/facebook/commands/data" />
-		<file source="templates/com/facebook/commands/data/GetAssociationDefinitions.as" destination="$flash/StructureCreator/templates/com/facebook/commands/data" />
-		<file source="templates/com/facebook/commands/data/GetAssociations.as" destination="$flash/StructureCreator/templates/com/facebook/commands/data" />
-		<file source="templates/com/facebook/commands/data/GetCookies.as" destination="$flash/StructureCreator/templates/com/facebook/commands/data" />
-		<file source="templates/com/facebook/commands/data/GetCookiesData.as" destination="$flash/StructureCreator/templates/com/facebook/commands/data" />
-		<file source="templates/com/facebook/commands/data/GetHashValue.as" destination="$flash/StructureCreator/templates/com/facebook/commands/data" />
-		<file source="templates/com/facebook/commands/data/GetObject.as" destination="$flash/StructureCreator/templates/com/facebook/commands/data" />
-		<file source="templates/com/facebook/commands/data/GetObjectProperty.as" destination="$flash/StructureCreator/templates/com/facebook/commands/data" />
-		<file source="templates/com/facebook/commands/data/GetObjects.as" destination="$flash/StructureCreator/templates/com/facebook/commands/data" />
-		<file source="templates/com/facebook/commands/data/GetObjectType.as" destination="$flash/StructureCreator/templates/com/facebook/commands/data" />
-		<file source="templates/com/facebook/commands/data/GetObjectTypes.as" destination="$flash/StructureCreator/templates/com/facebook/commands/data" />
-		<file source="templates/com/facebook/commands/data/GetUserPreference.as" destination="$flash/StructureCreator/templates/com/facebook/commands/data" />
-		<file source="templates/com/facebook/commands/data/GetUserPreferences.as" destination="$flash/StructureCreator/templates/com/facebook/commands/data" />
-		<file source="templates/com/facebook/commands/data/IncHashValue.as" destination="$flash/StructureCreator/templates/com/facebook/commands/data" />
-		<file source="templates/com/facebook/commands/data/RemoveAssociatedObjects.as" destination="$flash/StructureCreator/templates/com/facebook/commands/data" />
-		<file source="templates/com/facebook/commands/data/RemoveAssociation.as" destination="$flash/StructureCreator/templates/com/facebook/commands/data" />
-		<file source="templates/com/facebook/commands/data/RemoveAssociations.as" destination="$flash/StructureCreator/templates/com/facebook/commands/data" />
-		<file source="templates/com/facebook/commands/data/RemoveHashKey.as" destination="$flash/StructureCreator/templates/com/facebook/commands/data" />
-		<file source="templates/com/facebook/commands/data/RemoveHashKeys.as" destination="$flash/StructureCreator/templates/com/facebook/commands/data" />
-		<file source="templates/com/facebook/commands/data/RenameAssociation.as" destination="$flash/StructureCreator/templates/com/facebook/commands/data" />
-		<file source="templates/com/facebook/commands/data/RenameObjectProperty.as" destination="$flash/StructureCreator/templates/com/facebook/commands/data" />
-		<file source="templates/com/facebook/commands/data/RenameObjectType.as" destination="$flash/StructureCreator/templates/com/facebook/commands/data" />
-		<file source="templates/com/facebook/commands/data/SetAssociation.as" destination="$flash/StructureCreator/templates/com/facebook/commands/data" />
-		<file source="templates/com/facebook/commands/data/SetAssociations.as" destination="$flash/StructureCreator/templates/com/facebook/commands/data" />
-		<file source="templates/com/facebook/commands/data/SetCookie.as" destination="$flash/StructureCreator/templates/com/facebook/commands/data" />
-		<file source="templates/com/facebook/commands/data/SetHashValue.as" destination="$flash/StructureCreator/templates/com/facebook/commands/data" />
-		<file source="templates/com/facebook/commands/data/SetObjectProperty.as" destination="$flash/StructureCreator/templates/com/facebook/commands/data" />
-		<file source="templates/com/facebook/commands/data/SetUserPreference.as" destination="$flash/StructureCreator/templates/com/facebook/commands/data" />
-		<file source="templates/com/facebook/commands/data/SetUserPreferences.as" destination="$flash/StructureCreator/templates/com/facebook/commands/data" />
-		<file source="templates/com/facebook/commands/data/UndefineAssociation.as" destination="$flash/StructureCreator/templates/com/facebook/commands/data" />
-		<file source="templates/com/facebook/commands/data/UndefineObjectProperty.as" destination="$flash/StructureCreator/templates/com/facebook/commands/data" />
-		<file source="templates/com/facebook/commands/data/UpdateObject.as" destination="$flash/StructureCreator/templates/com/facebook/commands/data" />
-		<file source="templates/com/facebook/commands/events/CancelEvent.as" destination="$flash/StructureCreator/templates/com/facebook/commands/events" />
-		<file source="templates/com/facebook/commands/events/CreateEvent.as" destination="$flash/StructureCreator/templates/com/facebook/commands/events" />
-		<file source="templates/com/facebook/commands/events/EditEvent.as" destination="$flash/StructureCreator/templates/com/facebook/commands/events" />
-		<file source="templates/com/facebook/commands/events/GetEvents.as" destination="$flash/StructureCreator/templates/com/facebook/commands/events" />
-		<file source="templates/com/facebook/commands/events/GetMembers.as" destination="$flash/StructureCreator/templates/com/facebook/commands/events" />
-		<file source="templates/com/facebook/commands/events/Invite.as" destination="$flash/StructureCreator/templates/com/facebook/commands/events" />
-		<file source="templates/com/facebook/commands/events/RSVP.as" destination="$flash/StructureCreator/templates/com/facebook/commands/events" />
-		<file source="templates/com/facebook/commands/fbml/DeleteCustomTags.as" destination="$flash/StructureCreator/templates/com/facebook/commands/fbml" />
-		<file source="templates/com/facebook/commands/fbml/GetCustomTags.as" destination="$flash/StructureCreator/templates/com/facebook/commands/fbml" />
-		<file source="templates/com/facebook/commands/fbml/RefreshImgSrc.as" destination="$flash/StructureCreator/templates/com/facebook/commands/fbml" />
-		<file source="templates/com/facebook/commands/fbml/RefreshRefUrl.as" destination="$flash/StructureCreator/templates/com/facebook/commands/fbml" />
-		<file source="templates/com/facebook/commands/fbml/RegisterCustomTags.as" destination="$flash/StructureCreator/templates/com/facebook/commands/fbml" />
-		<file source="templates/com/facebook/commands/fbml/SetRefHandle.as" destination="$flash/StructureCreator/templates/com/facebook/commands/fbml" />
-		<file source="templates/com/facebook/commands/feed/DeactivateTemplateBundleByID.as" destination="$flash/StructureCreator/templates/com/facebook/commands/feed" />
-		<file source="templates/com/facebook/commands/feed/GetRegisteredTemplateBundleByID.as" destination="$flash/StructureCreator/templates/com/facebook/commands/feed" />
-		<file source="templates/com/facebook/commands/feed/GetRegisteredTemplateBundles.as" destination="$flash/StructureCreator/templates/com/facebook/commands/feed" />
-		<file source="templates/com/facebook/commands/feed/PublishTemplatizedAction.as" destination="$flash/StructureCreator/templates/com/facebook/commands/feed" />
-		<file source="templates/com/facebook/commands/feed/PublishUserAction.as" destination="$flash/StructureCreator/templates/com/facebook/commands/feed" />
-		<file source="templates/com/facebook/commands/feed/RegisterTemplateBundle.as" destination="$flash/StructureCreator/templates/com/facebook/commands/feed" />
-		<file source="templates/com/facebook/commands/fql/FqlMultiquery.as" destination="$flash/StructureCreator/templates/com/facebook/commands/fql" />
-		<file source="templates/com/facebook/commands/fql/FqlQuery.as" destination="$flash/StructureCreator/templates/com/facebook/commands/fql" />
-		<file source="templates/com/facebook/commands/friends/AreFriends.as" destination="$flash/StructureCreator/templates/com/facebook/commands/friends" />
-		<file source="templates/com/facebook/commands/friends/GetAppUsers.as" destination="$flash/StructureCreator/templates/com/facebook/commands/friends" />
-		<file source="templates/com/facebook/commands/friends/GetFriends.as" destination="$flash/StructureCreator/templates/com/facebook/commands/friends" />
-		<file source="templates/com/facebook/commands/friends/GetLists.as" destination="$flash/StructureCreator/templates/com/facebook/commands/friends" />
-		<file source="templates/com/facebook/commands/friends/GetMutualFriends.as" destination="$flash/StructureCreator/templates/com/facebook/commands/friends" />
-		<file source="templates/com/facebook/commands/groups/GetGroupMembers.as" destination="$flash/StructureCreator/templates/com/facebook/commands/groups" />
-		<file source="templates/com/facebook/commands/groups/GetGroups.as" destination="$flash/StructureCreator/templates/com/facebook/commands/groups" />
-		<file source="templates/com/facebook/commands/intl/GetTranslations.as" destination="$flash/StructureCreator/templates/com/facebook/commands/intl" />
-		<file source="templates/com/facebook/commands/intl/UploadNativeStrings.as" destination="$flash/StructureCreator/templates/com/facebook/commands/intl" />
-		<file source="templates/com/facebook/commands/links/GetLinks.as" destination="$flash/StructureCreator/templates/com/facebook/commands/links" />
-		<file source="templates/com/facebook/commands/links/PostLink.as" destination="$flash/StructureCreator/templates/com/facebook/commands/links" />
-		<file source="templates/com/facebook/commands/livemessage/SendLiveMessage.as" destination="$flash/StructureCreator/templates/com/facebook/commands/livemessage" />
-		<file source="templates/com/facebook/commands/message/GetThreadsInFolder.as" destination="$flash/StructureCreator/templates/com/facebook/commands/message" />
-		<file source="templates/com/facebook/commands/notes/CreateNotes.as" destination="$flash/StructureCreator/templates/com/facebook/commands/notes" />
-		<file source="templates/com/facebook/commands/notes/DeleteNotes.as" destination="$flash/StructureCreator/templates/com/facebook/commands/notes" />
-		<file source="templates/com/facebook/commands/notes/EditNotes.as" destination="$flash/StructureCreator/templates/com/facebook/commands/notes" />
-		<file source="templates/com/facebook/commands/notes/GetNotes.as" destination="$flash/StructureCreator/templates/com/facebook/commands/notes" />
-		<file source="templates/com/facebook/commands/notifications/GetList.as" destination="$flash/StructureCreator/templates/com/facebook/commands/notifications" />
-		<file source="templates/com/facebook/commands/notifications/GetNotifications.as" destination="$flash/StructureCreator/templates/com/facebook/commands/notifications" />
-		<file source="templates/com/facebook/commands/notifications/MarkRead.as" destination="$flash/StructureCreator/templates/com/facebook/commands/notifications" />
-		<file source="templates/com/facebook/commands/notifications/SendEmail.as" destination="$flash/StructureCreator/templates/com/facebook/commands/notifications" />
-		<file source="templates/com/facebook/commands/notifications/SendNotification.as" destination="$flash/StructureCreator/templates/com/facebook/commands/notifications" />
-		<file source="templates/com/facebook/commands/pages/GetPageInfo.as" destination="$flash/StructureCreator/templates/com/facebook/commands/pages" />
-		<file source="templates/com/facebook/commands/pages/IsAdmin.as" destination="$flash/StructureCreator/templates/com/facebook/commands/pages" />
-		<file source="templates/com/facebook/commands/pages/IsAppAdded.as" destination="$flash/StructureCreator/templates/com/facebook/commands/pages" />
-		<file source="templates/com/facebook/commands/pages/IsFan.as" destination="$flash/StructureCreator/templates/com/facebook/commands/pages" />
-		<file source="templates/com/facebook/commands/photos/AddTag.as" destination="$flash/StructureCreator/templates/com/facebook/commands/photos" />
-		<file source="templates/com/facebook/commands/photos/CreateAlbum.as" destination="$flash/StructureCreator/templates/com/facebook/commands/photos" />
-		<file source="templates/com/facebook/commands/photos/GetAlbums.as" destination="$flash/StructureCreator/templates/com/facebook/commands/photos" />
-		<file source="templates/com/facebook/commands/photos/GetPhotos.as" destination="$flash/StructureCreator/templates/com/facebook/commands/photos" />
-		<file source="templates/com/facebook/commands/photos/GetTags.as" destination="$flash/StructureCreator/templates/com/facebook/commands/photos" />
-		<file source="templates/com/facebook/commands/photos/UploadPhoto.as" destination="$flash/StructureCreator/templates/com/facebook/commands/photos" />
-		<file source="templates/com/facebook/commands/photos/UploadPhotoTypes.as" destination="$flash/StructureCreator/templates/com/facebook/commands/photos" />
-		<file source="templates/com/facebook/commands/profile/GetFBML.as" destination="$flash/StructureCreator/templates/com/facebook/commands/profile" />
-		<file source="templates/com/facebook/commands/profile/GetInfoOptions.as" destination="$flash/StructureCreator/templates/com/facebook/commands/profile" />
-		<file source="templates/com/facebook/commands/profile/ProfileGetInfo.as" destination="$flash/StructureCreator/templates/com/facebook/commands/profile" />
-		<file source="templates/com/facebook/commands/profile/SetFBML.as" destination="$flash/StructureCreator/templates/com/facebook/commands/profile" />
-		<file source="templates/com/facebook/commands/profile/SetInfo.as" destination="$flash/StructureCreator/templates/com/facebook/commands/profile" />
-		<file source="templates/com/facebook/commands/profile/SetInfoOptions.as" destination="$flash/StructureCreator/templates/com/facebook/commands/profile" />
-		<file source="templates/com/facebook/commands/sms/CanSendSMS.as" destination="$flash/StructureCreator/templates/com/facebook/commands/sms" />
-		<file source="templates/com/facebook/commands/sms/SendSMS.as" destination="$flash/StructureCreator/templates/com/facebook/commands/sms" />
-		<file source="templates/com/facebook/commands/status/GetStatus.as" destination="$flash/StructureCreator/templates/com/facebook/commands/status" />
-		<file source="templates/com/facebook/commands/status/SetStatus.as" destination="$flash/StructureCreator/templates/com/facebook/commands/status" />
-		<file source="templates/com/facebook/commands/stream/AddComment.as" destination="$flash/StructureCreator/templates/com/facebook/commands/stream" />
-		<file source="templates/com/facebook/commands/stream/AddLike.as" destination="$flash/StructureCreator/templates/com/facebook/commands/stream" />
-		<file source="templates/com/facebook/commands/stream/GetComments.as" destination="$flash/StructureCreator/templates/com/facebook/commands/stream" />
-		<file source="templates/com/facebook/commands/stream/GetFilters.as" destination="$flash/StructureCreator/templates/com/facebook/commands/stream" />
-		<file source="templates/com/facebook/commands/stream/GetStream.as" destination="$flash/StructureCreator/templates/com/facebook/commands/stream" />
-		<file source="templates/com/facebook/commands/stream/PublishPost.as" destination="$flash/StructureCreator/templates/com/facebook/commands/stream" />
-		<file source="templates/com/facebook/commands/stream/RemoveComment.as" destination="$flash/StructureCreator/templates/com/facebook/commands/stream" />
-		<file source="templates/com/facebook/commands/stream/RemoveLike.as" destination="$flash/StructureCreator/templates/com/facebook/commands/stream" />
-		<file source="templates/com/facebook/commands/stream/RemovePost.as" destination="$flash/StructureCreator/templates/com/facebook/commands/stream" />
-		<file source="templates/com/facebook/commands/users/GetInfo.as" destination="$flash/StructureCreator/templates/com/facebook/commands/users" />
-		<file source="templates/com/facebook/commands/users/GetLoggedInUser.as" destination="$flash/StructureCreator/templates/com/facebook/commands/users" />
-		<file source="templates/com/facebook/commands/users/GetStandardInfo.as" destination="$flash/StructureCreator/templates/com/facebook/commands/users" />
-		<file source="templates/com/facebook/commands/users/HasAppPermission.as" destination="$flash/StructureCreator/templates/com/facebook/commands/users" />
-		<file source="templates/com/facebook/commands/users/IsAppUser.as" destination="$flash/StructureCreator/templates/com/facebook/commands/users" />
-		<file source="templates/com/facebook/commands/users/IsVerified.as" destination="$flash/StructureCreator/templates/com/facebook/commands/users" />
-		<file source="templates/com/facebook/commands/users/SetStatus.as" destination="$flash/StructureCreator/templates/com/facebook/commands/users" />
-		<file source="templates/com/facebook/commands/video/GetUploadLimits.as" destination="$flash/StructureCreator/templates/com/facebook/commands/video" />
-		<file source="templates/com/facebook/commands/video/UploadVideo.as" destination="$flash/StructureCreator/templates/com/facebook/commands/video" />
-		<file source="templates/com/facebook/commands/video/UploadVideoTypes.as" destination="$flash/StructureCreator/templates/com/facebook/commands/video" />
-		<file source="templates/com/facebook/data/admin/GetAllocationData.as" destination="$flash/StructureCreator/templates/com/facebook/data/admin" />
-		<file source="templates/com/facebook/data/admin/GetAllocationValues.as" destination="$flash/StructureCreator/templates/com/facebook/data/admin" />
-		<file source="templates/com/facebook/data/admin/GetAppPropertiesData.as" destination="$flash/StructureCreator/templates/com/facebook/data/admin" />
-		<file source="templates/com/facebook/data/admin/GetMetricsData.as" destination="$flash/StructureCreator/templates/com/facebook/data/admin" />
-		<file source="templates/com/facebook/data/admin/GetMetricsPeriodValues.as" destination="$flash/StructureCreator/templates/com/facebook/data/admin" />
-		<file source="templates/com/facebook/data/admin/GetMetricsValues.as" destination="$flash/StructureCreator/templates/com/facebook/data/admin" />
-		<file source="templates/com/facebook/data/admin/MetricsData.as" destination="$flash/StructureCreator/templates/com/facebook/data/admin" />
-		<file source="templates/com/facebook/data/admin/MetricsDataCollection.as" destination="$flash/StructureCreator/templates/com/facebook/data/admin" />
-		<file source="templates/com/facebook/data/admin/RestrictionData.as" destination="$flash/StructureCreator/templates/com/facebook/data/admin" />
-		<file source="templates/com/facebook/data/application/GetPublicInfoData.as" destination="$flash/StructureCreator/templates/com/facebook/data/application" />
-		<file source="templates/com/facebook/data/ArrayResultData.as" destination="$flash/StructureCreator/templates/com/facebook/data" />
-		<file source="templates/com/facebook/data/auth/ExtendedPermissionValues.as" destination="$flash/StructureCreator/templates/com/facebook/data/auth" />
-		<file source="templates/com/facebook/data/auth/GetSessionData.as" destination="$flash/StructureCreator/templates/com/facebook/data/auth" />
-		<file source="templates/com/facebook/data/batch/BatchCollection.as" destination="$flash/StructureCreator/templates/com/facebook/data/batch" />
-		<file source="templates/com/facebook/data/batch/BatchResult.as" destination="$flash/StructureCreator/templates/com/facebook/data/batch" />
-		<file source="templates/com/facebook/data/BooleanResultData.as" destination="$flash/StructureCreator/templates/com/facebook/data" />
-		<file source="templates/com/facebook/data/connect/ConnectAccountMapCollection.as" destination="$flash/StructureCreator/templates/com/facebook/data/connect" />
-		<file source="templates/com/facebook/data/connect/ConnectAccountMapData.as" destination="$flash/StructureCreator/templates/com/facebook/data/connect" />
-		<file source="templates/com/facebook/data/data/AssocInfoData.as" destination="$flash/StructureCreator/templates/com/facebook/data/data" />
-		<file source="templates/com/facebook/data/data/AssocTypeValue.as" destination="$flash/StructureCreator/templates/com/facebook/data/data" />
-		<file source="templates/com/facebook/data/data/GetObjectTypeData.as" destination="$flash/StructureCreator/templates/com/facebook/data/data" />
-		<file source="templates/com/facebook/data/data/GetObjectTypesData.as" destination="$flash/StructureCreator/templates/com/facebook/data/data" />
-		<file source="templates/com/facebook/data/data/GetUserPreferencesData.as" destination="$flash/StructureCreator/templates/com/facebook/data/data" />
-		<file source="templates/com/facebook/data/data/NameValueCollection.as" destination="$flash/StructureCreator/templates/com/facebook/data/data" />
-		<file source="templates/com/facebook/data/data/NameValueData.as" destination="$flash/StructureCreator/templates/com/facebook/data/data" />
-		<file source="templates/com/facebook/data/data/ObjectTypesCollection.as" destination="$flash/StructureCreator/templates/com/facebook/data/data" />
-		<file source="templates/com/facebook/data/data/ObjectTypesData.as" destination="$flash/StructureCreator/templates/com/facebook/data/data" />
-		<file source="templates/com/facebook/data/data/PreferenceCollection.as" destination="$flash/StructureCreator/templates/com/facebook/data/data" />
-		<file source="templates/com/facebook/data/data/PreferenceData.as" destination="$flash/StructureCreator/templates/com/facebook/data/data" />
-		<file source="templates/com/facebook/data/data/SetAssociationsData.as" destination="$flash/StructureCreator/templates/com/facebook/data/data" />
-		<file source="templates/com/facebook/data/data/SetAssociationsDataCollection.as" destination="$flash/StructureCreator/templates/com/facebook/data/data" />
-		<file source="templates/com/facebook/data/events/CreateEventData.as" destination="$flash/StructureCreator/templates/com/facebook/data/events" />
-		<file source="templates/com/facebook/data/events/EditEventData.as" destination="$flash/StructureCreator/templates/com/facebook/data/events" />
-		<file source="templates/com/facebook/data/events/EventCategoriesValues.as" destination="$flash/StructureCreator/templates/com/facebook/data/events" />
-		<file source="templates/com/facebook/data/events/EventCollection.as" destination="$flash/StructureCreator/templates/com/facebook/data/events" />
-		<file source="templates/com/facebook/data/events/EventData.as" destination="$flash/StructureCreator/templates/com/facebook/data/events" />
-		<file source="templates/com/facebook/data/events/EventPrivacyTypeValues.as" destination="$flash/StructureCreator/templates/com/facebook/data/events" />
-		<file source="templates/com/facebook/data/events/EventSubCategoriesValues.as" destination="$flash/StructureCreator/templates/com/facebook/data/events" />
-		<file source="templates/com/facebook/data/events/FacebookEventData.as" destination="$flash/StructureCreator/templates/com/facebook/data/events" />
-		<file source="templates/com/facebook/data/events/FacebookEventDataCollection.as" destination="$flash/StructureCreator/templates/com/facebook/data/events" />
-		<file source="templates/com/facebook/data/events/GetEventsData.as" destination="$flash/StructureCreator/templates/com/facebook/data/events" />
-		<file source="templates/com/facebook/data/events/GetMembersData.as" destination="$flash/StructureCreator/templates/com/facebook/data/events" />
-		<file source="templates/com/facebook/data/events/RSVPStatus.as" destination="$flash/StructureCreator/templates/com/facebook/data/events" />
-		<file source="templates/com/facebook/data/events/RSVPStatusValues.as" destination="$flash/StructureCreator/templates/com/facebook/data/events" />
-		<file source="templates/com/facebook/data/FacebookData.as" destination="$flash/StructureCreator/templates/com/facebook/data" />
-		<file source="templates/com/facebook/data/FacebookEducationInfo.as" destination="$flash/StructureCreator/templates/com/facebook/data" />
-		<file source="templates/com/facebook/data/FacebookErrorCodes.as" destination="$flash/StructureCreator/templates/com/facebook/data" />
-		<file source="templates/com/facebook/data/FacebookErrorReason.as" destination="$flash/StructureCreator/templates/com/facebook/data" />
-		<file source="templates/com/facebook/data/FacebookLocation.as" destination="$flash/StructureCreator/templates/com/facebook/data" />
-		<file source="templates/com/facebook/data/FacebookNetwork.as" destination="$flash/StructureCreator/templates/com/facebook/data" />
-		<file source="templates/com/facebook/data/FacebookWorkInfo.as" destination="$flash/StructureCreator/templates/com/facebook/data" />
-		<file source="templates/com/facebook/data/FBJSData.as" destination="$flash/StructureCreator/templates/com/facebook/data" />
-		<file source="templates/com/facebook/data/fbml/AbstractTagData.as" destination="$flash/StructureCreator/templates/com/facebook/data/fbml" />
-		<file source="templates/com/facebook/data/fbml/AttributeCollection.as" destination="$flash/StructureCreator/templates/com/facebook/data/fbml" />
-		<file source="templates/com/facebook/data/fbml/AttributeData.as" destination="$flash/StructureCreator/templates/com/facebook/data/fbml" />
-		<file source="templates/com/facebook/data/fbml/ContainerTagData.as" destination="$flash/StructureCreator/templates/com/facebook/data/fbml" />
-		<file source="templates/com/facebook/data/fbml/GetCustomTagsData.as" destination="$flash/StructureCreator/templates/com/facebook/data/fbml" />
-		<file source="templates/com/facebook/data/fbml/LeafTagData.as" destination="$flash/StructureCreator/templates/com/facebook/data/fbml" />
-		<file source="templates/com/facebook/data/fbml/TagCollection.as" destination="$flash/StructureCreator/templates/com/facebook/data/fbml" />
-		<file source="templates/com/facebook/data/fbml/TagData.as" destination="$flash/StructureCreator/templates/com/facebook/data/fbml" />
-		<file source="templates/com/facebook/data/feed/ActionLinkCollection.as" destination="$flash/StructureCreator/templates/com/facebook/data/feed" />
-		<file source="templates/com/facebook/data/feed/ActionLinkData.as" destination="$flash/StructureCreator/templates/com/facebook/data/feed" />
-		<file source="templates/com/facebook/data/feed/GetRegisteredTemplateBundleByIDData.as" destination="$flash/StructureCreator/templates/com/facebook/data/feed" />
-		<file source="templates/com/facebook/data/feed/GetRegisteredTemplateBundleData.as" destination="$flash/StructureCreator/templates/com/facebook/data/feed" />
-		<file source="templates/com/facebook/data/feed/StorySizeValues.as" destination="$flash/StructureCreator/templates/com/facebook/data/feed" />
-		<file source="templates/com/facebook/data/feed/TemplateBundleCollection.as" destination="$flash/StructureCreator/templates/com/facebook/data/feed" />
-		<file source="templates/com/facebook/data/feed/TemplateCollection.as" destination="$flash/StructureCreator/templates/com/facebook/data/feed" />
-		<file source="templates/com/facebook/data/feed/TemplateData.as" destination="$flash/StructureCreator/templates/com/facebook/data/feed" />
-		<file source="templates/com/facebook/data/friends/AreFriendsData.as" destination="$flash/StructureCreator/templates/com/facebook/data/friends" />
-		<file source="templates/com/facebook/data/friends/FriendsCollection.as" destination="$flash/StructureCreator/templates/com/facebook/data/friends" />
-		<file source="templates/com/facebook/data/friends/FriendsData.as" destination="$flash/StructureCreator/templates/com/facebook/data/friends" />
-		<file source="templates/com/facebook/data/friends/GetAppUserData.as" destination="$flash/StructureCreator/templates/com/facebook/data/friends" />
-		<file source="templates/com/facebook/data/friends/GetFriendsData.as" destination="$flash/StructureCreator/templates/com/facebook/data/friends" />
-		<file source="templates/com/facebook/data/friends/GetListsData.as" destination="$flash/StructureCreator/templates/com/facebook/data/friends" />
-		<file source="templates/com/facebook/data/friends/GetLoggedInUserData.as" destination="$flash/StructureCreator/templates/com/facebook/data/friends" />
-		<file source="templates/com/facebook/data/friends/ListsData.as" destination="$flash/StructureCreator/templates/com/facebook/data/friends" />
-		<file source="templates/com/facebook/data/groups/GetGroupData.as" destination="$flash/StructureCreator/templates/com/facebook/data/groups" />
-		<file source="templates/com/facebook/data/groups/GetMemberData.as" destination="$flash/StructureCreator/templates/com/facebook/data/groups" />
-		<file source="templates/com/facebook/data/groups/GroupCollection.as" destination="$flash/StructureCreator/templates/com/facebook/data/groups" />
-		<file source="templates/com/facebook/data/groups/GroupData.as" destination="$flash/StructureCreator/templates/com/facebook/data/groups" />
-		<file source="templates/com/facebook/data/InternalErrorMessages.as" destination="$flash/StructureCreator/templates/com/facebook/data" />
-		<file source="templates/com/facebook/data/JSONResultData.as" destination="$flash/StructureCreator/templates/com/facebook/data" />
-		<file source="templates/com/facebook/data/notes/GetNotesData.as" destination="$flash/StructureCreator/templates/com/facebook/data/notes" />
-		<file source="templates/com/facebook/data/notes/NoteData.as" destination="$flash/StructureCreator/templates/com/facebook/data/notes" />
-		<file source="templates/com/facebook/data/notes/NotesCollection.as" destination="$flash/StructureCreator/templates/com/facebook/data/notes" />
-		<file source="templates/com/facebook/data/notifications/GetNotificationData.as" destination="$flash/StructureCreator/templates/com/facebook/data/notifications" />
-		<file source="templates/com/facebook/data/notifications/GetNotificationValue.as" destination="$flash/StructureCreator/templates/com/facebook/data/notifications" />
-		<file source="templates/com/facebook/data/notifications/NotificationCollection.as" destination="$flash/StructureCreator/templates/com/facebook/data/notifications" />
-		<file source="templates/com/facebook/data/notifications/NotificationMessageData.as" destination="$flash/StructureCreator/templates/com/facebook/data/notifications" />
-		<file source="templates/com/facebook/data/notifications/NotificationPokeData.as" destination="$flash/StructureCreator/templates/com/facebook/data/notifications" />
-		<file source="templates/com/facebook/data/notifications/NotificationShareData.as" destination="$flash/StructureCreator/templates/com/facebook/data/notifications" />
-		<file source="templates/com/facebook/data/NumberResultData.as" destination="$flash/StructureCreator/templates/com/facebook/data" />
-		<file source="templates/com/facebook/data/pages/GenreData.as" destination="$flash/StructureCreator/templates/com/facebook/data/pages" />
-		<file source="templates/com/facebook/data/pages/GetPageInfoData.as" destination="$flash/StructureCreator/templates/com/facebook/data/pages" />
-		<file source="templates/com/facebook/data/pages/PageInfoCollection.as" destination="$flash/StructureCreator/templates/com/facebook/data/pages" />
-		<file source="templates/com/facebook/data/pages/PageInfoData.as" destination="$flash/StructureCreator/templates/com/facebook/data/pages" />
-		<file source="templates/com/facebook/data/pages/PageInfoFieldValues.as" destination="$flash/StructureCreator/templates/com/facebook/data/pages" />
-		<file source="templates/com/facebook/data/pages/PageTypeValue.as" destination="$flash/StructureCreator/templates/com/facebook/data/pages" />
-		<file source="templates/com/facebook/data/photos/AlbumCollection.as" destination="$flash/StructureCreator/templates/com/facebook/data/photos" />
-		<file source="templates/com/facebook/data/photos/AlbumData.as" destination="$flash/StructureCreator/templates/com/facebook/data/photos" />
-		<file source="templates/com/facebook/data/photos/FacebookPhoto.as" destination="$flash/StructureCreator/templates/com/facebook/data/photos" />
-		<file source="templates/com/facebook/data/photos/GetAlbumsData.as" destination="$flash/StructureCreator/templates/com/facebook/data/photos" />
-		<file source="templates/com/facebook/data/photos/GetCreateAlbumData.as" destination="$flash/StructureCreator/templates/com/facebook/data/photos" />
-		<file source="templates/com/facebook/data/photos/GetPhotosData.as" destination="$flash/StructureCreator/templates/com/facebook/data/photos" />
-		<file source="templates/com/facebook/data/photos/GetTagsData.as" destination="$flash/StructureCreator/templates/com/facebook/data/photos" />
-		<file source="templates/com/facebook/data/photos/PhotoCollection.as" destination="$flash/StructureCreator/templates/com/facebook/data/photos" />
-		<file source="templates/com/facebook/data/photos/PhotoData.as" destination="$flash/StructureCreator/templates/com/facebook/data/photos" />
-		<file source="templates/com/facebook/data/photos/PhotoTagCollection.as" destination="$flash/StructureCreator/templates/com/facebook/data/photos" />
-		<file source="templates/com/facebook/data/photos/PhotoVisibleValue.as" destination="$flash/StructureCreator/templates/com/facebook/data/photos" />
-		<file source="templates/com/facebook/data/photos/TagData.as" destination="$flash/StructureCreator/templates/com/facebook/data/photos" />
-		<file source="templates/com/facebook/data/profile/GetInfoOptionsData.as" destination="$flash/StructureCreator/templates/com/facebook/data/profile" />
-		<file source="templates/com/facebook/data/profile/InfoFieldsData.as" destination="$flash/StructureCreator/templates/com/facebook/data/profile" />
-		<file source="templates/com/facebook/data/profile/InfoItemCollection.as" destination="$flash/StructureCreator/templates/com/facebook/data/profile" />
-		<file source="templates/com/facebook/data/profile/InfoItemData.as" destination="$flash/StructureCreator/templates/com/facebook/data/profile" />
-		<file source="templates/com/facebook/data/profile/ProfileTypeValues.as" destination="$flash/StructureCreator/templates/com/facebook/data/profile" />
-		<file source="templates/com/facebook/data/profile/SetInfoTypeValue.as" destination="$flash/StructureCreator/templates/com/facebook/data/profile" />
-		<file source="templates/com/facebook/data/status/GetStatusData.as" destination="$flash/StructureCreator/templates/com/facebook/data/status" />
-		<file source="templates/com/facebook/data/status/Status.as" destination="$flash/StructureCreator/templates/com/facebook/data/status" />
-		<file source="templates/com/facebook/data/stream/ActionLinkCollection.as" destination="$flash/StructureCreator/templates/com/facebook/data/stream" />
-		<file source="templates/com/facebook/data/stream/ActionLinkData.as" destination="$flash/StructureCreator/templates/com/facebook/data/stream" />
-		<file source="templates/com/facebook/data/stream/AttachmentData.as" destination="$flash/StructureCreator/templates/com/facebook/data/stream" />
-		<file source="templates/com/facebook/data/stream/CommentsData.as" destination="$flash/StructureCreator/templates/com/facebook/data/stream" />
-		<file source="templates/com/facebook/data/stream/FlashMedia.as" destination="$flash/StructureCreator/templates/com/facebook/data/stream" />
-		<file source="templates/com/facebook/data/stream/GetCommentsData.as" destination="$flash/StructureCreator/templates/com/facebook/data/stream" />
-		<file source="templates/com/facebook/data/stream/GetFiltersData.as" destination="$flash/StructureCreator/templates/com/facebook/data/stream" />
-		<file source="templates/com/facebook/data/stream/GetStreamData.as" destination="$flash/StructureCreator/templates/com/facebook/data/stream" />
-		<file source="templates/com/facebook/data/stream/LikesData.as" destination="$flash/StructureCreator/templates/com/facebook/data/stream" />
-		<file source="templates/com/facebook/data/stream/MediaTypes.as" destination="$flash/StructureCreator/templates/com/facebook/data/stream" />
-		<file source="templates/com/facebook/data/stream/MusicMedia.as" destination="$flash/StructureCreator/templates/com/facebook/data/stream" />
-		<file source="templates/com/facebook/data/stream/PhotoMedia.as" destination="$flash/StructureCreator/templates/com/facebook/data/stream" />
-		<file source="templates/com/facebook/data/stream/PostCommentData.as" destination="$flash/StructureCreator/templates/com/facebook/data/stream" />
-		<file source="templates/com/facebook/data/stream/ProfileCollection.as" destination="$flash/StructureCreator/templates/com/facebook/data/stream" />
-		<file source="templates/com/facebook/data/stream/ProfileData.as" destination="$flash/StructureCreator/templates/com/facebook/data/stream" />
-		<file source="templates/com/facebook/data/stream/StoryType.as" destination="$flash/StructureCreator/templates/com/facebook/data/stream" />
-		<file source="templates/com/facebook/data/stream/StreamFilterCollection.as" destination="$flash/StructureCreator/templates/com/facebook/data/stream" />
-		<file source="templates/com/facebook/data/stream/StreamFilterData.as" destination="$flash/StructureCreator/templates/com/facebook/data/stream" />
-		<file source="templates/com/facebook/data/stream/StreamMediaData.as" destination="$flash/StructureCreator/templates/com/facebook/data/stream" />
-		<file source="templates/com/facebook/data/stream/StreamStoryCollection.as" destination="$flash/StructureCreator/templates/com/facebook/data/stream" />
-		<file source="templates/com/facebook/data/stream/StreamStoryData.as" destination="$flash/StructureCreator/templates/com/facebook/data/stream" />
-		<file source="templates/com/facebook/data/stream/VideoMedia.as" destination="$flash/StructureCreator/templates/com/facebook/data/stream" />
-		<file source="templates/com/facebook/data/StringResultData.as" destination="$flash/StructureCreator/templates/com/facebook/data" />
-		<file source="templates/com/facebook/data/users/AffiliationCollection.as" destination="$flash/StructureCreator/templates/com/facebook/data/users" />
-		<file source="templates/com/facebook/data/users/AffiliationData.as" destination="$flash/StructureCreator/templates/com/facebook/data/users" />
-		<file source="templates/com/facebook/data/users/FacebookUser.as" destination="$flash/StructureCreator/templates/com/facebook/data/users" />
-		<file source="templates/com/facebook/data/users/FacebookUserCollection.as" destination="$flash/StructureCreator/templates/com/facebook/data/users" />
-		<file source="templates/com/facebook/data/users/FriendsGetData.as" destination="$flash/StructureCreator/templates/com/facebook/data/users" />
-		<file source="templates/com/facebook/data/users/GetInfoData.as" destination="$flash/StructureCreator/templates/com/facebook/data/users" />
-		<file source="templates/com/facebook/data/users/GetInfoFieldValues.as" destination="$flash/StructureCreator/templates/com/facebook/data/users" />
-		<file source="templates/com/facebook/data/users/GetStandardInfoData.as" destination="$flash/StructureCreator/templates/com/facebook/data/users" />
-		<file source="templates/com/facebook/data/users/HasAppPermissionValues.as" destination="$flash/StructureCreator/templates/com/facebook/data/users" />
-		<file source="templates/com/facebook/data/users/StatusData.as" destination="$flash/StructureCreator/templates/com/facebook/data/users" />
-		<file source="templates/com/facebook/data/users/UserCollection.as" destination="$flash/StructureCreator/templates/com/facebook/data/users" />
-		<file source="templates/com/facebook/data/users/UserData.as" destination="$flash/StructureCreator/templates/com/facebook/data/users" />
-		<file source="templates/com/facebook/data/XMLDataParser.as" destination="$flash/StructureCreator/templates/com/facebook/data" />
-		<file source="templates/com/facebook/delegates/AbstractFileUploadDelegate.as" destination="$flash/StructureCreator/templates/com/facebook/delegates" />
-		<file source="templates/com/facebook/delegates/DesktopDelegate.as" destination="$flash/StructureCreator/templates/com/facebook/delegates" />
-		<file source="templates/com/facebook/delegates/IFacebookCallDelegate.as" destination="$flash/StructureCreator/templates/com/facebook/delegates" />
-		<file source="templates/com/facebook/delegates/JSDelegate.as" destination="$flash/StructureCreator/templates/com/facebook/delegates" />
-		<file source="templates/com/facebook/delegates/RequestHelper.as" destination="$flash/StructureCreator/templates/com/facebook/delegates" />
-		<file source="templates/com/facebook/delegates/VideoUploadDelegate.as" destination="$flash/StructureCreator/templates/com/facebook/delegates" />
-		<file source="templates/com/facebook/delegates/WebDelegate.as" destination="$flash/StructureCreator/templates/com/facebook/delegates" />
-		<file source="templates/com/facebook/delegates/WebImageUploadDelegate.as" destination="$flash/StructureCreator/templates/com/facebook/delegates" />
-		<file source="templates/com/facebook/errors/FacebookError.as" destination="$flash/StructureCreator/templates/com/facebook/errors" />
-		<file source="templates/com/facebook/events/FacebookEvent.as" destination="$flash/StructureCreator/templates/com/facebook/events" />
-		<file source="templates/com/facebook/Facebook.as" destination="$flash/StructureCreator/templates/com/facebook" />
-		<file source="templates/com/facebook/facebook_internal.as" destination="$flash/StructureCreator/templates/com/facebook" />
-		<file source="templates/com/facebook/net/FacebookCall.as" destination="$flash/StructureCreator/templates/com/facebook/net" />
-		<file source="templates/com/facebook/net/IUploadPhoto.as" destination="$flash/StructureCreator/templates/com/facebook/net" />
-		<file source="templates/com/facebook/net/IUploadVideo.as" destination="$flash/StructureCreator/templates/com/facebook/net" />
-		<file source="templates/com/facebook/session/DesktopSession.as" destination="$flash/StructureCreator/templates/com/facebook/session" />
-		<file source="templates/com/facebook/session/IFacebookSession.as" destination="$flash/StructureCreator/templates/com/facebook/session" />
-		<file source="templates/com/facebook/session/JSSession.as" destination="$flash/StructureCreator/templates/com/facebook/session" />
-		<file source="templates/com/facebook/session/WebSession.as" destination="$flash/StructureCreator/templates/com/facebook/session" />
-		<file source="templates/com/facebook/utils/DesktopSessionHelper.as" destination="$flash/StructureCreator/templates/com/facebook/utils" />
-		<file source="templates/com/facebook/utils/EmailHashUtil.as" destination="$flash/StructureCreator/templates/com/facebook/utils" />
-		<file source="templates/com/facebook/utils/FacebookArrayCollection.as" destination="$flash/StructureCreator/templates/com/facebook/utils" />
-		<file source="templates/com/facebook/utils/FacebookConnectUtil.as" destination="$flash/StructureCreator/templates/com/facebook/utils" />
-		<file source="templates/com/facebook/utils/FacebookDataUtils.as" destination="$flash/StructureCreator/templates/com/facebook/utils" />
-		<file source="templates/com/facebook/utils/FacebookSessionUtil.as" destination="$flash/StructureCreator/templates/com/facebook/utils" />
-		<file source="templates/com/facebook/utils/FacebookStreamXMLParser.as" destination="$flash/StructureCreator/templates/com/facebook/utils" />
-		<file source="templates/com/facebook/utils/FacebookUserXMLParser.as" destination="$flash/StructureCreator/templates/com/facebook/utils" />
-		<file source="templates/com/facebook/utils/FacebookXMLParserUtils.as" destination="$flash/StructureCreator/templates/com/facebook/utils" />
-		<file source="templates/com/facebook/utils/FBJSBridgeUtil.as" destination="$flash/StructureCreator/templates/com/facebook/utils" />
-		<file source="templates/com/facebook/utils/IFacebookResultParser.as" destination="$flash/StructureCreator/templates/com/facebook/utils" />
-		<file source="templates/com/facebook/utils/JavascriptRequestHelper.as" destination="$flash/StructureCreator/templates/com/facebook/utils" />
-		<file source="templates/com/facebook/utils/PlayerUtils.as" destination="$flash/StructureCreator/templates/com/facebook/utils" />
-		<file source="templates/com/facebook/utils/PostRequest.as" destination="$flash/StructureCreator/templates/com/facebook/utils" />
-		<file source="templates/com/facebook/utils/ValidationUtils.as" destination="$flash/StructureCreator/templates/com/facebook/utils" />
-		<file source="templates/com/facebook/views/BaseWindow.as" destination="$flash/StructureCreator/templates/com/facebook/views" />
-		<file source="templates/com/facebook/views/Distractor.as" destination="$flash/StructureCreator/templates/com/facebook/views" />
-		<file source="templates/com/facebook/views/LoginWindow.as" destination="$flash/StructureCreator/templates/com/facebook/views" />
-		<file source="templates/com/facebook/views/PermissionWindow.as" destination="$flash/StructureCreator/templates/com/facebook/views" />
+		<file source="templates/com/facebook/.DS_Store" destination="$flash/StructureCreator/templates/com/facebook" />
+		<file source="templates/com/facebook/graph/.DS_Store" destination="$flash/StructureCreator/templates/com/facebook/graph" />
+		<file source="templates/com/facebook/graph/controls/Distractor.as" destination="$flash/StructureCreator/templates/com/facebook/graph/controls" />
+		<file source="templates/com/facebook/graph/core/AbstractFacebook.as" destination="$flash/StructureCreator/templates/com/facebook/graph/core" />
+		<file source="templates/com/facebook/graph/core/FacebookURLDefaults.as" destination="$flash/StructureCreator/templates/com/facebook/graph/core" />
+		<file source="templates/com/facebook/graph/data/FacebookSession.as" destination="$flash/StructureCreator/templates/com/facebook/graph/data" />
+		<file source="templates/com/facebook/graph/Facebook.as" destination="$flash/StructureCreator/templates/com/facebook/graph" />
+		<file source="templates/com/facebook/graph/net/FacebookRequest.as" destination="$flash/StructureCreator/templates/com/facebook/graph/net" />
+		<file source="templates/com/facebook/graph/utils/FacebookDataUtils.as" destination="$flash/StructureCreator/templates/com/facebook/graph/utils" />
+		<file source="templates/com/facebook/graph/utils/PostRequest.as" destination="$flash/StructureCreator/templates/com/facebook/graph/utils" />
 		<file source="templates/com/greensock/changelog.txt" destination="$flash/StructureCreator/templates/com/greensock" />
 		<file source="templates/com/greensock/core/PropTween.as" destination="$flash/StructureCreator/templates/com/greensock/core" />
 		<file source="templates/com/greensock/core/SimpleTimeline.as" destination="$flash/StructureCreator/templates/com/greensock/core" />
 		<file source="templates/com/greensock/core/TweenCore.as" destination="$flash/StructureCreator/templates/com/greensock/core" />
-		<file source="templates/com/greensock/data/BevelFilterVars.as" destination="$flash/StructureCreator/templates/com/greensock/data" />
-		<file source="templates/com/greensock/data/BlurFilterVars.as" destination="$flash/StructureCreator/templates/com/greensock/data" />
-		<file source="templates/com/greensock/data/ColorMatrixFilterVars.as" destination="$flash/StructureCreator/templates/com/greensock/data" />
-		<file source="templates/com/greensock/data/ColorTransformVars.as" destination="$flash/StructureCreator/templates/com/greensock/data" />
-		<file source="templates/com/greensock/data/DropShadowFilterVars.as" destination="$flash/StructureCreator/templates/com/greensock/data" />
-		<file source="templates/com/greensock/data/FilterVars.as" destination="$flash/StructureCreator/templates/com/greensock/data" />
-		<file source="templates/com/greensock/data/GlowFilterVars.as" destination="$flash/StructureCreator/templates/com/greensock/data" />
-		<file source="templates/com/greensock/data/TransformAroundCenterVars.as" destination="$flash/StructureCreator/templates/com/greensock/data" />
-		<file source="templates/com/greensock/data/TransformAroundPointVars.as" destination="$flash/StructureCreator/templates/com/greensock/data" />
 		<file source="templates/com/greensock/data/TweenLiteVars.as" destination="$flash/StructureCreator/templates/com/greensock/data" />
 		<file source="templates/com/greensock/data/TweenMaxVars.as" destination="$flash/StructureCreator/templates/com/greensock/data" />
-		<file source="templates/com/greensock/data/VarsCore.as" destination="$flash/StructureCreator/templates/com/greensock/data" />
 		<file source="templates/com/greensock/easing/Back.as" destination="$flash/StructureCreator/templates/com/greensock/easing" />
 		<file source="templates/com/greensock/easing/Bounce.as" destination="$flash/StructureCreator/templates/com/greensock/easing" />
 		<file source="templates/com/greensock/easing/Circ.as" destination="$flash/StructureCreator/templates/com/greensock/easing" />
@@ -872,6 +511,7 @@
 		<file source="templates/com/greensock/easing/Quint.as" destination="$flash/StructureCreator/templates/com/greensock/easing" />
 		<file source="templates/com/greensock/easing/RoughEase.as" destination="$flash/StructureCreator/templates/com/greensock/easing" />
 		<file source="templates/com/greensock/easing/Sine.as" destination="$flash/StructureCreator/templates/com/greensock/easing" />
+		<file source="templates/com/greensock/easing/SteppedEase.as" destination="$flash/StructureCreator/templates/com/greensock/easing" />
 		<file source="templates/com/greensock/easing/Strong.as" destination="$flash/StructureCreator/templates/com/greensock/easing" />
 		<file source="templates/com/greensock/events/LoaderEvent.as" destination="$flash/StructureCreator/templates/com/greensock/events" />
 		<file source="templates/com/greensock/events/TweenEvent.as" destination="$flash/StructureCreator/templates/com/greensock/events" />
@@ -883,9 +523,6 @@
 		<file source="templates/com/greensock/loading/core/LoaderCore.as" destination="$flash/StructureCreator/templates/com/greensock/loading/core" />
 		<file source="templates/com/greensock/loading/core/LoaderItem.as" destination="$flash/StructureCreator/templates/com/greensock/loading/core" />
 		<file source="templates/com/greensock/loading/CSSLoader.as" destination="$flash/StructureCreator/templates/com/greensock/loading" />
-		<file source="templates/com/greensock/loading/data/core/DisplayObjectLoaderVars.as" destination="$flash/StructureCreator/templates/com/greensock/loading/data/core" />
-		<file source="templates/com/greensock/loading/data/core/LoaderCoreVars.as" destination="$flash/StructureCreator/templates/com/greensock/loading/data/core" />
-		<file source="templates/com/greensock/loading/data/core/LoaderItemVars.as" destination="$flash/StructureCreator/templates/com/greensock/loading/data/core" />
 		<file source="templates/com/greensock/loading/data/CSSLoaderVars.as" destination="$flash/StructureCreator/templates/com/greensock/loading/data" />
 		<file source="templates/com/greensock/loading/data/DataLoaderVars.as" destination="$flash/StructureCreator/templates/com/greensock/loading/data" />
 		<file source="templates/com/greensock/loading/data/ImageLoaderVars.as" destination="$flash/StructureCreator/templates/com/greensock/loading/data" />
@@ -940,6 +577,7 @@
 		<file source="templates/com/greensock/plugins/SetSizePlugin.as" destination="$flash/StructureCreator/templates/com/greensock/plugins" />
 		<file source="templates/com/greensock/plugins/ShortRotationPlugin.as" destination="$flash/StructureCreator/templates/com/greensock/plugins" />
 		<file source="templates/com/greensock/plugins/SoundTransformPlugin.as" destination="$flash/StructureCreator/templates/com/greensock/plugins" />
+		<file source="templates/com/greensock/plugins/StageQualityPlugin.as" destination="$flash/StructureCreator/templates/com/greensock/plugins" />
 		<file source="templates/com/greensock/plugins/TintPlugin.as" destination="$flash/StructureCreator/templates/com/greensock/plugins" />
 		<file source="templates/com/greensock/plugins/TransformMatrixPlugin.as" destination="$flash/StructureCreator/templates/com/greensock/plugins" />
 		<file source="templates/com/greensock/plugins/TweenPlugin.as" destination="$flash/StructureCreator/templates/com/greensock/plugins" />
@@ -951,6 +589,8 @@
 		<file source="templates/com/greensock/TweenLite.as" destination="$flash/StructureCreator/templates/com/greensock" />
 		<file source="templates/com/greensock/TweenMax.as" destination="$flash/StructureCreator/templates/com/greensock" />
 		<file source="templates/com/greensock/TweenNano.as" destination="$flash/StructureCreator/templates/com/greensock" />
+		
+		<file source="templates/FBJSBridge.js" destination="$flash/StructureCreator/templates" />
 		<file source="templates/net/hires/debug/Stats.as" destination="$flash/StructureCreator/templates/net/hires/debug" />
 		<file source="templates/nl/demonsters/debugger/MonsterDebugger.as" destination="$flash/StructureCreator/templates/nl/demonsters/debugger" />
 		<file source="templates/nochump/lgpl.txt" destination="$flash/StructureCreator/templates/nochump" />
@@ -1318,6 +958,7 @@
 		<file source="templates/wumedia/parsers/swf/TagTypes.as" destination="$flash/StructureCreator/templates/wumedia/parsers/swf" />
 		<file source="templates/wumedia/vector/VectorShapes.as" destination="$flash/StructureCreator/templates/wumedia/vector" />
 		<file source="templates/wumedia/vector/VectorText.as" destination="$flash/StructureCreator/templates/wumedia/vector" />
+
 
 	</files>
 

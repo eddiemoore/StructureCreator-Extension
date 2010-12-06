@@ -1,6 +1,6 @@
 ﻿/**
- * VERSION: 11.4
- * DATE: 2010-11-13
+ * VERSION: 11.411
+ * DATE: 2010-11-28
  * AS3 (AS2 version is also available)
  * UPDATES AND DOCUMENTATION AT: http://www.TweenMax.com 
  **/
@@ -296,7 +296,7 @@ package com.greensock {
  */
 	public class TweenMax extends TweenLite implements IEventDispatcher {
 		/** @private **/
-		public static const version:Number = 11.4;
+		public static const version:Number = 11.411;
 		
 		TweenPlugin.activate([
 			
@@ -568,6 +568,9 @@ package com.greensock {
 			if (this.initted) {
 				this.initted = false;
 				if (!resetDuration) {
+					if (_notifyPluginsOfEnabled && this.cachedPT1) {
+						onPluginEvent("onDisable", this); //in case a plugin like MotionBlur must perform some cleanup tasks
+					}
 					init();
 					if (!resetDuration && this.cachedTime > 0 && this.cachedTime < this.cachedDuration) {
 						var inv:Number = 1 / (1 - curRatio);
@@ -579,6 +582,7 @@ package com.greensock {
 							pt = pt.nextNode;
 						}
 					}
+					
 				}
 			}
 		}
@@ -758,12 +762,12 @@ package com.greensock {
 			if (_hasUpdateListener && !suppressEvents) {
 				_dispatcher.dispatchEvent(new TweenEvent(TweenEvent.UPDATE));
 			}
-			if (isComplete) {
+			if (isComplete && !this.gc) { //check gc because there's a chance that kill() could be called in an onUpdate
 				if (_hasPlugins && this.cachedPT1) {
 					onPluginEvent("onComplete", this);
 				}
 				complete(true, suppressEvents);
-			} else if (repeated && !suppressEvents) {
+			} else if (repeated && !suppressEvents && !this.gc) { 
 				if (this.vars.onRepeat) {
 					this.vars.onRepeat.apply(null, this.vars.onRepeatParams);
 				}
