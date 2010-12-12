@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <macromedia-extension
-	 name="Structure Creator"
+	 name="StructureCreator"
 	 version="2.0.2"
 	 type="flashpanel"
 	 requires-restart="true">
@@ -22,7 +22,7 @@
 
 	<ui-access>
 	<![CDATA[
-	Access the Structure Creator panel by selecting 'Window > Other Panels > Structure Creator'.
+	Access the StructureCreator panel by selecting 'Window > Other Panels > Structure Creator'.
 	]]>
 	</ui-access>
 
@@ -33,15 +33,15 @@
 	</license-agreement>
 
 	<files>
-		<file source="Structure Creator.swf" destination="$flash/WindowSWF" />
-		<file source="Structure Creator.jsfl" destination="$flash/StructureCreator" />
+		<file source="StructureCreator.swf" destination="$flash/WindowSWF" />
+		<file source="StructureCreator.jsfl" destination="$flash/StructureCreator" />
 		<file source="update.xml" destination="$flash/StructureCreator" />
 		<file source="libraries.xml" destination="$flash/StructureCreator" />
 		<file source="templates/Project.as3proj" destination="$flash/StructureCreator" />
 		<file source="templates/Class.as" destination="$flash/StructureCreator" />
-		<file source="templates/fb/.actionScriptProperties" destination="$flash/StructureCreator/fb" />
-		<file source="templates/fb/.project" destination="$flash/StructureCreator/fb" />
-		<file source="templates/fb/org.eclipse.core.resources.prefs" destination="$flash/StructureCreator/fb" />
+		<file source="templates/fb/.actionScriptProperties" destination="$flash/StructureCreator/templates/fb" />
+		<file source="templates/fb/.project" destination="$flash/StructureCreator/templates/fb" />
+		<file source="templates/fb/org.eclipse.core.resources.prefs" destination="$flash/StructureCreator/templates/fb" />
 		
 		<!--LIBRARIES-->
 		<file source="templates/away3d/animators/Animator.as" destination="$flash/StructureCreator/templates/away3d/animators" />

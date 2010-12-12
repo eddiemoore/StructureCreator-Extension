@@ -427,11 +427,11 @@ package com.asfug.structurecreator
 				
 				if (flashbuilder_cb.selected)
 				{
-					var fb:String = executeJSFL('"getConfigURI"') + "StructureCreator/fb/" + FLASH_BUILDER_FILES[0];
+					var fb:String = executeJSFL('"getConfigURI"') + "StructureCreator/templates/fb/" + FLASH_BUILDER_FILES[0];
 					new FileCreate(this, FLASH_BUILDER_FILES[0], folderURI, fb);
-					fb = executeJSFL('"getConfigURI"') + "StructureCreator/fb/" + FLASH_BUILDER_FILES[1];
+					fb = executeJSFL('"getConfigURI"') + "StructureCreator/templates/fb/" + FLASH_BUILDER_FILES[1];
 					new FileCreate(this, FLASH_BUILDER_FILES[1], folderURI, fb);
-					fb = executeJSFL('"getConfigURI"') + "StructureCreator/fb/" + FLASH_BUILDER_FILES[2];
+					fb = executeJSFL('"getConfigURI"') + "StructureCreator/templates/fb/" + FLASH_BUILDER_FILES[2];
 					info_txt.htmlText += executeJSFL('"createFolder", "' + folderURI + '/.settings", "' + '.settings' + '"') + "\n";
 					new FileCreate(this, FLASH_BUILDER_FILES[2], folderURI + '/.settings', fb);
 				}
@@ -636,7 +636,7 @@ package com.asfug.structurecreator
 		 */
 		internal function executeJSFL(commands:String):String
 		{
-			return MMExecute('fl.runScript(fl.configURI + "StructureCreator/Structure Creator.jsfl", ' + commands + ')');
+			return MMExecute('fl.runScript(fl.configURI + "StructureCreator/StructureCreator.jsfl", ' + commands + ')');
 		}
 		
 		/**
