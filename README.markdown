@@ -38,8 +38,7 @@ New in Version 1.3
 
 Are you using Structure Creator?
 --------------------------------
-If you are using Structure Creator please email me [eddie.moore@gmail.com](mailto://eddie.moore@gmail.com) and tell us 
-what you think about Structure Creator. Was it useful? What could be improved? You can send the link of the website 
+Was it useful? What could be improved? You can send the link of the website 
 that you have created using Structure Creator, we would love to see it.
 
 ![alt text](http://structurecreator.com/images/sc2.0.jpg "StructureCreator")
